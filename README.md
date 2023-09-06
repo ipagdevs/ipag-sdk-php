@@ -8,7 +8,7 @@
     + [Instalação](#instalação)
 - [Cliente (Customer)](#cliente-customer)
     + [Dados do cliente](#dados-do-cliente)
-- [IpagClient](#ipag-client) 
+- [IpagClient](#ipag-client)
 - [Testes](#testes)
 - [Licença](#licença)
 - [Documentação](#documentação)
@@ -61,20 +61,22 @@ $customer = new Ipag\Sdk\Model\Customer([
 ```php
 $customer = new Ipag\Sdk\Model\Customer();
 
-$customer->setName('Maria da Silva');
-$customer->setEmail('mariadasilva@email.com');
-$customer->setCpfCnpj('799.993.388-01');
-$customer->setPhone('(11) 98888-3333');
-$customer->setBusinessName('Maria Ltda.');
+$customer
+    ->setName('Maria da Silva')
+    ->setEmail('mariadasilva@email.com')
+    ->setCpfCnpj('799.993.388-01')
+    ->setPhone('(11) 98888-3333')
+    ->setBusinessName('Maria Ltda.');
 
 $address = new Ipag\Sdk\Model\Address();
 
-$address->setStreet('Avenida Paulista');
-$address->setNumber('01');
-$address->setDistrict('São Paulo');
-$address->setCity('São Paulo');
-$address->setState('SP');
-$address->setZipcode('01310-930');
+$address
+    ->setStreet('Avenida Paulista')
+    ->setNumber('01')
+    ->setDistrict('São Paulo')
+    ->setCity('São Paulo')
+    ->setState('SP')
+    ->setZipcode('01310-930');
 
 $customer->setAddress($address);
 

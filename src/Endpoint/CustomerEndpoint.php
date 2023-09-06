@@ -3,8 +3,6 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
-use Ipag\Sdk\Exception\EndpointException;
-use Ipag\Sdk\Exception\HttpException;
 use Ipag\Sdk\Http\Collection\CustomerCollection;
 use Ipag\Sdk\Http\Request\CustomerFiltersRequest;
 use Ipag\Sdk\Http\Resource\CustomerResource;
@@ -19,68 +17,33 @@ class CustomerEndpoint extends Endpoint
 {
     protected string $location = '/service/resources/customers';
 
-    public function create(?Customer $customer = null): CustomerResource
+    public function create(Customer $customer): CustomerResource
     {
-        try {
-            if ($customer) {
-                $this->resource = (object) $customer;
-            }
-
-            if (!$this->resource) {
-                throw new EndpointException('Customer resource is required');
-            }
-
-            $response = $this->requestPOST($this->resource->jsonSerialize());
-            return CustomerResource::parse($response->getParsed());
-        } catch (HttpException $e) {
-            $response = $e->getResponse();
-            $this->logger->error("exception code {$e->getStatusCode()} {$e->getStatusMessage()}", ['exception' => strval($e), 'response' => $response ? $response->getBody() : null]);
-            $this->exceptionThrown($e);
-        } catch (\Throwable $e) {
-            $this->logger->error("exception code {$e->getCode()} {$e->getMessage()}", ['exception' => strval($e)]);
-            $this->exceptionThrown($e);
-        }
+        $response = $this->_POST($customer->jsonSerialize());
+        return CustomerResource::parse($response->getParsed());
     }
 
-    public function alter(int $id, ?Customer $customer = null): CustomerResource
+    public function update(string $id, Customer $customer): CustomerResource
     {
-        try {
-            if ($customer) {
-                $this->resource = (object) $customer;
-            }
-
-            if (!$this->resource) {
-                throw new EndpointException('Customer resource is required');
-            }
-
-            $response = $this->requestPUT($this->resource->jsonSerialize(), ['id' => $id]);
-            return CustomerResource::parse($response->getParsed());
-        } catch (HttpException $e) {
-            $response = $e->getResponse();
-            $this->logger->error("exception code {$e->getStatusCode()} {$e->getStatusMessage()}", ['exception' => strval($e), 'response' => $response ? $response->getBody() : null]);
-            $this->exceptionThrown($e);
-        } catch (\Throwable $e) {
-            $this->logger->error("exception code {$e->getCode()} {$e->getMessage()}", ['exception' => strval($e)]);
-            $this->exceptionThrown($e);
-        }
+        $response = $this->_PUT($customer, ['id' => $id]);
+        return CustomerResource::parse($response->getParsed());
     }
 
-    public function consult(string $id): CustomerResource
+    public function get(string $id): CustomerResource
     {
-        $response = $this->requestGET(['id' => $id]);
+        $response = $this->_GET(['id' => $id]);
         return CustomerResource::parse($response->getParsed());
     }
 
     public function delete(string $id): bool
     {
-        $this->requestDELETE(['id' => $id]);
+        $this->_DELETE(['id' => $id]);
         return true;
     }
 
-    public function List(?CustomerFiltersRequest $filters = null): CustomerCollection
+    public function list(?CustomerFiltersRequest $filters = null): CustomerCollection
     {
-        $response = $this->requestGET([$filters ?? []]);
+        $response = $this->_GET([$filters ?? []]);
         return CustomerCollection::parse($response->getParsed());
     }
-
 }

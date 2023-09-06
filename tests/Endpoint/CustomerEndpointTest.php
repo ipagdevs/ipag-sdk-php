@@ -3,7 +3,6 @@
 namespace Ipag\Sdk\Tests\Endpoint;
 
 use GuzzleHttp\Psr7\Response;
-use Ipag\Sdk\Exception\EndpointException;
 use Ipag\Sdk\Exception\HttpException;
 use Ipag\Sdk\Http\Resource\CustomerResource;
 use Ipag\Sdk\Model\Customer;
@@ -30,18 +29,9 @@ class CustomerEndpointTest extends IpagClient
             ]
         ]);
 
-        $customerResource = $this->client->customer($c)->create();
+        $customerResource = $this->client->customer()->create($c);
 
         $this->assertInstanceOf(CustomerResource::class, $customerResource);
-    }
-
-    public function testCreateMissingClientResourceThrowsException()
-    {
-        $this->instanceClient();
-
-        $this->expectException(EndpointException::class);
-
-        $this->client->customer()->create();
     }
 
     public function testCreateUnprocessableDataClientResourceThrowsException()
@@ -52,7 +42,7 @@ class CustomerEndpointTest extends IpagClient
 
         $c = new Customer();
 
-        $this->client->customer($c)->create();
+        $this->client->customer()->create($c);
     }
 
     public function testItUnauthorizedActionThrowsException()
@@ -63,7 +53,7 @@ class CustomerEndpointTest extends IpagClient
 
         $c = new Customer();
 
-        $this->client->customer($c)->create();
+        $this->client->customer()->create($c);
     }
 
 }

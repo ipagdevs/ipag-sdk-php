@@ -33,12 +33,14 @@ class CustomerTest extends TestCase
     public function testCreateAndSetCustomer()
     {
         $customer = new Customer();
-        $customer->setName('Lívia Julia Eduarda Barros');
-        $customer->setEmail('livia.julia.barros@eximiart.com.br');
-        $customer->setCpfCnpj('074.598.263-83');
-        $customer->setPhone('(98) 3792-4834');
-        $customer->setIsActive(true);
-        $customer->setBusinessName('Lívia Ltda.');
+
+        $customer
+            ->setName('Lívia Julia Eduarda Barros')
+            ->setEmail('livia.julia.barros@eximiart.com.br')
+            ->setCpfCnpj('074.598.263-83')
+            ->setPhone('(98) 3792-4834')
+            ->setIsActive(true)
+            ->setBusinessName('Lívia Ltda.');
 
         $customer->setAddress(new Address);
 
@@ -86,11 +88,12 @@ class CustomerTest extends TestCase
             ]
         ]);
 
-        $customer->setEmail(null);
-        $customer->setCpfCnpj(null);
-        $customer->setPhone(null);
-        $customer->setBusinessName(null);
-        $customer->setIsActive(null);
+        $customer
+            ->setEmail(null)
+            ->setCpfCnpj(null)
+            ->setPhone(null)
+            ->setBusinessName(null)
+            ->setIsActive(null);
 
         $this->assertEmpty($customer->getEmail());
         $this->assertEmpty($customer->getCpfCnpj());

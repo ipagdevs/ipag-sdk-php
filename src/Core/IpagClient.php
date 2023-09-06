@@ -6,7 +6,6 @@ use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Http\Client\GuzzleHttpClient;
 use Ipag\Sdk\IO\JsonSerializer;
-use Ipag\Sdk\Model\Customer;
 
 /**
  * IpagClient Class
@@ -43,14 +42,16 @@ class IpagClient extends Client
         );
     }
 
-    public function customer(?Customer $resource = null): CustomerEndpoint
+    public function customer(): CustomerEndpoint
     {
-        return CustomerEndpoint::make($this, $this, null, null, $resource);
+        return CustomerEndpoint::make($this, $this);
     }
 
+    /*
     public function payment(): PaymentEndpoint
     {
         return PaymentEndpoint::create($this, $this);
     }
+    */
 
 }

@@ -42,17 +42,45 @@ final class Customer extends Model
 
     protected function schema(SchemaBuilder $schema): Schema
     {
+        $schema->string('id')->nullable()->isHidden();
+        $schema->string('uuid')->nullable()->isHidden();
         $schema->string('name')->nullable();
         $schema->bool('is_active')->nullable()->isHidden();
         $schema->string('email')->nullable();
         $schema->string('phone')->nullable();
         $schema->string('cpf_cnpj')->nullable();
         $schema->string('business_name')->nullable();
+
+        $schema->string('birthdate')->nullable()->isHidden(); //Y-m-d ou d/m/Y
+        $schema->string('ip')->nullable()->isHidden();
+
         $schema->string('created_at')->nullable()->isHidden();
         $schema->string('updated_at')->nullable()->isHidden();
         $schema->has('address', Address::class)->nullable();
 
         return $schema->build();
+    }
+
+    public function getId(): ?string
+    {
+        return $this->get('id');
+    }
+
+    public function setId(?string $id): self
+    {
+        $this->set('id', $id);
+        return $this;
+    }
+
+    public function getUuid(): ?string
+    {
+        return $this->get('uuid');
+    }
+
+    public function setUuid(?string $uuid): self
+    {
+        $this->set('uuid', $uuid);
+        return $this;
     }
 
     protected function name(): Mutator
@@ -115,13 +143,9 @@ final class Customer extends Model
         return new Mutator(
             null,
             fn($value, $ctx) =>
-            Assert::value($value)->email()->valid() ?
+            is_null($value) ?
             $value :
-            (
-                empty($value) ?
-                null : $ctx->raise('valor da propriedade Customer.Email não é inválido.')
-            )
-
+            Assert::value($value)->email()->get() ?? $ctx->raise('inválido')
         );
     }
 
@@ -152,15 +176,9 @@ final class Customer extends Model
         return new Mutator(
             null,
             fn($value, $ctx) =>
-            (
-                strlen(preg_replace('/\D/', '', $value)) === 10 ||
-                strlen(preg_replace('/\D/', '', $value)) === 11
-            ) ?
-            preg_replace('/\D/', '', $value) :
-            (
-                empty($value) ?
-                null : $ctx->raise('valor da propriedade Customer.Phone não é inválido.')
-            )
+            is_null($value) ?
+            $value :
+            Assert::value($value)->asDigits()->lbetween(10, 11)->get() ?? $ctx->raise('inválido')
         );
     }
 
@@ -191,15 +209,9 @@ final class Customer extends Model
         return new Mutator(
             null,
             fn($value, $ctx) =>
-            (
-                Assert::value(preg_replace('/\D/', '', $value))->asCpf(false)->valid() ||
-                Assert::value(preg_replace('/\D/', '', $value))->asCnpj(false)->valid()
-            ) ?
-            preg_replace('/\D/', '', $value) :
-            (
-                empty($value) ?
-                null : $ctx->raise('valor da propriedade Customer.CPF/CNPJ não é inválido.')
-            )
+            is_null($value) ?
+            $value :
+            Assert::value($value)->asCpf(false)->or()->asCnpj(false)->get() ?? $ctx->raise('inválido')
         );
     }
 
@@ -249,6 +261,28 @@ final class Customer extends Model
     public function setBusinessName(?string $businessName): self
     {
         $this->set('business_name', $businessName);
+        return $this;
+    }
+
+    public function getBirthdate(): ?string
+    {
+        return $this->get('birthdate');
+    }
+
+    public function setBirthdate(?string $birthdate): self
+    {
+        $this->set('birthdate', $birthdate);
+        return $this;
+    }
+
+    public function getIp(): ?string
+    {
+        return $this->get('ip');
+    }
+
+    public function setIp(?string $ip): self
+    {
+        $this->set('ip', $ip);
         return $this;
     }
 
