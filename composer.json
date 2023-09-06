@@ -1,0 +1,33 @@
+{
+    "name": "ipagdevs/ipag-sdk-php",
+    "description": "",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Ipag\\Sdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "",
+            "email": "vitorkubinyete@hotmail.com"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "Ipag\\Sdk\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": ">=6.0",
+        "kubinyete/assertation": "^1.0",
+        "psr/log": "^1.1",
+        "symfony/polyfill-php81": "^1.28",
+        "symfony/polyfill-php80": "^1.28"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.4",
+        "fakerphp/faker": "^1.23",
+        "phpunit/phpunit": "^9.6"
+    }
+}
