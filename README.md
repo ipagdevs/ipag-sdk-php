@@ -1,112 +1,96 @@
-# Template SDK/Webservice Project
+# iPag PHP client SDK
+> A ferramenta certa para uma rápida e segura integração com o iPag e a sua aplicação PHP
 
-## What?
-This project provides a basic quick-start template for creating Webservice clients.
+**Índice**
 
-## Why?
-Instead of repeating the same things over and over again for every webservice client that your application needs, this template provides a quick and easy solution for
-building and mapping endspoints to your client, providing a structured approach for endpoint representation, environment mapping and error handling.
+- [iPag PHP client SDK](#ipag-php-client-sdk)
+    + [Dependências](#dependências)
+    + [Instalação](#instalação)
+- [Cliente (Customer)](#cliente-customer)
+    + [Dados do cliente](#dados-do-cliente)
+- [IpagClient](#ipag-client) 
+- [Testes](#testes)
+- [Licença](#licença)
+- [Documentação](#documentação)
+- [Dúvidas \& Sugestões](#dúvidas--sugestões)
 
-## How?
-To get started, just extend the base `Core/Client` and create your first endpoint, following the example below:
+## Dependências
+
+**require**
+ - [PHP >= 7.4]
+ - [guzzlehttp/guzzle]
+ - [kubinyete/assertation]
+ - [psr/log]
+ - [symfony/polyfill-php81]
+ - [symfony/polyfill-php80]
+
+**require-dev**
+ - [phpunit/phpunit]
+ - [symfony/var-dumper]
+ - [fakerphp/faker]
+
+## Instalação
+
+Execute em seu shell:
+
+    composer require ipagdevs/ipag-sdk-php
+
+# Cliente (Customer)
+
+> Exemplo completo: [exemplos/customer/usage.php](./examples/customer/usage.php)
+
+### Dados do cliente
+```php
+$customer = new Ipag\Sdk\Model\Customer([
+    'name' => 'Maria da Silva',
+    'email' => 'mariadasilva@email.com',
+    'cpf_cnpj' => '799.993.388-01',
+    'phone' => '(11) 98888-3333',
+    'business_name' => 'Maria Ltda.',
+    'address' => [
+        'street' => 'Avenida Paulista',
+        'number' => '01',
+        'district' => 'São Paulo',
+        'city' => 'São Paulo',
+        'state' => 'SP',
+        'zipcode' => '01310-930'
+    ]
+]);
+```
 
 ```php
-# OpenMeteoClient.php
-<?php
+$customer = new Ipag\Sdk\Model\Customer();
 
-namespace Ipag\Sdk\ExampleSdkPhp;
+$customer->setName('Maria da Silva');
+$customer->setEmail('mariadasilva@email.com');
+$customer->setCpfCnpj('799.993.388-01');
+$customer->setPhone('(11) 98888-3333');
+$customer->setBusinessName('Maria Ltda.');
 
-use Ipag\Sdk\ExampleSdkPhp\Endpoint\ForecastEndpoint;
-use Ipag\Sdk\ExampleSdkPhp\Exception\OpenMeteoException;
-use Ipag\Sdk\ExampleSdkPhp\Client;
-use Ipag\Sdk\ExampleSdkPhp\Exception\HttpException;
-use Ipag\Sdk\ExampleSdkPhp\Http\Client\GuzzleHttpClient;
-use Ipag\Sdk\ExampleSdkPhp\Http\Response;
-use Ipag\Sdk\ExampleSdkPhp\IO\JsonSerializer;
+$address = new Ipag\Sdk\Model\Address();
 
-class OpenMeteoClient extends Client
-{
-    public function __construct(int $version = 1)
-    {
-        parent::__construct(
-            new OpenMeteoEnvironment($version),
-            new GuzzleHttpClient(),
-            new JsonSerializer()
-        );
-    }
+$address->setStreet('Avenida Paulista');
+$address->setNumber('01');
+$address->setDistrict('São Paulo');
+$address->setCity('São Paulo');
+$address->setState('SP');
+$address->setZipcode('01310-930');
 
-    public function forecast(): ForecastEndpoint
-    {
-        return ForecastEndpoint::create($this, $this);
-    }
-
-    //
-
-    // @NOTE:
-    // Dealing with errors on 200 status codes
-    protected function responseReceived(Response $response): Response
-    {
-        if ($response->getParsedPath('error')) {
-            throw new OpenMeteoException((string)$response->getParsedPath('reason'), 0, null, $response);
-        }
-
-        return $response;
-    }
-
-    // @NOTE:
-    // Translating Client/Server errors
-    protected function exceptionThrown(Throwable $e): void
-    {
-        if ($e instanceof HttpException && $e->getResponse()) {
-            $this->responseReceived($e->getResponse());
-        }
-
-        throw $e;
-    }
-}
-```
-```php
-# ForecastEndpoint.php
-<?php
-
-namespace Ipag\Sdk\ExampleSdkPhp\Endpoint;
-
-use Ipag\Sdk\ExampleSdkPhp\Model\Forecast;
-use Ipag\Sdk\ExampleSdkPhp\Model\ForecastSettings;
-use Ipag\Sdk\ExampleSdkPhp\Core\Endpoint;
-
-class ForecastEndpoint extends Endpoint
-{
-    protected string $location = '/forecast';
-
-    // @NOTE:
-    // Using a more object-oriented approach using an Endpoint object.
-    public function now(ForecastSettings $forecastSettings): Forecast
-    {
-        $response = $this->get($forecastSettings->jsonSerialize());
-        return Forecast::parse($response->getParsed());
-    }
-}
-```
-```php
-# usage.php
-<?php
-
-require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-
-use Ipag\Sdk\ExampleSdkPhp\Model\ForecastSettings;
-use Ipag\Sdk\ExampleSdkPhp\OpenMeteoClient;
-use Ipag\Sdk\ExampleSdkPhp\Exception\HttpClientException;
-
-$client = new OpenMeteoClient();
-
-try {
-    $forecast = $client->forecast()->now(new ForecastSettings(52.52, 13.41, true));
-    var_dump($forecast);
-} catch (HttpClientException $e) {
-    echo "Bad request!" . PHP_EOL;
-    echo "Message: {$e->getMessage()}" . PHP_EOL;
-    echo "Response: {$e->getResponse()->getBody()}" . PHP_EOL;
-}
+$customer->setAddress($address);
 
 ```
+
+## Testes
+
+É necessário a instalação do PHPUnit para a realização dos testes.
+
+## Licença
+[The MIT License](https://github.com/ipagdevs/ipag-sdk-php/blob/master/LICENSE)
+
+## Documentação
+
+[Documentação Oficial](https://developers.ipag.com.br)
+
+## Dúvidas & Sugestões
+
+Em caso de dúvida ou sugestão para o SDK abra uma nova [Issue](https://github.com/ipagdevs/ipag-sdk-php/issues).

@@ -12,34 +12,34 @@ use Ipag\Sdk\Model\Customer;
 
 $client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
 
-$c = new Customer([
-    'name' => 'Lívia Julia Eduarda Barros',
-    'email' => 'livia.julia.barros@eximiart.com.br',
-    'cpf_cnpj' => '074.598.263-83',
-    'phone' => '(98) 3792-4834',
+$customer = new Ipag\Sdk\Model\Customer([
+    'name' => 'Maria da Silva',
+    'email' => 'mariadasilva@email.com',
+    'cpf_cnpj' => '799.993.388-01',
+    'phone' => '(11) 98888-3333',
+    'business_name' => 'Maria Ltda.',
     'address' => [
-        'street' => 'Rua Agenor Vieira',
-        'number' => 123,
-        'district' => 'São Francisco',
-        'city' => 'São Luís',
-        'state' => 'MA',
-        'zipcode' => '65076-020'
+        'street' => 'Avenida Paulista',
+        'number' => '01',
+        'district' => 'São Paulo',
+        'city' => 'São Paulo',
+        'state' => 'SP',
+        'zipcode' => '01310-930'
     ]
 ]);
 
 $c2 = new Customer([
-    'name' => 'Lucas da Silva Rosa',
-    'email' => 'lucas@ipag.com.br',
-    'is_active' => false
+    'name' => 'Mario da Silva',
+    'email' => 'mariodasilva@email.com',
 ]);
 
 $c2->setAddress(new Address([
-    'street' => 'Rua José Dias Cintra',
-    'number' => 318,
-    'district' => 'Vl. Ocidental',
-    'city' => 'Pres. Prudente',
-    'state' => 'São Paulo',
-    'zipcode' => '19015-050'
+    'street' => 'Avenida Atlântica',
+    'number' => '02',
+    'district' => 'Copacabana',
+    'city' => 'Rio de Janeiro',
+    'state' => 'RJ',
+    'zipcode' => '22021-001'
 ]));
 
 try {
