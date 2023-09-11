@@ -3,9 +3,6 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
-use Ipag\Sdk\Http\Collection\CustomerCollection;
-use Ipag\Sdk\Http\Request\CustomerFiltersRequest;
-use Ipag\Sdk\Http\Resource\CustomerResource;
 use Ipag\Sdk\Model\Customer;
 
 /**
@@ -17,22 +14,22 @@ class CustomerEndpoint extends Endpoint
 {
     protected string $location = '/service/resources/customers';
 
-    public function create(Customer $customer): CustomerResource
+    public function create(Customer $customer): object
     {
         $response = $this->_POST($customer->jsonSerialize());
-        return CustomerResource::parse($response->getParsed());
+        return json_decode(json_encode($response->getParsed()), FALSE);
     }
 
-    public function update(string $id, Customer $customer): CustomerResource
+    public function update(Customer $customer, string $id): object
     {
         $response = $this->_PUT($customer, ['id' => $id]);
-        return CustomerResource::parse($response->getParsed());
+        return json_decode(json_encode($response->getParsed()), FALSE);
     }
 
-    public function get(string $id): CustomerResource
+    public function get(string $id): object
     {
         $response = $this->_GET(['id' => $id]);
-        return CustomerResource::parse($response->getParsed());
+        return json_decode(json_encode($response->getParsed()), FALSE);
     }
 
     public function delete(string $id): bool
@@ -41,9 +38,9 @@ class CustomerEndpoint extends Endpoint
         return true;
     }
 
-    public function list(?CustomerFiltersRequest $filters = null): CustomerCollection
+    public function list(?array $filters = []): object
     {
-        $response = $this->_GET([$filters ?? []]);
-        return CustomerCollection::parse($response->getParsed());
+        $response = $this->_GET($filters ?? []);
+        return json_decode(json_encode($response->getParsed()), FALSE);
     }
 }

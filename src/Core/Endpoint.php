@@ -2,7 +2,7 @@
 
 namespace Ipag\Sdk\Core;
 
-use JsonSerializable;
+use Ipag\Sdk\Exception\HttpClientException;
 use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\IO\SerializerInterface;
 use Ipag\Sdk\Path\CompositePathInterface;
@@ -59,14 +59,37 @@ abstract class Endpoint implements CompositePathInterface
 
     protected function request(string $method, $body, array $query = [], array $header = [], ?string $relativeUrl = null): Response
     {
-        return $this->client->request(
-            strtoupper(substr($method, 1)),
-            $relativeUrl ? $this->joinPath($relativeUrl) : $this->getPath(),
-            $body,
-            $query,
-            $header,
-            $this->serializer
-        );
+        try {
+            return $this->client->request(
+                strtoupper(substr($method, 1)),
+                $relativeUrl ? $this->joinPath($relativeUrl) : $this->getPath(),
+                $body,
+                $query,
+                $header,
+                $this->serializer
+            );
+        } catch (HttpClientException $e) {
+
+            $response = $e->getResponse();
+
+            $messageResponse = $e->getResponse()->getParsedPath('message');
+
+            if (is_array($messageResponse))
+                $messageResponse = implode(', ', array_map(fn($value) => $value[1], $messageResponse));
+
+            if ($messageResponse)
+                $this->exceptionThrown(
+                    new HttpClientException(
+                        $messageResponse,
+                        $e->getCode(),
+                        $e,
+                        $response
+                    )
+                );
+
+        } catch (\Throwable $th) {
+            $this->exceptionThrown($th);
+        }
     }
 
     //

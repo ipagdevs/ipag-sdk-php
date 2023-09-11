@@ -4,9 +4,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
-use Ipag\Sdk\Exception\EndpointException;
 use Ipag\Sdk\Exception\HttpClientException;
-use Ipag\Sdk\Http\Request\CustomerFiltersRequest;
 
 $client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
 
@@ -28,44 +26,30 @@ $customer = new Ipag\Sdk\Model\Customer([
     ]
 ]);
 
-$c2 = new Ipag\Sdk\Model\Customer([
-    'name' => 'Mario da Silva',
-    'email' => 'mariodasilva@email.com',
-]);
-
-$c2->setAddress(new Ipag\Sdk\Model\Address([
-    'street' => 'Avenida Atlântica',
-    'number' => '02',
-    'district' => 'Copacabana',
-    'city' => 'Rio de Janeiro',
-    'state' => 'RJ',
-    'zipcode' => '22021-001'
-]));
-
 try {
 
-    // $customer = $client->customer()->create($customer);
+    // Create
+    // $responseCustomer = $client->customer()->create($customer);
+    // dd($responseCustomer);
 
-    // dd($customer->jsonSerialize());
+    // Update
+    // $responseCustomer = $client->customer()->update($customer, 100003);
+    // dd($responseCustomer);
 
-    $customer = $client->customer()->update(100003, $customer);
+    // Get
+    // $responseCustomer = $client->customer()->get(100003);
+    // dd($responseCustomer);
 
-    // $customer = $client->customer()->consult(100003);
+    // List
+    // $list = $client->customer()->list([
+    //     'name' => 'maria'
+    // ]);
+    // dd($list);
 
-    dd($customer->jsonSerialize());
-
+    // Delete
     // $result = $client->customer()->delete(100003);
-
-    // new CustomerFiltersRequest([]);
-
-    // $list = $client->customer()->list(new CustomerFiltersRequest([
-    //     'order' => 'desc',
-    // ]));
-
-    // dd($list->jsonSerialize());
+    // dd($result);
 
 } catch (HttpClientException $e) {
-    echo "=> HttpClientException" . PHP_EOL;
     echo $e->getMessage() . PHP_EOL;
-    echo $e->getResponse()->getBody() . PHP_EOL;
 }

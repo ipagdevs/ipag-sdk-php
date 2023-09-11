@@ -47,6 +47,11 @@ class IpagClient extends Client
         return CustomerEndpoint::make($this, $this);
     }
 
+    public function subscriptionPlan(): SubscriptionPlanEndpoint
+    {
+        return SubscriptionPlanEndpoint::make($this, $this);
+    }
+
     /*
     public function payment(): PaymentEndpoint
     {

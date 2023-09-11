@@ -80,7 +80,7 @@ final class Address extends Model
             strval(floor($value)) :
             (
                 empty($value) ?
-                null : $ctx->raise('tipo da propriedade Address.Number não é inválido.')
+                null : $ctx->raise('inválido')
             )
         );
     }
