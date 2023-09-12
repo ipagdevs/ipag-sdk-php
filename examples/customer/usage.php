@@ -42,14 +42,13 @@ try {
     // dd($responseCustomer);
 
     // List
-    // $list = $client->customer()->list([
+    // $responseCustomer = $client->customer()->list([
     //     'name' => 'maria'
     // ]);
-    // dd($list);
+    // dd($responseCustomer);
 
     // Delete
-    // $result = $client->customer()->delete(100003);
-    // dd($result);
+    // $ok = $client->customer()->delete(100003);
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

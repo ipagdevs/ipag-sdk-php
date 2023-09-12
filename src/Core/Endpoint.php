@@ -72,10 +72,7 @@ abstract class Endpoint implements CompositePathInterface
 
             $response = $e->getResponse();
 
-            $messageResponse = $e->getResponse()->getParsedPath('message');
-
-            if (is_array($messageResponse))
-                $messageResponse = implode(', ', array_map(fn($value) => $value[1], $messageResponse));
+            $messageResponse = $e->getResponse()->getBody();
 
             if ($messageResponse)
                 $this->exceptionThrown(

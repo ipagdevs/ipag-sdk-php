@@ -9,35 +9,44 @@ use Ipag\Sdk\Exception\HttpClientException;
 $client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
 
 $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
-    "name" => "PLANO GOLD",
-    "description" => "Plano Gold com até 4 treinos por semana",
-    "amount" => 0,
+    "name" => "PLANO SILVER",
+    "description" => "Plano Silver com até 4 treinos por semana",
+    "amount" => 100.99,
     "frequency" => "monthly",
     "interval" => 1,
-    "cycles" => 0,
+    "cycles" => 10,
     "best_day" => true,
     "pro_rated_charge" => true,
     "grace_period" => 0,
     "callback_url" => "https://sualoja.com.br/ipag/callback",
     "trial" => [
-        'amount' => 0,
-        'cycles' => 0
+        'amount' => 100.99,
+        'cycles' => 10
     ]
 ]);
 
 try {
 
     // Create
-    $responseSubscriptionPlan = $client->subscriptionPlan()->create($subscriptionPlan);
-    dd($responseSubscriptionPlan);
+    // $responseSubscriptionPlan = $client->subscriptionPlan()->create($subscriptionPlan);
+    // dd($responseSubscriptionPlan);
 
     // Update
+    // $responseSubscriptionPlan = $client->subscriptionPlan()->update($subscriptionPlan, 13);
+    // dd($responseSubscriptionPlan);
 
     // Get
+    // $responseSubscriptionPlan = $client->subscriptionPlan()->get(13);
+    // dd($responseSubscriptionPlan);
 
     // List
+    // $responseSubscriptionPlan = $client->subscriptionPlan()->list([
+    //     'name' => 'PLANO SILVER',
+    // ]);
+    // dd($responseSubscriptionPlan);
 
     // Delete
+    // $client->subscriptionPlan()->delete(13);
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;
