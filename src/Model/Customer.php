@@ -61,22 +61,44 @@ final class Customer extends Model
         return $schema->build();
     }
 
+    /**
+     * Retorna o valor da propriedade id.
+     *
+     * @return string|null
+     */
     public function getId(): ?string
     {
         return $this->get('id');
     }
 
+    /**
+     * Seta o valor da propriedade id.
+     *
+     * @param string|null $id
+     * @return self
+     */
     public function setId(?string $id): self
     {
         $this->set('id', $id);
         return $this;
     }
 
+    /**
+     * Retorna o valor da propriedade uuid.
+     *
+     * @return string|null
+     */
     public function getUuid(): ?string
     {
         return $this->get('uuid');
     }
 
+    /**
+     * Seta o valor da propriedade uuid.
+     *
+     * @param string|null $uuid
+     * @return self
+     */
     public function setUuid(?string $uuid): self
     {
         $this->set('uuid', $uuid);
@@ -89,7 +111,7 @@ final class Customer extends Model
     }
 
     /**
-     * Retorna a propriedade name.
+     * Retorna o valor da propriedade name.
      *
      * @return string|null
      */
@@ -99,7 +121,7 @@ final class Customer extends Model
     }
 
     /**
-     * Seta a propriedade name.
+     * Seta o valor da propriedade name.
      *
      * @param string|null $name
      * @return self
@@ -117,7 +139,7 @@ final class Customer extends Model
     }
 
     /**
-     * Retorna a propriedade is_active.
+     * Retorna o valor da propriedade is_active.
      *
      * @return boolean|null
      */
@@ -127,7 +149,7 @@ final class Customer extends Model
     }
 
     /**
-     * Seta a propriedade is_active.
+     * Seta o valor da propriedade is_active.
      *
      * @param boolean|null $isActive
      * @return self
@@ -150,7 +172,7 @@ final class Customer extends Model
     }
 
     /**
-     * Retorna a propriedade email.
+     * Retorna o valor da propriedade email.
      *
      * @return string|null
      */
@@ -160,7 +182,7 @@ final class Customer extends Model
     }
 
     /**
-     * Seta a propriedade email.
+     * Seta o valor da propriedade email.
      *
      * @param string|null $email
      * @return self
@@ -183,7 +205,7 @@ final class Customer extends Model
     }
 
     /**
-     * Retorna a propriedade phone.
+     * Retorna o valor da propriedade phone.
      *
      * @return string|null
      */
@@ -193,7 +215,7 @@ final class Customer extends Model
     }
 
     /**
-     * Seta a propriedade phone.
+     * Seta o valor da propriedade phone.
      *
      * @param string|null $phone
      * @return self
@@ -216,7 +238,7 @@ final class Customer extends Model
     }
 
     /**
-     * Retorna a propriedade cpf_cnpj.
+     * Retorna o valor da propriedade cpf_cnpj.
      *
      * @return string|null
      */
@@ -226,7 +248,7 @@ final class Customer extends Model
     }
 
     /**
-     * Seta a propriedade cpf_cnpj.
+     * Seta o valor da propriedade cpf_cnpj.
      *
      * @param string|null $cpfCnpj
      * @return self
@@ -243,7 +265,7 @@ final class Customer extends Model
     }
 
     /**
-     * Retorna a propriedade business_name.
+     * Retorna o valor da propriedade business_name.
      *
      * @return string|null
      */
@@ -253,7 +275,7 @@ final class Customer extends Model
     }
 
     /**
-     * Seta a propriedade business_name.
+     * Seta o valor da propriedade business_name.
      *
      * @param string|null $businessName
      * @return self
@@ -264,22 +286,44 @@ final class Customer extends Model
         return $this;
     }
 
+    /**
+     * Retorna o valor da propriedade birthdate.
+     *
+     * @return string|null
+     */
     public function getBirthdate(): ?string
     {
         return $this->get('birthdate');
     }
 
+    /**
+     * Seta o valor da propriedade birthdate.
+     *
+     * @param string|null $birthdate
+     * @return self
+     */
     public function setBirthdate(?string $birthdate): self
     {
         $this->set('birthdate', $birthdate);
         return $this;
     }
 
+    /**
+     * Retorna o valor da propriedade ip.
+     *
+     * @return string|null
+     */
     public function getIp(): ?string
     {
         return $this->get('ip');
     }
 
+    /**
+     * Seta o valor da propriedade ip.
+     *
+     * @param string|null $ip
+     * @return self
+     */
     public function setIp(?string $ip): self
     {
         $this->set('ip', $ip);

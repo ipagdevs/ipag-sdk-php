@@ -52,7 +52,7 @@ final class Address extends Model
     }
 
     /**
-     * Retorna a propriedade street.
+     * Retorna o valor da propriedade street.
      *
      * @return string|null
      */
@@ -62,31 +62,32 @@ final class Address extends Model
     }
 
     /**
-     * Seta a propriedade street.
+     * Seta o valor da propriedade street.
      *
      * @param string|null $street
-     * @return void
+     * @return self
      */
-    public function setStreet(?string $street): void
+    public function setStreet(?string $street): self
     {
         $this->set('street', $street);
+        return $this;
     }
     public function number(): Mutator
     {
         return new Mutator(
             null,
             fn($value, $ctx) =>
-            is_numeric($value) ?
-            strval(floor($value)) :
+            is_null($value) ?
+            $value :
             (
-                empty($value) ?
-                null : $ctx->raise('inválido')
+                is_numeric($value) ? strval($value) :
+                $ctx->raise('inválido')
             )
         );
     }
 
     /**
-     * Retorna a propriedade number.
+     * Retorna o valor da propriedade number.
      *
      * @return string|null
      */
@@ -96,14 +97,15 @@ final class Address extends Model
     }
 
     /**
-     * Seta a propriedade number.
+     * Seta o valor da propriedade number.
      *
      * @param string|null $number
-     * @return void
+     * @return self
      */
-    public function setNumber(?string $number): void
+    public function setNumber(?string $number): self
     {
         $this->set('number', $number);
+        return $this;
     }
     public function district(): Mutator
     {
@@ -111,7 +113,7 @@ final class Address extends Model
     }
 
     /**
-     * Retorna a propriedade district.
+     * Retorna o valor da propriedade district.
      *
      * @return string|null
      */
@@ -121,14 +123,15 @@ final class Address extends Model
     }
 
     /**
-     * Seta a propriedade district.
+     * Seta o valor da propriedade district.
      *
      * @param string|null $district
-     * @return void
+     * @return self
      */
-    public function setDistrict(?string $district): void
+    public function setDistrict(?string $district): self
     {
         $this->set('district', $district);
+        return $this;
     }
     public function complement(): Mutator
     {
@@ -136,7 +139,7 @@ final class Address extends Model
     }
 
     /**
-     * Retorna a propriedade complement.
+     * Retorna o valor da propriedade complement.
      *
      * @return string|null
      */
@@ -146,14 +149,15 @@ final class Address extends Model
     }
 
     /**
-     * Seta a propriedade complement.
+     * Seta o valor da propriedade complement.
      *
      * @param string|null $complement
-     * @return void
+     * @return self
      */
-    public function setComplement(?string $complement): void
+    public function setComplement(?string $complement): self
     {
         $this->set('complement', $complement);
+        return $this;
     }
     public function city(): Mutator
     {
@@ -161,7 +165,7 @@ final class Address extends Model
     }
 
     /**
-     * Retorna a propriedade city.
+     * Retorna o valor da propriedade city.
      *
      * @return string|null
      */
@@ -171,14 +175,15 @@ final class Address extends Model
     }
 
     /**
-     * Seta a propriedade city.
+     * Seta o valor da propriedade city.
      *
      * @param string|null $city
-     * @return void
+     * @return self
      */
-    public function setCity(?string $city): void
+    public function setCity(?string $city): self
     {
         $this->set('city', $city);
+        return $this;
     }
     public function state(): Mutator
     {
@@ -186,7 +191,7 @@ final class Address extends Model
     }
 
     /**
-     * Retorna a propriedade state.
+     * Retorna o valor da propriedade state.
      *
      * @return string|null
      */
@@ -196,14 +201,15 @@ final class Address extends Model
     }
 
     /**
-     * Seta a propriedade state.
+     * Seta o valor da propriedade state.
      *
      * @param string|null $state
-     * @return void
+     * @return self
      */
-    public function setState(?string $state): void
+    public function setState(?string $state): self
     {
         $this->set('state', $state);
+        return $this;
     }
     public function zipcode(): Mutator
     {
@@ -211,7 +217,7 @@ final class Address extends Model
     }
 
     /**
-     * Retorna a propriedade zipcode.
+     * Retorna o valor da propriedade zipcode.
      *
      * @return string|null
      */
@@ -221,13 +227,14 @@ final class Address extends Model
     }
 
     /**
-     * Seta a propriedade zipcode.
+     * Seta o valor da propriedade zipcode.
      *
      * @param string|null $zipcode
-     * @return void
+     * @return self
      */
-    public function setZipcode(?string $zipcode): void
+    public function setZipcode(?string $zipcode): self
     {
         $this->set('zipcode', $zipcode);
+        return $this;
     }
 }

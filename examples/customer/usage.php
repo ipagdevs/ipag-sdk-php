@@ -5,6 +5,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpClientException;
+use Ipag\Sdk\Model\Customer;
 
 $client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
 
@@ -29,8 +30,8 @@ $customer = new Ipag\Sdk\Model\Customer([
 try {
 
     // Create
-    // $responseCustomer = $client->customer()->create($customer);
-    // dd($responseCustomer);
+    $responseCustomer = $client->customer()->create(new Customer());
+    dd($responseCustomer);
 
     // Update
     // $responseCustomer = $client->customer()->update($customer, 100003);

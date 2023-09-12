@@ -24,6 +24,9 @@ abstract class Model implements SerializableModelInterface
 
     public function __construct(array $data = [], array $relations = [], ?string $name = null)
     {
+        if (is_numeric(key($data)))
+            throw new \Exception('Dados mal formatados passado para o construtor da classe ' . ClassUtil::basename(static::class));
+
         $this->data = $data;
         $this->relations = $relations;
         $this->identifier = $name ?? ClassUtil::basename(static::class);

@@ -31,12 +31,14 @@ class AddressTest extends TestCase
     public function testCreateAndSetAddress()
     {
         $address = new Address();
-        $address->setStreet('Rua Agenor Vieira');
-        $address->setNumber('768');
-        $address->setDistrict('São Francisco');
-        $address->setCity('São Luís');
-        $address->setState('MA');
-        $address->setZipcode('65076020');
+
+        $address
+            ->setStreet('Rua Agenor Vieira')
+            ->setNumber('768')
+            ->setDistrict('São Francisco')
+            ->setCity('São Luís')
+            ->setState('MA')
+            ->setZipcode('65076020');
 
         $this->assertEquals($address->getStreet(), 'Rua Agenor Vieira');
         $this->assertEquals($address->getNumber(), '768');
@@ -70,12 +72,13 @@ class AddressTest extends TestCase
             'zipcode' => '65076-020'
         ]);
 
-        $address->setStreet(null);
-        $address->setNumber(null);
-        $address->setDistrict(null);
-        $address->setCity(null);
-        $address->setState(null);
-        $address->setZipcode(null);
+        $address
+            ->setStreet(null)
+            ->setNumber(null)
+            ->setDistrict(null)
+            ->setCity(null)
+            ->setState(null)
+            ->setZipcode(null);
 
         $this->assertEmpty($address->getStreet());
         $this->assertEmpty($address->getNumber());

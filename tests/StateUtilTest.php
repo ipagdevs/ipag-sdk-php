@@ -7,12 +7,12 @@ use PHPUnit\Framework\TestCase;
 
 class StateUtilTest extends BaseTestCase
 {
-    public function testFoundStateUFValid()
+    public function testFoundStateUfValid()
     {
         $this->assertEquals(StateUtil::transformState('sp'), 'SP');
     }
 
-    public function testNotFoundStateUFInvalid()
+    public function testNotFoundStateUfInvalid()
     {
         $this->assertEmpty(StateUtil::transformState('Sa'));
     }
@@ -27,7 +27,7 @@ class StateUtilTest extends BaseTestCase
         $this->assertEmpty(StateUtil::transformState('são paulos'));
     }
 
-    public function testFoundStateNameNoNNormalized()
+    public function testFoundStateNameNonNormalized()
     {
         $this->assertEquals(StateUtil::transformState('SaO pAuLo'), 'SP');
     }

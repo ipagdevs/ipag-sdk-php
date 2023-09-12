@@ -19,6 +19,11 @@ class CustomerTest extends TestCase
             'phone' => '(98) 3792-4834',
             'business_name' => 'Lívia Ltda.',
             'is_active' => true,
+            'address' =>
+            [
+                'street' => 'Rua A',
+            ]
+
         ]);
 
         $this->assertEquals($customer->getName(), 'Lívia Julia Eduarda Barros');
@@ -27,6 +32,10 @@ class CustomerTest extends TestCase
         $this->assertEquals($customer->getPhone(), '9837924834');
         $this->assertEquals($customer->getIsActive(), true);
         $this->assertEquals($customer->getBusinessName(), 'Lívia Ltda.');
+
+        $this->assertInstanceOf(Address::class, $customer->getAddress());
+
+        $this->assertEquals($customer->getAddress()->getStreet(), 'Rua A');
 
     }
 
@@ -93,13 +102,16 @@ class CustomerTest extends TestCase
             ->setCpfCnpj(null)
             ->setPhone(null)
             ->setBusinessName(null)
-            ->setIsActive(null);
+            ->setIsActive(null)
+            ->setAddress(null);
 
         $this->assertEmpty($customer->getEmail());
         $this->assertEmpty($customer->getCpfCnpj());
         $this->assertEmpty($customer->getPhone());
         $this->assertEmpty($customer->getBusinessName());
         $this->assertEmpty($customer->getIsActive());
+
+        $this->assertEmpty($customer->getAddress());
 
     }
 

@@ -4,6 +4,7 @@ namespace Ipag\Sdk\Core;
 
 use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
+use Ipag\Sdk\Endpoint\SubscriptionPlanEndpoint;
 use Ipag\Sdk\Http\Client\GuzzleHttpClient;
 use Ipag\Sdk\IO\JsonSerializer;
 

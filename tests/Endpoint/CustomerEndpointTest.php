@@ -12,7 +12,18 @@ class CustomerEndpointTest extends IpagClient
 {
     public function testCreateSuccess()
     {
-        $this->instanceClient([new Response(200, [], json_encode((new Customer)->jsonSerialize()))]);
+        $this->instanceClient([
+            new Response(
+                200,
+                [],
+                json_encode(((object) [
+                    "id" => 1,
+                    "uuid" => "abc123",
+                    "resource" => "customers",
+                    "attributes" => []
+                ]))
+            )
+        ]);
 
         $c = new Customer([
             'name' => 'Lívia Julia Eduarda Barros',
@@ -29,14 +40,32 @@ class CustomerEndpointTest extends IpagClient
             ]
         ]);
 
-        $customerResource = $this->client->customer()->create($c);
+        $responseCustomer = $this->client->customer()->create($c);
 
-        $this->assertInstanceOf(CustomerResource::class, $customerResource);
+        $this->assertIsObject($responseCustomer);
     }
 
     public function testCreateUnprocessableDataClientResourceThrowsException()
     {
-        $this->instanceClient([new Response(406)]);
+        $this->instanceClient([
+            new Response(
+                406,
+                [],
+                json_encode(
+                    (object) [
+                        "code" => "406",
+                        "message" =>
+                        [
+                            "name" =>
+                            [
+                                "Name is required",
+                                "Name must not exceed 100 characters",
+                            ]
+                        ]
+                    ]
+                )
+            )
+        ]);
 
         $this->expectException(HttpException::class);
 
@@ -47,7 +76,19 @@ class CustomerEndpointTest extends IpagClient
 
     public function testItUnauthorizedActionThrowsException()
     {
-        $this->instanceClient([new Response(401)]);
+        $this->instanceClient([
+            new Response(
+                401,
+                [],
+                json_encode(
+                    (object) [
+                        "code" => 401,
+                        "message" => "Unauthorized",
+                        "resource" => "authorization"
+                    ]
+                )
+            )
+        ]);
 
         $this->expectException(HttpException::class);
 
