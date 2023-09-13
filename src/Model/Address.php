@@ -18,12 +18,12 @@ final class Address extends Model
      *  @param array $data
      *  array de dados do Address.
      *
-     *  + ['street'] string (opcional).
-     *  + ['number'] string (opcional).
-     *  + ['district'] string (opcional).
-     *  + ['city'] string (opcional).
-     *  + ['state'] string (opcional).
-     *  + ['zipcode'] string (opcional).
+     *  + [`'street'`] string (opcional).
+     *  + [`'number'`] string (opcional).
+     *  + [`'district'`] string (opcional).
+     *  + [`'city'`] string (opcional).
+     *  + [`'state'`] string (opcional).
+     *  + [`'zipcode'`] string (opcional).
      */
     public function __construct(?array $data = [])
     {

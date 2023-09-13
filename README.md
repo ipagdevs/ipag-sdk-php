@@ -9,7 +9,6 @@
 - [IpagClient](#ipag-client)
     + [Autenticação](#autenticação)
 - [Cliente (Customer)](#cliente-customer)
-    + [Dados do cliente](#dados-do-cliente)
     + [Novo Cliente](#novo-cliente)
     + [Alterar Cliente](#alterar-cliente)
     + [Obter Cliente](#obter-cliente)
@@ -60,7 +59,6 @@ $ipagClient = new \Ipag\Sdk\Core\IpagClient(
 
 > Exemplo completo: [exemplos/customer/usage.php](./examples/customer/usage.php)
 
-### Dados do cliente
 ```php
 $customer = new \Ipag\Sdk\Model\Customer([
     'name' => 'Maria da Silva',
@@ -109,7 +107,7 @@ $responseCustomer = $ipagClient->customer()->update($customer, 100001);
 
 ### Obter Cliente
 ```php
-$responseCustomer = $ipagClient->customer()->get(100003);
+$responseCustomer = $ipagClient->customer()->get(100001);
 ```
 
 ### Listar Clientes
@@ -126,7 +124,7 @@ $ok = $ipagClient->customer()->delete(100001);
 
 # Plano de Assinatura (Subscription Plan)
 
-> Exemplo completo: [exemplos/customer/usage.php](./examples/subscription_plan/usage.php)
+> Exemplo completo: [exemplos/subscription_plan/usage.php](./examples/subscription_plan/usage.php)
 
 ### Dados do Plano de Assinatura
 ```php
@@ -179,7 +177,7 @@ $responseSubscriptionPlan = $ipagClient->subscriptionPlan()->update($subscriptio
 
 ### Obter Plano de Assinatura
 ```php
-$responseSubscriptionPlan = $ipagClient->subscriptionPlan()->get(13);
+$responseSubscriptionPlan = $ipagClient->subscriptionPlan()->get(1);
 ```
 
 ### Listar Planos de Assinatura
@@ -193,6 +191,10 @@ $responseSubscriptionPlan = $ipagClient->subscriptionPlan()->list([
 ```php
 $ipagClient->subscriptionPlan()->delete(1);
 ```
+
+# Assinatura (Subscription)
+
+...
 
 ## Testes
 

@@ -20,20 +20,20 @@ final class Customer extends Model
      *  @param array $data
      *  array de dados do Customer.
      *
-     *  + ['name'] string.
-     *  + ['is_active'] bool (opcional).
-     *  + ['email'] string (opcional).
-     *  + ['phone'] string (opcional).
-     *  + ['cpf_cnpj'] string (opcional).
-     *  + ['business_name'] string (opcional).
+     *  + [`'name'`] string.
+     *  + [`'is_active'`] bool (opcional).
+     *  + [`'email'`] string (opcional).
+     *  + [`'phone'`] string (opcional).
+     *  + [`'cpf_cnpj'`] string (opcional).
+     *  + [`'business_name'`] string (opcional).
      *
      *  + ['address'] array (opcional) dos dados do Address.
-     *      + ['address']['street'] string (opcional).
-     *      + ['address']['number'] string (opcional).
-     *      + ['address']['district'] string (opcional).
-     *      + ['address']['city'] string (opcional).
-     *      + ['address']['state'] string (opcional).
-     *      + ['address']['zipcode'] string (opcional).
+     *      + [`'address'`][`'street'`] string (opcional).
+     *      + [`'address'`][`'number'`] string (opcional).
+     *      + [`'address'`][`'district'`] string (opcional).
+     *      + [`'address'`][`'city'`] string (opcional).
+     *      + [`'address'`][`'state'`] string (opcional).
+     *      + [`'address'`][`'zipcode'`] string (opcional).
      */
     public function __construct(?array $data = [])
     {

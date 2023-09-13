@@ -4,6 +4,7 @@ namespace Ipag\Sdk\Core;
 
 use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
+use Ipag\Sdk\Endpoint\SubscriptionEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionPlanEndpoint;
 use Ipag\Sdk\Http\Client\GuzzleHttpClient;
 use Ipag\Sdk\IO\JsonSerializer;
@@ -51,6 +52,11 @@ class IpagClient extends Client
     public function subscriptionPlan(): SubscriptionPlanEndpoint
     {
         return SubscriptionPlanEndpoint::make($this, $this);
+    }
+
+    public function subscription(): SubscriptionEndpoint
+    {
+        return SubscriptionEndpoint::make($this, $this);
     }
 
     /*

@@ -16,19 +16,19 @@ class SubscriptionPlan extends Model
 {
     /**
      *  @param array $data
-     *  array de dados do Trial.
+     *  array de dados do Subscription Plan.
      *
-     *  + ['name'] string.
-     *  + ['description'] string.
-     *  + ['amount'] float.
-     *  + ['frequency'] string.
-     *  + ['interval'] int (opcional).
-     *  + ['cycles'] float (opcional).
-     *  + ['callback_url'] string (opcional).
+     *  + [`'name'`] string.
+     *  + [`'description'`] string.
+     *  + [`'amount'`] float.
+     *  + [`'frequency'`] string.
+     *  + [`'interval'`] int (opcional).
+     *  + [`'cycles'`] float (opcional).
+     *  + [`'callback_url'`] string (opcional).
      *  +
-     *  + ['trial'] array (opcional) dos dados do Trial.
-     *      + ['trial']['amount'] float (opcional).
-     *      + ['trial']['cycles'] float (opcional).
+     *  + [`'trial'`] array (opcional) dos dados do Trial.
+     *      + [`'trial'`][`'amount'`] float (opcional).
+     *      + [`'trial'`][`'cycles'`] float (opcional).
      */
     public function __construct(?array $data = [])
     {

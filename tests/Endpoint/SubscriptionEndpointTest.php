@@ -4,44 +4,39 @@ namespace Ipag\Sdk\Tests\Endpoint;
 
 use GuzzleHttp\Psr7\Response;
 use Ipag\Sdk\Exception\HttpException;
-use Ipag\Sdk\Model\Customer;
 use Ipag\Sdk\Tests\IpagClient;
 
-class CustomerEndpointTest extends IpagClient
+class SubscriptionEndpointTest extends IpagClient
 {
     public function testShouldResponseSuccess()
     {
         $this->instanceClient([
             new Response(
-                200,
+                201,
                 [],
                 json_encode(((object) [
                     "id" => 1,
-                    "uuid" => "abc123",
-                    "resource" => "customers",
+                    "resource" => "subscriptions",
                     "attributes" => []
                 ]))
             )
         ]);
 
-        $c = new Customer([
-            'name' => 'Lívia Julia Eduarda Barros',
-            'email' => 'livia.julia.barros@eximiart.com.br',
-            'cpf_cnpj' => '074.598.263-83',
-            'phone' => '(98) 3792-4834',
-            'address' => [
-                'street' => 'Rua Agenor Vieira',
-                'number' => 123,
-                'district' => 'São Francisco',
-                'city' => 'São Luís',
-                'state' => 'MA',
-                'zipcode' => '65076-020'
-            ]
+        $subscription = new \Ipag\Sdk\Model\Subscription([
+            'is_active' => true,
+            'profile_id' => 'SUB_018',
+            'plan_id' => 2,
+            'customer_id' => 100003,
+            'starting_date' => '2021-07-11',
+            'closing_date' => '2021-08-11',
+            'callback_url' => 'https://minhaloja.com/callback',
+            'creditcard_token' => null
         ]);
 
-        $responseCustomer = $this->client->customer()->create($c);
+        $responseSubscription = $this->client->subscription()->create($subscription);
 
-        $this->assertIsObject($responseCustomer);
+        $this->assertIsObject($responseSubscription);
+
     }
 
     public function testShouldResponseFailUnprocessableDataClient()
@@ -55,10 +50,10 @@ class CustomerEndpointTest extends IpagClient
                         "code" => "406",
                         "message" =>
                         [
-                            "name" =>
+                            "profile_id" =>
                             [
-                                "Name is required",
-                                "Name must not exceed 100 characters",
+                                "Profile Id is required",
+                                "Profile Id must not exceed 100 characters",
                             ]
                         ]
                     ]
@@ -68,9 +63,9 @@ class CustomerEndpointTest extends IpagClient
 
         try {
 
-            $c = new Customer();
+            $subscription = new \Ipag\Sdk\Model\Subscription();
 
-            $this->client->customer()->create($c);
+            $this->client->subscription()->create($subscription);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
@@ -97,15 +92,14 @@ class CustomerEndpointTest extends IpagClient
 
         try {
 
-            $c = new Customer();
+            $subscription = new \Ipag\Sdk\Model\Subscription();
 
-            $this->client->customer()->create($c);
+            $this->client->subscription()->create($subscription);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
             $this->assertSame(401, $th->getCode());
         }
-
     }
 
     public function testShouldResponseFailUnauthorizedClient()
@@ -126,15 +120,13 @@ class CustomerEndpointTest extends IpagClient
 
         try {
 
-            $c = new Customer();
+            $subscription = new \Ipag\Sdk\Model\Subscription();
 
-            $this->client->customer()->create($c);
+            $this->client->subscription()->create($subscription);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
             $this->assertSame(403, $th->getCode());
         }
-
     }
-
 }

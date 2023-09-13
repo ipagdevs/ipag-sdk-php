@@ -18,8 +18,8 @@ class Trial extends Model
      *  @param array $data
      *  array de dados do Trial.
      *
-     *  + ['amount'] float (opcional).
-     *  + ['cycles'] float (opcional).
+     *  + [`'amount'`] float (opcional).
+     *  + [`'cycles'`] float (opcional).
      */
     public function __construct(?array $data = [])
     {

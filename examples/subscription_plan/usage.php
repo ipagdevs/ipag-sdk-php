@@ -27,16 +27,18 @@ $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
 
 try {
 
+    $subscriptionPlan_id = 1;
+
     // Create
     // $responseSubscriptionPlan = $client->subscriptionPlan()->create($subscriptionPlan);
     // dd($responseSubscriptionPlan);
 
     // Update
-    // $responseSubscriptionPlan = $client->subscriptionPlan()->update($subscriptionPlan, 13);
+    // $responseSubscriptionPlan = $client->subscriptionPlan()->update($subscriptionPlan, $subscriptionPlan_id);
     // dd($responseSubscriptionPlan);
 
     // Get
-    // $responseSubscriptionPlan = $client->subscriptionPlan()->get(13);
+    // $responseSubscriptionPlan = $client->subscriptionPlan()->get($subscriptionPlan_id);
     // dd($responseSubscriptionPlan);
 
     // List
@@ -46,7 +48,7 @@ try {
     // dd($responseSubscriptionPlan);
 
     // Delete
-    // $client->subscriptionPlan()->delete(13);
+    // $client->subscriptionPlan()->delete($subscriptionPlan_id);
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

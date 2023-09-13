@@ -1,47 +1,48 @@
 <?php
-
 namespace Ipag\Sdk\Tests\Endpoint;
 
 use GuzzleHttp\Psr7\Response;
 use Ipag\Sdk\Exception\HttpException;
-use Ipag\Sdk\Model\Customer;
 use Ipag\Sdk\Tests\IpagClient;
 
-class CustomerEndpointTest extends IpagClient
+class SubscriptionPlanEndpointTest extends IpagClient
 {
     public function testShouldResponseSuccess()
     {
         $this->instanceClient([
             new Response(
-                200,
+                201,
                 [],
                 json_encode(((object) [
                     "id" => 1,
-                    "uuid" => "abc123",
-                    "resource" => "customers",
+                    "type" => "plans",
                     "attributes" => []
                 ]))
             )
         ]);
 
-        $c = new Customer([
-            'name' => 'Lívia Julia Eduarda Barros',
-            'email' => 'livia.julia.barros@eximiart.com.br',
-            'cpf_cnpj' => '074.598.263-83',
-            'phone' => '(98) 3792-4834',
-            'address' => [
-                'street' => 'Rua Agenor Vieira',
-                'number' => 123,
-                'district' => 'São Francisco',
-                'city' => 'São Luís',
-                'state' => 'MA',
-                'zipcode' => '65076-020'
+        $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
+            "name" => "PLANO SILVER",
+            "description" => "Plano Silver com até 4 treinos por semana",
+            "amount" => 100.99,
+            "frequency" => "monthly",
+            "interval" => 1,
+            "cycles" => 10,
+            "best_day" => true,
+            "pro_rated_charge" => true,
+            "grace_period" => 0,
+            "callback_url" => "https://sualoja.com.br/ipag/callback",
+            "trial" => [
+                'amount' => 100.99,
+                'cycles' => 10
             ]
         ]);
 
-        $responseCustomer = $this->client->customer()->create($c);
 
-        $this->assertIsObject($responseCustomer);
+        $responseSubscriptionPlan = $this->client->subscriptionPlan()->create($subscriptionPlan);
+
+        $this->assertIsObject($responseSubscriptionPlan);
+
     }
 
     public function testShouldResponseFailUnprocessableDataClient()
@@ -55,10 +56,10 @@ class CustomerEndpointTest extends IpagClient
                         "code" => "406",
                         "message" =>
                         [
-                            "name" =>
+                            "amount" =>
                             [
-                                "Name is required",
-                                "Name must not exceed 100 characters",
+                                "Amount is required",
+                                "Amount must be numeric",
                             ]
                         ]
                     ]
@@ -68,9 +69,9 @@ class CustomerEndpointTest extends IpagClient
 
         try {
 
-            $c = new Customer();
+            $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
-            $this->client->customer()->create($c);
+            $this->client->subscriptionPlan()->create($subscriptionPlan);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
@@ -97,9 +98,9 @@ class CustomerEndpointTest extends IpagClient
 
         try {
 
-            $c = new Customer();
+            $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
-            $this->client->customer()->create($c);
+            $this->client->subscriptionPlan()->create($subscriptionPlan);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
@@ -126,9 +127,9 @@ class CustomerEndpointTest extends IpagClient
 
         try {
 
-            $c = new Customer();
+            $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
-            $this->client->customer()->create($c);
+            $this->client->subscriptionPlan()->create($subscriptionPlan);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
