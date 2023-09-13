@@ -14,6 +14,20 @@
     + [Obter Cliente](#obter-cliente)
     + [Listar Clientes](#listar-clientes)
     + [Deletar Cliente](#deletar-cliente)
+- [Plano de Assinatura (Subscription Plan)](#plano-de-assinatura-subscription-plan)
+    + [Novo Plano](#novo-plano-de-assinatura)
+    + [Alterar Plano](#alterar-plano-de-assinatura)
+    + [Obter Plano](#obter-plano-de-assinatura)
+    + [Listar Planos](#listar-planos-de-assinatura)
+    + [Deletar Plano](#deletar-plano-de-assinatura)
+- [Assinatura (Subscription)](#assinatura)
+    + [Nova Assinatura](#nova-assinatura)
+    + [Alterar Assinatura](#alterar-assinatura)
+    + [Obter Assinatura](#obter-assinatura)
+    + [Listar Assinaturas](#listar-assinaturas)
+    + [Desvincular Token da assinatura](#desvincular-token-da-assinatura)
+    + [Quitar Parcela da Assinatura](#quitar-parcela-da-assinatura)
+    + [Agendar Parcelamento](#agendar-parcelamento)
 - [Testes](#testes)
 - [Licença](#licença)
 - [Documentação](#documentação)
@@ -126,7 +140,6 @@ $ok = $ipagClient->customer()->delete(100001);
 
 > Exemplo completo: [exemplos/subscription_plan/usage.php](./examples/subscription_plan/usage.php)
 
-### Dados do Plano de Assinatura
 ```php
 $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
     'name' => 'PLANO GOLD',
@@ -193,8 +206,73 @@ $ipagClient->subscriptionPlan()->delete(1);
 ```
 
 # Assinatura (Subscription)
+> Exemplo completo: [exemplos/subscription/usage.php](./examples/subscription/usage.php)
 
-...
+```php
+$subscription = new \Ipag\Sdk\Model\Subscription([
+    'is_active' => true,
+    'profile_id' => 'SUB_018',
+    'plan_id' => 2,
+    'customer_id' => 100003,
+    'starting_date' => '2021-07-11',
+    'closing_date' => '2021-08-11',
+    'callback_url' => 'https://minhaloja.com/callback',
+    'creditcard_token' => null
+]);
+
+```
+ou
+```php
+$subscription = new \Ipag\Sdk\Model\Subscription()
+    ->setIsActive(true)
+    ->setProfileId('SUB_001')
+    ->setPlanId(1)
+    ->setCustomerId(100001)
+    ->setStartingDate('2021-07-10')
+    ->setClosingDate('2021-08-10')
+    ->setCallbackUrl('https://minhaloja.com/callback')
+    ->setCreditcardToken('123');
+
+```
+
+### Nova Assinatura
+```php
+$responseSubscription = $client->subscription()->create($subscription);
+```
+
+### Alterar Assinatura
+```php
+$responseSubscription = $client->subscription()->update($subscription, $subscription_id);
+```
+
+### Obter Assinatura
+```php
+$responseSubscription = $client->subscription()->get($subscription_id);
+```
+
+### Listar Assinaturas
+```php
+$responseSubscription = $client->subscription()->list([
+    'is_active' => true,
+]);
+```
+
+### Desvincular Token da assinatura
+```php
+$ok = $client->subscription()->unlinkToken($subscription_id);
+```
+
+### Quitar Parcela da Assinatura
+```php
+$responseSubscription = $client->subscription()->payOffInstallment($subscription_id, $invoice_number);
+```
+
+### Agendar Parcelamento
+```php
+$ok = $client->subscription()->scheduleInstallmentPayment($subscription_id, $invoice_number);
+```
+
+# Transação (Transaction)
 
 ## Testes
 

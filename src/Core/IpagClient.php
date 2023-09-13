@@ -6,6 +6,8 @@ use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionPlanEndpoint;
+use Ipag\Sdk\Endpoint\TokenEndpoint;
+use Ipag\Sdk\Endpoint\TransactionEndpoint;
 use Ipag\Sdk\Http\Client\GuzzleHttpClient;
 use Ipag\Sdk\IO\JsonSerializer;
 
@@ -59,11 +61,14 @@ class IpagClient extends Client
         return SubscriptionEndpoint::make($this, $this);
     }
 
-    /*
-    public function payment(): PaymentEndpoint
+    public function transaction(): TransactionEndpoint
     {
-        return PaymentEndpoint::create($this, $this);
+        return TransactionEndpoint::make($this, $this);
     }
-    */
+
+    public function token(): TokenEndpoint
+    {
+        return TokenEndpoint::make($this, $this);
+    }
 
 }
