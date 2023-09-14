@@ -8,7 +8,7 @@ use Ipag\Sdk\Model\Schema\SchemaBuilder;
 use Kubinyete\Assertation\Assert;
 
 /**
- * Address Class
+ * SubscriptionPlan Class
  *
  * Classe responsável por representar o recurso Subscription Plan.
  */

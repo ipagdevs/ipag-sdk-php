@@ -5,7 +5,6 @@ namespace Ipag\Sdk\Tests\Model;
 use Ipag\Sdk\Model\Schema\Exception\MutatorAttributeException;
 use PHPUnit\Framework\TestCase;
 
-
 class CustomerTest extends TestCase
 {
     public function testShouldCreateCustomerObjectWithConstructorSuccessfully()
@@ -124,7 +123,7 @@ class CustomerTest extends TestCase
         $customer->setPhone('111');
     }
 
-    public function testShouldThrowAValidationExceptionOnTheCustomerCnpjCpfProperty()
+    public function testShouldThrowAValidationExceptionOnTheCustomerCpfCnpjProperty()
     {
         $customer = new \Ipag\Sdk\Model\Customer();
 

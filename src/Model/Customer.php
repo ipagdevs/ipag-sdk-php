@@ -26,14 +26,15 @@ final class Customer extends Model
      *  + [`'phone'`] string (opcional).
      *  + [`'cpf_cnpj'`] string (opcional).
      *  + [`'business_name'`] string (opcional).
-     *
-     *  + ['address'] array (opcional) dos dados do Address.
-     *      + [`'address'`][`'street'`] string (opcional).
-     *      + [`'address'`][`'number'`] string (opcional).
-     *      + [`'address'`][`'district'`] string (opcional).
-     *      + [`'address'`][`'city'`] string (opcional).
-     *      + [`'address'`][`'state'`] string (opcional).
-     *      + [`'address'`][`'zipcode'`] string (opcional).
+     *  + [`'birthdate'`] string (opcional) [Formato: AAAA-mm-dd].
+     *  + [`'ip'`] string (opcional).
+     *  + [`'address'`] array (opcional) dos dados do Address.
+     *  + &emsp; [`'street'`] string (opcional).
+     *  + &emsp; [`'number'`] string (opcional).
+     *  + &emsp; [`'district'`] string (opcional).
+     *  + &emsp; [`'city'`] string (opcional).
+     *  + &emsp; [`'state'`] string (opcional).
+     *  + &emsp; [`'zipcode'`] string (opcional).
      */
     public function __construct(?array $data = [])
     {
@@ -54,8 +55,6 @@ final class Customer extends Model
         $schema->string('birthdate')->nullable()->isHidden(); //Y-m-d ou d/m/Y
         $schema->string('ip')->nullable()->isHidden();
 
-        $schema->string('created_at')->nullable()->isHidden();
-        $schema->string('updated_at')->nullable()->isHidden();
         $schema->has('address', Address::class)->nullable();
 
         return $schema->build();
@@ -126,7 +125,7 @@ final class Customer extends Model
      * @param string|null $name
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $name = null): self
     {
         $this->set('name', $name);
         return $this;
@@ -154,7 +153,7 @@ final class Customer extends Model
      * @param boolean|null $isActive
      * @return self
      */
-    public function setIsActive(?bool $isActive): self
+    public function setIsActive(?bool $isActive = null): self
     {
         $this->set('is_active', $isActive);
         return $this;
@@ -187,7 +186,7 @@ final class Customer extends Model
      * @param string|null $email
      * @return self
      */
-    public function setEmail(?string $email): self
+    public function setEmail(?string $email = null): self
     {
         $this->set('email', $email);
         return $this;
@@ -220,7 +219,7 @@ final class Customer extends Model
      * @param string|null $phone
      * @return self
      */
-    public function setPhone(?string $phone): self
+    public function setPhone(?string $phone = null): self
     {
         $this->set('phone', $phone);
         return $this;
@@ -253,7 +252,7 @@ final class Customer extends Model
      * @param string|null $cpfCnpj
      * @return self
      */
-    public function setCpfCnpj(?string $cpfCnpj): self
+    public function setCpfCnpj(?string $cpfCnpj = null): self
     {
         $this->set('cpf_cnpj', $cpfCnpj);
         return $this;
@@ -280,10 +279,24 @@ final class Customer extends Model
      * @param string|null $businessName
      * @return self
      */
-    public function setBusinessName(?string $businessName): self
+    public function setBusinessName(?string $businessName = null): self
     {
         $this->set('business_name', $businessName);
         return $this;
+    }
+
+    protected function birthdate(): Mutator
+    {
+        return new Mutator(
+            null,
+            function ($value, $ctx) {
+                $d = \DateTime::createFromFormat('Y-m-d', $value);
+
+                return is_null($value) ||
+                    ($d && $d->format('Y-m-d') === $value) ?
+                    $value : $ctx->raise('inválido');
+            }
+        );
     }
 
     /**
@@ -302,7 +315,7 @@ final class Customer extends Model
      * @param string|null $birthdate
      * @return self
      */
-    public function setBirthdate(?string $birthdate): self
+    public function setBirthdate(?string $birthdate = null): self
     {
         $this->set('birthdate', $birthdate);
         return $this;
@@ -324,7 +337,7 @@ final class Customer extends Model
      * @param string|null $ip
      * @return self
      */
-    public function setIp(?string $ip): self
+    public function setIp(?string $ip = null): self
     {
         $this->set('ip', $ip);
         return $this;
@@ -346,7 +359,7 @@ final class Customer extends Model
      * @param Address|null $address
      * @return self
      */
-    public function setAddress(?Address $address): self
+    public function setAddress(?Address $address = null): self
     {
         $this->set('address', $address);
         return $this;

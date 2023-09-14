@@ -8,7 +8,7 @@ use Ipag\Sdk\Model\Schema\SchemaBuilder;
 use Kubinyete\Assertation\Assert;
 
 /**
- * Address Class
+ * Trial Class
  *
  * Classe responsável por representar o recurso Trial.
  */
