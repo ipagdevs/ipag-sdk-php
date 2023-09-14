@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class TrialTest extends TestCase
 {
-    public function testShouldCreateTrialObjectWithConstructSuccessfully()
+    public function testShouldCreateTrialObjectWithConstructorSuccessfully()
     {
         $trial = new \Ipag\Sdk\Model\Trial([
             'amount' => 0,
@@ -18,11 +18,9 @@ class TrialTest extends TestCase
         $this->assertEquals(0, $trial->getCycles());
     }
 
-    public function testShouldCreateTrialObjectWithSettersSuccessfully()
+    public function testShouldCreateTrialObjectAndSetTheValuesSuccessfully()
     {
-        $trial = new \Ipag\Sdk\Model\Trial();
-
-        $trial
+        $trial = (new \Ipag\Sdk\Model\Trial())
             ->setAmount(2.5)
             ->setCycles(2);
 
@@ -31,7 +29,7 @@ class TrialTest extends TestCase
 
     }
 
-    public function testShouldCreateTrialEmptyObjectSuccessfully()
+    public function testShouldCreateEmptyTrialObjectSuccessfully()
     {
         $trial = new \Ipag\Sdk\Model\Trial();
 
@@ -39,7 +37,7 @@ class TrialTest extends TestCase
         $this->assertEmpty($trial->getCycles());
     }
 
-    public function testShouldCreateTrialObjectAndSetNullSuccessfully()
+    public function testCreateAndSetEmptyPropertiesTrialObjectSuccessfully()
     {
         $trial = new \Ipag\Sdk\Model\Trial([
             'amount' => 1.5,
@@ -55,7 +53,7 @@ class TrialTest extends TestCase
 
     }
 
-    public function testShouldThrowTypeExceptionAmount()
+    public function testShouldThrowATypeExceptionOnTheTrialAmountProperty()
     {
         $trial = new \Ipag\Sdk\Model\Trial();
 
@@ -65,7 +63,7 @@ class TrialTest extends TestCase
 
     }
 
-    public function testShouldThrowTypeExceptionCycles()
+    public function testShouldThrowATypeExceptionOnTheTrialCyclesProperty()
     {
         $trial = new \Ipag\Sdk\Model\Trial();
 
@@ -75,7 +73,7 @@ class TrialTest extends TestCase
 
     }
 
-    public function testShouldThrowMutatorAttributeExceptionAmount()
+    public function testShouldThrowAValidationExceptionOnTheTrialAmountProperty()
     {
         $trial = new \Ipag\Sdk\Model\Trial();
 
@@ -84,7 +82,7 @@ class TrialTest extends TestCase
         $trial->setAmount(-1);
     }
 
-    public function testShouldThrowMutatorAttributeExceptionCycles()
+    public function testShouldThrowAValidationExceptionOnTheTrialCyclesProperty()
     {
         $trial = new \Ipag\Sdk\Model\Trial();
 

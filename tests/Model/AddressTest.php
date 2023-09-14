@@ -2,15 +2,14 @@
 
 namespace Ipag\Sdk\Tests\Model;
 
-use Ipag\Sdk\Model\Address;
 use Ipag\Sdk\Model\Schema\Exception\MutatorAttributeException;
 use PHPUnit\Framework\TestCase;
 
 class AddressTest extends TestCase
 {
-    public function testCreateAndSetAddressConstruct()
+    public function testShouldCreateAddressObjectWithConstructorSuccessfully()
     {
-        $address = new Address([
+        $address = new \Ipag\Sdk\Model\Address([
             'street' => 'Rua Agenor Vieira',
             'number' => 768,
             'district' => 'São Francisco',
@@ -28,11 +27,9 @@ class AddressTest extends TestCase
 
     }
 
-    public function testCreateAndSetAddress()
+    public function testShouldCreateAddressObjectAndSetTheValuesSuccessfully()
     {
-        $address = new Address();
-
-        $address
+        $address = (new \Ipag\Sdk\Model\Address())
             ->setStreet('Rua Agenor Vieira')
             ->setNumber('768')
             ->setDistrict('São Francisco')
@@ -49,9 +46,9 @@ class AddressTest extends TestCase
 
     }
 
-    public function testCreateAddressEmpty()
+    public function testShouldCreateEmptyAddressObjectSuccessfully()
     {
-        $address = new Address();
+        $address = new \Ipag\Sdk\Model\Address();
 
         $this->assertEmpty($address->getStreet());
         $this->assertEmpty($address->getNumber());
@@ -61,9 +58,9 @@ class AddressTest extends TestCase
         $this->assertEmpty($address->getZipcode());
     }
 
-    public function testCreateAndSetEmptyAddress()
+    public function testCreateAndSetEmptyPropertiesAddressObjectSuccessfully()
     {
-        $address = new Address([
+        $address = new \Ipag\Sdk\Model\Address([
             'street' => 'Rua Agenor Vieira',
             'number' => 768,
             'district' => 'São Francisco',
@@ -89,9 +86,9 @@ class AddressTest extends TestCase
 
     }
 
-    public function testItInvalidNumberAddress()
+    public function testShouldThrowAValidationExceptionOnTheAddressNumberProperty()
     {
-        $address = new Address();
+        $address = new \Ipag\Sdk\Model\Address();
 
         $this->expectException(MutatorAttributeException::class);
 

@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SubscriptionTest extends TestCase
 {
-    public function testShouldCreateSubscriptionPlanObjectWithConstructorSuccessfully()
+    public function testShouldCreateSubscriptionObjectWithConstructorSuccessfully()
     {
         $subscription = new \Ipag\Sdk\Model\Subscription([
             'is_active' => true,
@@ -31,11 +31,10 @@ class SubscriptionTest extends TestCase
 
     }
 
-    public function testShouldCreateSubscriptionPlanObjectAndSetTheValuesSuccessfully()
+    public function testShouldCreateSubscriptionObjectAndSetTheValuesSuccessfully()
     {
-        $subscription = new \Ipag\Sdk\Model\Subscription();
 
-        $subscription
+        $subscription = (new \Ipag\Sdk\Model\Subscription())
             ->setIsActive(true)
             ->setProfileId('SUB_001')
             ->setPlanId(1)
@@ -56,7 +55,22 @@ class SubscriptionTest extends TestCase
 
     }
 
-    public function testShouldCreateSubscriptionPlanEmptyObjectSuccessfully()
+    public function testShouldCreateEmptySubscriptionObjectSuccessfully()
+    {
+        $subscription = new \Ipag\Sdk\Model\Subscription;
+
+        $this->assertEmpty($subscription->getIsActive());
+        $this->assertEmpty($subscription->getProfileId());
+        $this->assertEmpty($subscription->getPlanId());
+        $this->assertEmpty($subscription->getCustomerId());
+        $this->assertEmpty($subscription->getStartingDate());
+        $this->assertEmpty($subscription->getClosingDate());
+        $this->assertEmpty($subscription->getCallbackUrl());
+        $this->assertEmpty($subscription->getCreditcardToken());
+
+    }
+
+    public function testCreateAndSetEmptyPropertiesSubscriptionObjectSuccessfully()
     {
         $subscription = new \Ipag\Sdk\Model\Subscription([
             'is_active' => true,
@@ -90,7 +104,7 @@ class SubscriptionTest extends TestCase
 
     }
 
-    public function testShouldThrowTypeExceptionInPlanIdProperty()
+    public function testShouldThrowATypeExceptionOnTheSubscriptionPlanIdProperty()
     {
         $subscription = new \Ipag\Sdk\Model\Subscription();
 
@@ -100,7 +114,7 @@ class SubscriptionTest extends TestCase
 
     }
 
-    public function testShouldThrowTypeExceptionInCustomerIdProperty()
+    public function testShouldThrowATypeExceptionOnTheSubscriptionCustomerIdProperty()
     {
         $subscription = new \Ipag\Sdk\Model\Subscription();
 
@@ -110,7 +124,7 @@ class SubscriptionTest extends TestCase
 
     }
 
-    public function testShouldThrowMutatorAttributeExceptionInStartingDateProperty()
+    public function testShouldThrowAValidationExceptionOnTheSubscriptionStartingDateProperty()
     {
         $subscription = new \Ipag\Sdk\Model\Subscription();
 
@@ -120,7 +134,7 @@ class SubscriptionTest extends TestCase
 
     }
 
-    public function testShouldThrowMutatorAttributeExceptionInClosingDateProperty()
+    public function testShouldThrowAValidationExceptionOnTheSubscriptionClosingDateProperty()
     {
         $subscription = new \Ipag\Sdk\Model\Subscription();
 

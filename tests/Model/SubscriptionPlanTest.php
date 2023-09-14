@@ -44,8 +44,7 @@ class SubscriptionPlanTest extends TestCase
 
     public function testShouldCreateSubscriptionPlanObjectAndSetTheValuesSuccessfully()
     {
-        $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
-        $subscriptionPlan
+        $subscriptionPlan = (new \Ipag\Sdk\Model\SubscriptionPlan())
             ->setName("PLANO GOLD")
             ->setDescription("Plano Gold com até 4 treinos por semana")
             ->setAmount(99.00)
@@ -55,10 +54,11 @@ class SubscriptionPlanTest extends TestCase
             ->setBestDay(true)
             ->setProRatedCharge(true)
             ->setGracePeriod(0)
-            ->setCallbackUrl("https://sualoja.com.br/ipag/callback");
-
-        $subscriptionPlan->setTrial(new \Ipag\Sdk\Model\Trial);
-        $subscriptionPlan->getTrial()->setAmount(0);
+            ->setCallbackUrl("https://sualoja.com.br/ipag/callback")
+            ->setTrial(
+                (new \Ipag\Sdk\Model\Trial)
+                    ->setAmount(0)
+            );
 
         $this->assertEquals("PLANO GOLD", $subscriptionPlan->getName());
         $this->assertEquals("Plano Gold com até 4 treinos por semana", $subscriptionPlan->getDescription());
@@ -76,7 +76,7 @@ class SubscriptionPlanTest extends TestCase
 
     }
 
-    public function testShouldCreateSubscriptionPlanEmptyObjectSuccessfully()
+    public function testShouldCreateEmptySubscriptionPlanObjectSuccessfully()
     {
         $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
@@ -95,7 +95,7 @@ class SubscriptionPlanTest extends TestCase
 
     }
 
-    public function testShouldCreateSubscriptionPlanObjectAndSetNullPropertiesSuccessfully()
+    public function testCreateAndSetEmptyPropertiesSubscriptionPlanObjectSuccessfully()
     {
         $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
             "name" => "PLANO GOLD",
@@ -143,7 +143,7 @@ class SubscriptionPlanTest extends TestCase
 
     }
 
-    public function testShouldThrowTypeExceptionInAmountProperty()
+    public function testShouldThrowATypeExceptionOnTheSubscriptionPlanAmountProperty()
     {
         $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
@@ -152,7 +152,7 @@ class SubscriptionPlanTest extends TestCase
         $subscriptionPlan->setAmount('a');
     }
 
-    public function testShouldThrowTypeExceptionInIntervalProperty()
+    public function testShouldThrowATypeExceptionOnTheSubscriptionPlanIntervalProperty()
     {
         $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
@@ -161,7 +161,7 @@ class SubscriptionPlanTest extends TestCase
         $subscriptionPlan->setInterval('a');
     }
 
-    public function testShouldThrowTypeExceptionCyclesProperty()
+    public function testShouldThrowATypeExceptionOnTheSubscriptionPlanCyclesProperty()
     {
         $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
@@ -170,7 +170,7 @@ class SubscriptionPlanTest extends TestCase
         $subscriptionPlan->setCycles('a');
     }
 
-    public function testShouldThrowTheExceptionAmountOfTheMutatorAttributeException()
+    public function testShouldThrowAValidationExceptionOnTheSubscriptionPlanAmountProperty()
     {
         $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
@@ -178,7 +178,7 @@ class SubscriptionPlanTest extends TestCase
 
         $subscriptionPlan->setAmount(-1);
     }
-    public function testShouldThrowTheExceptionIntervalOfTheMutatorAttributeException()
+    public function testShouldThrowAValidationExceptionOnTheSubscriptionPlanIntervalProperty()
     {
         $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
@@ -187,7 +187,7 @@ class SubscriptionPlanTest extends TestCase
         $subscriptionPlan->setInterval(0);
     }
 
-    public function testShouldThrowTheExceptionCyclesOfTheMutatorAttributeException()
+    public function testShouldThrowAValidationExceptionOnTheSubscriptionPlanCyclesProperty()
     {
         $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
 
