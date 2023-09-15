@@ -54,13 +54,13 @@ class CustomerEndpointTest extends IpagClient
                     (object) [
                         "code" => "406",
                         "message" =>
-                        [
-                            "name" =>
                             [
-                                "Name is required",
-                                "Name must not exceed 100 characters",
+                                "name" =>
+                                    [
+                                        "Name is required",
+                                        "Name must not exceed 100 characters",
+                                    ]
                             ]
-                        ]
                     ]
                 )
             )
@@ -118,7 +118,7 @@ class CustomerEndpointTest extends IpagClient
                     (object) [
                         "code" => 403,
                         "message" => "Not Authorized",
-                        "resource" => "service.split_rules"
+                        "resource" => "customers"
                     ]
                 )
             )

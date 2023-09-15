@@ -22,19 +22,19 @@ $token = new \Ipag\Sdk\Model\Token([
         'mobilePhone' => '1899767866',
         'birthdate' => '1989-03-28',
         'address' => [
-                'street' => 'Rua dos Testes',
-                'number' => '100',
-                'district' => 'Tamboré',
-                'zipcode' => '06460080',
-                'city' => 'Barueri',
-                'state' => 'SP'
-            ]
+            'street' => 'Rua dos Testes',
+            'number' => '100',
+            'district' => 'Tamboré',
+            'zipcode' => '06460080',
+            'city' => 'Barueri',
+            'state' => 'SP'
+        ]
     ]
 ]);
 
 try {
 
-    $token_value = 'bb999d9f-cae0-400c-81ee-fd476e036b3f';
+    $token_value = 'f2bb2dd0-405a-4695-b166-8d31968ff776';
 
     // Create
     // $responseToken = $client->token()->create($token);

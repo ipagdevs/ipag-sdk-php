@@ -1,11 +1,12 @@
 <?php
+
 namespace Ipag\Sdk\Tests\Endpoint;
 
 use GuzzleHttp\Psr7\Response;
 use Ipag\Sdk\Exception\HttpException;
 use Ipag\Sdk\Tests\IpagClient;
 
-class SubscriptionPlanEndpointTest extends IpagClient
+class TokenEndpointTest extends IpagClient
 {
     public function testShouldResponseSuccess()
     {
@@ -14,34 +15,40 @@ class SubscriptionPlanEndpointTest extends IpagClient
                 201,
                 [],
                 json_encode(((object) [
-                    "id" => 1,
-                    "type" => "plans",
+                    "token" => "AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA",
+                    "resource" => "card_token",
                     "attributes" => []
                 ]))
             )
         ]);
 
-        $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
-            "name" => "PLANO SILVER",
-            "description" => "Plano Silver com até 4 treinos por semana",
-            "amount" => 100.99,
-            "frequency" => "monthly",
-            "interval" => 1,
-            "cycles" => 10,
-            "best_day" => true,
-            "pro_rated_charge" => true,
-            "grace_period" => 0,
-            "callback_url" => "https://sualoja.com.br/ipag/callback",
-            "trial" => [
-                'amount' => 100.99,
-                'cycles' => 10
+        $token = new \Ipag\Sdk\Model\Token([
+            'card' => [
+                'holderName' => 'Frederic Sales',
+                'number' => '4024 0071 1251 2933',
+                'expiryMonth' => '02',
+                'expiryYear' => '2023',
+                'cvv' => '431'
+            ],
+            'holder' => [
+                'name' => 'Frederic Sales',
+                'cpfCnpj' => '79999338801',
+                'mobilePhone' => '1899767866',
+                'birthdate' => '1989-03-28',
+                'address' => [
+                    'street' => 'Rua dos Testes',
+                    'number' => '100',
+                    'district' => 'Tamboré',
+                    'zipcode' => '06460080',
+                    'city' => 'Barueri',
+                    'state' => 'SP'
+                ]
             ]
         ]);
 
+        $responseToken = $this->client->token()->create($token);
 
-        $responseSubscriptionPlan = $this->client->subscriptionPlan()->create($subscriptionPlan);
-
-        $this->assertIsObject($responseSubscriptionPlan);
+        $this->assertIsObject($responseToken);
 
     }
 
@@ -56,10 +63,10 @@ class SubscriptionPlanEndpointTest extends IpagClient
                         "code" => "406",
                         "message" =>
                             [
-                                "amount" =>
+                                "card" =>
                                     [
-                                        "Amount is required",
-                                        "Amount must be numeric",
+                                        "Card is required",
+                                        "Card Invalid",
                                     ]
                             ]
                     ]
@@ -69,9 +76,9 @@ class SubscriptionPlanEndpointTest extends IpagClient
 
         try {
 
-            $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
+            $token = new \Ipag\Sdk\Model\Token;
 
-            $this->client->subscriptionPlan()->create($subscriptionPlan);
+            $this->client->token()->create($token);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
@@ -98,9 +105,9 @@ class SubscriptionPlanEndpointTest extends IpagClient
 
         try {
 
-            $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
+            $token = new \Ipag\Sdk\Model\Token;
 
-            $this->client->subscriptionPlan()->create($subscriptionPlan);
+            $this->client->token()->create($token);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
@@ -119,7 +126,7 @@ class SubscriptionPlanEndpointTest extends IpagClient
                     (object) [
                         "code" => 403,
                         "message" => "Not Authorized",
-                        "resource" => "plans"
+                        "resource" => "card_token"
                     ]
                 )
             )
@@ -127,9 +134,9 @@ class SubscriptionPlanEndpointTest extends IpagClient
 
         try {
 
-            $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
+            $token = new \Ipag\Sdk\Model\Token;
 
-            $this->client->subscriptionPlan()->create($subscriptionPlan);
+            $this->client->token()->create($token);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
@@ -137,5 +144,4 @@ class SubscriptionPlanEndpointTest extends IpagClient
         }
 
     }
-
 }

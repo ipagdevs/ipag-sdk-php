@@ -49,13 +49,13 @@ class SubscriptionEndpointTest extends IpagClient
                     (object) [
                         "code" => "406",
                         "message" =>
-                        [
-                            "profile_id" =>
                             [
-                                "Profile Id is required",
-                                "Profile Id must not exceed 100 characters",
+                                "profile_id" =>
+                                    [
+                                        "Profile Id is required",
+                                        "Profile Id must not exceed 100 characters",
+                                    ]
                             ]
-                        ]
                     ]
                 )
             )
@@ -112,7 +112,7 @@ class SubscriptionEndpointTest extends IpagClient
                     (object) [
                         "code" => 403,
                         "message" => "Not Authorized",
-                        "resource" => "service.split_rules"
+                        "resource" => "subscriptions"
                     ]
                 )
             )

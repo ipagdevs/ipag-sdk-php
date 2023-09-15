@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Core;
 
 use Ipag\Sdk\Core\IpagEnvironment;
+use Ipag\Sdk\Endpoint\ChargeEndpoint;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionPlanEndpoint;
@@ -69,6 +70,11 @@ class IpagClient extends Client
     public function token(): TokenEndpoint
     {
         return TokenEndpoint::make($this, $this);
+    }
+
+    public function charge(): ChargeEndpoint
+    {
+        return ChargeEndpoint::make($this, $this);
     }
 
 }

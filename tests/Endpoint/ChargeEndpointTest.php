@@ -1,11 +1,12 @@
 <?php
+
 namespace Ipag\Sdk\Tests\Endpoint;
 
 use GuzzleHttp\Psr7\Response;
 use Ipag\Sdk\Exception\HttpException;
 use Ipag\Sdk\Tests\IpagClient;
 
-class SubscriptionPlanEndpointTest extends IpagClient
+class ChargeEndpointTest extends IpagClient
 {
     public function testShouldResponseSuccess()
     {
@@ -15,33 +16,36 @@ class SubscriptionPlanEndpointTest extends IpagClient
                 [],
                 json_encode(((object) [
                     "id" => 1,
-                    "type" => "plans",
+                    "resource" => "charges",
                     "attributes" => []
                 ]))
             )
         ]);
 
-        $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
-            "name" => "PLANO SILVER",
-            "description" => "Plano Silver com até 4 treinos por semana",
-            "amount" => 100.99,
-            "frequency" => "monthly",
-            "interval" => 1,
-            "cycles" => 10,
-            "best_day" => true,
-            "pro_rated_charge" => true,
-            "grace_period" => 0,
-            "callback_url" => "https://sualoja.com.br/ipag/callback",
-            "trial" => [
-                'amount' => 100.99,
-                'cycles' => 10
+        $charge = new \Ipag\Sdk\Model\Charge([
+            'amount' => 160.50,
+            'description' => 'Cobrança referente a negociação de débito pendente na Empresa X',
+            'due_date' => '2020-10-30',
+            'frequency' => 1,
+            'interval' => 'month',
+            'type' => 'charge',
+            'last_charge_date' => '2020-10-30',
+            'callback_url' => 'https://api.ipag.test/retorno_charge',
+            'auto_debit' => false,
+            'installments' => 12,
+            'is_active' => true,
+            'products' => [2],
+            'customer' => [
+                'name' => 'Maria Francisca',
+            ],
+            'checkout_settings' => [
+                'max_installments' => 12,
             ]
         ]);
 
+        $responseCharge = $this->client->charge()->create($charge);
 
-        $responseSubscriptionPlan = $this->client->subscriptionPlan()->create($subscriptionPlan);
-
-        $this->assertIsObject($responseSubscriptionPlan);
+        $this->assertIsObject($responseCharge);
 
     }
 
@@ -69,9 +73,9 @@ class SubscriptionPlanEndpointTest extends IpagClient
 
         try {
 
-            $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
+            $charge = new \Ipag\Sdk\Model\Charge;
 
-            $this->client->subscriptionPlan()->create($subscriptionPlan);
+            $this->client->charge()->create($charge);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
@@ -98,9 +102,9 @@ class SubscriptionPlanEndpointTest extends IpagClient
 
         try {
 
-            $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
+            $charge = new \Ipag\Sdk\Model\Charge;
 
-            $this->client->subscriptionPlan()->create($subscriptionPlan);
+            $this->client->charge()->create($charge);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
@@ -119,7 +123,7 @@ class SubscriptionPlanEndpointTest extends IpagClient
                     (object) [
                         "code" => 403,
                         "message" => "Not Authorized",
-                        "resource" => "plans"
+                        "resource" => "charges"
                     ]
                 )
             )
@@ -127,9 +131,9 @@ class SubscriptionPlanEndpointTest extends IpagClient
 
         try {
 
-            $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan();
+            $charge = new \Ipag\Sdk\Model\Charge;
 
-            $this->client->subscriptionPlan()->create($subscriptionPlan);
+            $this->client->charge()->create($charge);
 
         } catch (\Throwable $th) {
             $this->assertInstanceOf(HttpException::class, $th);
@@ -137,5 +141,4 @@ class SubscriptionPlanEndpointTest extends IpagClient
         }
 
     }
-
 }

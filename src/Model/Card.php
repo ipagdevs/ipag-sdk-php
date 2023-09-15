@@ -8,7 +8,7 @@ use Ipag\Sdk\Model\Schema\SchemaBuilder;
 use Kubinyete\Assertation\Assert;
 
 /**
- * Card Card
+ * Card Class
  *
  * Classe responsável por representar o recurso Card.
  *
