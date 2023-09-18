@@ -22,4 +22,6 @@ abstract class BaseHttpClient
      * @return string|null
      */
     public abstract function request(string $method, string $url, ?string $body, array $query = [], array $header = []): ?string;
+    public abstract function lastResponseHeaders(): ?array;
+    public abstract function lastResponseStatusCode(): ?int;
 }

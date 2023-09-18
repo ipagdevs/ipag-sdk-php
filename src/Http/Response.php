@@ -13,27 +13,46 @@ class Response
     protected ?array $data;
     protected ?string $raw;
 
-    protected function __construct(?SerializerInterface $serializer, ?string $body)
+    protected ?array $headers;
+
+    protected ?int $statusCode;
+
+    protected function __construct(?SerializerInterface $serializer, ?string $body, ?array $headers, ?int $statusCode)
     {
         $this->raw = $body;
         $this->serializer = $serializer;
         $this->data = null;
+        $this->headers = $headers;
+        $this->statusCode = $statusCode;
     }
 
     public function getParsed(): ?array
     {
-        return $this->data ??
-            ($this->data = $this->serializer ? $this->serializer->unserialize($this->raw) : null);
+        return [
+            'data' => $this->serializer ? $this->serializer->unserialize($this->raw) : null,
+            'headers' => $this->headers,
+            'statusCode' => $this->statusCode
+        ];
     }
 
     public function getParsedPath(string $dotNotation, $default = null)
     {
-        return ArrayUtil::get($dotNotation, $this->getParsed(), $default);
+        return ArrayUtil::get('data.' . $dotNotation, $this->getParsed(), $default);
     }
 
     public function getBody(): ?string
     {
         return $this->raw;
+    }
+
+    public function getHeaders(): ?array
+    {
+        return $this->headers;
+    }
+
+    public function getStatusCode(): ?int
+    {
+        return $this->statusCode;
     }
 
     public function setSerializer(?SerializerInterface $serializer): void
@@ -43,8 +62,8 @@ class Response
 
     //
 
-    public static function from(?string $data): self
+    public static function from(?string $data, ?array $headers = null, ?int $statusCode = null): self
     {
-        return new static(null, $data);
+        return new static(null, $data, $headers, $statusCode);
     }
 }

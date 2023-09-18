@@ -16,20 +16,24 @@ use RuntimeException;
 
 class GuzzleHttpClient extends BaseHttpClient
 {
-    private const DEFAULT_USER_AGENT = 'Template SDK for PHP';
+    private const DEFAULT_USER_AGENT = 'IPag SDK for PHP';
 
     protected Client $client;
+
+    protected ?array $headers = null;
+
+    protected ?int $statusCode = null;
 
     public function __construct(array $config = [])
     {
         static $default = [
-            'allow_redirects' => false,
-            'timeout' => 60.00,
-            'connect_timeout' => 10.00,
-            'http_errors' => true,
-            'headers' => [
-                'User-Agent' => self::DEFAULT_USER_AGENT
-            ],
+        'allow_redirects' => false,
+        'timeout' => 60.00,
+        'connect_timeout' => 10.00,
+        'http_errors' => true,
+        'headers' => [
+        'User-Agent' => self::DEFAULT_USER_AGENT
+        ],
         ];
 
         $this->client = new Client(array_merge($default, $config));
@@ -59,6 +63,9 @@ class GuzzleHttpClient extends BaseHttpClient
                 'body' => $body,
             ]);
 
+            $this->headers = $response->getHeaders();
+            $this->statusCode = $response->getStatusCode();
+
             return $response->getBody()->getContents();
         } catch (ConnectException $e) {
             // Networking error
@@ -70,7 +77,7 @@ class GuzzleHttpClient extends BaseHttpClient
                 $e->getCode(),
                 $e,
                 // If this fails, an RuntimeException will be thrown
-                Response::from($e->getResponse()->getBody()->getContents()),
+                Response::from($e->getResponse()->getBody()->getContents(), $e->getResponse()->getHeaders(), $e->getResponse()->getStatusCode()),
                 $e->getResponse()->getStatusCode(),
                 $e->getResponse()->getReasonPhrase()
             );
@@ -81,7 +88,7 @@ class GuzzleHttpClient extends BaseHttpClient
                 $e->getCode(),
                 $e,
                 // If this fails, an RuntimeException will be thrown
-                Response::from($e->getResponse()->getBody()->getContents()),
+                Response::from($e->getResponse()->getBody()->getContents(), $e->getResponse()->getHeaders(), $e->getResponse()->getStatusCode()),
                 $e->getResponse()->getStatusCode(),
                 $e->getResponse()->getReasonPhrase()
             );
@@ -90,4 +97,15 @@ class GuzzleHttpClient extends BaseHttpClient
             throw $e;
         }
     }
+
+    public function lastResponseHeaders(): ?array
+    {
+        return $this->headers;
+    }
+
+    public function lastResponseStatusCode(): ?int
+    {
+        return $this->statusCode;
+    }
+
 }

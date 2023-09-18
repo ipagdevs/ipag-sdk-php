@@ -144,7 +144,7 @@ abstract class Client implements CompositePathInterface
                 $header
             );
 
-            $response = Response::from($response);
+            $response = Response::from($response, $this->httpClient->lastResponseHeaders(), $this->httpClient->lastResponseStatusCode());
             $response->setSerializer($outputSerializer);
 
             $this->logger->debug("({$requestId}) {$method} {$url} : Read successful", ['response' => $response->getBody()]);
