@@ -27,7 +27,7 @@ class CardTest extends TestCase
 
     public function testShouldCreateCardObjectAndSetTheValuesSuccessfully()
     {
-        $card = (new \Ipag\Sdk\Model\Card())
+        $card = (new \Ipag\Sdk\Model\Card)
             ->setHolderName('Frederic Sales')
             ->setNumber('4024 0071 1251 2933')
             ->setExpiryMonth('02')

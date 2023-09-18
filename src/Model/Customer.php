@@ -26,7 +26,7 @@ final class Customer extends Model
      *  + [`'phone'`] string (opcional).
      *  + [`'cpf_cnpj'`] string (opcional).
      *  + [`'business_name'`] string (opcional).
-     *  + [`'birthdate'`] string (opcional) [Formato: AAAA-mm-dd].
+     *  + [`'birthdate'`] string (opcional) {`Formato: Y-m-d`}.
      *  + [`'ip'`] string (opcional).
      *  + [`'address'`] array (opcional) dos dados do Address.
      *  + &emsp; [`'street'`] string (opcional).

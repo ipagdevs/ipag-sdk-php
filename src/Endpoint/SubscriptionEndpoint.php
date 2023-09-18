@@ -27,7 +27,7 @@ class SubscriptionEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para alterar um recurso `Subscription`
+     * Endpoint para atualizar um recurso `Subscription`
      *
      * @param Subscription $subscription
      * @param integer $id
@@ -52,7 +52,7 @@ class SubscriptionEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para listar recursos Subscription
+     * Endpoint para listar recursos `Subscription`
      *
      * @param array|null $filters
      * @return object

@@ -26,6 +26,12 @@ class TokenEndpoint extends Endpoint
         return json_decode(json_encode($response->getParsed()), FALSE);
     }
 
+    /**
+     * Endpoint para consultar um recurso `Token Card`
+     *
+     * @param string $token
+     * @return object
+     */
     public function get(string $token): object
     {
         $response = $this->_GET(['token' => $token]);

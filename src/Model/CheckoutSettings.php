@@ -25,7 +25,7 @@ final class CheckoutSettings extends Model
      *  + [`'min_installment_value'`] float (opcional).
      *  + [`'interest'`] float (opcional).
      *  + [`'fixed_installment'`] float (opcional).
-     *  + [`'payment_method'`] {`'all'` | `'creditcard'` | `'boleto'` | `'transfer'` | `'pix'`} (opcional).
+     *  + [`'payment_method'`] enum {`'all'` | `'creditcard'` | `'boleto'` | `'transfer'` | `'pix'`} (opcional).
      */
     public function __construct(?array $data = [])
     {

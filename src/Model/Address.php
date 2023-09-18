@@ -21,6 +21,7 @@ final class Address extends Model
      *  + [`'street'`] string (opcional).
      *  + [`'number'`] string (opcional).
      *  + [`'district'`] string (opcional).
+     *  + [`'complement'`] string (opcional).
      *  + [`'city'`] string (opcional).
      *  + [`'state'`] string (opcional).
      *  + [`'zipcode'`] string (opcional).

@@ -22,8 +22,8 @@ class Subscription extends Model
      *  + [`'profile_id'`] string.
      *  + [`'plan_id'`] int.
      *  + [`'customer_id'`] int.
-     *  + [`'starting_date'`] string (opcional) [Formato: AAAA-mm-dd].
-     *  + [`'closing_date'`] string (opcional) [Formato: AAAA-mm-dd].
+     *  + [`'starting_date'`] string (opcional) {`Formato: Y-m-d`}.
+     *  + [`'closing_date'`] string (opcional) {`Formato: Y-m-d`}.
      *  + [`'callback_url'`] string (opcional).
      *  + [`'creditcard_token'`] string (opcional).
      */

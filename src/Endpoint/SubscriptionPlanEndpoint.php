@@ -15,7 +15,7 @@ class SubscriptionPlanEndpoint extends Endpoint
     protected string $location = '/service/resources/plans';
 
     /**
-     * Endpoint para criar um recurso Subscription Plan
+     * Endpoint para criar um recurso `Subscription Plan`
      *
      * @param SubscriptionPlan $subscriptionPlan
      * @return object
@@ -27,7 +27,7 @@ class SubscriptionPlanEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para alterar um recurso Subscription Plan
+     * Endpoint para atualizar um recurso `Subscription Plan`
      *
      * @param SubscriptionPlan $subscriptionPlan
      * @param integer $id
@@ -40,7 +40,7 @@ class SubscriptionPlanEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para obter um recurso Subscription Plan
+     * Endpoint para obter um recurso `Subscription Plan`
      *
      * @param integer $id
      * @return object
@@ -52,7 +52,7 @@ class SubscriptionPlanEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para deletar um recurso Subscription Plan
+     * Endpoint para deletar um recurso `Subscription Plan`
      *
      * @param integer $id
      * @return boolean
@@ -64,7 +64,7 @@ class SubscriptionPlanEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para listar recursos Subscription Plan
+     * Endpoint para listar recursos `Subscription Plan`
      *
      * @param array|null $filters
      * @return object

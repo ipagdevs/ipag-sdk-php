@@ -15,7 +15,7 @@ class CustomerEndpoint extends Endpoint
     protected string $location = '/service/resources/customers';
 
     /**
-     * Endpoint para criar um recurso Customer
+     * Endpoint para criar um recurso `Customer`
      *
      * @param Customer $customer
      * @return object
@@ -27,7 +27,7 @@ class CustomerEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para alterar um recurso Customer
+     * Endpoint para atualizar um recurso `Customer`
      *
      * @param Customer $customer
      * @param integer $id
@@ -40,7 +40,7 @@ class CustomerEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para obter um recurso Customer
+     * Endpoint para obter um recurso `Customer`
      *
      * @param integer $id
      * @return object
@@ -52,7 +52,7 @@ class CustomerEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para deletar um recurso Customer
+     * Endpoint para deletar um recurso `Customer`
      *
      * @param integer $id
      * @return boolean
@@ -64,7 +64,7 @@ class CustomerEndpoint extends Endpoint
     }
 
     /**
-     * Endpoint para listar recursos Customer
+     * Endpoint para listar recursos `Customer`
      *
      * @param array|null $filters
      * @return object

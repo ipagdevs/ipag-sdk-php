@@ -22,10 +22,10 @@ final class Charge extends Model
      *
      *  + [`'amount'`] float.
      *  + [`'description'`] string.
-     *  + [`'due_date'`] string (opcional) [Formato: AAAA-mm-dd].
+     *  + [`'due_date'`] string (opcional) {`Formato: Y-m-d`}.
      *  + [`'frequency'`] int (opcional).
-     *  + [`'interval'`] {`'day'` | `'week'` | `'month'`} (opcional).
-     *  + [`'type'`] {`'charge'` | `'recurring'`} (opcional).
+     *  + [`'interval'`] enum {`'day'` | `'week'` | `'month'`} (opcional).
+     *  + [`'type'`] enum {`'charge'` | `'recurring'`} (opcional).
      *  + [`'last_charge_date'`] string (opcional).
      *  + [`'callback_url'`] string (opcional).
      *  + [`'auto_debit'`] bool (opcional).
@@ -43,7 +43,7 @@ final class Charge extends Model
      *  + &emsp; [`'min_installment_value'`] float (opcional).
      *  + &emsp; [`'interest'`] float (opcional).
      *  + &emsp; [`'fixed_installment'`] float (opcional).
-     *  + &emsp; [`'payment_method'`] {`'all'` | `'creditcard'` | `'boleto'` | `'transfer'` | `'pix'`} (opcional).
+     *  + &emsp; [`'payment_method'`] enum {`'all'` | `'creditcard'` | `'boleto'` | `'transfer'` | `'pix'`} (opcional).
      *
      */
     public function __construct(?array $data = [])
