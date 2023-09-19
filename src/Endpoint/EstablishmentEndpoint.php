@@ -67,7 +67,7 @@ class EstablishmentEndpoint extends Endpoint
 
     public function transaction(): TransactionEndpoint
     {
-        return TransactionEndpoint::make($this, $this);
+        return TransactionEndpoint::make($this->parent, $this->parent);
     }
 
 }

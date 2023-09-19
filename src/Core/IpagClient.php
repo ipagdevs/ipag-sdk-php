@@ -2,18 +2,17 @@
 
 namespace Ipag\Sdk\Core;
 
-use Faker\Provider\ar_EG\Payment;
 use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Endpoint\ChargeEndpoint;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Endpoint\EstablishmentEndpoint;
-use Ipag\Sdk\Endpoint\PaymentEndpoint;
 use Ipag\Sdk\Endpoint\PaymentLinksEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionPlanEndpoint;
 use Ipag\Sdk\Endpoint\TokenEndpoint;
 use Ipag\Sdk\Endpoint\TransactionEndpoint;
 use Ipag\Sdk\Endpoint\TransferEndpoint;
+use Ipag\Sdk\Endpoint\WebhookEndpoint;
 use Ipag\Sdk\Http\Client\GuzzleHttpClient;
 use Ipag\Sdk\IO\JsonSerializer;
 
@@ -95,6 +94,11 @@ class IpagClient extends Client
     public function paymentLinks(): PaymentLinksEndpoint
     {
         return PaymentLinksEndpoint::make($this, $this);
+    }
+
+    public function webhook(): WebhookEndpoint
+    {
+        return WebhookEndpoint::make($this, $this);
     }
 
 }
