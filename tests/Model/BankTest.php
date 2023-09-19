@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class BankTest extends TestCase
 {
-    public function testShouldCreateCardObjectWithConstructorSuccessfully()
+    public function testShouldCreateBankObjectWithConstructorSuccessfully()
     {
         $bank = new \Ipag\Sdk\Model\Bank([
             'code' => '001',
@@ -25,7 +25,7 @@ class BankTest extends TestCase
 
     }
 
-    public function testShouldCreateCardObjectAndSetTheValuesSuccessfully()
+    public function testShouldCreateBankObjectAndSetTheValuesSuccessfully()
     {
         $bank = (new \Ipag\Sdk\Model\Bank)
             ->setCode('001')
@@ -42,7 +42,7 @@ class BankTest extends TestCase
 
     }
 
-    public function testShouldCreateEmptyCardObjectSuccessfully()
+    public function testShouldCreateEmptyBankObjectSuccessfully()
     {
         $bank = new \Ipag\Sdk\Model\Bank;
 
@@ -54,7 +54,7 @@ class BankTest extends TestCase
 
     }
 
-    public function testCreateAndSetEmptyPropertiesCardObjectSuccessfully()
+    public function testCreateAndSetEmptyPropertiesBankObjectSuccessfully()
     {
         $bank = new \Ipag\Sdk\Model\Bank([
             'code' => '001',

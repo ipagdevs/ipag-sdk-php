@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class EstablishmentTest extends TestCase
 {
-    public function testShouldCreateCustomerObjectWithConstructorSuccessfully()
+    public function testShouldCreateEstablishmentObjectWithConstructorSuccessfully()
     {
         $establishment = new \Ipag\Sdk\Model\Establishment([
             'name' => 'Lívia Julia Eduarda Barros',
@@ -41,7 +41,7 @@ class EstablishmentTest extends TestCase
 
     }
 
-    public function testShouldCreateCustomerObjectAndSetTheValuesSuccessfully()
+    public function testShouldCreateEstablishmentObjectAndSetTheValuesSuccessfully()
     {
         $establishment = (new \Ipag\Sdk\Model\Establishment)
             ->setName('Lívia Julia Eduarda Barros')
@@ -67,7 +67,7 @@ class EstablishmentTest extends TestCase
 
     }
 
-    public function testShouldCreateEmptyCustomerObjectSuccessfully()
+    public function testShouldCreateEmptyEstablishmentObjectSuccessfully()
     {
         $establishment = new \Ipag\Sdk\Model\Establishment;
 
@@ -84,7 +84,7 @@ class EstablishmentTest extends TestCase
 
     }
 
-    public function testCreateAndSetEmptyPropertiesCustomerObjectSuccessfully()
+    public function testCreateAndSetEmptyPropertiesEstablishmentObjectSuccessfully()
     {
         $establishment = new \Ipag\Sdk\Model\Establishment([
             'name' => 'Lívia Julia Eduarda Barros',

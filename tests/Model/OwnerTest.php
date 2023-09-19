@@ -3,12 +3,11 @@
 namespace Ipag\Sdk\Tests\Model;
 
 use Ipag\Sdk\Model\Schema\Exception\MutatorAttributeException;
-use Ipag\Sdk\Model\Schema\Exception\SchemaAttributeParseException;
 use PHPUnit\Framework\TestCase;
 
 class OwnerTest extends TestCase
 {
-    public function testShouldCreateCustomerObjectWithConstructorSuccessfully()
+    public function testShouldCreateOwnerObjectWithConstructorSuccessfully()
     {
         $owner = new \Ipag\Sdk\Model\Owner([
             'name' => 'Lívia Julia Eduarda Barros',
@@ -24,7 +23,7 @@ class OwnerTest extends TestCase
 
     }
 
-    public function testShouldCreateCustomerObjectAndSetTheValuesSuccessfully()
+    public function testShouldCreateOwnerObjectAndSetTheValuesSuccessfully()
     {
         $owner = (new \Ipag\Sdk\Model\Owner)
             ->setName('Lívia Julia Eduarda Barros')
@@ -39,7 +38,7 @@ class OwnerTest extends TestCase
 
     }
 
-    public function testShouldCreateEmptyCustomerObjectSuccessfully()
+    public function testShouldCreateEmptyOwnerObjectSuccessfully()
     {
         $owner = new \Ipag\Sdk\Model\Owner;
 
@@ -50,7 +49,7 @@ class OwnerTest extends TestCase
 
     }
 
-    public function testCreateAndSetEmptyPropertiesCustomerObjectSuccessfully()
+    public function testCreateAndSetEmptyPropertiesOwnerObjectSuccessfully()
     {
         $owner = new \Ipag\Sdk\Model\Owner([
             'name' => 'Lívia Julia Eduarda Barros',
