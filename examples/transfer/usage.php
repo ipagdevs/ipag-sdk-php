@@ -10,6 +10,8 @@ $ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', Ip
 
 try {
     $transfer_id = 1;
+    $seller_id = 1;
+    $seller_cpf = '07459826383';
 
     // List
     // $responseTransfers = $ipagClient->transfer()->list();
@@ -19,9 +21,10 @@ try {
     // $responseTransfers = $ipagClient->transfer()->get($transfer_id);
     // dd($responseTransfers);
 
+    //TODO: testar mais tarde, quando tiver registros
     // Sellers List
-    // $responseSellers = $ipagClient->transfer()->seller()->list();
-    // dd($responseSellers);
+    // $responseTransfers = $ipagClient->transfer()->seller()->list();
+    // dd($responseTransfers);
 
     // Sellers Get
     // $responseTransfers = $ipagClient->transfer()->seller()->get($transfer_id);
@@ -32,11 +35,11 @@ try {
     // dd($responseTransfers);
 
     // Future List Seller By Id
-    // $responseTransfers = $ipagClient->transfer()->future()->listBySellerId($transaction_id);
+    // $responseTransfers = $ipagClient->transfer()->future()->listBySellerId($seller_id);
     // dd($responseTransfers);
 
     // Future List Seller By CpfCnpj
-    // $responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj('07459826383');
+    // $responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($seller_cpf);
     // dd($responseTransfers);
 
 } catch (\Throwable $th) {

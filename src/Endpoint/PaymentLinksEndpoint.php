@@ -32,10 +32,15 @@ class PaymentLinksEndpoint extends Endpoint
      * @param integer $id
      * @return object
      */
-    public function get(int $id): object
+    public function getById(int $id): object
     {
         $response = $this->_GET(['id' => $id]);
         return json_decode(json_encode($response->getParsed()), FALSE);
     }
 
+    public function getByExternalCode(int $externalCode): object
+    {
+        $response = $this->_GET(['external_code' => $externalCode]);
+        return json_decode(json_encode($response->getParsed()), FALSE);
+    }
 }

@@ -184,7 +184,7 @@ class ChargeTest extends TestCase
 
     }
 
-    public function testShouldThrowATypeExceptionOnTheCheckoutChargeAmountProperty()
+    public function testShouldThrowATypeExceptionOnTheChargeAmountProperty()
     {
         $charge = new \Ipag\Sdk\Model\Charge;
 
@@ -202,7 +202,7 @@ class ChargeTest extends TestCase
         $charge->setAmount(-1);
     }
 
-    public function testShouldThrowATypeExceptionOnTheCheckoutChargeFrequencyProperty()
+    public function testShouldThrowATypeExceptionOnTheChargeFrequencyProperty()
     {
         $charge = new \Ipag\Sdk\Model\Charge;
 
@@ -238,7 +238,7 @@ class ChargeTest extends TestCase
         $charge->setType('a');
     }
 
-    public function testShouldThrowATypeExceptionOnTheCheckoutChargeInstallmentsProperty()
+    public function testShouldThrowATypeExceptionOnTheChargeInstallmentsProperty()
     {
         $charge = new \Ipag\Sdk\Model\Charge;
 
@@ -256,7 +256,7 @@ class ChargeTest extends TestCase
         $charge->setInstallments(0);
     }
 
-    public function testShouldThrowATypeExceptionOnTheCheckoutChargeProductsProperty()
+    public function testShouldThrowATypeExceptionOnTheChargeProductsProperty()
     {
         $charge = new \Ipag\Sdk\Model\Charge;
 

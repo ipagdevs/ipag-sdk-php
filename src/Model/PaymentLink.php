@@ -49,6 +49,7 @@ class PaymentLink extends Model
         $schema->string('external_code')->nullable();
         $schema->float('amount')->nullable();
         $schema->string('description')->nullable();
+        $schema->string('expireAt')->nullable();
 
         $schema->has('buttons', Buttons::class)->nullable();
         $schema->has('checkout_settings', CheckoutSettings::class)->nullable();
@@ -113,14 +114,91 @@ class PaymentLink extends Model
         return $this;
     }
 
+    /**
+     * Retorna o valor da propriedade `description`.
+     *
+     * @return string|null
+     */
     public function getDescription(): ?string
     {
         return $this->get('description');
     }
 
+    /**
+     * Seta o valor da propriedade `description`.
+     *
+     * @param string|null $description
+     * @return self
+     */
     public function setDescription(?string $description = null): self
     {
         $this->set('description', $description);
+        return $this;
+    }
+
+    /**
+     * Retorna o valor da propriedade `expireAt`.
+     *
+     * @return string|null
+     */
+    public function getExpireAt(): ?string
+    {
+        return $this->get('expireAt');
+    }
+
+    /**
+     * Seta o valor da propriedade `expireAt`.
+     *
+     * @param string|null $expireAt
+     * @return self
+     */
+    public function setExpireAt(?string $expireAt = null): self
+    {
+        $this->set('expireAt', $expireAt);
+        return $this;
+    }
+
+    /**
+     * Retorna o objeto `buttons` associado ao `PaymentLink`.
+     *
+     * @return Buttons|null
+     */
+    public function getButtons(): ?Buttons
+    {
+        return $this->get('buttons');
+    }
+
+    /**
+     * Seta o objeto `buttons` associado ao `PaymentLink`.
+     *
+     * @param Buttons|null $buttons
+     * @return self
+     */
+    public function setButtons(?Buttons $buttons = null): self
+    {
+        $this->set('buttons', $buttons);
+        return $this;
+    }
+
+    /**
+     * Retorna o objeto `CheckoutSettings` associado ao `PaymentLink`.
+     *
+     * @return CheckoutSettings|null
+     */
+    public function getCheckoutSettings(): ?CheckoutSettings
+    {
+        return $this->get('checkout_settings');
+    }
+
+    /**
+     * Seta o objeto `CheckoutSettings` associado ao `PaymentLink`.
+     *
+     * @param CheckoutSettings|null $checkoutSettings
+     * @return self
+     */
+    public function setCheckoutSettings(?CheckoutSettings $checkoutSettings = null): self
+    {
+        $this->set('checkout_settings', $checkoutSettings);
         return $this;
     }
 

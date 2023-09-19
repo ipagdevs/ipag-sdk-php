@@ -4,16 +4,14 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
-use Ipag\Sdk\Exception\HttpClientException;
 
 $ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
 
-//TODO: Continuar desenvolvendo esse exemplo
-
 $paymentLink = new \Ipag\Sdk\Model\PaymentLink([
-    'external_code' => '130',
+    'external_code' => '131',
     'amount' => 0,
     'description' => 'LINK DE PAGAMENTO SUPER BACANA',
+    'expireAt' => '2020-12-30 23:00:00',
     'buttons' => [
         'enable' => false,
         'one' => 0,
@@ -31,15 +29,21 @@ $paymentLink = new \Ipag\Sdk\Model\PaymentLink([
 
 try {
 
-    $paymentLink_id = 1;
+    $paymentLink_id = 2;
+
+    $external_code = 130;
 
     // Create
-    $responsePaymentLink = $ipagClient->paymentLinks()->create($paymentLink);
-    dd($responsePaymentLink);
+    // $responsePaymentLink = $ipagClient->paymentLinks()->create(new \Ipag\Sdk\Model\PaymentLink);
+    // dd($responsePaymentLink);
 
-    // Get
-    $responsePaymentLink = $ipagClient->paymentLinks()->get($paymentLink_id);
-    dd($responsePaymentLink);
+    // Get Id
+    // $responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLink_id);
+    // dd($responsePaymentLink);
+
+    // Get External Code
+    // $responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($external_code);
+    // dd($responsePaymentLink);
 
 } catch (\Throwable $th) {
     echo $th->getMessage() . PHP_EOL;

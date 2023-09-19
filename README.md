@@ -36,6 +36,25 @@
 - [Token (Card Token)](#token-card-token)
   - [Novo Token](#novo-token)
   - [Obter Token](#obter-token)
+- [Cobrança (Charge)](#cobrança-charge)
+  -  [Nova Cobrança](#nova-cobrança)
+  -  [Alterar Cobrança](#alterar-cobrança)
+  -  [Obter Cobrança](#obter-cobrança)
+  -  [Listar Cobranças](#listar-cobranças)
+- [Transferência (Transfer)](#transferência-transfer)
+  -  [Listar Transferências](#listar-transferências)
+  -  [Obter Transferência](#obter-transferência)
+  +  [Transferência dos Vendedores (Sellers Transfers)](#transferência-dos-vendedores-sellers-transfers)
+     -  [Listar Transferências dos Vendedores](#listar-transferências-dos-vendedores)
+     -  [Obter Transferência de Vendedor](#obter-transferência-de-vendedor)
+  +  [Lançamentos Futuros (Future Transfers)](#lançamentos-futuros-future-transfers)
+     - [Listar Lançamentos Futuros](#listar-lançamentos-futuros)
+     - [Listar Lançamentos Futuros de Vendedor (Por Id)](#listar-lançamentos-futuros-de-vendedor-por-id)
+     - [Listar Lançamentos Futuros de Vendedor (Por CPF/CNPJ)](#listar-lançamentos-futuros-de-vendedor-por-cpf-cnpj)
+- [Link de Pagamento (Payment Links)](#link-de-pagamento-payment-links)
+     - [Novo Link de Pagamento](#novo-link-de-pagamento)
+     - [Obter Link de Pagamento (Por Id)](#obter-link-de-pagamento-por-id)
+     - [Obter Link de Pagamento (Por External Code)](#obter-link-de-pagamento-por-external-code)
 - [Testes](#testes)
 - [Licença](#licença)
 - [Documentação](#documentação)
@@ -82,7 +101,7 @@ $ipagClient = new \Ipag\Sdk\Core\IpagClient(
 
 # Cliente (Customer)
 
-> Exemplo completo: [exemplos/customer/usage.php](./examples/customer/usage.php)
+> Exemplo completo: [examples/customer/usage.php](./examples/customer/usage.php)
 
 ```php
 $customer = new \Ipag\Sdk\Model\Customer([
@@ -156,7 +175,7 @@ $ok = $ipagClient->customer()->delete(100001);
 
 # Plano de Assinatura (Subscription Plan)
 
-> Exemplo completo: [exemplos/subscription_plan/usage.php](./examples/subscription_plan/usage.php)
+> Exemplo completo: [examples/subscription_plan/usage.php](./examples/subscription_plan/usage.php)
 
 ```php
 $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
@@ -232,7 +251,7 @@ $ipagClient->subscriptionPlan()->delete(1);
 
 # Assinatura (Subscription)
 
-> Exemplo completo: [exemplos/subscription/usage.php](./examples/subscription/usage.php)
+> Exemplo completo: [examples/subscription/usage.php](./examples/subscription/usage.php)
 
 ```php
 $subscription = new \Ipag\Sdk\Model\Subscription([
@@ -309,7 +328,7 @@ $ok = $ipagClient->subscription()->scheduleInstallmentPayment($subscription_id, 
 
 # Transação (Transaction)
 
-> Exemplo completo: [exemplos/transaction/usage.php](./examples/transaction/usage.php)
+> Exemplo completo: [examples/transaction/usage.php](./examples/transaction/usage.php)
 
 ### Obter Transação
 
@@ -334,7 +353,7 @@ $responseTransaction = $ipagClient->transaction()->list([
 
 # Token (Card Token)
 
-> Exemplo completo: [exemplos/token/usage.php](./examples/token/usage.php)
+> Exemplo completo: [examples/token/usage.php](./examples/token/usage.php)
 
 ```php
 $token = new \Ipag\Sdk\Model\Token([
@@ -391,6 +410,186 @@ $responseToken = $ipagClient->token()->create($token);
 
 ```php
 $responseToken = $ipagClient->token()->get($token_value);
+```
+
+# Cobrança (Charge)
+
+> Exemplo completo: [examples/charge/usage.php](./examples/charge/usage.php)
+
+```php
+$charge = new \Ipag\Sdk\Model\Charge([
+    'amount' => 150.50,
+    'description' => 'Cobrança referente a negociação de débito pendente na Empresa X',
+    'due_date' => '2020-10-30',
+    'frequency' => 1,
+    'interval' => 'month',
+    'type' => 'charge',
+    'last_charge_date' => '2020-10-30',
+    'callback_url' => 'https://api.ipag.test/retorno_charge',
+    'auto_debit' => false,
+    'installments' => 12,
+    'is_active' => true,
+    'products' => [1, 2, 3],
+    'customer' => [
+        'name' => 'Maria Francisca',
+    ],
+    'checkout_settings' => [
+        'max_installments' => 12,
+    ]
+]);
+```
+ou
+```php
+$charge = (new \Ipag\Sdk\Model\Charge)
+    ->setAmount(150.50)
+    ->setDescription('Cobrança referente a negociação de débito pendente na Empresa X')
+    ->setDueDate('2020-10-30')
+    ->setFrequency(1)
+    ->setInterval('month')
+    ->setType('charge')
+    ->setLastChargeDate('2020-10-30')
+    ->setCallbackUrl('https://api.ipag.test/retorno_charge')
+    ->setAutoDebit(false)
+    ->setInstallments(12)
+    ->setIsActive(true)
+    ->setProducts([1, 2, 3])
+    ->setCustomer(
+        (new \Ipag\Sdk\Model\Customer)
+            ->setName('Maria Francisca')
+    )
+    ->setCheckoutSettings(
+        (new \Ipag\Sdk\Model\CheckoutSettings)
+            ->setMaxInstallments(12)
+    );
+```
+
+### Nova Cobrança
+
+```php
+$responseCharge = $ipagClient->charge()->create($charge);
+```
+
+### Alterar Cobrança
+
+```php
+$responseCharge = $ipagClient->charge()->update($charge, $charge_id);
+```
+
+### Obter Cobrança
+
+```php
+$responseCharge = $ipagClient->charge()->get($charge_id);
+```
+
+### Listar Cobranças
+
+```php
+$responseCharge = $ipagClient->charge()->list([
+    'is_active' => false,
+]);
+```
+
+# Transferência (Transfer)
+
+> Exemplo completo: [examples/transfer/usage.php](./examples/transfer/usage.php)
+
+### Listar Transferências
+
+```php
+$responseTransfers = $ipagClient->transfer()->list();
+```
+
+### Obter Transferência
+
+```php
+$responseTransfers = $ipagClient->transfer()->get($transfer_id);
+```
+
+## Transferência dos Vendedores (Sellers Transfers)
+
+### Listar Transferências dos Vendedores
+
+```php
+$responseTransfers = $ipagClient->transfer()->seller()->list();
+```
+
+### Obter Transferência de Vendedor
+
+```php
+$responseTransfers = $ipagClient->transfer()->seller()->get($transfer_id);
+```
+
+## Lançamentos Futuros (Future Transfers)
+
+### Listar Lançamentos Futuros
+
+```php
+$responseTransfers = $ipagClient->transfer()->future()->list();
+```
+
+### Listar Lançamentos Futuros de Vendedor (Por Id)
+
+```php
+$responseTransfers = $ipagClient->transfer()->future()->listBySellerId($seller_id);
+```
+
+### Listar Lançamentos Futuros de Vendedor (Por CPF/CNPJ)
+
+```php
+$responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($seller_cpf);
+```
+
+## Link de Pagamento (Payment Links)
+
+> Exemplo completo: [examples/payment_links/usage.php](./examples/payment_links/usage.php)
+
+```php
+$paymentLink = new \Ipag\Sdk\Model\PaymentLink([
+    'external_code' => '131',
+    'amount' => 0,
+    'description' => 'LINK DE PAGAMENTO SUPER BACANA',
+    'expireAt' => '2020-12-30 23:00:00',
+    'buttons' => [
+        'enable' => false,
+    ],
+    'checkout_settings' => [
+        'max_installments' => 12,
+    ],
+]);
+```
+ou
+```php
+$paymentLink = (new \Ipag\Sdk\Model\PaymentLink)
+    ->setExternalCode('131')
+    ->setAmount(0)
+    ->setDescription('LINK DE PAGAMENTO SUPER BACANA')
+    ->setExpireAt('2020-12-30 23:00:00')
+    ->setButtons(
+        (new \Ipag\Sdk\Model\Buttons)
+            ->setEnable(false)
+    )
+    ->setCheckoutSettings(
+        (new \Ipag\Sdk\Model\CheckoutSettings)
+            ->setMaxInstallments(12)
+    );
+```
+
+### Novo Link de Pagamento
+
+```php
+$responsePaymentLink = $ipagClient->paymentLinks()->create(new \Ipag\Sdk\Model\PaymentLink);
+```
+
+### Obter Link de Pagamento (Por Id)
+
+```php
+$responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLink_id);
+```
+
+### Obter Link de Pagamento (Por External Code)
+
+```php
+$responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($external_code);
 ```
 
 ## Testes

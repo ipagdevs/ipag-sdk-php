@@ -46,6 +46,45 @@ class Buttons extends Model
         return $schema->build();
     }
 
+    protected function one(): Mutator
+    {
+        return new Mutator(
+            null,
+            fn($value, $ctx) =>
+            is_null($value) ? $value :
+            (
+                Assert::value(floatval($value))->gte(0)->get()
+                ?? $ctx->raise('inválido')
+            )
+        );
+    }
+
+    protected function two(): Mutator
+    {
+        return new Mutator(
+            null,
+            fn($value, $ctx) =>
+            is_null($value) ? $value :
+            (
+                Assert::value(floatval($value))->gte(0)->get()
+                ?? $ctx->raise('inválido')
+            )
+        );
+    }
+
+    protected function three(): Mutator
+    {
+        return new Mutator(
+            null,
+            fn($value, $ctx) =>
+            is_null($value) ? $value :
+            (
+                Assert::value(floatval($value))->gte(0)->get()
+                ?? $ctx->raise('inválido')
+            )
+        );
+    }
+
     public function getEnable(): ?bool
     {
         return $this->get('enable');
