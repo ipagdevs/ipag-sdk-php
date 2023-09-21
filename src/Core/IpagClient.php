@@ -7,6 +7,7 @@ use Ipag\Sdk\Endpoint\ChargeEndpoint;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Endpoint\EstablishmentEndpoint;
 use Ipag\Sdk\Endpoint\PaymentLinksEndpoint;
+use Ipag\Sdk\Endpoint\SellerEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionPlanEndpoint;
 use Ipag\Sdk\Endpoint\TokenEndpoint;
@@ -99,6 +100,11 @@ class IpagClient extends Client
     public function webhook(): WebhookEndpoint
     {
         return WebhookEndpoint::make($this, $this);
+    }
+
+    public function seller(): SellerEndpoint
+    {
+        return SellerEndpoint::make($this, $this);
     }
 
 }

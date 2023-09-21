@@ -76,6 +76,12 @@ abstract class Endpoint implements CompositePathInterface
                 $responseMessage = implode('; ', array_reduce($responseMessage, fn($carry, $item) =>
                     array_merge($carry, [implode(', ', $item)]), []));
 
+            $responseData = $e->getResponse()->getParsedPath('data');
+
+            if (is_array($responseData))
+                $responseMessage .= ' => ' . implode('; ', array_reduce($responseData, fn($carry, $item) =>
+                    array_merge($carry, [implode(', ', $item)]), []));
+
             $this->exceptionThrown(
                 new HttpClientException(
                     'response message: ' . json_encode($responseMessage) . " (status code: {$e->getCode()})",

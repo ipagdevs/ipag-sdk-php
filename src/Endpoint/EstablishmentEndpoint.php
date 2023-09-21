@@ -32,10 +32,10 @@ class EstablishmentEndpoint extends Endpoint
      * Endpoint para atualizar um recurso `Establishment`
      *
      * @param Establishment $establishment
-     * @param integer $id
+     * @param string $id
      * @return object
      */
-    public function update(Establishment $establishment, int $id): object
+    public function update(Establishment $establishment, string $id): object
     {
         $response = $this->_PUT($establishment, ['id' => $id]);
         return json_decode(json_encode($response->getParsed()), FALSE);
@@ -44,10 +44,10 @@ class EstablishmentEndpoint extends Endpoint
     /**
      * Endpoint para obter um recurso `Establishment`
      *
-     * @param integer $id
+     * @param string $id
      * @return object
      */
-    public function get(int $id): object
+    public function get(string $id): object
     {
         $response = $this->_GET(['id' => $id]);
         return json_decode(json_encode($response->getParsed()), FALSE);
@@ -65,9 +65,33 @@ class EstablishmentEndpoint extends Endpoint
         return json_decode(json_encode($response->getParsed()), FALSE);
     }
 
-    public function transaction(): TransactionEndpoint
+    /**
+     * Endpoint `Transaction` do recurso `Establishment`.
+     *
+     * @return EstablishmentTransactionEndpoint
+     */
+    public function transaction(): EstablishmentTransactionEndpoint
     {
-        return TransactionEndpoint::make($this->parent, $this->parent);
+        return EstablishmentTransactionEndpoint::make($this->parent, $this->parent);
     }
 
+    /**
+     * Endpoint `PaymentMethods` do recurso `Establishment`.
+     *
+     * @return EstablishmentPaymentMethodsEndpoint
+     */
+    public function paymentMethods(): EstablishmentPaymentMethodsEndpoint
+    {
+        return EstablishmentPaymentMethodsEndpoint::make($this->parent, $this->parent);
+    }
+
+    /**
+     * Endpoint `Antifraud` do recurso `Establishment`.
+     *
+     * @return EstablishmentAntifraudEndpoint
+     */
+    public function antifraud(): EstablishmentAntifraudEndpoint
+    {
+        return EstablishmentAntifraudEndpoint::make($this->parent, $this->parent);
+    }
 }

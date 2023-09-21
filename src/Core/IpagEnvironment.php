@@ -10,6 +10,8 @@ class IpagEnvironment extends Environment
 
     private static ?IpagEnvironmentWebhook $envWebhook = null;
 
+    private static ?IpagEnvironmentMethod $envMethod = null;
+
     private string $serviceUrl;
 
     public function __construct(string $environment)
@@ -35,6 +37,14 @@ class IpagEnvironment extends Environment
             self::$envWebhook = new IpagEnvironmentWebhook;
 
         return self::$envWebhook;
+    }
+
+    public function paymentMethod(): IpagEnvironmentMethod
+    {
+        if (!self::$envMethod)
+            self::$envMethod = new IpagEnvironmentMethod;
+
+        return self::$envMethod;
     }
 
 }

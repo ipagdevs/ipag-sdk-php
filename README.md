@@ -41,6 +41,24 @@
   -  [Alterar Cobrança](#alterar-cobrança)
   -  [Obter Cobrança](#obter-cobrança)
   -  [Listar Cobranças](#listar-cobranças)
+- [Estabelecimento (Establishment)](#estabelecimento-establishment)
+  - [Novo Estabelecimento](#novo-estabelecimento)
+  - [Alterar Estabelecimento](#alterar-estabelecimento)
+  - [Obter Estabelecimento](#obter-estabelecimento)
+  - [Listar Estabelecimentos](#listar-estabelecimentos)
+  + [Transações (Transactions)](#transações-transactions)
+    - [Listar todas Transações dos Estabelecimentos](#listar-todas-transações-dos-estabelecimentos)
+    - [Listar Transações dos Estabelecimentos](#listar-transações-dos-estabelecimentos)
+    - [Obter Transação de um Estabelecimento](#obter-transação-de-um-estabelecimento)
+ + [Métodos de Pagamento (Payment Methods)](#métodos-de-pagamento-payment-methods)
+   - [Configurar Métodos de Pagamento](#configurar-métodos-de-pagamento)
+ + [Antifraudes (Antifraud)](#antifraudes-antifraud)
+   - [Configurar Antifraudes](#configurar-antifraudes)
+- [Vendedor (Seller)](#vendedor-seller)
+   - [Novo Vendedor](#novo-vendedor)
+   - [Alterar Vendedor](#alterar-vendedor)
+   - [Obter Vendedor](#obter-vendedor)
+   - [Listar Vendedores](#listar-Vendedores)
 - [Transferência (Transfer)](#transferência-transfer)
   -  [Listar Transferências](#listar-transferências)
   -  [Obter Transferência](#obter-transferência)
@@ -55,6 +73,11 @@
      - [Novo Link de Pagamento](#novo-link-de-pagamento)
      - [Obter Link de Pagamento (Por Id)](#obter-link-de-pagamento-por-id)
      - [Obter Link de Pagamento (Por External Code)](#obter-link-de-pagamento-por-external-code)
+- [Webhook](#webhook)
+     - [Novo Webhook](#novo-webhook)
+     - [Obter Webhook](#obter-webhook)
+     - [Listar Webhooks](#listar-webhooks)
+     - [Deletar Webhook](#deletar-webhook)
 - [Testes](#testes)
 - [Licença](#licença)
 - [Documentação](#documentação)
@@ -489,6 +512,178 @@ $responseCharge = $ipagClient->charge()->list([
 ]);
 ```
 
+# Estabelecimento (Establishment)
+
+> Exemplo completo: [examples/establishment/usage.php](./examples/establishment/usage.php)
+
+```php
+$establishment = new \Ipag\Sdk\Model\Establishment([
+    'name' => 'Lívia Julia Eduarda Barros',
+    'email' => 'livia.julia.barros@eximiart.com.br',
+    'login' => 'livia',
+    'password' => 'livia123',
+    'document' => '074.598.263-83',
+    'phone' => '(98) 3792-4834',
+    'address' =>
+        [
+            'street' => 'Rua A',
+        ],
+    'owner' => [
+        'name' => 'Lívia Julia Eduarda Barros',
+    ],
+    'bank' => [
+        'code' => '001'
+    ]
+]);
+```
+ou
+```php
+$establishment = (new \Ipag\Sdk\Model\Establishment)
+    ->setName('Lívia Julia Eduarda Barros')
+    ->setEmail('livia.julia.barros@eximiart.com.br')
+    ->setLogin('livia')
+    ->setPassword('livia123')
+    ->setPhone('(98) 3792-4834')
+    ->setDocument('074.598.263-83')
+    ->setAddress(new \Ipag\Sdk\Model\Address)
+    ->setOwner(new \Ipag\Sdk\Model\Owner)
+    ->setBank(new \Ipag\Sdk\Model\Bank);
+```
+
+### Novo Estabelecimento
+
+```php
+$responseEstablishment = $ipagClient->establishment()->create($establishment);
+```
+
+### Alterar Estabelecimento
+
+```php
+$responseEstablishment = $ipagClient->establishment()->update($establishment, $establishment_tid);
+```
+
+### Obter Estabelecimento
+
+```php
+$responseEstablishment = $ipagClient->establishment()->get($establishment_tid);
+```
+
+### Listar Estabelecimentos
+
+```php
+$responseEstablishment = $ipagClient->establishment()->list();
+```
+
+## Transações (Transactions)
+
+### Listar todas Transações dos Estabelecimentos
+
+```php
+$responseTransactions = $ipagClient->establishment()->transaction()->list();
+```
+
+### Listar Transações dos Estabelecimentos
+
+```php
+$responseTransactions = $ipagClient->establishment()->transaction()->listByEstablishment($establishment_tid);
+```
+
+### Obter Transação de um Estabelecimento
+
+```php
+$responseTransactions = $ipagClient->establishment()->transaction()->getByEstablishment($establishment_tid, $transaction_tid);
+```
+
+## Métodos de Pagamento (Payment Methods)
+
+### Configurar Métodos de Pagamento
+
+```php
+$responseConfig = $ipagClient
+    ->establishment()
+    ->paymentMethods()
+    ->config($paymentMethod, $establishment_tid);
+```
+
+## Antifraudes (Antifraud)
+
+### Configurar Antifraudes
+
+```php
+$responseConfig = $ipagClient
+    ->establishment()
+    ->antifraud()
+    ->config($antifraud, $establishment_tid);
+```
+
+# Vendedor (Seller)
+
+> Exemplo completo: [examples/seller/usage.php](./examples/seller/usage.php)
+
+```php
+$seller = new \Ipag\Sdk\Model\Seller([
+    "login" => "josefrancisco",
+    "password" => "123123",
+    "name" => "José Francisco Silva",
+    "cpf_cnpj" => "854.508.440-42",
+    "email" => "jose@mail.me",
+    "phone" => "(11) 98712-1234",
+    "description" => "XXXXXXXXXXXXXX",
+    "address" => [
+        "street" => "Rua Júlio Gonzalez",
+    ],
+    "owner" => [
+        "name" => "Giosepe",
+    ],
+    "bank" => [
+        "code" => "290",
+    ]
+]);
+```
+ou
+```php
+$seller = (new \Ipag\Sdk\Model\Seller)
+    ->setLogin("josefrancisco")
+    ->setPassword("123123")
+    ->setName("José Francisco Silva")
+    ->setCpfCnpj("854.508.440-42")
+    ->setEmail("jose@mail.me")
+    ->setPhone("11987121234")
+    ->setDescription("XXXXXXXXXXXXXX")
+    ->setAddress(
+        (new \Ipag\Sdk\Model\Address)
+            ->setStreet("Rua Jálio Gonzalez")
+    )
+    ->setOwner(
+        (new \Ipag\Sdk\Model\Owner)
+            ->setName("Giosepe")
+    )
+    ->setBank(
+        (new \Ipag\Sdk\Model\Bank)
+            ->setCode("290")
+    );
+```
+
+### Novo Vendedor
+```php
+$responseSeller = $ipagClient->seller()->create($seller);
+```
+
+### Alterar Vendedor
+```php
+$responseSeller = $ipagClient->seller()->update($seller, $seller_id);
+```
+
+### Obter Vendedor
+```php
+$responseSeller = $ipagClient->seller()->get($seller_id);
+```
+
+### Listar Vendedores
+```php
+$responseSellers = $ipagClient->seller()->list();
+```
+
 # Transferência (Transfer)
 
 > Exemplo completo: [examples/transfer/usage.php](./examples/transfer/usage.php)
@@ -577,7 +772,7 @@ $paymentLink = (new \Ipag\Sdk\Model\PaymentLink)
 ### Novo Link de Pagamento
 
 ```php
-$responsePaymentLink = $ipagClient->paymentLinks()->create(new \Ipag\Sdk\Model\PaymentLink);
+$responsePaymentLink = $ipagClient->paymentLinks()->create($paymentLink);
 ```
 
 ### Obter Link de Pagamento (Por Id)
@@ -590,6 +785,57 @@ $responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLink_id);
 
 ```php
 $responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($external_code);
+```
+
+# Webhook
+
+> Exemplo completo: [examples/webhook/usage.php](./examples/webhook/usage.php)
+
+```php
+$webhook = new \Ipag\Sdk\Model\Webhook([
+    'http_method' => 'POST',
+    'url' => 'https://minhaloja.com.br/callback',
+    'description' => 'Webhook para receber notificações de atualização das transações',
+    'actions' => [
+        \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+        \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+    ]
+]);
+```
+ou
+```php
+$webhook = (new \Ipag\Sdk\Model\Webhook)
+    ->setHttpMethod('POST')
+    ->setUrl('https://minhaloja.com.br/callback')
+    ->setDescription('Webhook para receber notificações de atualização das transações')
+    ->setActions([
+        \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+        \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+    ]);
+```
+
+### Novo Webhook
+
+```php
+$responseWebhook = $ipagClient->webhook()->create($webhook);
+```
+
+### Obter Webhook
+
+```php
+$responseWebhook = $ipagClient->webhook()->get($webhook_id);
+```
+
+### Listar Webhooks
+
+```php
+$responseWebhook = $ipagClient->webhook()->list();
+```
+
+### Deletar Webhook
+
+```php
+$ok = $ipagClient->webhook()->delete($webhook_id);
 ```
 
 ## Testes

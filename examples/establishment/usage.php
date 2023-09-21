@@ -6,15 +6,18 @@ use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpClientException;
 
-$ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
+$ipagClient = new IpagClient('master', '88E1-CFD86E49-A4351D43-C694871D-F3C0', IpagEnvironment::LOCAL);
+
+// $ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
 
 $establishment = new \Ipag\Sdk\Model\Establishment([
-    'name' => 'Lívia Julia Eduarda Barros',
-    'email' => 'livia.julia.barros@eximiart.com.br',
-    'login' => 'livia',
-    'password' => 'livia123',
-    'document' => '074.598.263-83',
-    'phone' => '(98) 3792-4834',
+    'name' => 'Estabelecimento de teste',
+    'email' => 'teste@estabteste.com.br',
+    'login' => 'estabteste',
+    'password' => 'estabteste',
+    'document' => '452.262.530-87',
+    'phone' => '(62) 98901-4380',
+    'is_active' => true,
     'address' =>
         [
             'street' => 'Rua A',
@@ -27,31 +30,97 @@ $establishment = new \Ipag\Sdk\Model\Establishment([
     ]
 ]);
 
+$paymentMethod = new \Ipag\Sdk\Model\PaymentMethod([
+    'acquirer' => 'stone',
+    'priority' => 100,
+    'environment' => 'test',
+    'capture' => true,
+    'retry' => true,
+    'credentials' => [
+        'stone_code' => 'xxxxx',
+        'stone_sak' => 'xxxxxx'
+    ],
+]);
+
+$antifraud = new \Ipag\Sdk\Model\Antifraud(
+    [
+        "provider" => [
+            "name" => "redshield",
+            "credentials" => [
+                "token" => "xxxxxxxx",
+                "entityId" => "xxxxxxxx",
+                "channelId" => "xxxxxxxx",
+                "serviceId" => "xxxxxxxx"
+            ]
+        ],
+        "settings" => [
+            "enable" => true,
+            "environment" => "test",
+            "consult_mode" => "auto",
+            "capture_on_approval" => false,
+            "cancel_on_refused" => true,
+            "review_score_threshold" => 0.8
+        ]
+    ]
+);
+
 try {
 
-    $establishment_id = 1;
-
-    //TODO: Pedir para liberar esses recursos na minha conta local do Ipag
+    $establishment_tid = 'bb36c34eb6644ab9694315af7d68e629';
+    $transaction_tid = '33e75ff09dd601bbe69f351039152189';
 
     // Create
-    $responseEstablishment = $ipagClient->establishment()->create($establishment);
-    dd($responseEstablishment);
+    // $responseEstablishment = $ipagClient->establishment()->create(new \Ipag\Sdk\Model\Establishment);
+    // dd($responseEstablishment);
 
     // Update
-    // $responseEstablishment = $ipagClient->establishment()->update($establishment, $establishment_id);
+    // $responseEstablishment = $ipagClient->establishment()->update($establishment, $establishment_tid);
     // dd($responseEstablishment);
 
     // Get
-    // $responseEstablishment = $ipagClient->establishment()->get($establishment_id);
+    // $responseEstablishment = $ipagClient->establishment()->get($establishment_tid);
     // dd($responseEstablishment);
 
     // List
     // $responseEstablishment = $ipagClient->establishment()->list();
     // dd($responseEstablishment);
 
-    //TODO: Fazer os endpoints de transações dos estabelecimento
-    // $ipagClient->establishment()->transaction()->
+    //** Transactions **//
+
+    // List All Establishment Transactions
+    // $responseTransactions = $ipagClient->establishment()->transaction()->list();
+    // dd($responseTransactions);
+
+    // List Transactions By Establishment
+    // $responseTransactions = $ipagClient->establishment()->transaction()->listByEstablishment($establishment_tid);
+    // dd($responseTransactions);
+
+    // Get Transaction By Establishment
+    // $responseTransactions = $ipagClient->establishment()->transaction()->getByEstablishment($establishment_tid, $transaction_tid);
+    // dd($responseTransactions);
+
+    /** Configs */
+
+    // Configurar Métodos de Pagamento
+
+    //$responseConfig = $ipagClient
+    //    ->establishment()
+    //    ->paymentMethods()
+    //    ->config($paymentMethod, $establishment_tid);
+
+    //dd($responseConfig);
+
+    //FIXME: Não funciona
+    // Configurar Antifraudes
+
+    $responseConfig = $ipagClient
+        ->establishment()
+        ->antifraud()
+        ->config($antifraud, $establishment_tid);
+
+    dd($responseConfig);
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;
+    // dd($e);
 }

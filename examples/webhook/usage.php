@@ -28,8 +28,8 @@ try {
     $webhook_id = 1;
 
     // Create
-    $responseWebhook = $ipagClient->webhook()->create(new \Ipag\Sdk\Model\Webhook);
-    dd($responseWebhook);
+    // $responseWebhook = $ipagClient->webhook()->create($webhook);
+    // dd($responseWebhook);
 
     // Get
     // $responseWebhook = $ipagClient->webhook()->get($webhook_id);

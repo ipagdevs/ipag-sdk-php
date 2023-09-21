@@ -22,6 +22,7 @@ class Owner extends Model
      *  + [`'email'`] string (opcional).
      *  + [`'cpf'`] string (opcional).
      *  + [`'phone'`] string (opcional)
+     *  + [`'birthdate'`] string (opcional)
      */
     public function __construct(?array $data = [])
     {
@@ -34,6 +35,7 @@ class Owner extends Model
         $schema->string('email')->nullable();
         $schema->string('cpf')->nullable();
         $schema->string('phone')->nullable();
+        $schema->string('birthdate')->nullable();
 
         return $schema->build();
     }
@@ -68,6 +70,20 @@ class Owner extends Model
             is_null($value) ?
             $value :
             Assert::value($value)->asDigits()->lbetween(10, 11)->get() ?? $ctx->raise('inválido')
+        );
+    }
+
+    protected function birthdate(): Mutator
+    {
+        return new Mutator(
+            null,
+            function ($value, $ctx) {
+                $d = \DateTime::createFromFormat('Y-m-d', $value);
+
+                return is_null($value) ||
+                    ($d && $d->format('Y-m-d') === $value) ?
+                    $value : $ctx->raise('inválido');
+            }
         );
     }
 
@@ -156,6 +172,28 @@ class Owner extends Model
     public function setPhone(?string $phone = null): self
     {
         $this->set('phone', $phone);
+        return $this;
+    }
+
+    /**
+     * Retorna o valor da propriedade birthdate.
+     *
+     * @return string|null
+     */
+    public function getBirthdate(): ?string
+    {
+        return $this->get('birthdate');
+    }
+
+    /**
+     * Seta o valor da propriedade birthdate.
+     *
+     * @param string|null $birthdate
+     * @return self
+     */
+    public function setBirthdate(?string $birthdate = null): self
+    {
+        $this->set('birthdate', $birthdate);
         return $this;
     }
 
