@@ -20,8 +20,7 @@ class VoucherEndpoint extends Endpoint
 
     public function create(Voucher $voucher): Response
     {
-        $response = $this->_POST($voucher->jsonSerialize());
-        return $response;
+        return $this->_POST($voucher->jsonSerialize());
     }
 
 }

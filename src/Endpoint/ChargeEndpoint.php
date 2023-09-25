@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\Charge;
 
 /**
@@ -18,12 +19,11 @@ class ChargeEndpoint extends Endpoint
      * Endpoint para criar um novo recurso `Charge`
      *
      * @param Charge $charge
-     * @return object
+     * @return Response
      */
-    public function create(Charge $charge): object
+    public function create(Charge $charge): Response
     {
-        $response = $this->_POST($charge->jsonSerialize());
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_POST($charge->jsonSerialize());
     }
 
     /**
@@ -31,35 +31,32 @@ class ChargeEndpoint extends Endpoint
      *
      * @param Charge $charge
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function update(Charge $charge, int $id): object
+    public function update(Charge $charge, int $id): Response
     {
-        $response = $this->_PUT($charge, ['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_PUT($charge, ['id' => $id]);
     }
 
     /**
      * Endpoint para obter um recurso `Charge`
      *
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function get(int $id): object
+    public function get(int $id): Response
     {
-        $response = $this->_GET(['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['id' => $id]);
     }
 
     /**
      * Endpoint para listar recursos `Charge`
      *
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function list(?array $filters = []): object
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters ?? []);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters ?? []);
     }
 }

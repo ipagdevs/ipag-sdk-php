@@ -20,7 +20,7 @@ try {
     //FIXME: Não funciona
     // Create
     $responseSplitRules = $ipagClient->splitRules()->create($splitRules, $transaction_id);
-    dd($responseSplitRules);
+    dd($responseSplitRules->getData());
 
 } catch (\Throwable $e) {
     echo $e->getMessage() . PHP_EOL;

@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\Establishment;
 
 /**
@@ -20,12 +21,11 @@ class EstablishmentEndpoint extends Endpoint
      * Endpoint para criar um recurso `Establishment`
      *
      * @param Establishment $establishment
-     * @return object
+     * @return Response
      */
-    public function create(Establishment $establishment): object
+    public function create(Establishment $establishment): Response
     {
-        $response = $this->_POST($establishment->jsonSerialize());
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_POST($establishment->jsonSerialize());
     }
 
     /**
@@ -33,36 +33,33 @@ class EstablishmentEndpoint extends Endpoint
      *
      * @param Establishment $establishment
      * @param string $id
-     * @return object
+     * @return Response
      */
-    public function update(Establishment $establishment, string $id): object
+    public function update(Establishment $establishment, string $id): Response
     {
-        $response = $this->_PUT($establishment, ['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_PUT($establishment, ['id' => $id]);
     }
 
     /**
      * Endpoint para obter um recurso `Establishment`
      *
      * @param string $id
-     * @return object
+     * @return Response
      */
-    public function get(string $id): object
+    public function get(string $id): Response
     {
-        $response = $this->_GET(['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['id' => $id]);
     }
 
     /**
      * Endpoint para listar recursos `Establishment`
      *
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function list(?array $filters = []): object
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters ?? []);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters ?? []);
     }
 
     /**

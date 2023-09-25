@@ -9,7 +9,7 @@ $ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', Ip
 
 $voucher = new \Ipag\Sdk\Model\Voucher([
     'order' => [
-        'order_id' => '100016',
+        'order_id' => '100018',
         'amount' => 699.99,
         'created_at' => '2020-08-04 21:45:10',
         'callback_url' => 'https://www.yahoo.com.br/callback'
@@ -38,7 +38,7 @@ try {
 
     // Create
     $responseVoucher = $ipagClient->voucher()->create($voucher);
-    dd($responseVoucher);
+    dd($responseVoucher->getData());
 
 } catch (\Throwable $th) {
     echo $th->getMessage() . PHP_EOL;

@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\PaymentMethod;
 
 /**
@@ -21,17 +22,16 @@ class EstablishmentPaymentMethodsEndpoint extends Endpoint
      *
      * @param PaymentMethod $paymentMethod
      * @param string $establishment_id
-     * @return object
+     * @return Response
      */
-    public function config(PaymentMethod $paymentMethod, string $establishment_id): object
+    public function config(PaymentMethod $paymentMethod, string $establishment_id): Response
     {
-        $response = $this->_POST(
+        return $this->_POST(
             $paymentMethod->jsonSerialize(),
             [],
             [],
             "/{$establishment_id}/payment_methods"
         );
-        return json_decode(json_encode($response->getParsed()), FALSE);
     }
 
 }

@@ -8,8 +8,6 @@ use Ipag\Sdk\Exception\HttpClientException;
 
 $ipagClient = new IpagClient('master', '88E1-CFD86E49-A4351D43-C694871D-F3C0', IpagEnvironment::LOCAL);
 
-// $ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
-
 $establishment = new \Ipag\Sdk\Model\Establishment([
     'name' => 'Estabelecimento de teste',
     'email' => 'teste@estabteste.com.br',
@@ -71,54 +69,52 @@ try {
 
     // Create
     // $responseEstablishment = $ipagClient->establishment()->create(new \Ipag\Sdk\Model\Establishment);
-    // dd($responseEstablishment);
+    // dd($responseEstablishment->getData());
 
     // Update
     // $responseEstablishment = $ipagClient->establishment()->update($establishment, $establishment_tid);
-    // dd($responseEstablishment);
+    // dd($responseEstablishment->getData());
 
     // Get
     // $responseEstablishment = $ipagClient->establishment()->get($establishment_tid);
-    // dd($responseEstablishment);
+    // dd($responseEstablishment->getData());
 
     // List
     // $responseEstablishment = $ipagClient->establishment()->list();
-    // dd($responseEstablishment);
+    // dd($responseEstablishment->getData());
 
     //** Transactions **//
 
     // List All Establishment Transactions
     // $responseTransactions = $ipagClient->establishment()->transaction()->list();
-    // dd($responseTransactions);
+    // dd($responseTransactions->getData());
 
     // List Transactions By Establishment
     // $responseTransactions = $ipagClient->establishment()->transaction()->listByEstablishment($establishment_tid);
-    // dd($responseTransactions);
+    // dd($responseTransactions->getData());
 
     // Get Transaction By Establishment
     // $responseTransactions = $ipagClient->establishment()->transaction()->getByEstablishment($establishment_tid, $transaction_tid);
-    // dd($responseTransactions);
+    // dd($responseTransactions->getData());
 
     /** Configs */
 
     // Configurar Métodos de Pagamento
 
-    //$responseConfig = $ipagClient
-    //    ->establishment()
-    //    ->paymentMethods()
-    //    ->config($paymentMethod, $establishment_tid);
-
-    //dd($responseConfig);
+    // $responseConfig = $ipagClient
+    //     ->establishment()
+    //     ->paymentMethods()
+    //     ->config($paymentMethod, $establishment_tid);
+    // dd($responseConfig->getData());
 
     //FIXME: Não funciona
     // Configurar Antifraudes
 
-    $responseConfig = $ipagClient
-        ->establishment()
-        ->antifraud()
-        ->config($antifraud, $establishment_tid);
-
-    dd($responseConfig);
+    // $responseConfig = $ipagClient
+    //     ->establishment()
+    //     ->antifraud()
+    //     ->config($antifraud, $establishment_tid);
+    // dd($responseConfig);
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

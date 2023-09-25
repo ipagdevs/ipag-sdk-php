@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\Subscription;
 
 /**
@@ -18,12 +19,11 @@ class SubscriptionEndpoint extends Endpoint
      * Endpoint para criar um recurso `Subscription`
      *
      * @param Subscription $subscription
-     * @return object
+     * @return Response
      */
-    public function create(Subscription $subscription): object
+    public function create(Subscription $subscription): Response
     {
-        $response = $this->_POST($subscription->jsonSerialize());
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_POST($subscription->jsonSerialize());
     }
 
     /**
@@ -31,50 +31,45 @@ class SubscriptionEndpoint extends Endpoint
      *
      * @param Subscription $subscription
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function update(Subscription $subscription, int $id): object
+    public function update(Subscription $subscription, int $id): Response
     {
-        $response = $this->_PUT($subscription, ['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_PUT($subscription, ['id' => $id]);
     }
 
     /**
      * Endpoint para obter um recurso `Subscription`
      *
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function get(int $id): object
+    public function get(int $id): Response
     {
-        $response = $this->_GET(['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['id' => $id]);
     }
 
     /**
      * Endpoint para listar recursos `Subscription`
      *
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function list(?array $filters = []): object
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters ?? []);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters ?? []);
     }
 
     /**
      * Endpoint para Desvincular Token de um recurso `Subscription`
      *
      * @param integer $id
-     * @return void
+     * @return Response
      */
-    public function unlinkToken(int $id): bool
+    public function unlinkToken(int $id): Response
     {
         $this->location = "/service/subscriptions/{$id}/card_token";
-
-        $this->_DELETE(['id' => $id]);
-        return true;
+        return $this->_DELETE(['id' => $id]);
     }
 
     /**
@@ -83,18 +78,16 @@ class SubscriptionEndpoint extends Endpoint
      * @param integer $subscription_id
      * @param integer $invoice_number
      * @param string $action
-     * @return boolean|object
+     * @return Response
      */
     private function _actionsInstallmentPayment(int $subscription_id, int $invoice_number, string $action)
     {
         $this->location = '/service/resources/invoice_installments';
 
-        $response = $this->_POST(
+        return $this->_POST(
             ['subscription_id' => $subscription_id, 'invoice_number' => $invoice_number, 'action' => $action],
             ['subscription_id' => $subscription_id, 'invoice_number' => $invoice_number, 'action' => $action]
         );
-
-        return $action === 'schedule' ? true : json_decode(json_encode($response->getParsed()), FALSE);
     }
 
     /**
@@ -102,9 +95,9 @@ class SubscriptionEndpoint extends Endpoint
      *
      * @param integer $subscription_id
      * @param integer $invoice_number
-     * @return object
+     * @return Response
      */
-    public function payOffInstallment(int $subscription_id, int $invoice_number): object
+    public function payOffInstallment(int $subscription_id, int $invoice_number): Response
     {
         return $this->_actionsInstallmentPayment($subscription_id, $invoice_number, 'pay');
     }
@@ -114,11 +107,11 @@ class SubscriptionEndpoint extends Endpoint
      *
      * @param integer $subscription_id
      * @param integer $invoice_number
-     * @return object
+     * @return Response
      */
-    public function scheduleInstallmentPayment(int $subscription_id, int $invoice_number): bool
+    public function scheduleInstallmentPayment(int $subscription_id, int $invoice_number): Response
     {
-        return (bool) $this->_actionsInstallmentPayment($subscription_id, $invoice_number, 'schedule');
+        return $this->_actionsInstallmentPayment($subscription_id, $invoice_number, 'schedule');
     }
 
 }

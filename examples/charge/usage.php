@@ -35,21 +35,21 @@ try {
 
     // Create
     // $responseCharge = $ipagClient->charge()->create($charge);
-    // dd($responseCharge);
+    // dd($responseCharge->getData());
 
     // Update
     // $responseCharge = $ipagClient->charge()->update($charge, $charge_id);
-    // dd($responseCharge);
+    // dd($responseCharge->getData());
 
     // Get
     // $responseCharge = $ipagClient->charge()->get($charge_id);
-    // dd($responseCharge);
+    // dd($responseCharge->getData());
 
     // List
-    // $responseCharge = $ipagClient->charge()->list([
-    //     'is_active' => false,
-    // ]);
-    // dd($responseCharge);
+    $responseCharge = $ipagClient->charge()->list([
+        'is_active' => false,
+    ]);
+    dd($responseCharge->getData());
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

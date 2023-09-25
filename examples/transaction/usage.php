@@ -18,14 +18,15 @@ try {
     //     'order' => 'desc',
     //     'from_date' => '2023-08-29'
     // ]);
-    // dd($responseTransaction);
+    // dd($responseTransaction->getData());
 
     // Get
     // $responseTransaction = $client->transaction()->get($transaction_id);
-    // dd($responseTransaction);
+    // dd($responseTransaction->getData());
 
     // Liberar Recebíveis
-    $ok = $client->transaction()->releaseReceivables($seller_id, $transaction_id);
+    // $responseTransaction = $client->transaction()->releaseReceivables($seller_id, $transaction_id);
+    // dd($responseTransaction->getStatusCode());
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

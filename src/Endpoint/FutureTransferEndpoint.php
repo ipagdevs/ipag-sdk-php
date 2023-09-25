@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 
 /**
  * TransferEndpoint class
@@ -15,22 +16,37 @@ class FutureTransferEndpoint extends Endpoint
 {
     protected string $location = '/service/resources/future_transfers';
 
-    public function list(?array $filters = []): object
+    /**
+     * Endpoint para listar recursos `Future Transfer`
+     *
+     * @param array|null $filters
+     * @return Response
+     */
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters ?? []);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters ?? []);
     }
 
-    public function listBySellerId(int $sellerId): object
+    /**
+     * Endpoint para listar recursos `Future Transfer` vinculado a um `Seller` (Pesquisar por `Id`)
+     *
+     * @param integer $sellerId
+     * @return Response
+     */
+    public function listBySellerId(int $sellerId): Response
     {
-        $response = $this->_GET(['seller_id' => $sellerId]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['seller_id' => $sellerId]);
     }
 
-    public function listBySellerCpfCnpj(int $sellerCpfCnpj): object
+    /**
+     * Endpoint para listar recursos `Future Transfer` vinculado a um `Seller` (Pesquisar por `CpfCnpj`)
+     *
+     * @param integer $sellerCpfCnpj
+     * @return Response
+     */
+    public function listBySellerCpfCnpj(int $sellerCpfCnpj): Response
     {
-        $response = $this->_GET(['cpf_cnpj' => $sellerCpfCnpj]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['cpf_cnpj' => $sellerCpfCnpj]);
     }
 
 }

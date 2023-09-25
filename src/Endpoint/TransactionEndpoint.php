@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 
 /**
  * TransactionEndpoint class
@@ -17,24 +18,22 @@ class TransactionEndpoint extends Endpoint
      * Endpoint para obter um recurso Transaction
      *
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function get(int $id): object
+    public function get(int $id): Response
     {
-        $response = $this->_GET(['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['id' => $id]);
     }
 
     /**
      * Endpoint para listar recursos Transaction
      *
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function list(?array $filters = []): object
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters ?? []);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters ?? []);
     }
 
     /**
@@ -42,12 +41,11 @@ class TransactionEndpoint extends Endpoint
      *
      * @param integer $seller_id
      * @param integer $transaction_id
-     * @return boolean
+     * @return Response
      */
-    public function releaseReceivables(int $seller_id, int $transaction_id): bool
+    public function releaseReceivables(int $seller_id, int $transaction_id): Response
     {
-        $this->_POST(['seller_id' => $seller_id, 'transaction_id' => $transaction_id]);
-        return true;
+        return $this->_POST(['seller_id' => $seller_id, 'transaction_id' => $transaction_id]);
     }
 
 }

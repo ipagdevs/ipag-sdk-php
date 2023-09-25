@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\Token;
 
 /**
@@ -18,24 +19,22 @@ class TokenEndpoint extends Endpoint
      * Endpoint para criar um recurso `Token Card`
      *
      * @param Token $token
-     * @return object
+     * @return Response
      */
-    public function create(Token $token): object
+    public function create(Token $token): Response
     {
-        $response = $this->_POST($token->jsonSerialize());
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_POST($token->jsonSerialize());
     }
 
     /**
      * Endpoint para consultar um recurso `Token Card`
      *
      * @param string $token
-     * @return object
+     * @return Response
      */
-    public function get(string $token): object
+    public function get(string $token): Response
     {
-        $response = $this->_GET(['token' => $token]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['token' => $token]);
     }
 
 }

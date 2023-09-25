@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\SubscriptionPlan;
 
 /**
@@ -18,12 +19,11 @@ class SubscriptionPlanEndpoint extends Endpoint
      * Endpoint para criar um recurso `Subscription Plan`
      *
      * @param SubscriptionPlan $subscriptionPlan
-     * @return object
+     * @return Response
      */
-    public function create(SubscriptionPlan $subscriptionPlan): object
+    public function create(SubscriptionPlan $subscriptionPlan): Response
     {
-        $response = $this->_POST($subscriptionPlan->jsonSerialize());
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_POST($subscriptionPlan->jsonSerialize());
     }
 
     /**
@@ -31,48 +31,44 @@ class SubscriptionPlanEndpoint extends Endpoint
      *
      * @param SubscriptionPlan $subscriptionPlan
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function update(SubscriptionPlan $subscriptionPlan, int $id): object
+    public function update(SubscriptionPlan $subscriptionPlan, int $id): Response
     {
-        $response = $this->_PUT($subscriptionPlan, ['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_PUT($subscriptionPlan, ['id' => $id]);
     }
 
     /**
      * Endpoint para obter um recurso `Subscription Plan`
      *
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function get(int $id): object
+    public function get(int $id): Response
     {
-        $response = $this->_GET(['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['id' => $id]);
     }
 
     /**
      * Endpoint para deletar um recurso `Subscription Plan`
      *
      * @param integer $id
-     * @return boolean
+     * @return Response
      */
-    public function delete(int $id): bool
+    public function delete(int $id): Response
     {
-        $this->_DELETE(['id' => $id]);
-        return true;
+        return $this->_DELETE(['id' => $id]);
     }
 
     /**
      * Endpoint para listar recursos `Subscription Plan`
      *
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function list(?array $filters = []): object
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters ?? []);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters ?? []);
     }
 
 }

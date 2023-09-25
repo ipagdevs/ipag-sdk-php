@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\Antifraud;
 
 /**
@@ -21,17 +22,16 @@ class EstablishmentAntifraudEndpoint extends Endpoint
      *
      * @param Antifraud $antifraud
      * @param string $establishment_id
-     * @return object
+     * @return Response
      */
-    public function config(Antifraud $antifraud, string $establishment_id): object
+    public function config(Antifraud $antifraud, string $establishment_id): Response
     {
-        $response = $this->_POST(
+        return $this->_POST(
             $antifraud->jsonSerialize(),
             [],
             [],
             "/{$establishment_id}/antifraud_settings"
         );
-        return json_decode(json_encode($response->getParsed()), FALSE);
     }
 
 }

@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 
 /**
  * EstablishmentTransactionEndpoint class
@@ -19,12 +20,11 @@ class EstablishmentTransactionEndpoint extends Endpoint
      * Endpoint para listar todos os recursos `Transaction` dos recursos `Establishment`
      *
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function list(?array $filters = []): object
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters, [], '/transactions');
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters, [], '/transactions');
     }
 
     /**
@@ -32,12 +32,11 @@ class EstablishmentTransactionEndpoint extends Endpoint
      *
      * @param string $tid
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function listByEstablishment(string $tid, ?array $filters = []): object
+    public function listByEstablishment(string $tid, ?array $filters = []): Response
     {
-        $response = $this->_GET($filters, [], "/$tid/transactions");
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters, [], "/$tid/transactions");
     }
 
     /**
@@ -45,12 +44,11 @@ class EstablishmentTransactionEndpoint extends Endpoint
      *
      * @param string $tid
      * @param string $transactionTid
-     * @return object
+     * @return Response
      */
-    public function getByEstablishment(string $tid, string $transactionTid): object
+    public function getByEstablishment(string $tid, string $transactionTid): Response
     {
-        $response = $this->_GET([], [], "/{$tid}/transactions/{$transactionTid}");
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET([], [], "/{$tid}/transactions/{$transactionTid}");
     }
 
 }

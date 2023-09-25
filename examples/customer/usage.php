@@ -29,28 +29,29 @@ $customer = new Ipag\Sdk\Model\Customer([
 
 try {
 
-    $customer_id = 100001;
+    $customer_id = 100011;
 
     // Create
-    $responseCustomer = $client->customer()->create(new Customer());
-    dd($responseCustomer);
+    // $responseCustomer = $client->customer()->create($customer);
+    // dd($responseCustomer->getData());
 
     // Update
     // $responseCustomer = $client->customer()->update($customer, $customer_id);
-    // dd($responseCustomer);
+    // dd($responseCustomer->getData());
 
     // Get
     // $responseCustomer = $client->customer()->get($customer_id);
-    // dd($responseCustomer);
+    // dd($responseCustomer->getData());
 
     // List
     // $responseCustomer = $client->customer()->list([
     //     'name' => 'maria'
     // ]);
-    // dd($responseCustomer);
+    // dd($responseCustomer->getData());
 
     // Delete
-    // $ok = $client->customer()->delete($customer_id);
+    $responseCustomer = $client->customer()->delete($customer_id);
+    dd($responseCustomer->getStatusCode());
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

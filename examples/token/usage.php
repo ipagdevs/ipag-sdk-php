@@ -38,11 +38,11 @@ try {
 
     // Create
     // $responseToken = $client->token()->create($token);
-    // dd($responseToken);
+    // dd($responseToken->getData());
 
     // Get
     // $responseToken = $client->token()->get($token_value);
-    // dd($responseToken);
+    // dd($responseToken->getData());
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

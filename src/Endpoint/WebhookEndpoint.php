@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\Webhook;
 
 
@@ -21,48 +22,44 @@ class WebhookEndpoint extends Endpoint
      * Endpoint para criar um recurso `webhook`
      *
      * @param Webhook $webhook
-     * @return object
+     * @return Response
      */
-    public function create(Webhook $webhook): object
+    public function create(Webhook $webhook): Response
     {
-        $response = $this->_POST($webhook->jsonSerialize());
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_POST($webhook->jsonSerialize());
     }
 
     /**
      * Endpoint para obter um recurso `webhook`
      *
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function get(int $id): object
+    public function get(int $id): Response
     {
-        $response = $this->_GET(['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['id' => $id]);
     }
 
     /**
      * Endpoint para listar recursos `webhook`
      *
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function list(?array $filters = []): object
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters ?? []);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters ?? []);
     }
 
     /**
      * Endpoint para deletar um recurso `webhook`
      *
      * @param integer $id
-     * @return boolean
+     * @return Response
      */
-    public function delete(int $id): bool
+    public function delete(int $id): Response
     {
-        $this->_DELETE(['id' => $id]);
-        return true;
+        return $this->_DELETE(['id' => $id]);
     }
 
 }

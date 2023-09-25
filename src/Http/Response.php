@@ -28,7 +28,11 @@ class Response
 
     public function unSerialize(): self
     {
-        $this->data = $this->serializer ? $this->serializer->unserialize($this->raw) : null;
+        if (empty($this->raw) || gettype(json_decode($this->raw)) === 'string')
+            $this->data = null;
+        else
+            $this->data = $this->serializer ? $this->serializer->unserialize($this->raw) : null;
+
         return $this;
     }
 

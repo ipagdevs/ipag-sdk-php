@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\Seller;
 
 /**
@@ -18,12 +19,11 @@ class SellerEndpoint extends Endpoint
      * Endpoint para criar um recurso `Seller`
      *
      * @param Seller $seller
-     * @return object
+     * @return Response
      */
-    public function create(Seller $seller): object
+    public function create(Seller $seller): Response
     {
-        $response = $this->_POST($seller->jsonSerialize());
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_POST($seller->jsonSerialize());
     }
 
     /**
@@ -31,36 +31,33 @@ class SellerEndpoint extends Endpoint
      *
      * @param Seller $seller
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function update(Seller $seller, int $id): object
+    public function update(Seller $seller, int $id): Response
     {
-        $response = $this->_PUT($seller, ['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_PUT($seller, ['id' => $id]);
     }
 
     /**
      * Endpoint para obter um recurso `Seller`
      *
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function get(int $id): object
+    public function get(int $id): Response
     {
-        $response = $this->_GET(['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['id' => $id]);
     }
 
     /**
      * Endpoint para listar recursos `Seller`
      *
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function list(?array $filters = []): object
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters ?? []);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters ?? []);
     }
 
 }

@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Endpoint;
 
 use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\Model\Customer;
 
 /**
@@ -18,12 +19,11 @@ class CustomerEndpoint extends Endpoint
      * Endpoint para criar um recurso `Customer`
      *
      * @param Customer $customer
-     * @return object
+     * @return Response
      */
-    public function create(Customer $customer): object
+    public function create(Customer $customer): Response
     {
-        $response = $this->_POST($customer->jsonSerialize());
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_POST($customer->jsonSerialize());
     }
 
     /**
@@ -31,47 +31,43 @@ class CustomerEndpoint extends Endpoint
      *
      * @param Customer $customer
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function update(Customer $customer, int $id): object
+    public function update(Customer $customer, int $id): Response
     {
-        $response = $this->_PUT($customer, ['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_PUT($customer, ['id' => $id]);
     }
 
     /**
      * Endpoint para obter um recurso `Customer`
      *
      * @param integer $id
-     * @return object
+     * @return Response
      */
-    public function get(int $id): object
+    public function get(int $id): Response
     {
-        $response = $this->_GET(['id' => $id]);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET(['id' => $id]);
     }
 
     /**
      * Endpoint para deletar um recurso `Customer`
      *
      * @param integer $id
-     * @return boolean
+     * @return Response
      */
-    public function delete(int $id): bool
+    public function delete(int $id): Response
     {
-        $this->_DELETE(['id' => $id]);
-        return true;
+        return $this->_DELETE(['id' => $id]);
     }
 
     /**
      * Endpoint para listar recursos `Customer`
      *
      * @param array|null $filters
-     * @return object
+     * @return Response
      */
-    public function list(?array $filters = []): object
+    public function list(?array $filters = []): Response
     {
-        $response = $this->_GET($filters ?? []);
-        return json_decode(json_encode($response->getParsed()), FALSE);
+        return $this->_GET($filters ?? []);
     }
 }

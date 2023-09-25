@@ -29,19 +29,19 @@ try {
 
     // Create
     // $responseWebhook = $ipagClient->webhook()->create($webhook);
-    // dd($responseWebhook);
+    // dd($responseWebhook->getData());
 
     // Get
     // $responseWebhook = $ipagClient->webhook()->get($webhook_id);
-    // dd($responseWebhook);
+    // dd($responseWebhook->getData());
 
     // List
     // $responseWebhook = $ipagClient->webhook()->list();
-    // dd($responseWebhook);
+    // dd($responseWebhook->getData());
 
     // Delete
-    // $ok = $ipagClient->webhook()->delete($webhook_id);
-    // dd($ok);
+    // $responseWebhook = $ipagClient->webhook()->delete($webhook_id);
+    // dd($responseWebhook->getData());
 
 } catch (\Throwable $th) {
     echo $th->getMessage() . PHP_EOL;

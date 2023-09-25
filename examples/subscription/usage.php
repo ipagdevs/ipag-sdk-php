@@ -10,7 +10,7 @@ $client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEn
 
 $subscription = new \Ipag\Sdk\Model\Subscription([
     'is_active' => true,
-    'profile_id' => 'SUB_018',
+    'profile_id' => 'SUB_021',
     'plan_id' => 2,
     'customer_id' => 100003,
     'starting_date' => '2021-07-11',
@@ -25,34 +25,34 @@ try {
     $invoice_number = 1;
 
     // Create
-    // $responseSubscription = $client->subscription()->create(new \Ipag\Sdk\Model\Subscription);
-    // dd($responseSubscription);
+    // $responseSubscription = $client->subscription()->create($subscription);
+    // dd($responseSubscription->getData());
 
     // Update
     // $responseSubscription = $client->subscription()->update($subscription, $subscription_id);
-    // dd($responseSubscription);
+    // dd($responseSubscription->getData());
 
     // Get
     // $responseSubscription = $client->subscription()->get($subscription_id);
-    // dd($responseSubscription);
+    // dd($responseSubscription->getData());
 
     // List
     // $responseSubscription = $client->subscription()->list([
     //     'is_active' => true,
     // ]);
-    // dd($responseSubscription);
+    // dd($responseSubscription->getData());
 
     // Desvincular Token
-    // $ok = $client->subscription()->unlinkToken($subscription_id);
-    // dd($ok);
+    // $responseSubscription = $client->subscription()->unlinkToken($subscription_id);
+    // dd($responseSubscription->getData());
 
     // Quitar Parcela
     // $responseSubscription = $client->subscription()->payOffInstallment($subscription_id, $invoice_number);
-    // dd($responseSubscription);
+    // dd($responseSubscription->getData());
 
     // Agendar Pagamento de Parcela
-    // $ok = $client->subscription()->scheduleInstallmentPayment($subscription_id, $invoice_number);
-    // dd($ok);
+    // $responseSubscription = $client->subscription()->scheduleInstallmentPayment($subscription_id, $invoice_number);
+    // dd($responseSubscription->getData());
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

@@ -15,31 +15,31 @@ try {
 
     // List
     // $responseTransfers = $ipagClient->transfer()->list();
-    // dd($responseTransfers);
+    // dd($responseTransfers->getData());
 
     // Get
     // $responseTransfers = $ipagClient->transfer()->get($transfer_id);
-    // dd($responseTransfers);
+    // dd($responseTransfers->getData());
 
     // Sellers List
     // $responseTransfers = $ipagClient->transfer()->seller()->list();
-    // dd($responseTransfers);
+    // dd($responseTransfers->getData());
 
     // Sellers Get
     // $responseTransfers = $ipagClient->transfer()->seller()->get($transfer_id);
-    // dd($responseTransfers);
+    // dd($responseTransfers->getData());
 
     // Future List
     // $responseTransfers = $ipagClient->transfer()->future()->list();
-    // dd($responseTransfers);
+    // dd($responseTransfers->getData());
 
     // Future List Seller By Id
     // $responseTransfers = $ipagClient->transfer()->future()->listBySellerId($seller_id);
-    // dd($responseTransfers);
+    // dd($responseTransfers->getData());
 
     // Future List Seller By CpfCnpj
     // $responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($seller_cpf);
-    // dd($responseTransfers);
+    // dd($responseTransfers->getData());
 
 } catch (\Throwable $th) {
     echo $th->getMessage() . PHP_EOL;
