@@ -10,6 +10,7 @@ $client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEn
 
 try {
 
+    $seller_id = 100014;
     $transaction_id = 28;
 
     // List
@@ -23,9 +24,8 @@ try {
     // $responseTransaction = $client->transaction()->get($transaction_id);
     // dd($responseTransaction);
 
-    //TODO: Fazer
     // Liberar Recebíveis
-    // $client->transaction()->releaseReceivables();
+    $ok = $client->transaction()->releaseReceivables($seller_id, $transaction_id);
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

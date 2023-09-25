@@ -10,19 +10,19 @@
 - [IpagClient](#ipagclient)
   - [Autenticação](#autenticação)
 - [Cliente (Customer)](#cliente-customer)
-  - [Novo Cliente](#novo-cliente)
+  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Novo Cliente](#novo-cliente)
   - [Alterar Cliente](#alterar-cliente)
   - [Obter Cliente](#obter-cliente)
   - [Listar Clientes](#listar-clientes)
   - [Deletar Cliente](#deletar-cliente)
 - [Plano de Assinatura (Subscription Plan)](#plano-de-assinatura-subscription-plan)
-  - [Novo Plano](#novo-plano-de-assinatura)
+  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Novo Plano](#novo-plano-de-assinatura)
   - [Alterar Plano](#alterar-plano-de-assinatura)
   - [Obter Plano](#obter-plano-de-assinatura)
   - [Listar Planos](#listar-planos-de-assinatura)
   - [Deletar Plano](#deletar-plano-de-assinatura)
 - [Assinatura (Subscription)](#assinatura-subscription)
-  - [Nova Assinatura](#nova-assinatura)
+  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Nova Assinatura](#nova-assinatura)
   - [Alterar Assinatura](#alterar-assinatura)
   - [Obter Assinatura](#obter-assinatura)
   - [Listar Assinaturas](#listar-assinaturas)
@@ -34,15 +34,15 @@
   - [Listar Transações](#listar-transações)
   - [Liberar Recebíveis da Transação](#liberar-recebíveis-da-transação) (not implemented yet)
 - [Token (Card Token)](#token-card-token)
-  - [Novo Token](#novo-token)
+  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Novo Token](#novo-token)
   - [Obter Token](#obter-token)
 - [Cobrança (Charge)](#cobrança-charge)
-  -  [Nova Cobrança](#nova-cobrança)
+  -  <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Nova Cobrança](#nova-cobrança)
   -  [Alterar Cobrança](#alterar-cobrança)
   -  [Obter Cobrança](#obter-cobrança)
   -  [Listar Cobranças](#listar-cobranças)
 - [Estabelecimento (Establishment)](#estabelecimento-establishment)
-  - [Novo Estabelecimento](#novo-estabelecimento)
+  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Novo Estabelecimento](#novo-estabelecimento)
   - [Alterar Estabelecimento](#alterar-estabelecimento)
   - [Obter Estabelecimento](#obter-estabelecimento)
   - [Listar Estabelecimentos](#listar-estabelecimentos)
@@ -50,12 +50,12 @@
     - [Listar todas Transações dos Estabelecimentos](#listar-todas-transações-dos-estabelecimentos)
     - [Listar Transações dos Estabelecimentos](#listar-transações-dos-estabelecimentos)
     - [Obter Transação de um Estabelecimento](#obter-transação-de-um-estabelecimento)
- + [Métodos de Pagamento (Payment Methods)](#métodos-de-pagamento-payment-methods)
-   - [Configurar Métodos de Pagamento](#configurar-métodos-de-pagamento)
- + [Antifraudes (Antifraud)](#antifraudes-antifraud)
-   - [Configurar Antifraudes](#configurar-antifraudes)
+  + [Métodos de Pagamento (Payment Methods)](#métodos-de-pagamento-payment-methods)
+    - [Configurar Métodos de Pagamento](#configurar-métodos-de-pagamento)
+  + [Antifraudes (Antifraud)](#antifraudes-antifraud)
+    - [Configurar Antifraudes](#configurar-antifraudes)
 - [Vendedor (Seller)](#vendedor-seller)
-   - [Novo Vendedor](#novo-vendedor)
+   - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Novo Vendedor](#novo-vendedor)
    - [Alterar Vendedor](#alterar-vendedor)
    - [Obter Vendedor](#obter-vendedor)
    - [Listar Vendedores](#listar-Vendedores)
@@ -70,14 +70,16 @@
      - [Listar Lançamentos Futuros de Vendedor (Por Id)](#listar-lançamentos-futuros-de-vendedor-por-id)
      - [Listar Lançamentos Futuros de Vendedor (Por CPF/CNPJ)](#listar-lançamentos-futuros-de-vendedor-por-cpf-cnpj)
 - [Link de Pagamento (Payment Links)](#link-de-pagamento-payment-links)
-     - [Novo Link de Pagamento](#novo-link-de-pagamento)
+     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Novo Link de Pagamento](#novo-link-de-pagamento)
      - [Obter Link de Pagamento (Por Id)](#obter-link-de-pagamento-por-id)
      - [Obter Link de Pagamento (Por External Code)](#obter-link-de-pagamento-por-external-code)
 - [Webhook](#webhook)
-     - [Novo Webhook](#novo-webhook)
+     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Novo Webhook](#novo-webhook)
      - [Obter Webhook](#obter-webhook)
      - [Listar Webhooks](#listar-webhooks)
      - [Deletar Webhook](#deletar-webhook)
+- [Voucher](#voucher)
+     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-FF9A00.svg?style=for-the-badge" /> [Novo Voucher](#novo-voucher)
 - [Testes](#testes)
 - [Licença](#licença)
 - [Documentação](#documentação)
@@ -596,6 +598,20 @@ $responseTransactions = $ipagClient->establishment()->transaction()->getByEstabl
 
 ## Métodos de Pagamento (Payment Methods)
 
+```php
+$paymentMethod = new \Ipag\Sdk\Model\PaymentMethod([
+    'acquirer' => 'stone',
+    'priority' => 100,
+    'environment' => 'test',
+    'capture' => true,
+    'retry' => true,
+    'credentials' => [
+        'stone_code' => 'xxxxx',
+        'stone_sak' => 'xxxxxx'
+    ],
+]);
+```
+
 ### Configurar Métodos de Pagamento
 
 ```php
@@ -606,6 +622,30 @@ $responseConfig = $ipagClient
 ```
 
 ## Antifraudes (Antifraud)
+
+```php
+$antifraud = new \Ipag\Sdk\Model\Antifraud(
+    [
+        "provider" => [
+            "name" => "redshield",
+            "credentials" => [
+                "token" => "xxxxxxxx",
+                "entityId" => "xxxxxxxx",
+                "channelId" => "xxxxxxxx",
+                "serviceId" => "xxxxxxxx"
+            ]
+        ],
+        "settings" => [
+            "enable" => true,
+            "environment" => "test",
+            "consult_mode" => "auto",
+            "capture_on_approval" => false,
+            "cancel_on_refused" => true,
+            "review_score_threshold" => 0.8
+        ]
+    ]
+);
+```
 
 ### Configurar Antifraudes
 
@@ -836,6 +876,71 @@ $responseWebhook = $ipagClient->webhook()->list();
 
 ```php
 $ok = $ipagClient->webhook()->delete($webhook_id);
+```
+
+# Voucher
+
+> Exemplo completo: [examples/voucher/usage.php](./examples/voucher/usage.php)
+
+```php
+$voucher = new \Ipag\Sdk\Model\Voucher([
+    'order' => [
+        'order_id' => '100015',
+        'amount' => 699.99,
+        'created_at' => '2020-08-04 21:45:10',
+        'callback_url' => 'https://www.yahoo.com.br/callback'
+    ],
+    'seller' => [
+        'cpf_cnpj' => '854.508.440-42',
+    ],
+    'customer' => [
+        'name' => 'FULANO DA SILVA',
+        'cpf_cnpj' => '949.373.210-05',
+        'email' => 'fulano@mail.me',
+        'phone' => '(11) 99780-1000',
+        'birthdate' => '1990-10-10',
+        'address' => [
+            'street' => 'Av. Brasil',
+            'number' => '1000',
+            'district' => 'Centro',
+            'complement' => 'Ap 451',
+            'city' => 'São Paulo',
+            'state' => 'SP'
+        ]
+    ]
+]);
+```
+ou
+```php
+$voucher = (new \Ipag\Sdk\Model\Voucher)
+    ->setOrder(
+        (new \Ipag\Sdk\Model\Order)
+            ->setOrderId(
+                '1000077'
+            )
+    )
+    ->setSeller(
+        (new \Ipag\Sdk\Model\Seller)
+            ->setCpfCnpj(
+                '074.598.263-83'
+            )
+    )
+    ->setCustomer(
+        (new \Ipag\Sdk\Model\Customer)
+            ->setName(
+                'FULANO DA SILVA'
+            )
+            ->setAddress(
+                (new \Ipag\Sdk\Model\Address)
+                    ->setStreet('Av. Brasil')
+            )
+    );
+```
+
+### Novo Voucher
+
+```php
+$responseVoucher = $ipagClient->voucher()->create($voucher);
 ```
 
 ## Testes

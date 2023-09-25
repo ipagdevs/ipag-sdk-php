@@ -65,7 +65,7 @@ abstract class Client implements CompositePathInterface
 
     protected function responseReceived(Response $response): Response
     {
-        return $response;
+        return $response->unSerialize();
     }
 
     protected function exceptionThrown(Throwable $e): void

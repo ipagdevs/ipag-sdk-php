@@ -40,13 +40,11 @@ class TransferEndpoint extends Endpoint
         return json_decode(json_encode($response->getParsed()), FALSE);
     }
 
-    //TODO: Testar endpoint
     public function seller(): SellerTransferEndpoint
     {
         return SellerTransferEndpoint::make($this->parent, $this->parent);
     }
 
-    //TODO: Testar endpoint
     public function future(): FutureTransferEndpoint
     {
         return FutureTransferEndpoint::make($this->parent, $this->parent);

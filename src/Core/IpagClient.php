@@ -8,11 +8,13 @@ use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Endpoint\EstablishmentEndpoint;
 use Ipag\Sdk\Endpoint\PaymentLinksEndpoint;
 use Ipag\Sdk\Endpoint\SellerEndpoint;
+use Ipag\Sdk\Endpoint\SplitRulesEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionPlanEndpoint;
 use Ipag\Sdk\Endpoint\TokenEndpoint;
 use Ipag\Sdk\Endpoint\TransactionEndpoint;
 use Ipag\Sdk\Endpoint\TransferEndpoint;
+use Ipag\Sdk\Endpoint\VoucherEndpoint;
 use Ipag\Sdk\Endpoint\WebhookEndpoint;
 use Ipag\Sdk\Http\Client\GuzzleHttpClient;
 use Ipag\Sdk\IO\JsonSerializer;
@@ -105,6 +107,16 @@ class IpagClient extends Client
     public function seller(): SellerEndpoint
     {
         return SellerEndpoint::make($this, $this);
+    }
+
+    public function splitRules(): SplitRulesEndpoint
+    {
+        return SplitRulesEndpoint::make($this, $this);
+    }
+
+    public function voucher(): VoucherEndpoint
+    {
+        return VoucherEndpoint::make($this, $this);
     }
 
 }

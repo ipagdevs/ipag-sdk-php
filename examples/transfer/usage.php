@@ -11,7 +11,7 @@ $ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', Ip
 try {
     $transfer_id = 1;
     $seller_id = 1;
-    $seller_cpf = '07459826383';
+    $seller_cpf = '85450844042';
 
     // List
     // $responseTransfers = $ipagClient->transfer()->list();
@@ -21,7 +21,6 @@ try {
     // $responseTransfers = $ipagClient->transfer()->get($transfer_id);
     // dd($responseTransfers);
 
-    //TODO: testar mais tarde, quando tiver registros
     // Sellers List
     // $responseTransfers = $ipagClient->transfer()->seller()->list();
     // dd($responseTransfers);

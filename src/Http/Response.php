@@ -26,10 +26,18 @@ class Response
         $this->statusCode = $statusCode;
     }
 
+    public function unSerialize(): self
+    {
+        $this->data = $this->serializer ? $this->serializer->unserialize($this->raw) : null;
+        return $this;
+    }
+
     public function getParsed(): ?array
     {
+        $this->unSerialize();
+
         return [
-            'data' => $this->serializer ? $this->serializer->unserialize($this->raw) : null,
+            'data' => $this->data,
             'headers' => $this->headers,
             'statusCode' => $this->statusCode
         ];
@@ -53,6 +61,11 @@ class Response
     public function getStatusCode(): ?int
     {
         return $this->statusCode;
+    }
+
+    public function getData(): ?array
+    {
+        return $this->data;
     }
 
     public function setSerializer(?SerializerInterface $serializer): void

@@ -46,10 +46,8 @@ class TransactionEndpoint extends Endpoint
      */
     public function releaseReceivables(int $seller_id, int $transaction_id): bool
     {
-        $response = $this->_POST(['seller_id' => $seller_id, 'transaction_id' => $transaction_id]);
-
-        //TODO: O que retorna?
-        dd($response);
+        $this->_POST(['seller_id' => $seller_id, 'transaction_id' => $transaction_id]);
+        return true;
     }
 
 }
