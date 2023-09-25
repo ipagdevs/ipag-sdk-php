@@ -42,15 +42,14 @@ $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod([
 
 $antifraud = new \Ipag\Sdk\Model\Antifraud(
     [
-        "provider" => [
-            "name" => "redshield",
-            "credentials" => [
-                "token" => "xxxxxxxx",
-                "entityId" => "xxxxxxxx",
-                "channelId" => "xxxxxxxx",
-                "serviceId" => "xxxxxxxx"
-            ]
-        ],
+        "provider" => (
+            new Ipag\Sdk\Support\Provider\Antifraudes\RedShieldProvider([
+            "token" => "xxxxxxxx",
+            "entityId" => "xxxxxxxx",
+            "channelId" => "xxxxxxxx",
+            "serviceId" => "xxxxxxxx"
+            ])
+        )->jsonSerialize(),
         "settings" => [
             "enable" => true,
             "environment" => "test",
