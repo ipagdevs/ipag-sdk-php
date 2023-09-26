@@ -14,23 +14,23 @@ $splitRules = new \Ipag\Sdk\Model\SplitRules([
 
 try {
 
-    $split_rule_id = 6;
-    $transaction_id = 27;
+    $splitRuleId = 6;
+    $transactionId = 27;
 
     // Create
-    // $responseSplitRules = $ipagClient->splitRules()->create($splitRules, $transaction_id);
+    // $responseSplitRules = $ipagClient->splitRules()->create($splitRules, $transactionId);
     // dd($responseSplitRules->getData());
 
     // Get
-    // $responseSplitRules = $ipagClient->splitRules()->get($split_rule_id, $transaction_id);
+    // $responseSplitRules = $ipagClient->splitRules()->get($splitRuleId, $transactionId);
     // dd($responseSplitRules->getData());
 
     // List
-    // $responseSplitRules = $ipagClient->splitRules()->list($transaction_id);
+    // $responseSplitRules = $ipagClient->splitRules()->list($transactionId);
     // dd($responseSplitRules->getData());
 
     // Deletar
-    // $responseSplitRules = $ipagClient->splitRules()->delete($split_rule_id, $transaction_id);
+    // $responseSplitRules = $ipagClient->splitRules()->delete($splitRuleId, $transactionId);
     // dd($responseSplitRules->getData()['data']);
 
 } catch (\Throwable $e) {
