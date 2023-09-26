@@ -14,13 +14,24 @@ $splitRules = new \Ipag\Sdk\Model\SplitRules([
 
 try {
 
-    $split_rule_id = 1;
+    $split_rule_id = 6;
     $transaction_id = 27;
 
-    //FIXME: Não funciona
     // Create
-    $responseSplitRules = $ipagClient->splitRules()->create($splitRules, $transaction_id);
-    dd($responseSplitRules->getData());
+    // $responseSplitRules = $ipagClient->splitRules()->create($splitRules, $transaction_id);
+    // dd($responseSplitRules->getData());
+
+    // Get
+    // $responseSplitRules = $ipagClient->splitRules()->get($split_rule_id, $transaction_id);
+    // dd($responseSplitRules->getData());
+
+    // List
+    // $responseSplitRules = $ipagClient->splitRules()->list($transaction_id);
+    // dd($responseSplitRules->getData());
+
+    // Deletar
+    // $responseSplitRules = $ipagClient->splitRules()->delete($split_rule_id, $transaction_id);
+    // dd($responseSplitRules->getData()['data']);
 
 } catch (\Throwable $e) {
     echo $e->getMessage() . PHP_EOL;

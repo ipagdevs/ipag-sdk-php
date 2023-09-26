@@ -37,8 +37,8 @@ class SplitRulesEndpoint extends Endpoint
     public function get(int $split_rule_id, int $transaction_id): Response
     {
         return $this->_GET([
-            'split_rule_id' => $split_rule_id,
-            'transaction_id' => $transaction_id
+            'id' => $split_rule_id,
+            'transaction' => $transaction_id
         ]);
     }
 
@@ -63,8 +63,8 @@ class SplitRulesEndpoint extends Endpoint
     public function delete(int $split_rule_id, int $transaction_id): Response
     {
         return $this->_DELETE([
-            'split_rule_id' => $split_rule_id,
-            'transaction_id' => $transaction_id
+            'id' => $split_rule_id,
+            'transaction' => $transaction_id
         ]);
     }
 

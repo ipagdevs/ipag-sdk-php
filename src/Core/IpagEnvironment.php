@@ -39,7 +39,7 @@ class IpagEnvironment extends Environment
         return self::$envWebhook;
     }
 
-    public function paymentMethod(): IpagEnvironmentMethod
+    public static function paymentMethod(): IpagEnvironmentMethod
     {
         if (!self::$envMethod)
             self::$envMethod = new IpagEnvironmentMethod;
