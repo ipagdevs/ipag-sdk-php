@@ -50,6 +50,7 @@ final class Customer extends Model
         $schema->string('email')->nullable();
         $schema->string('phone')->nullable();
         $schema->string('cpf_cnpj')->nullable();
+        $schema->string('tax_receipt')->nullable();
         $schema->string('business_name')->nullable();
 
         $schema->string('birthdate')->nullable()->isHidden(); //Y-m-d ou d/m/Y
@@ -234,6 +235,39 @@ final class Customer extends Model
             $value :
             Assert::value($value)->asCpf(false)->or()->asCnpj(false)->get() ?? $ctx->raise('inválido')
         );
+    }
+
+    protected function tax_receipt(): Mutator
+    {
+        return new Mutator(
+            null,
+            fn($value, $ctx) =>
+            is_null($value) ?
+            $value :
+            Assert::value($value)->asCpf(false)->or()->asCnpj(false)->get() ?? $ctx->raise('inválido')
+        );
+    }
+
+    /**
+     * Retorna o valor da propriedade tax_receipt.
+     *
+     * @return string|null
+     */
+    public function getTaxReceipt(): ?string
+    {
+        return $this->get('tax_receipt');
+    }
+
+    /**
+     * Seta o valor da propriedade tax_receipt.
+     *
+     * @param string|null $taxReceipt
+     * @return self
+     */
+    public function setTaxReceipt(?string $taxReceipt = null): self
+    {
+        $this->set('tax_receipt', $taxReceipt);
+        return $this;
     }
 
     /**

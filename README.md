@@ -1,6 +1,6 @@
 # iPag PHP client SDK
 
-> A ferramenta certa para uma rápida e segura integração com o iPag e a sua aplicação PHP
+> A ferramenta certa para uma rápida e segura integração com o iPag e a sua aplicação PHP.
 
 **Índice**
 
@@ -10,81 +10,83 @@
 - [IpagClient](#ipagclient)
   - [Autenticação](#autenticação)
 - [Cliente (Customer)](#cliente-customer)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Cliente](#novo-cliente)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Cliente](#alterar-cliente)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Cliente](#obter-cliente)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Clientes](#listar-clientes)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Deletar Cliente](#deletar-cliente)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Cliente](#novo-cliente)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Cliente](#alterar-cliente)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Cliente](#obter-cliente)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Clientes](#listar-clientes)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Deletar Cliente](#deletar-cliente)
 - [Plano de Assinatura (Subscription Plan)](#plano-de-assinatura-subscription-plan)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Plano](#novo-plano-de-assinatura)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Plano](#alterar-plano-de-assinatura)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Plano](#obter-plano-de-assinatura)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Planos](#listar-planos-de-assinatura)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Deletar Plano](#deletar-plano-de-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Plano](#novo-plano-de-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Plano](#alterar-plano-de-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Plano](#obter-plano-de-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Planos](#listar-planos-de-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Deletar Plano](#deletar-plano-de-assinatura)
 - [Assinatura (Subscription)](#assinatura-subscription)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Nova Assinatura](#nova-assinatura)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Assinatura](#alterar-assinatura)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Assinatura](#obter-assinatura)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Assinaturas](#listar-assinaturas)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Desvincular Token da assinatura](#desvincular-token-da-assinatura)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Quitar Parcela da Assinatura](#quitar-parcela-da-assinatura)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Agendar Parcelamento da Assinatura](#agendar-parcelamento-da-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Nova Assinatura](#nova-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Assinatura](#alterar-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Assinatura](#obter-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Assinaturas](#listar-assinaturas)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Desvincular Token da assinatura](#desvincular-token-da-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Quitar Parcela da Assinatura](#quitar-parcela-da-assinatura)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Agendar Parcelamento da Assinatura](#agendar-parcelamento-da-assinatura)
 - [Transação (Transaction)](#transação-transaction)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Transação](#obter-transação)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Transações](#listar-transações)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Liberar Recebíveis da Transação](#liberar-recebíveis-da-transação) (not implemented yet)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Transação](#obter-transação)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Transações](#listar-transações)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Liberar Recebíveis da Transação](#liberar-recebíveis-da-transação)
 - [Token (Card Token)](#token-card-token)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Token](#novo-token)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Token](#obter-token)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Token](#novo-token)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Token](#obter-token)
 - [Cobrança (Charge)](#cobrança-charge)
-  -  <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Nova Cobrança](#nova-cobrança)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Cobrança](#alterar-cobrança)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Cobrança](#obter-cobrança)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Cobranças](#listar-cobranças)
+  -  <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Nova Cobrança](#nova-cobrança)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Cobrança](#alterar-cobrança)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Cobrança](#obter-cobrança)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Cobranças](#listar-cobranças)
 - [Estabelecimento (Establishment)](#estabelecimento-establishment)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Estabelecimento](#novo-estabelecimento)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Estabelecimento](#alterar-estabelecimento)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Estabelecimento](#obter-estabelecimento)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Estabelecimentos](#listar-estabelecimentos)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Estabelecimento](#novo-estabelecimento)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Estabelecimento](#alterar-estabelecimento)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Estabelecimento](#obter-estabelecimento)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Estabelecimentos](#listar-estabelecimentos)
   + [Transações (Transactions)](#transações-transactions)
-    - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar todas Transações dos Estabelecimentos](#listar-todas-transações-dos-estabelecimentos)
-    - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Transações dos Estabelecimentos](#listar-transações-dos-estabelecimentos)
-    - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Transação de um Estabelecimento](#obter-transação-de-um-estabelecimento)
+    - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar todas Transações dos Estabelecimentos](#listar-todas-transações-dos-estabelecimentos)
+    - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Transações dos Estabelecimentos](#listar-transações-dos-estabelecimentos)
+    - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Transação de um Estabelecimento](#obter-transação-de-um-estabelecimento)
   + [Métodos de Pagamento (Payment Methods)](#métodos-de-pagamento-payment-methods)
-    - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Configurar Métodos de Pagamento](#configurar-métodos-de-pagamento)
+    - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Configurar Métodos de Pagamento](#configurar-métodos-de-pagamento)
   + [Antifraudes (Antifraud)](#antifraudes-antifraud)
-    - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Configurar Antifraudes](#configurar-antifraudes)
+    - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Configurar Antifraudes](#configurar-antifraudes)
 - [Regra de Split (Split Rules)](#regra-de-split-split-rules)
-    - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Nova Regra de Split](#nova-regra-de-split)
-    - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Regra de Split](#obter-regra-de-split)
-    - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Regras de Split](#listar-regras-de-split)
-    - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Deletar Regra de Split](#deletar-regra-de-split)
+    - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Nova Regra de Split](#nova-regra-de-split)
+    - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Regra de Split](#obter-regra-de-split)
+    - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Regras de Split](#listar-regras-de-split)
+    - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Deletar Regra de Split](#deletar-regra-de-split)
 - [Vendedor (Seller)](#vendedor-seller)
-   - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Vendedor](#novo-vendedor)
-   - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Vendedor](#alterar-vendedor)
-   - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Vendedor](#obter-vendedor)
-   - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Vendedores](#listar-Vendedores)
+   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Vendedor](#novo-vendedor)
+   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Vendedor](#alterar-vendedor)
+   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Vendedor](#obter-vendedor)
+   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Vendedores](#listar-Vendedores)
 - [Transferência (Transfer)](#transferência-transfer)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Transferências](#listar-transferências)
-  - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Transferência](#obter-transferência)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Transferências](#listar-transferências)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Transferência](#obter-transferência)
   +  [Transferência dos Vendedores (Sellers Transfers)](#transferência-dos-vendedores-sellers-transfers)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Transferências dos Vendedores](#listar-transferências-dos-vendedores)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Transferência de Vendedor](#obter-transferência-de-vendedor)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Transferências dos Vendedores](#listar-transferências-dos-vendedores)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Transferência de Vendedor](#obter-transferência-de-vendedor)
   +  [Lançamentos Futuros (Future Transfers)](#lançamentos-futuros-future-transfers)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Lançamentos Futuros](#listar-lançamentos-futuros)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Lançamentos Futuros de Vendedor (Por Id)](#listar-lançamentos-futuros-de-vendedor-por-id)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Lançamentos Futuros de Vendedor (Por CPF/CNPJ)](#listar-lançamentos-futuros-de-vendedor-por-cpf-cnpj)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Lançamentos Futuros](#listar-lançamentos-futuros)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Lançamentos Futuros de Vendedor (Por Id)](#listar-lançamentos-futuros-de-vendedor-por-id)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Lançamentos Futuros de Vendedor (Por CPF/CNPJ)](#listar-lançamentos-futuros-de-vendedor-por-cpf-cnpj)
 - [Link de Pagamento (Payment Links)](#link-de-pagamento-payment-links)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Link de Pagamento](#novo-link-de-pagamento)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Link de Pagamento (Por Id)](#obter-link-de-pagamento-por-id)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Link de Pagamento (Por External Code)](#obter-link-de-pagamento-por-external-code)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Link de Pagamento](#novo-link-de-pagamento)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Link de Pagamento (Por Id)](#obter-link-de-pagamento-por-id)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Link de Pagamento (Por External Code)](#obter-link-de-pagamento-por-external-code)
 - [Webhook](#webhook)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Webhook](#novo-webhook)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Webhook](#obter-webhook)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Webhooks](#listar-webhooks)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Deletar Webhook](#deletar-webhook)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Webhook](#novo-webhook)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Obter Webhook](#obter-webhook)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Listar Webhooks](#listar-webhooks)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/DEL-e27a7a.svg?style=for-the-badge" /> [Deletar Webhook](#deletar-webhook)
+- [Checkout](#checkout)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Checkout](#novo-checkout)
 - [Voucher](#voucher)
-     - <img style="vertical-align: middle" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Voucher](#novo-voucher)
+     - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Voucher](#novo-voucher)
 - [Testes](#testes)
 - [Licença](#licença)
 - [Documentação](#documentação)
@@ -378,7 +380,7 @@ $responseTransaction = $ipagClient->transaction()->list([
 ### Liberar Recebíveis da Transação
 
 ```php
-
+$responseTransaction = $client->transaction()->releaseReceivables($seller_id, $transaction_id);
 ```
 
 # Token (Card Token)
@@ -921,6 +923,112 @@ $responseWebhook = $ipagClient->webhook()->list();
 
 ```php
 $ok = $ipagClient->webhook()->delete($webhook_id);
+```
+
+# Checkout
+
+> Exemplo completo: [examples/checkout/usage.php](./examples/checkout/usage.php)
+
+```php
+$checkout = new \Ipag\Sdk\Model\Checkout([
+    'customer' => [
+        "name" => "Fulano da Silva",
+        "tax_receipt" => "212.348.796-11",
+        "email" => "teste@email.com",
+        "phone" => "(11) 2222-3333",
+        "birthdate" => "1987-11-21",
+        "address" => [
+            "zipcode" => "01156060",
+            "street" => "Rua Júlio Gonzalez",
+            "number" => "1023",
+            "district" => "Barra Funda",
+            "complement" => "Sala 02",
+            "city" => "São Paulo",
+            "state" => "SP"
+        ]
+    ],
+    'installment_setting' => [
+        "max_installments" => 12,
+        "min_installment_value" => 5,
+        "interest" => 0,
+        "interest_free_installments" => 12
+    ],
+    'order' => [
+        "order_id" => "100001",
+        "amount" => "15.00",
+        "return_url" => "https://www.loja.com.br/callback",
+        "return_type" => "json"
+    ],
+    'products' => [
+        [
+            'name' => 'Smart TV LG 55 4K UHD',
+            "unit_price" => "3.999",
+            "quantity" => 1,
+            "sku" => "LG123",
+            "description" => "Experiência cristalina em 4K."
+        ],
+        [
+            'name' => 'LED Android TV 4K UHD LED',
+            "unit_price" => "2.310",
+            "quantity" => 1,
+            "sku" => "SAM123",
+            "description" => "Android TV de 126 cm (50)."
+        ],
+    ],
+    'split_rules' => [
+        [
+            "receiver" => "qwertyuiopasdfghjklzxcvbnm123456",
+            "percentage" => "50",
+            "charge_processing_fee" => true,
+        ],
+        [
+            "receiver" => "654321mnbvcxzlkjhgfdsapoiuytrewq",
+            "percentage" => "20"
+        ]
+    ],
+    'seller_id' => '100014',
+    'expires_in' => 60,
+]);
+```
+ou
+```php
+$checkout = (new \Ipag\Sdk\Model\Checkout())
+    ->setCustomer(
+        (new \Ipag\Sdk\Model\Customer)
+            ->setName('Lívia Julia Eduarda Barros')
+    )
+    ->setInstallmentSetting(
+        (new \Ipag\Sdk\Model\InstallmentSetting)
+            ->setMaxInstallments(12)
+    )
+    ->setOrder(
+        (new \Ipag\Sdk\Model\Order)
+            ->setOrderId('1000077')
+    )
+    ->addProduct(
+        (new \Ipag\Sdk\Model\Product())
+            ->setName('Smart TV LG 55 4K UHD')
+    )
+    ->addProduct(
+        (new \Ipag\Sdk\Model\Product())
+            ->setName('Smart TV 50" UHD 4K')
+    )
+    ->addSplitRule(
+        (new \Ipag\Sdk\Model\SplitRules)
+            ->setReceiverId('1000000')
+    )
+    ->addSplitRule(
+        (new \Ipag\Sdk\Model\SplitRules)
+            ->setReceiverId('1000001')
+    )
+    ->setSellerId('100014')
+    ->setExpiresIn(60);
+```
+
+### Novo Checkout
+
+```php
+$responseCheckout = $ipagClient->checkout()->create($checkout);
 ```
 
 # Voucher

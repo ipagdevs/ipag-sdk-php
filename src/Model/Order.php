@@ -34,6 +34,8 @@ class Order extends Model
         $schema->float('amount')->nullable();
         $schema->string('created_at')->nullable();
         $schema->string('callback_url')->nullable();
+        $schema->string('return_url')->nullable();
+        $schema->string('return_type')->nullable();
 
         return $schema->build();
     }
@@ -50,22 +52,6 @@ class Order extends Model
             )
         );
     }
-
-    /**
-    protected function created_at(): Mutator
-    {
-        return new Mutator(
-            null,
-            function ($value, $ctx) {
-                $d = \DateTime::createFromFormat('Y-m-d', $value);
-
-                return is_null($value) ||
-                    ($d && $d->format('Y-m-d') === $value) ?
-                    $value : $ctx->raise('inválido');
-            }
-        );
-    }
-    */
 
     /**
      * Retorna o valor da propriedade `order_id`.
@@ -152,6 +138,50 @@ class Order extends Model
     public function setCallbackUrl(?string $callbackUrl = null): self
     {
         $this->set('callback_url', $callbackUrl);
+        return $this;
+    }
+
+    /**
+     * Retorna o valor da propriedade `return_url`.
+     *
+     * @return string|null
+     */
+    public function getReturnUrl(): ?string
+    {
+        return $this->get('return_url');
+    }
+
+    /**
+     * Seta o valor da propriedade `return_url`.
+     *
+     * @param string|null $returnUrl
+     * @return self
+     */
+    public function setReturnUrl(?string $returnUrl = null): self
+    {
+        $this->set('return_url', $returnUrl);
+        return $this;
+    }
+
+    /**
+     * Retorna o valor da propriedade `return_type`.
+     *
+     * @return string|null
+     */
+    public function getReturnType(): ?string
+    {
+        return $this->get('return_type');
+    }
+
+    /**
+     * Seta o valor da propriedade `return_type`.
+     *
+     * @param string|null $returnType
+     * @return self
+     */
+    public function setReturnType(?string $returnType = null): self
+    {
+        $this->set('return_type', $returnType);
         return $this;
     }
 

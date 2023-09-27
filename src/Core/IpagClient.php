@@ -4,6 +4,7 @@ namespace Ipag\Sdk\Core;
 
 use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Endpoint\ChargeEndpoint;
+use Ipag\Sdk\Endpoint\CheckoutEndpoint;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Endpoint\EstablishmentEndpoint;
 use Ipag\Sdk\Endpoint\PaymentLinksEndpoint;
@@ -118,5 +119,17 @@ class IpagClient extends Client
     {
         return VoucherEndpoint::make($this, $this);
     }
+
+    public function checkout(): CheckoutEndpoint
+    {
+        return CheckoutEndpoint::make($this, $this);
+    }
+
+    /**
+    public function payment(): PaymentEndpoint
+    {
+        return PaymentEndpoint::make($this, $this);
+    }
+    */
 
 }
