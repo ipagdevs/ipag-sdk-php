@@ -3,7 +3,6 @@
 namespace Ipag\Sdk\Tests;
 
 use Ipag\Sdk\Util\StateUtil;
-use PHPUnit\Framework\TestCase;
 
 class StateUtilTest extends BaseTestCase
 {

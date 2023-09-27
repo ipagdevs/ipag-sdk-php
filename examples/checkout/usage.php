@@ -70,8 +70,8 @@ $checkout = new \Ipag\Sdk\Model\Checkout([
 try {
 
     // Create
-    $responseCheckout = $ipagClient->checkout()->create($checkout);
-    dd($responseCheckout->getData());
+    // $responseCheckout = $ipagClient->checkout()->create($checkout);
+    // dd($responseCheckout->getData());
 
 } catch (\Throwable $th) {
     echo $th->getMessage() . PHP_EOL;

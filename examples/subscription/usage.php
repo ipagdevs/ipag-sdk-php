@@ -21,19 +21,19 @@ $subscription = new \Ipag\Sdk\Model\Subscription([
 
 try {
 
-    $subscription_id = 1;
-    $invoice_number = 1;
+    $subscriptionId = 1;
+    $invoiceNumber = 1;
 
     // Create
     // $responseSubscription = $client->subscription()->create($subscription);
     // dd($responseSubscription->getData());
 
     // Update
-    // $responseSubscription = $client->subscription()->update($subscription, $subscription_id);
+    // $responseSubscription = $client->subscription()->update($subscription, $subscriptionId);
     // dd($responseSubscription->getData());
 
     // Get
-    // $responseSubscription = $client->subscription()->get($subscription_id);
+    // $responseSubscription = $client->subscription()->get($subscriptionId);
     // dd($responseSubscription->getData());
 
     // List
@@ -43,15 +43,15 @@ try {
     // dd($responseSubscription->getData());
 
     // Desvincular Token
-    // $responseSubscription = $client->subscription()->unlinkToken($subscription_id);
+    // $responseSubscription = $client->subscription()->unlinkToken($subscriptionId);
     // dd($responseSubscription->getData());
 
     // Quitar Parcela
-    // $responseSubscription = $client->subscription()->payOffInstallment($subscription_id, $invoice_number);
+    // $responseSubscription = $client->subscription()->payOffInstallment($subscriptionId, $invoiceNumber);
     // dd($responseSubscription->getData());
 
     // Agendar Pagamento de Parcela
-    // $responseSubscription = $client->subscription()->scheduleInstallmentPayment($subscription_id, $invoice_number);
+    // $responseSubscription = $client->subscription()->scheduleInstallmentPayment($subscriptionId, $invoiceNumber);
     // dd($responseSubscription->getData());
 
 } catch (HttpClientException $e) {

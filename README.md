@@ -182,13 +182,13 @@ $responseCustomer = $ipagClient->customer()->create($customer);
 ### Alterar Cliente
 
 ```php
-$responseCustomer = $ipagClient->customer()->update($customer, 100001);
+$responseCustomer = $ipagClient->customer()->update($customer, $customerId);
 ```
 
 ### Obter Cliente
 
 ```php
-$responseCustomer = $ipagClient->customer()->get(100001);
+$responseCustomer = $ipagClient->customer()->get($customerId);
 ```
 
 ### Listar Clientes
@@ -202,7 +202,7 @@ $responseCustomer = $ipagClient->customer()->list([
 ### Deletar Cliente
 
 ```php
-$ok = $ipagClient->customer()->delete(100001);
+$ok = $ipagClient->customer()->delete($customerId);
 ```
 
 # Plano de Assinatura (Subscription Plan)
@@ -258,13 +258,13 @@ $responseSubscriptionPlan = $ipagClient->subscriptionPlan()->create($subscriptio
 ### Alterar Plano de Assinatura
 
 ```php
-$responseSubscriptionPlan = $ipagClient->subscriptionPlan()->update($subscriptionPlan, 1);
+$responseSubscriptionPlan = $ipagClient->subscriptionPlan()->update($subscriptionPlan, $subscriptionPlanId);
 ```
 
 ### Obter Plano de Assinatura
 
 ```php
-$responseSubscriptionPlan = $ipagClient->subscriptionPlan()->get(1);
+$responseSubscriptionPlan = $ipagClient->subscriptionPlan()->get($subscriptionPlanId);
 ```
 
 ### Listar Planos de Assinatura
@@ -278,7 +278,7 @@ $responseSubscriptionPlan = $ipagClient->subscriptionPlan()->list([
 ### Deletar Plano de Assinatura
 
 ```php
-$ipagClient->subscriptionPlan()->delete(1);
+$ipagClient->subscriptionPlan()->delete($subscriptionPlanId);
 ```
 
 # Assinatura (Subscription)
@@ -323,13 +323,13 @@ $responseSubscription = $ipagClient->subscription()->create($subscription);
 ### Alterar Assinatura
 
 ```php
-$responseSubscription = $ipagClient->subscription()->update($subscription, $subscription_id);
+$responseSubscription = $ipagClient->subscription()->update($subscription, $subscriptionId);
 ```
 
 ### Obter Assinatura
 
 ```php
-$responseSubscription = $ipagClient->subscription()->get($subscription_id);
+$responseSubscription = $ipagClient->subscription()->get($subscriptionId);
 ```
 
 ### Listar Assinaturas
@@ -343,19 +343,19 @@ $responseSubscription = $ipagClient->subscription()->list([
 ### Desvincular Token da Assinatura
 
 ```php
-$ok = $ipagClient->subscription()->unlinkToken($subscription_id);
+$ok = $ipagClient->subscription()->unlinkToken($subscriptionId);
 ```
 
 ### Quitar Parcela da Assinatura
 
 ```php
-$responseSubscription = $ipagClient->subscription()->payOffInstallment($subscription_id, $invoice_number);
+$responseSubscription = $ipagClient->subscription()->payOffInstallment($subscriptionId, $invoiceNumber);
 ```
 
 ### Agendar Parcelamento da Assinatura
 
 ```php
-$ok = $ipagClient->subscription()->scheduleInstallmentPayment($subscription_id, $invoice_number);
+$ok = $ipagClient->subscription()->scheduleInstallmentPayment($subscriptionId, $invoiceNumber);
 ```
 
 # Transação (Transaction)
@@ -365,7 +365,7 @@ $ok = $ipagClient->subscription()->scheduleInstallmentPayment($subscription_id, 
 ### Obter Transação
 
 ```php
-$responseTransaction = $ipagClient->transaction()->get($transaction_id);
+$responseTransaction = $ipagClient->transaction()->get($transactionId);
 ```
 
 ### Listar Transações
@@ -380,7 +380,7 @@ $responseTransaction = $ipagClient->transaction()->list([
 ### Liberar Recebíveis da Transação
 
 ```php
-$responseTransaction = $client->transaction()->releaseReceivables($seller_id, $transaction_id);
+$responseTransaction = $client->transaction()->releaseReceivables($sellerId, $transactionId);
 ```
 
 # Token (Card Token)
@@ -441,7 +441,7 @@ $responseToken = $ipagClient->token()->create($token);
 ### Obter Token
 
 ```php
-$responseToken = $ipagClient->token()->get($token_value);
+$responseToken = $ipagClient->token()->get($tokenValue);
 ```
 
 # Cobrança (Charge)
@@ -504,13 +504,13 @@ $responseCharge = $ipagClient->charge()->create($charge);
 ### Alterar Cobrança
 
 ```php
-$responseCharge = $ipagClient->charge()->update($charge, $charge_id);
+$responseCharge = $ipagClient->charge()->update($charge, $chargeId);
 ```
 
 ### Obter Cobrança
 
 ```php
-$responseCharge = $ipagClient->charge()->get($charge_id);
+$responseCharge = $ipagClient->charge()->get($chargeId);
 ```
 
 ### Listar Cobranças
@@ -568,13 +568,13 @@ $responseEstablishment = $ipagClient->establishment()->create($establishment);
 ### Alterar Estabelecimento
 
 ```php
-$responseEstablishment = $ipagClient->establishment()->update($establishment, $establishment_tid);
+$responseEstablishment = $ipagClient->establishment()->update($establishment, $establishmentTid);
 ```
 
 ### Obter Estabelecimento
 
 ```php
-$responseEstablishment = $ipagClient->establishment()->get($establishment_tid);
+$responseEstablishment = $ipagClient->establishment()->get($establishmentTid);
 ```
 
 ### Listar Estabelecimentos
@@ -594,13 +594,13 @@ $responseTransactions = $ipagClient->establishment()->transaction()->list();
 ### Listar Transações dos Estabelecimentos
 
 ```php
-$responseTransactions = $ipagClient->establishment()->transaction()->listByEstablishment($establishment_tid);
+$responseTransactions = $ipagClient->establishment()->transaction()->listByEstablishment($establishmentTid);
 ```
 
 ### Obter Transação de um Estabelecimento
 
 ```php
-$responseTransactions = $ipagClient->establishment()->transaction()->getByEstablishment($establishment_tid, $transaction_tid);
+$responseTransactions = $ipagClient->establishment()->transaction()->getByEstablishment($establishmentTid, $transactionTid);
 ```
 
 ## Métodos de Pagamento (Payment Methods)
@@ -625,7 +625,7 @@ $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod([
 $responseConfig = $ipagClient
     ->establishment()
     ->paymentMethods()
-    ->config($paymentMethod, $establishment_tid);
+    ->config($paymentMethod, $establishmentTid);
 ```
 
 ## Antifraudes (Antifraud)
@@ -659,7 +659,7 @@ $antifraud = new \Ipag\Sdk\Model\Antifraud(
 $responseConfig = $ipagClient
     ->establishment()
     ->antifraud()
-    ->config($antifraud, $establishment_tid);
+    ->config($antifraud, $establishmentTid);
 ```
 
 # Regra de Split (Split Rules)
@@ -758,12 +758,12 @@ $responseSeller = $ipagClient->seller()->create($seller);
 
 ### Alterar Vendedor
 ```php
-$responseSeller = $ipagClient->seller()->update($seller, $seller_id);
+$responseSeller = $ipagClient->seller()->update($seller, $sellerId);
 ```
 
 ### Obter Vendedor
 ```php
-$responseSeller = $ipagClient->seller()->get($seller_id);
+$responseSeller = $ipagClient->seller()->get($sellerId);
 ```
 
 ### Listar Vendedores
@@ -784,7 +784,7 @@ $responseTransfers = $ipagClient->transfer()->list();
 ### Obter Transferência
 
 ```php
-$responseTransfers = $ipagClient->transfer()->get($transfer_id);
+$responseTransfers = $ipagClient->transfer()->get($transferId);
 ```
 
 ## Transferência dos Vendedores (Sellers Transfers)
@@ -798,7 +798,7 @@ $responseTransfers = $ipagClient->transfer()->seller()->list();
 ### Obter Transferência de Vendedor
 
 ```php
-$responseTransfers = $ipagClient->transfer()->seller()->get($transfer_id);
+$responseTransfers = $ipagClient->transfer()->seller()->get($transferId);
 ```
 
 ## Lançamentos Futuros (Future Transfers)
@@ -812,13 +812,13 @@ $responseTransfers = $ipagClient->transfer()->future()->list();
 ### Listar Lançamentos Futuros de Vendedor (Por Id)
 
 ```php
-$responseTransfers = $ipagClient->transfer()->future()->listBySellerId($seller_id);
+$responseTransfers = $ipagClient->transfer()->future()->listBySellerId($sellerId);
 ```
 
 ### Listar Lançamentos Futuros de Vendedor (Por CPF/CNPJ)
 
 ```php
-$responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($seller_cpf);
+$responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($sellerCpf);
 ```
 
 ## Link de Pagamento (Payment Links)
@@ -827,7 +827,7 @@ $responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($sel
 
 ```php
 $paymentLink = new \Ipag\Sdk\Model\PaymentLink([
-    'external_code' => '131',
+    'externalCode' => '131',
     'amount' => 0,
     'description' => 'LINK DE PAGAMENTO SUPER BACANA',
     'expireAt' => '2020-12-30 23:00:00',
@@ -865,13 +865,13 @@ $responsePaymentLink = $ipagClient->paymentLinks()->create($paymentLink);
 ### Obter Link de Pagamento (Por Id)
 
 ```php
-$responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLink_id);
+$responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLinkId);
 ```
 
 ### Obter Link de Pagamento (Por External Code)
 
 ```php
-$responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($external_code);
+$responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($externalCode);
 ```
 
 # Webhook
@@ -910,7 +910,7 @@ $responseWebhook = $ipagClient->webhook()->create($webhook);
 ### Obter Webhook
 
 ```php
-$responseWebhook = $ipagClient->webhook()->get($webhook_id);
+$responseWebhook = $ipagClient->webhook()->get($webhookId);
 ```
 
 ### Listar Webhooks
@@ -922,7 +922,7 @@ $responseWebhook = $ipagClient->webhook()->list();
 ### Deletar Webhook
 
 ```php
-$ok = $ipagClient->webhook()->delete($webhook_id);
+$ok = $ipagClient->webhook()->delete($webhookId);
 ```
 
 # Checkout
@@ -986,7 +986,7 @@ $checkout = new \Ipag\Sdk\Model\Checkout([
             "percentage" => "20"
         ]
     ],
-    'seller_id' => '100014',
+    'sellerId' => '100014',
     'expires_in' => 60,
 ]);
 ```

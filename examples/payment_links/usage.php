@@ -8,7 +8,7 @@ use Ipag\Sdk\Core\IpagEnvironment;
 $ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
 
 $paymentLink = new \Ipag\Sdk\Model\PaymentLink([
-    'external_code' => '133',
+    'externalCode' => '133',
     'amount' => 0,
     'description' => 'LINK DE PAGAMENTO SUPER BACANA',
     'expireAt' => '2020-12-30 23:00:00',
@@ -29,20 +29,20 @@ $paymentLink = new \Ipag\Sdk\Model\PaymentLink([
 
 try {
 
-    $paymentLink_id = 2;
+    $paymentLinkId = 2;
 
-    $external_code = 130;
+    $externalCode = 130;
 
     // Create
     // $responsePaymentLink = $ipagClient->paymentLinks()->create($paymentLink);
     // dd($responsePaymentLink->getData());
 
     // Get Id
-    // $responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLink_id);
+    // $responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLinkId);
     // dd($responsePaymentLink->getData());
 
     // Get External Code
-    // $responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($external_code);
+    // $responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($externalCode);
     // dd($responsePaymentLink->getData());
 
 } catch (\Throwable $th) {

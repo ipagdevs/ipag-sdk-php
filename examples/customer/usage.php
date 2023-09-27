@@ -5,7 +5,6 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpClientException;
-use Ipag\Sdk\Model\Customer;
 
 $client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
 
@@ -29,18 +28,18 @@ $customer = new Ipag\Sdk\Model\Customer([
 
 try {
 
-    $customer_id = 100011;
+    $customerId = 100011;
 
     // Create
     // $responseCustomer = $client->customer()->create($customer);
     // dd($responseCustomer->getData());
 
     // Update
-    // $responseCustomer = $client->customer()->update($customer, $customer_id);
+    // $responseCustomer = $client->customer()->update($customer, $customerId);
     // dd($responseCustomer->getData());
 
     // Get
-    // $responseCustomer = $client->customer()->get($customer_id);
+    // $responseCustomer = $client->customer()->get($customerId);
     // dd($responseCustomer->getData());
 
     // List
@@ -50,8 +49,8 @@ try {
     // dd($responseCustomer->getData());
 
     // Delete
-    $responseCustomer = $client->customer()->delete($customer_id);
-    dd($responseCustomer->getStatusCode());
+    // $responseCustomer = $client->customer()->delete($customerId);
+    // dd($responseCustomer->getStatusCode());
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

@@ -66,19 +66,19 @@ $antifraud = new \Ipag\Sdk\Model\Antifraud(
 
 try {
 
-    $establishment_tid = 'bb36c34eb6644ab9694315af7d68e629';
-    $transaction_tid = '33e75ff09dd601bbe69f351039152189';
+    $establishmentTid = 'bb36c34eb6644ab9694315af7d68e629';
+    $transactionTid = '33e75ff09dd601bbe69f351039152189';
 
     // Create
     // $responseEstablishment = $ipagClient->establishment()->create(new \Ipag\Sdk\Model\Establishment);
     // dd($responseEstablishment->getData());
 
     // Update
-    // $responseEstablishment = $ipagClient->establishment()->update($establishment, $establishment_tid);
+    // $responseEstablishment = $ipagClient->establishment()->update($establishment, $establishmentTid);
     // dd($responseEstablishment->getData());
 
     // Get
-    // $responseEstablishment = $ipagClient->establishment()->get($establishment_tid);
+    // $responseEstablishment = $ipagClient->establishment()->get($establishmentTid);
     // dd($responseEstablishment->getData());
 
     // List
@@ -92,11 +92,11 @@ try {
     // dd($responseTransactions->getData());
 
     // List Transactions By Establishment
-    // $responseTransactions = $ipagClient->establishment()->transaction()->listByEstablishment($establishment_tid);
+    // $responseTransactions = $ipagClient->establishment()->transaction()->listByEstablishment($establishmentTid);
     // dd($responseTransactions->getData());
 
     // Get Transaction By Establishment
-    // $responseTransactions = $ipagClient->establishment()->transaction()->getByEstablishment($establishment_tid, $transaction_tid);
+    // $responseTransactions = $ipagClient->establishment()->transaction()->getByEstablishment($establishmentTid, $transactionTid);
     // dd($responseTransactions->getData());
 
     /** Configs */
@@ -106,7 +106,7 @@ try {
     // $responseConfig = $ipagClient
     //     ->establishment()
     //     ->paymentMethods()
-    //     ->config($paymentMethod, $establishment_tid);
+    //     ->config($paymentMethod, $establishmentTid);
     // dd($responseConfig->getData());
 
     //FIXME: Não funciona
@@ -115,7 +115,7 @@ try {
     // $responseConfig = $ipagClient
     //     ->establishment()
     //     ->antifraud()
-    //     ->config($antifraud, $establishment_tid);
+    //     ->config($antifraud, $establishmentTid);
     // dd($responseConfig);
 
 } catch (HttpClientException $e) {

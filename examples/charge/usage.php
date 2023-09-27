@@ -31,25 +31,25 @@ $charge = new \Ipag\Sdk\Model\Charge([
 
 try {
 
-    $charge_id = 1;
+    $chargeId = 1;
 
     // Create
     // $responseCharge = $ipagClient->charge()->create($charge);
     // dd($responseCharge->getData());
 
     // Update
-    // $responseCharge = $ipagClient->charge()->update($charge, $charge_id);
+    // $responseCharge = $ipagClient->charge()->update($charge, $chargeId);
     // dd($responseCharge->getData());
 
     // Get
-    // $responseCharge = $ipagClient->charge()->get($charge_id);
+    // $responseCharge = $ipagClient->charge()->get($chargeId);
     // dd($responseCharge->getData());
 
     // List
-    $responseCharge = $ipagClient->charge()->list([
-        'is_active' => false,
-    ]);
-    dd($responseCharge->getData());
+    // $responseCharge = $ipagClient->charge()->list([
+    //     'is_active' => false,
+    // ]);
+    // dd($responseCharge->getData());
 
 } catch (HttpClientException $e) {
     echo $e->getMessage() . PHP_EOL;

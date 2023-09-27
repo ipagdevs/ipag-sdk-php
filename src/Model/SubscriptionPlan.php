@@ -5,7 +5,6 @@ namespace Ipag\Sdk\Model;
 use Ipag\Sdk\Model\Schema\Mutator;
 use Ipag\Sdk\Model\Schema\Schema;
 use Ipag\Sdk\Model\Schema\SchemaBuilder;
-use Kubinyete\Assertation\Assert;
 
 /**
  * SubscriptionPlan Class

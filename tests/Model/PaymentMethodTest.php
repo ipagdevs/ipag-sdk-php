@@ -3,7 +3,6 @@
 namespace Ipag\Sdk\Tests\Model;
 
 use Ipag\Sdk\Model\Schema\Exception\MutatorAttributeException;
-use Ipag\Sdk\Model\Schema\Exception\SchemaAttributeParseException;
 use PHPUnit\Framework\TestCase;
 
 class PaymentMethodTest extends TestCase

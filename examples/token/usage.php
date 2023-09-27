@@ -34,14 +34,14 @@ $token = new \Ipag\Sdk\Model\Token([
 
 try {
 
-    $token_value = 'f2bb2dd0-405a-4695-b166-8d31968ff776';
+    $tokenValue = 'f2bb2dd0-405a-4695-b166-8d31968ff776';
 
     // Create
     // $responseToken = $client->token()->create($token);
     // dd($responseToken->getData());
 
     // Get
-    // $responseToken = $client->token()->get($token_value);
+    // $responseToken = $client->token()->get($tokenValue);
     // dd($responseToken->getData());
 
 } catch (HttpClientException $e) {

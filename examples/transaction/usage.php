@@ -10,8 +10,8 @@ $client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEn
 
 try {
 
-    $seller_id = 100014;
-    $transaction_id = 28;
+    $sellerId = 100014;
+    $transactionId = 28;
 
     // List
     // $responseTransaction = $client->transaction()->list([
@@ -21,11 +21,11 @@ try {
     // dd($responseTransaction->getData());
 
     // Get
-    // $responseTransaction = $client->transaction()->get($transaction_id);
+    // $responseTransaction = $client->transaction()->get($transactionId);
     // dd($responseTransaction->getData());
 
     // Liberar Recebíveis
-    // $responseTransaction = $client->transaction()->releaseReceivables($seller_id, $transaction_id);
+    // $responseTransaction = $client->transaction()->releaseReceivables($sellerId, $transactionId);
     // dd($responseTransaction->getStatusCode());
 
 } catch (HttpClientException $e) {

@@ -27,18 +27,18 @@ $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
 
 try {
 
-    $subscriptionPlan_id = 2;
+    $subscriptionPlanId = 2;
 
     // Create
     // $responseSubscriptionPlan = $client->subscriptionPlan()->create($subscriptionPlan);
     // dd($responseSubscriptionPlan->getData());
 
     // Update
-    // $responseSubscriptionPlan = $client->subscriptionPlan()->update($subscriptionPlan, $subscriptionPlan_id);
+    // $responseSubscriptionPlan = $client->subscriptionPlan()->update($subscriptionPlan, $subscriptionPlanId);
     // dd($responseSubscriptionPlan->getData());
 
     // Get
-    // $responseSubscriptionPlan = $client->subscriptionPlan()->get($subscriptionPlan_id);
+    // $responseSubscriptionPlan = $client->subscriptionPlan()->get($subscriptionPlanId);
     // dd($responseSubscriptionPlan->getData());
 
     // List

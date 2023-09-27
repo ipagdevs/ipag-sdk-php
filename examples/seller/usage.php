@@ -4,7 +4,6 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
-use Ipag\Sdk\Exception\HttpClientException;
 
 $ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
 
@@ -29,18 +28,18 @@ $seller = new \Ipag\Sdk\Model\Seller([
 
 try {
 
-    $seller_id = 100015;
+    $sellerId = 100015;
 
     // Create
     // $responseSeller = $ipagClient->seller()->create($seller);
     // dd($responseSeller->getData());
 
     // Update
-    // $responseSeller = $ipagClient->seller()->update($seller, $seller_id);
+    // $responseSeller = $ipagClient->seller()->update($seller, $sellerId);
     // dd($responseSeller->getData());
 
     // Get
-    // $responseSeller = $ipagClient->seller()->get($seller_id);
+    // $responseSeller = $ipagClient->seller()->get($sellerId);
     // dd($responseSeller->getData());
 
     // List
