@@ -1,0 +1,161 @@
+<?php
+
+namespace Ipag\Sdk\Endpoint;
+
+use Ipag\Sdk\Core\Endpoint;
+use Ipag\Sdk\Http\Response;
+use Ipag\Sdk\Model\PaymentTransaction;
+
+/**
+ * PaymentEndpoint class
+ *
+ * Classe responsável pelo controle dos endpoints do recurso Payment.
+ */
+class PaymentEndpoint extends Endpoint
+{
+    protected string $location = '/service';
+
+    /**
+     * Endpoint para criar um novo recurso `Payment`
+     *
+     * @param PaymentTransaction $paymentTransaction
+     * @return Response
+     */
+    public function create(PaymentTransaction $paymentTransaction): Response
+    {
+        return $this->_POST($paymentTransaction->jsonSerialize(), [], [], '/payment');
+    }
+
+    /**
+     * Endpoint para obter um recurso `Payment`
+     *
+     * @param string $id
+     * @return Response
+     */
+    public function getById(string $id): Response
+    {
+        return $this->_GET(['id' => $id], [], '/consult');
+    }
+
+    /**
+     * Endpoint para obter um recurso `Payment`
+     *
+     * @param string $uuid
+     * @return Response
+     */
+    public function getByUuid(string $uuid): Response
+    {
+        return $this->_GET(['uuid' => $uuid], [], '/consult');
+    }
+
+    /**
+     * Endpoint para obter um recurso `Payment`
+     *
+     * @param string $tid
+     * @return Response
+     */
+    public function getByTid(string $tid): Response
+    {
+        return $this->_GET(['tid' => $tid], [], '/consult');
+    }
+
+    /**
+     * Endpoint para obter um recurso `Payment`
+     *
+     * @param string $orderId
+     * @return Response
+     */
+    public function getByOrderId(string $orderId): Response
+    {
+        return $this->_GET(['order_id' => $orderId], [], '/consult');
+    }
+
+    /**
+     * Endpoint para capturar um recurso `Payment`
+     *
+     * @param string $id
+     * @return Response
+     */
+    public function captureById(string $id): Response
+    {
+        return $this->_POST(['id' => $id], ['id' => $id], [], '/capture');
+    }
+
+    /**
+     * Endpoint para capturar um recurso `Payment`
+     *
+     * @param string $uuid
+     * @return Response
+     */
+    public function captureByUuid(string $uuid): Response
+    {
+        return $this->_POST(['uuid' => $uuid], ['uuid' => $uuid], [], '/capture');
+    }
+
+    /**
+     * Endpoint para capturar um recurso `Payment`
+     *
+     * @param string $tid
+     * @return Response
+     */
+    public function captureByTid(string $tid): Response
+    {
+        return $this->_POST(['tid' => $tid], ['tid' => $tid], [], '/capture');
+    }
+
+    /**
+     * Endpoint para capturar um recurso `Payment`
+     *
+     * @param string $orderId
+     * @return Response
+     */
+    public function captureByOrderId(string $orderId): Response
+    {
+        return $this->_POST(['order_id' => $orderId], ['order_id' => $orderId], [], '/capture');
+    }
+
+    /**
+     * Endpoint para cancelar um recurso `Payment`
+     *
+     * @param string $id
+     * @return Response
+     */
+    public function cancelById(string $id): Response
+    {
+        return $this->_POST(['id' => $id], ['id' => $id], [], '/cancel');
+    }
+
+    /**
+     * Endpoint para cancelar um recurso `Payment`
+     *
+     * @param string $uuid
+     * @return Response
+     */
+    public function cancelByUuid(string $uuid): Response
+    {
+        return $this->_POST(['uuid' => $uuid], ['uuid' => $uuid], [], '/cancel');
+    }
+
+    /**
+     * Endpoint para cancelar um recurso `Payment`
+     *
+     * @param string $tid
+     * @return Response
+     */
+    public function cancelByTid(string $tid): Response
+    {
+        return $this->_POST(['tid' => $tid], ['tid' => $tid], [], '/cancel');
+    }
+
+    /**
+     * Endpoint para cancelar um recurso `Payment`
+     *
+     * @param string $orderId
+     * @return Response
+     */
+    public function cancelByOrderId(string $orderId): Response
+    {
+        return $this->_POST(['order_id' => $orderId], ['order_id' => $orderId], [], '/cancel');
+    }
+
+}

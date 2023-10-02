@@ -22,6 +22,8 @@ class Order extends Model
      *  + [`'amount'`] float.
      *  + [`'created_at'`] string.
      *  + [`'callback_url'`] string.
+     *  + [`'return_url'`] string.
+     *  + [`'return_type'`] string.
      */
     public function __construct(?array $data = [])
     {
