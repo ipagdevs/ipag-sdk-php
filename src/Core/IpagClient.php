@@ -7,6 +7,7 @@ use Ipag\Sdk\Endpoint\ChargeEndpoint;
 use Ipag\Sdk\Endpoint\CheckoutEndpoint;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Endpoint\EstablishmentEndpoint;
+use Ipag\Sdk\Endpoint\PaymentEndpoint;
 use Ipag\Sdk\Endpoint\PaymentLinksEndpoint;
 use Ipag\Sdk\Endpoint\SellerEndpoint;
 use Ipag\Sdk\Endpoint\SplitRulesEndpoint;
@@ -125,11 +126,9 @@ class IpagClient extends Client
         return CheckoutEndpoint::make($this, $this);
     }
 
-    /**
     public function payment(): PaymentEndpoint
     {
         return PaymentEndpoint::make($this, $this);
     }
-    */
 
 }

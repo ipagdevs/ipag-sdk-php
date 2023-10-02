@@ -11,10 +11,10 @@ $client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEn
 $token = new \Ipag\Sdk\Model\Token([
     'card' => [
         'holderName' => 'Frederic Sales',
-        'number' => '4024 0071 1251 2933',
-        'expiryMonth' => '02',
-        'expiryYear' => '2023',
-        'cvv' => '431'
+        'number' => '4111 1111 1111 1111',
+        'expiryMonth' => '01',
+        'expiryYear' => '2025',
+        'cvv' => '123'
     ],
     'holder' => [
         'name' => 'Frederic Sales',
@@ -34,7 +34,7 @@ $token = new \Ipag\Sdk\Model\Token([
 
 try {
 
-    $tokenValue = 'f2bb2dd0-405a-4695-b166-8d31968ff776';
+    $tokenValue = '32e771a2-64d1-4924-b8da-1c552b3269cd';
 
     // Create
     // $responseToken = $client->token()->create($token);

@@ -5,6 +5,7 @@ namespace Ipag\Sdk\Model;
 use Ipag\Sdk\Model\Schema\Mutator;
 use Ipag\Sdk\Model\Schema\Schema;
 use Ipag\Sdk\Model\Schema\SchemaBuilder;
+use Kubinyete\Assertation\Assert;
 
 /**
  * Trial Class
@@ -18,7 +19,8 @@ class Trial extends Model
      *  array de dados do Trial.
      *
      *  + [`'amount'`] float (opcional).
-     *  + [`'cycles'`] float (opcional).
+     *  + [`'cycles'`] int (opcional).
+     *  + [`'frequency'`] int (opcional).
      */
     public function __construct(?array $data = [])
     {
@@ -28,7 +30,8 @@ class Trial extends Model
     protected function schema(SchemaBuilder $schema): Schema
     {
         $schema->float('amount')->nullable();
-        $schema->float('cycles')->nullable();
+        $schema->int('cycles')->nullable();
+        $schema->int('frequency')->nullable();
 
         return $schema->build();
     }
@@ -38,10 +41,36 @@ class Trial extends Model
         return new Mutator(
             null,
             fn($value, $ctx) =>
-            is_null($value) ? $value
-            : (
-                is_numeric($value) && floatval($value) >= 0 ? (float) $value :
-                $ctx->raise('inválido')
+            is_null($value) ? $value :
+            (
+                Assert::value(floatval($value))->gte(0)->get()
+                ?? $ctx->raise('inválido')
+            )
+        );
+    }
+
+    protected function cycles(): Mutator
+    {
+        return new Mutator(
+            null,
+            fn($value, $ctx) =>
+            is_null($value) ? $value :
+            (
+                Assert::value(intval($value))->gte(0)->get()
+                ?? $ctx->raise('inválido (informe um valor de 0 à 120)')
+            )
+        );
+    }
+
+    protected function frequency(): Mutator
+    {
+        return new Mutator(
+            null,
+            fn($value, $ctx) =>
+            is_null($value) ? $value :
+            (
+                Assert::value(intval($value))->gt(0)->get()
+                ?? $ctx->raise('inválido (informe um valor de 1 à 12)')
             )
         );
     }
@@ -69,25 +98,12 @@ class Trial extends Model
         return $this;
     }
 
-    protected function cycles(): Mutator
-    {
-        return new Mutator(
-            null,
-            fn($value, $ctx) =>
-            is_null($value) ? $value
-            : (
-                is_numeric($value) && floatval($value) >= 0 ? (float) $value :
-                $ctx->raise('inválido')
-            )
-        );
-    }
-
     /**
      * Retorna o valor da propriedade cycles.
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getCycles(): ?float
+    public function getCycles(): ?int
     {
         return $this->get('cycles');
     }
@@ -95,12 +111,34 @@ class Trial extends Model
     /**
      * Seta o valor da propriedade cycles.
      *
-     * @param float|null $cycles
+     * @param int|null $cycles
      * @return Trial
      */
-    public function setCycles(?float $cycles): Trial
+    public function setCycles(?int $cycles): Trial
     {
         $this->set('cycles', $cycles);
+        return $this;
+    }
+
+    /**
+     * Retorna o valor da propriedade frequency.
+     *
+     * @return integer|null
+     */
+    public function getFrequency(): ?int
+    {
+        return $this->get('frequency');
+    }
+
+    /**
+     * Seta o valor da propriedade frequency.
+     *
+     * @param integer|null $frequency
+     * @return Trial
+     */
+    public function setFrequency(?int $frequency = null): Trial
+    {
+        $this->set('frequency', $frequency);
         return $this;
     }
 

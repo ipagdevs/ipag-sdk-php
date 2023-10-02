@@ -17,9 +17,17 @@ class CustomerTest extends TestCase
             'business_name' => 'Lívia Ltda.',
             'is_active' => true,
             'address' =>
-            [
-                'street' => 'Rua A',
-            ]
+                [
+                    'street' => 'Rua A',
+                ],
+            'billing_address' =>
+                [
+                    'street' => 'Rua A',
+                ],
+            'shipping_address' =>
+                [
+                    'street' => 'Rua A',
+                ],
         ]);
 
         $this->assertEquals($customer->getName(), 'Lívia Julia Eduarda Barros');
@@ -30,8 +38,13 @@ class CustomerTest extends TestCase
         $this->assertEquals($customer->getBusinessName(), 'Lívia Ltda.');
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Address::class, $customer->getAddress());
-
         $this->assertEquals($customer->getAddress()->getStreet(), 'Rua A');
+
+        $this->assertInstanceOf(\Ipag\Sdk\Model\Address::class, $customer->getBillingAddress());
+        $this->assertEquals($customer->getBillingAddress()->getStreet(), 'Rua A');
+
+        $this->assertInstanceOf(\Ipag\Sdk\Model\Address::class, $customer->getShippingAddress());
+        $this->assertEquals($customer->getShippingAddress()->getStreet(), 'Rua A');
 
     }
 
@@ -44,7 +57,9 @@ class CustomerTest extends TestCase
             ->setPhone('(98) 3792-4834')
             ->setIsActive(true)
             ->setBusinessName('Lívia Ltda.')
-            ->setAddress(new \Ipag\Sdk\Model\Address);
+            ->setAddress(new \Ipag\Sdk\Model\Address)
+            ->setBillingAddress(new \Ipag\Sdk\Model\Address)
+            ->setShippingAddress(new \Ipag\Sdk\Model\Address);
 
         $this->assertEquals($customer->getName(), 'Lívia Julia Eduarda Barros');
         $this->assertEquals($customer->getEmail(), 'livia.julia.barros@eximiart.com.br');
@@ -54,6 +69,8 @@ class CustomerTest extends TestCase
         $this->assertEquals($customer->getBusinessName(), 'Lívia Ltda.');
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Address::class, $customer->getAddress());
+        $this->assertInstanceOf(\Ipag\Sdk\Model\Address::class, $customer->getBillingAddress());
+        $this->assertInstanceOf(\Ipag\Sdk\Model\Address::class, $customer->getShippingAddress());
 
     }
 
@@ -68,6 +85,8 @@ class CustomerTest extends TestCase
         $this->assertEmpty($customer->getBusinessName());
         $this->assertEmpty($customer->getIsActive());
         $this->assertEmpty($customer->getAddress());
+        $this->assertEmpty($customer->getBillingAddress());
+        $this->assertEmpty($customer->getShippingAddress());
 
     }
 
@@ -81,9 +100,17 @@ class CustomerTest extends TestCase
             'business_name' => 'Lívia Ltda.',
             'is_active' => true,
             'address' =>
-            [
-                'street' => 'Rua A',
-            ]
+                [
+                    'street' => 'Rua A',
+                ],
+            'billing_address' =>
+                [
+                    'street' => 'Rua A',
+                ],
+            'shipping_address' =>
+                [
+                    'street' => 'Rua A',
+                ],
         ]);
 
         $customer
@@ -93,7 +120,9 @@ class CustomerTest extends TestCase
             ->setPhone(null)
             ->setIsActive(null)
             ->setBusinessName(null)
-            ->setAddress(null);
+            ->setAddress(null)
+            ->setBillingAddress(null)
+            ->setShippingAddress(null);
 
         $this->assertEmpty($customer->getEmail());
         $this->assertEmpty($customer->getCpfCnpj());
@@ -102,6 +131,8 @@ class CustomerTest extends TestCase
         $this->assertEmpty($customer->getIsActive());
 
         $this->assertEmpty($customer->getAddress());
+        $this->assertEmpty($customer->getBillingAddress());
+        $this->assertEmpty($customer->getShippingAddress());
 
     }
 

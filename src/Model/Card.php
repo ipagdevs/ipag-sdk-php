@@ -38,8 +38,60 @@ final class Card extends Model
         $schema->string('expiryMonth')->nullable();
         $schema->string('expiryYear')->nullable();
         $schema->string('cvv')->nullable();
+        $schema->string('token')->nullable();
+        $schema->bool('tokenize')->nullable();
 
         return $schema->build();
+    }
+
+    protected function number(): Mutator
+    {
+        return new Mutator(null, fn($value) => Assert::value($value)->asDigits()->get());
+    }
+
+    protected function expiryMonth(): Mutator
+    {
+        return new Mutator(
+            null,
+            fn($value, $ctx) =>
+            is_null($value) ? $value
+            :
+            (
+                str_pad(
+                    Assert::value(intval($value))->between(1, 12)->get()
+                    ?? $ctx->raise('inválido (informe um valor de 01 à 12)')
+                    ,
+                    2,
+                    '0',
+                    STR_PAD_LEFT
+                )
+            )
+
+        );
+    }
+
+    protected function expiryYear(): Mutator
+    {
+        return new Mutator(
+            null,
+            fn($value, $ctx) =>
+            is_null($value) ? $value :
+            (
+                Assert::value($value)->asDigits()->lbetween(2, 2)->or()->lbetween(4, 4)->get() ?? $ctx->raise('inválido (informe um valor numérico de 2 ou 4 dígitos)')
+            )
+        );
+    }
+
+    protected function cvv(): Mutator
+    {
+        return new Mutator(
+            null,
+            fn($value, $ctx) =>
+            is_null($value) ? $value :
+            (
+                Assert::value($value)->asDigits()->lbetween(3, 3)->or()->lbetween(4, 4)->get() ?? $ctx->raise('inválido (informe um valor numérico de 3 ou 4 dígitos)')
+            )
+        );
     }
 
     /**
@@ -64,11 +116,6 @@ final class Card extends Model
         return $this;
     }
 
-    protected function number(): Mutator
-    {
-        return new Mutator(null, fn($value) => Assert::value($value)->asDigits()->get());
-    }
-
     /**
      * Retorna o valor da propriedade `number`.
      *
@@ -91,26 +138,6 @@ final class Card extends Model
         return $this;
     }
 
-    protected function expiryMonth(): Mutator
-    {
-        return new Mutator(
-            null,
-            fn($value, $ctx) =>
-            is_null($value) ? $value
-            :
-            (
-                str_pad(
-                    Assert::value(intval($value))->between(1, 12)->get()
-                    ?? $ctx->raise('inválido (informe um valor de 01 à 12)')
-                    ,
-                    2,
-                    '0',
-                    STR_PAD_LEFT
-                )
-            )
-
-        );
-    }
 
     /**
      * Retorna o valor da propriedade `expiryMonth`.
@@ -132,18 +159,6 @@ final class Card extends Model
     {
         $this->set('expiryMonth', $expiryMonth);
         return $this;
-    }
-
-    protected function expiryYear(): Mutator
-    {
-        return new Mutator(
-            null,
-            fn($value, $ctx) =>
-            is_null($value) ? $value :
-            (
-                Assert::value($value)->asDigits()->lbetween(2, 2)->or()->lbetween(4, 4)->get() ?? $ctx->raise('inválido (informe um valor numérico de 2 ou 4 dígitos)')
-            )
-        );
     }
 
     /**
@@ -168,18 +183,6 @@ final class Card extends Model
         return $this;
     }
 
-    protected function cvv(): Mutator
-    {
-        return new Mutator(
-            null,
-            fn($value, $ctx) =>
-            is_null($value) ? $value :
-            (
-                Assert::value($value)->asDigits()->lbetween(3, 3)->or()->lbetween(4, 4)->get() ?? $ctx->raise('inválido (informe um valor numérico de 3 ou 4 dígitos)')
-            )
-        );
-    }
-
     /**
      * Retorna o valor da propriedade `cvv`.
      *
@@ -199,6 +202,50 @@ final class Card extends Model
     public function setCvv(?string $cvv = null): self
     {
         $this->set('cvv', $cvv);
+        return $this;
+    }
+
+    /**
+     * Retorna o valor da propriedade `token`.
+     *
+     * @return string|null
+     */
+    public function getToken(): ?string
+    {
+        return $this->get('token');
+    }
+
+    /**
+     * Seta o valor da propriedade `token`.
+     *
+     * @param string|null $token
+     * @return self
+     */
+    public function setToken(?string $token = null): self
+    {
+        $this->set('token', $token);
+        return $this;
+    }
+
+    /**
+     * Retorna o valor da propriedade `tokenize`.
+     *
+     * @return boolean|null
+     */
+    public function getTokenize(): ?bool
+    {
+        return $this->get('tokenize');
+    }
+
+    /**
+     * Seta o valor da propriedade `tokenize`.
+     *
+     * @param boolean|null $tokenize
+     * @return self
+     */
+    public function setTokenize(?bool $tokenize = null): self
+    {
+        $this->set('tokenize', $tokenize);
         return $this;
     }
 

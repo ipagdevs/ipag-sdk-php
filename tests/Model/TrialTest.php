@@ -11,21 +11,26 @@ class TrialTest extends TestCase
     {
         $trial = new \Ipag\Sdk\Model\Trial([
             'amount' => 0,
-            'cycles' => 0
+            'cycles' => 0,
+            'frequency' => 1
         ]);
 
         $this->assertEquals(0, $trial->getAmount());
         $this->assertEquals(0, $trial->getCycles());
+        $this->assertEquals(1, $trial->getFrequency());
+
     }
 
     public function testShouldCreateTrialObjectAndSetTheValuesSuccessfully()
     {
         $trial = (new \Ipag\Sdk\Model\Trial())
             ->setAmount(2.5)
-            ->setCycles(2);
+            ->setCycles(2)
+            ->setFrequency(1);
 
         $this->assertEquals(2.5, $trial->getAmount());
         $this->assertEquals(2, $trial->getCycles());
+        $this->assertEquals(1, $trial->getFrequency());
 
     }
 
@@ -35,21 +40,26 @@ class TrialTest extends TestCase
 
         $this->assertEmpty($trial->getAmount());
         $this->assertEmpty($trial->getCycles());
+        $this->assertEmpty($trial->getFrequency());
+
     }
 
     public function testCreateAndSetEmptyPropertiesTrialObjectSuccessfully()
     {
         $trial = new \Ipag\Sdk\Model\Trial([
             'amount' => 1.5,
-            'cycles' => 1
+            'cycles' => 1,
+            'frequency' => 1
         ]);
 
         $trial
             ->setAmount(null)
-            ->setCycles(null);
+            ->setCycles(null)
+            ->setFrequency(null);
 
         $this->assertEmpty($trial->getAmount());
         $this->assertEmpty($trial->getCycles());
+        $this->assertEmpty($trial->getFrequency());
 
     }
 
@@ -89,6 +99,24 @@ class TrialTest extends TestCase
         $this->expectException(MutatorAttributeException::class);
 
         $trial->setCycles(-1);
+    }
+
+    public function testShouldThrowATypeExceptionOnTheTrialFrequencyProperty()
+    {
+        $trial = new \Ipag\Sdk\Model\Trial;
+
+        $this->expectException(\TypeError::class);
+
+        $trial->setFrequency('a');
+    }
+
+    public function testShouldThrowAValidationExceptionOnTheTrialFrequencyProperty()
+    {
+        $trial = new \Ipag\Sdk\Model\Trial;
+
+        $this->expectException(MutatorAttributeException::class);
+
+        $trial->setFrequency(0);
     }
 
 }

@@ -9,6 +9,14 @@
   - [Instalação](#instalação)
 - [IpagClient](#ipagclient)
   - [Autenticação](#autenticação)
+- [Pagamento (Payment)](#pagamento-payment)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Criar Pagamento](#criar-pagamento)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Consultar Pagamento](#consultar-pagamento)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Capturar Pagamento](#caputrar-pagamento)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Cancelar Pagamento](#cancelar-pagamento)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Validação de Cartão de Crédito](#validação-de-cartão-de-crédito)
+  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Simular Captura em Sandbox](#simular-captura-em-sandbox)
+
 - [Cliente (Customer)](#cliente-customer)
   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Cliente](#novo-cliente)
   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/PUT-9b708b.svg?style=for-the-badge" /> [Alterar Cliente](#alterar-cliente)
@@ -130,6 +138,178 @@ $ipagClient = new \Ipag\Sdk\Core\IpagClient(
     IpagEnvironment::SANDBOX
 );
 ```
+
+# Pagamento (Payment)
+
+> Exemplo de Pagamento via Cartão de Crédito (Simples): [examples/payment/usage_simple_card.php](./examples/payment/usage_simple_card.php)
+
+> Exemplo de Pagamento via Cartão de Crédito (Completo): [examples/payment/usage_complete_card.php](./examples/payment/usage_complete_card.php)
+
+> Exemplo de Pagamento via Cartão de Crédito para Clientes Estrangeiros (Simples): [examples/payment/usage_card_foreign_customers_simple.php](./examples/payment/usage_card_foreign_customers_simple.php)
+
+> Exemplo de Pagamento via Cartão de Crédito para um Evento: [examples/payment/usage_card_for_event.php](./examples/payment/usage_card_for_event.php)
+
+> Exemplo de Pagamento via Boleto (Completo): [examples/payment/usage_boleto_full.php](./examples/payment/usage_boleto_full.php)
+
+> Exemplo de Pagamento com Tokenização do Cartão de Crédito: [examples/payment/usage_card_tokenization.php](./examples/payment/usage_card_tokenization.php)
+
+> Exemplo de Pagamento utilizando apenas o Token de Cartão: [examples/payment/usage_token_card.php](./examples/payment/usage_token_card.php)
+
+> Exemplo de Pagamento via Cartão de Crédito com Criação de Assinatura|Cobrança Recorrente: [examples/payment/usage_recurring_billing_card.php](./examples/payment/usage_recurring_billing_card.php)
+
+> Exemplo de Pagamento via Cartão de Crédito com Split de Pagamento: [examples/payment/usage_card_with_split.php](./examples/payment/usage_card_with_split.php)
+
+> Exemplo de Pagamento via Pix (Completo): [examples/payment/usage_pix.php](./examples/payment/usage_pix.php)
+
+```php
+$paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
+    [
+        "amount" => 97.86,
+        "callback_url" => "https://99mystore.com.br/ipag/callback",
+        "order_id" => "1234567",
+        "payment" => [
+            "type" => "card",
+            "method" => "visa",
+            "installments" => 1,
+            "card" => [
+                "holder" => "FULANO DA SILVA",
+                "number" => "4111 1111 1111 1111",
+                "expiry_month" => "03",
+                "expiry_year" => "2021",
+                "cvv" => "123"
+            ]
+        ],
+        "customer" => [
+            "name" => "Jack Jins",
+            "cpf_cnpj" => "799.993.388-01"
+        ]
+    ]
+);
+```
+ou
+```php
+$paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction)
+    ->setAmount(100.0)
+    ->setOrderId('123456')
+    ->setCallbackUrl('https://99mystore.com.br/ipag/callback')
+    ->setAntifraud(
+        (new \Ipag\Sdk\Model\PaymentAntifraud)
+            ->setFingerprint('123')
+            ->setProvider('anti')
+    )
+    ->setPayment(
+        (new \Ipag\Sdk\Model\Payment)
+            ->setType('card')
+            ->setMethod('visa')
+            ->setCard(
+                (new \Ipag\Sdk\Model\PaymentCard)
+                    ->setHolder('teste')
+                    ->setNumber('123')
+                    ->setCvv('123')
+            )
+    )
+    ->setCustomer(
+        (new \Ipag\Sdk\Model\Customer)
+            ->setName('Fulano da Silva')
+            ->setCpfCnpj('799.993.388-01')
+            ->setBillingAddress(
+                (new \Ipag\Sdk\Model\Address)
+                    ->setStreet('Rua A')
+            )
+            ->setShippingAddress(
+                (new \Ipag\Sdk\Model\Address)
+                    ->setStreet('Rua A')
+            )
+    )
+    ->setProducts([
+        (new \Ipag\Sdk\Model\Product)
+            ->setName('Produto 1'),
+    ])
+    ->addProduct(
+        (new \Ipag\Sdk\Model\Product)
+            ->setName('Produto 2')
+    )
+    ->setSubscription(
+        (new \Ipag\Sdk\Model\PaymentSubscription)
+            ->setFrequency(1)
+            ->setTrial(
+                (new \Ipag\Sdk\Model\Trial)
+                    ->setAmount(100.9)
+            )
+    )
+    ->setSplitRules([
+        (new \Ipag\Sdk\Model\PaymentSplitRules)
+            ->setSellerId('vendedor1@mail.me')
+            ->setAmount(15.87),
+    ])
+    ->addSplitRules(
+        (new \Ipag\Sdk\Model\PaymentSplitRules)
+            ->setSellerId('vendedor2@mail.me')
+            ->setPercentage(20.0)
+    );
+```
+
+### Criar Pagamento
+
+```php
+$responsePayment = $ipagClient->payment()->create($paymentTransaction);
+```
+
+### Consultar Pagamento
+
+```php
+$responsePayment = $ipagClient->payment()->getById($transactionId);
+```
+```php
+$responsePayment = $ipagClient->payment()->getByUuid($transactionUuid);
+```
+```php
+$responsePayment = $ipagClient->payment()->getByUuid($transactionTid);
+```
+```php
+$responsePayment = $ipagClient->payment()->getByUuid($orderId);
+```
+
+### Capturar Pagamento
+
+```php
+$responsePayment = $ipagClient->payment()->captureById($transactionId);
+```
+
+```php
+$responsePayment = $ipagClient->payment()->captureByUuid($transactionUuid);
+```
+
+```php
+$responsePayment = $ipagClient->payment()->captureByUuid($transactionTid);
+```
+
+```php
+$responsePayment = $ipagClient->payment()->captureByUuid($orderId);
+```
+
+### Cancelar Pagamento
+
+```php
+$responsePayment = $ipagClient->payment()->cancelById($transactionId);
+```
+
+```php
+$responsePayment = $ipagClient->payment()->cancelByUuid($transactionUuid);
+```
+
+```php
+$responsePayment = $ipagClient->payment()->cancelByUuid($transactionTid);
+```
+
+```php
+$responsePayment = $ipagClient->payment()->cancelByUuid($orderId);
+```
+
+### Validação de Cartão de Crédito (not implemented yet)
+
+
+### Simular Captura em Sandbox (not implemented yet)
 
 # Cliente (Customer)
 

@@ -14,7 +14,9 @@ class CardTest extends TestCase
             'number' => '4024 0071 1251 2933',
             'expiryMonth' => '12',
             'expiryYear' => '2023',
-            'cvv' => '431'
+            'cvv' => '431',
+            'token' => '123abc',
+            'tokenize' => true
         ]);
 
         $this->assertEquals('Frederic Sales', $card->getHolderName());
@@ -22,6 +24,8 @@ class CardTest extends TestCase
         $this->assertEquals('12', $card->getExpiryMonth());
         $this->assertEquals('2023', $card->getExpiryYear());
         $this->assertEquals('431', $card->getCvv());
+        $this->assertEquals('123abc', $card->getToken());
+        $this->assertEquals(true, $card->getTokenize());
 
     }
 
@@ -32,13 +36,18 @@ class CardTest extends TestCase
             ->setNumber('4024 0071 1251 2933')
             ->setExpiryMonth('02')
             ->setExpiryYear('2023')
-            ->setCvv('431');
+            ->setCvv('431')
+            ->setToken('123abc')
+            ->setTokenize(true);
 
         $this->assertEquals('Frederic Sales', $card->getHolderName());
         $this->assertEquals('4024007112512933', $card->getNumber());
         $this->assertEquals('02', $card->getExpiryMonth());
         $this->assertEquals('2023', $card->getExpiryYear());
         $this->assertEquals('431', $card->getCvv());
+        $this->assertEquals('123abc', $card->getToken());
+        $this->assertEquals(true, $card->getTokenize());
+
     }
 
     public function testShouldCreateEmptyCardObjectSuccessfully()
@@ -50,6 +59,9 @@ class CardTest extends TestCase
         $this->assertEmpty($card->getExpiryMonth());
         $this->assertEmpty($card->getExpiryYear());
         $this->assertEmpty($card->getCvv());
+        $this->assertEmpty($card->getToken());
+        $this->assertEmpty($card->getTokenize());
+
     }
 
     public function testCreateAndSetEmptyPropertiesCardObjectSuccessfully()
@@ -59,7 +71,9 @@ class CardTest extends TestCase
             'number' => '4024 0071 1251 2933',
             'expiryMonth' => '02',
             'expiryYear' => '2023',
-            'cvv' => '431'
+            'cvv' => '431',
+            'token' => '123abc',
+            'tokenize' => true
         ]);
 
         $card
@@ -67,7 +81,9 @@ class CardTest extends TestCase
             ->setNumber(null)
             ->setExpiryMonth(null)
             ->setExpiryYear(null)
-            ->setCvv(null);
+            ->setCvv(null)
+            ->setToken(null)
+            ->setTokenize(null);
 
         $this->assertEmpty($card->getHolderName());
         $this->assertEmpty($card->getNumber());

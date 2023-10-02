@@ -13,6 +13,59 @@ use Ipag\Sdk\Model\Schema\SchemaBuilder;
  */
 final class Checkout extends Model
 {
+    /**
+     *  @param array $data
+     *  array de dados do Checkout.
+     *
+     *  + [`'seller_id'`] string.
+     *  + [`'expires_in'`] int.
+     *
+     *  + [`'customer'`] array (opcional) dos dados do Customer.
+     *  + &emsp; [`'name'`] string.
+     *  + &emsp; [`'tax_receipt'`] string.
+     *  + &emsp; [`'email'`] string.
+     *  + &emsp; [`'phone'`] string.
+     *  + &emsp; [`'birthdate'`] string.
+     *  + &emsp; [`'address'`] array (opcional) dos dados do Address.
+     *  + &emsp;&emsp; [`'street'`] string (opcional).
+     *  + &emsp;&emsp; [`'number'`] string (opcional).
+     *  + &emsp;&emsp; [`'district'`] string (opcional).
+     *  + &emsp;&emsp; [`'city'`] string (opcional).
+     *  + &emsp;&emsp; [`'state'`] string (opcional).
+     *  + &emsp;&emsp; [`'zipcode'`] string (opcional).
+     *
+     *  + [`'installment_setting'`] array (opcional) dos dados do Installment Setting.
+     *  + &emsp; [`'max_installments'`] int.
+     *  + &emsp; [`'min_installment_value'`] float.
+     *  + &emsp; [`'interest'`] float.
+     *  + &emsp; [`'interest_free_installments'`] int.
+     *
+     *  + [`'order'`] array (opcional) dos dados do Order.
+     *  + &emsp; [`'order_id'`] string.
+     *  + &emsp; [`'amount'`] float.
+     *  + &emsp; [`'return_url'`] string.
+     *  + &emsp; [`'return_type'`] string.
+     *
+     *  + [`'products'`] array (opcional) dos dados do Product.
+     *  + &emsp; [
+     *  + &emsp;&emsp; [`'name'`] string
+     *  + &emsp;&emsp; [`'unit_price'`] string
+     *  + &emsp;&emsp; [`'quantity'`] int
+     *  + &emsp;&emsp; [`'sku'`] string
+     *  + &emsp;&emsp; [`'description'`] string
+     *  + &emsp; ], [`...`]
+     *
+     *  + [`'split_rules'`] array (opcional) dos dados do Split Rules.
+     *  + &emsp; [
+     *  + &emsp;&emsp; [`'receiver_id'`] string.
+     *  + &emsp;&emsp; [`'amount'`] float.
+     *  + &emsp;&emsp; [`'percentage'`] float.
+     *  + &emsp;&emsp; [`'charge_processing_fee'`] bool.
+     *  + &emsp;&emsp; [`'seller_id'`] string.
+     *  + &emsp;&emsp; [`'liable'`] bool.
+     *  + &emsp;&emsp; [`'hold_receivables'`] bool.
+     *  + &emsp; ], [`...`]
+     */
     public function __construct(?array $data = [])
     {
         parent::__construct($data);
@@ -20,13 +73,13 @@ final class Checkout extends Model
 
     public function schema(SchemaBuilder $schema): Schema
     {
+        $schema->string('seller_id')->nullable();
+        $schema->int('expires_in')->nullable();
         $schema->has('customer', Customer::class)->nullable();
         $schema->has('installment_setting', InstallmentSetting::class)->nullable();
         $schema->has('order', Order::class)->nullable();
         $schema->hasMany('products', Product::class)->default([])->nullable();
         $schema->hasMany('split_rules', SplitRules::class)->default([])->nullable();
-        $schema->string('seller_id')->nullable();
-        $schema->int('expires_in')->nullable();
 
         return $schema->build();
     }

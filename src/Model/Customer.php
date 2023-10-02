@@ -28,6 +28,7 @@ final class Customer extends Model
      *  + [`'business_name'`] string (opcional).
      *  + [`'birthdate'`] string (opcional) {`Formato: Y-m-d`}.
      *  + [`'ip'`] string (opcional).
+     *
      *  + [`'address'`] array (opcional) dos dados do Address.
      *  + &emsp; [`'street'`] string (opcional).
      *  + &emsp; [`'number'`] string (opcional).
@@ -35,6 +36,23 @@ final class Customer extends Model
      *  + &emsp; [`'city'`] string (opcional).
      *  + &emsp; [`'state'`] string (opcional).
      *  + &emsp; [`'zipcode'`] string (opcional).
+     *
+     *  + [`'billing_address'`] array (opcional) dos dados do Billing Address.
+     *  + &emsp; [`'street'`] string (opcional).
+     *  + &emsp; [`'number'`] string (opcional).
+     *  + &emsp; [`'district'`] string (opcional).
+     *  + &emsp; [`'city'`] string (opcional).
+     *  + &emsp; [`'state'`] string (opcional).
+     *  + &emsp; [`'zipcode'`] string (opcional).
+     *
+     *  + [`'shipping_address'`] array (opcional) dos dados do Shipping Address.
+     *  + &emsp; [`'street'`] string (opcional).
+     *  + &emsp; [`'number'`] string (opcional).
+     *  + &emsp; [`'district'`] string (opcional).
+     *  + &emsp; [`'city'`] string (opcional).
+     *  + &emsp; [`'state'`] string (opcional).
+     *  + &emsp; [`'zipcode'`] string (opcional).
+     *
      */
     public function __construct(?array $data = [])
     {
@@ -43,20 +61,22 @@ final class Customer extends Model
 
     protected function schema(SchemaBuilder $schema): Schema
     {
-        $schema->string('id')->nullable()->isHidden();
-        $schema->string('uuid')->nullable()->isHidden();
+        $schema->string('id')->nullable();
+        $schema->string('uuid')->nullable();
         $schema->string('name')->nullable();
-        $schema->bool('is_active')->nullable()->isHidden();
+        $schema->bool('is_active')->nullable();
         $schema->string('email')->nullable();
         $schema->string('phone')->nullable();
         $schema->string('cpf_cnpj')->nullable();
         $schema->string('tax_receipt')->nullable();
         $schema->string('business_name')->nullable();
 
-        $schema->string('birthdate')->nullable()->isHidden(); //Y-m-d ou d/m/Y
-        $schema->string('ip')->nullable()->isHidden();
+        $schema->string('birthdate')->nullable(); //Y-m-d ou d/m/Y
+        $schema->string('ip')->nullable();
 
         $schema->has('address', Address::class)->nullable();
+        $schema->has('billing_address', Address::class)->nullable();
+        $schema->has('shipping_address', Address::class)->nullable();
 
         return $schema->build();
     }
@@ -398,4 +418,49 @@ final class Customer extends Model
         $this->set('address', $address);
         return $this;
     }
+
+    /**
+     * Retorna o objeto endereço de cobrança do cliente.
+     *
+     * @return Address|null
+     */
+    public function getBillingAddress(): ?Address
+    {
+        return $this->get('billing_address');
+    }
+
+    /**
+     * Seta o objeto endereço de cobrança do cliente.
+     *
+     * @param Address|null $address
+     * @return self
+     */
+    public function setBillingAddress(?Address $address = null): self
+    {
+        $this->set('billing_address', $address);
+        return $this;
+    }
+
+    /**
+     * Retorna o objeto endereço de entrega do cliente.
+     *
+     * @return Address|null
+     */
+    public function getShippingAddress(): ?Address
+    {
+        return $this->get('shipping_address');
+    }
+
+    /**
+     * Seta o objeto endereço de entrega do cliente.
+     *
+     * @param Address|null $address
+     * @return self
+     */
+    public function setShippingAddress(?Address $address = null): self
+    {
+        $this->set('shipping_address', $address);
+        return $this;
+    }
+
 }
