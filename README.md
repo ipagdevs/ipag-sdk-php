@@ -14,8 +14,6 @@
   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/GET-6bbd5b.svg?style=for-the-badge" /> [Consultar Pagamento](#consultar-pagamento)
   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Capturar Pagamento](#capturar-pagamento)
   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Cancelar Pagamento](#cancelar-pagamento)
-  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Validação de Cartão de Crédito](#validação-de-cartão-de-crédito)
-  - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Simular Captura em Sandbox](#simular-captura-em-sandbox)
 
 - [Cliente (Customer)](#cliente-customer)
   - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Cliente](#novo-cliente)
