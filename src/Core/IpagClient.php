@@ -27,7 +27,7 @@ use Psr\Log\LoggerInterface;
  *
  * Classe principal do SDK. Responsável por instanciar os endpoint da API do IPag.
  */
-final class IpagClient extends Client
+class IpagClient extends Client
 {
 
     public function IpagClient()

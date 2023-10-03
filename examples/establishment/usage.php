@@ -5,6 +5,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpClientException;
+use Ipag\Sdk\Exception\HttpException;
 use Ipag\Sdk\Support\Credentials\PaymentMethods\StoneCredentials;
 
 $ipagClient = new IpagClient('master', '88E1-CFD86E49-A4351D43-C694871D-F3C0', IpagEnvironment::LOCAL);
@@ -118,7 +119,10 @@ try {
     //     ->config($antifraud, $establishmentTid);
     // dd($responseConfig);
 
-} catch (HttpClientException $e) {
+} catch (HttpException $e) {
+    dd($e->getResponse()->getData());
+    // dd($e->getResponse()->getHeaders());
+    // dd($e->getResponse()->getStatusCode());
+} catch (Exception $e) {
     echo $e->getMessage() . PHP_EOL;
-    // dd($e);
 }

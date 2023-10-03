@@ -4,7 +4,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
-use Ipag\Sdk\Exception\HttpClientException;
+use Ipag\Sdk\Exception\HttpException;
 
 $ipagClient = new IpagClient(
     'apiID',
@@ -38,8 +38,8 @@ try {
     $chargeId = 1;
 
     // Create
-    // $responseCharge = $ipagClient->charge()->create($charge);
-    // dd($responseCharge->getData());
+    $responseCharge = $ipagClient->charge()->create(new \Ipag\Sdk\Model\Charge);
+    dd($responseCharge->getData());
 
     // Update
     // $responseCharge = $ipagClient->charge()->update($charge, $chargeId);
@@ -55,6 +55,10 @@ try {
     // ]);
     // dd($responseCharge->getData());
 
-} catch (HttpClientException $e) {
+} catch (HttpException $e) {
+    dd($e->getResponse()->getData());
+    // dd($e->getResponse()->getHeaders());
+    // dd($e->getResponse()->getStatusCode());
+} catch (Exception $e) {
     echo $e->getMessage() . PHP_EOL;
 }

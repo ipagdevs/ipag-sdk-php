@@ -4,6 +4,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
+use Ipag\Sdk\Exception\HttpException;
 
 $ipagClient = new IpagClient(
     'apiID',
@@ -44,6 +45,10 @@ try {
     // $responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($sellerCpf);
     // dd($responseTransfers->getData());
 
-} catch (\Throwable $th) {
-    echo $th->getMessage() . PHP_EOL;
+} catch (HttpException $e) {
+    dd($e->getResponse()->getData());
+    // dd($e->getResponse()->getHeaders());
+    // dd($e->getResponse()->getStatusCode());
+} catch (Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
 }
