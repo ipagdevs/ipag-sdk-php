@@ -167,7 +167,7 @@ $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
         "order_id" => "1234567",
         "payment" => [
             "type" => "card",
-            "method" => "visa",
+            "method" => IpagEnvironment::cardMethods()::VISA,
             "installments" => 1,
             "card" => [
                 "holder" => "FULANO DA SILVA",
@@ -198,7 +198,7 @@ $paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction)
     ->setPayment(
         (new \Ipag\Sdk\Model\Payment)
             ->setType('card')
-            ->setMethod('visa')
+            ->setMethod(IpagEnvironment::cardMethods()::VISA)
             ->setCard(
                 (new \Ipag\Sdk\Model\PaymentCard)
                     ->setHolder('teste')

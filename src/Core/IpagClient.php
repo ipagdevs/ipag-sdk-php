@@ -26,7 +26,7 @@ use Ipag\Sdk\IO\JsonSerializer;
  *
  * Classe principal do SDK. Responsável por instanciar os endpoint da API do IPag.
  */
-class IpagClient extends Client
+final class IpagClient extends Client
 {
 
     public function IpagClient()

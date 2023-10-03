@@ -17,7 +17,7 @@ $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
         "callback_url" => "https://99mystore.com.br/ipag/callback",
         "payment" => [
             "type" => "boleto",
-            "method" => "boletopagseguro",
+            "method" => IpagEnvironment::bankSlipMethods()::PAGSEGURO,
             "boleto" => [
                 "due_date" => "2020-10-20",
                 "instructions" => [
@@ -67,8 +67,8 @@ $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
 try {
 
     // Create
-    // $responsePayment = $ipagClient->payment()->create($paymentTransaction);
-    // dd($responsePayment->getData());
+    $responsePayment = $ipagClient->payment()->create($paymentTransaction);
+    dd($responsePayment->getData());
 
 } catch (\Throwable $th) {
     echo $th->getMessage() . PHP_EOL;

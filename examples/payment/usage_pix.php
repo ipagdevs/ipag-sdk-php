@@ -17,8 +17,8 @@ $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
         "callback_url" => "https://99mystore.com.br/ipag/callback",
         "order_id" => "1234567",
         "payment" => [
-            "type" => "pix",
-            "method" => "pix",
+            "type" => IpagEnvironment::otherPaymentMethods()::PIX,
+            "method" => IpagEnvironment::otherPaymentMethods()::PIX,
             "pix_expires_in" => 60
         ],
         "customer" => [

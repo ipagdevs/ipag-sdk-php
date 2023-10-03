@@ -2,7 +2,7 @@
 
 namespace Ipag\Sdk\Core;
 
-class IpagEnvironmentMethod
+final class IpagEnvironmentPaymentMethodsAcquirer
 {
     public const CIELO = 'cielo';
     public const EREDE = 'erede';

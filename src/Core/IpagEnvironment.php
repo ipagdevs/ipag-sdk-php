@@ -2,7 +2,7 @@
 
 namespace Ipag\Sdk\Core;
 
-class IpagEnvironment extends Environment
+final class IpagEnvironment extends Environment
 {
     public const LOCAL = 'api.ipag.test';
     public const PRODUCTION = 'https://api.ipag.com.br';
@@ -10,7 +10,10 @@ class IpagEnvironment extends Environment
 
     private static ?IpagEnvironmentWebhook $envWebhook = null;
 
-    private static ?IpagEnvironmentMethod $envMethod = null;
+    private static ?IpagEnvironmentPaymentMethodsAcquirer $envMethod = null;
+    private static ?IpagEnvironmentCardMethods $envCardMethods = null;
+    private static ?IpagEnvironmentBankSlipMethods $envBankSlipMethods = null;
+    private static ?IpagEnvironmentOtherMethods $envOtherMethods = null;
 
     private string $serviceUrl;
 
@@ -36,12 +39,36 @@ class IpagEnvironment extends Environment
         return self::$envWebhook;
     }
 
-    public static function paymentMethod(): IpagEnvironmentMethod
+    public static function paymentMethodsAcquirer(): IpagEnvironmentPaymentMethodsAcquirer
     {
         if (!self::$envMethod)
-            self::$envMethod = new IpagEnvironmentMethod;
+            self::$envMethod = new IpagEnvironmentPaymentMethodsAcquirer;
 
         return self::$envMethod;
+    }
+
+    public static function cardMethods(): IpagEnvironmentCardMethods
+    {
+        if (!self::$envCardMethods)
+            self::$envCardMethods = new IpagEnvironmentCardMethods;
+
+        return self::$envCardMethods;
+    }
+
+    public static function bankSlipMethods(): IpagEnvironmentBankSlipMethods
+    {
+        if (!self::$envBankSlipMethods)
+            self::$envBankSlipMethods = new IpagEnvironmentBankSlipMethods;
+
+        return self::$envBankSlipMethods;
+    }
+
+    public static function otherPaymentMethods(): IpagEnvironmentOtherMethods
+    {
+        if (!self::$envOtherMethods)
+            self::$envOtherMethods = new IpagEnvironmentOtherMethods;
+
+        return self::$envOtherMethods;
     }
 
 }

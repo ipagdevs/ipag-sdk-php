@@ -2,7 +2,7 @@
 
 namespace Ipag\Sdk\Core;
 
-class IpagEnvironmentWebhook
+final class IpagEnvironmentWebhook
 {
     // public const TRANSACTION_CREATED = "TransactionCreated";
 
