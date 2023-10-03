@@ -20,6 +20,7 @@ use Ipag\Sdk\Endpoint\VoucherEndpoint;
 use Ipag\Sdk\Endpoint\WebhookEndpoint;
 use Ipag\Sdk\Http\Client\GuzzleHttpClient;
 use Ipag\Sdk\IO\JsonSerializer;
+use Psr\Log\LoggerInterface;
 
 /**
  * IpagClient Class
@@ -39,7 +40,7 @@ final class IpagClient extends Client
      * @param string Ambiente de execução (IpagEnvironment::SANDBOX | IpagEnvironment::PRODUCTION).
      * @param string $version Versão da API (valor padrão = '2').
      */
-    public function __construct(string $apiID, string $apiKey, string $environment, string $version = '2')
+    public function __construct(string $apiID, string $apiKey, string $environment, ?LoggerInterface $logger = null, string $version = '2')
     {
         parent::__construct(
             new IpagEnvironment($environment),
@@ -52,7 +53,8 @@ final class IpagClient extends Client
                     ],
                 ]
             ),
-            new JsonSerializer()
+            new JsonSerializer(),
+            $logger
         );
     }
 
