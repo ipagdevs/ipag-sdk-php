@@ -306,11 +306,6 @@ $responsePayment = $ipagClient->payment()->cancelByUuid($transactionTid);
 $responsePayment = $ipagClient->payment()->cancelByUuid($orderId);
 ```
 
-### Validação de Cartão de Crédito (not implemented yet)
-
-
-### Simular Captura em Sandbox (not implemented yet)
-
 # Cliente (Customer)
 
 > Exemplo completo: [examples/customer/usage.php](./examples/customer/usage.php)

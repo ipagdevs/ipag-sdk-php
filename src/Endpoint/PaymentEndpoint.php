@@ -78,7 +78,7 @@ class PaymentEndpoint extends Endpoint
      */
     public function captureById(string $id): Response
     {
-        return $this->_POST(['id' => $id], ['id' => $id], [], '/capture');
+        return $this->_POST([], ['id' => $id], [], '/capture');
     }
 
     /**
@@ -89,7 +89,7 @@ class PaymentEndpoint extends Endpoint
      */
     public function captureByUuid(string $uuid): Response
     {
-        return $this->_POST(['uuid' => $uuid], ['uuid' => $uuid], [], '/capture');
+        return $this->_POST([], ['uuid' => $uuid], [], '/capture');
     }
 
     /**
@@ -100,7 +100,7 @@ class PaymentEndpoint extends Endpoint
      */
     public function captureByTid(string $tid): Response
     {
-        return $this->_POST(['tid' => $tid], ['tid' => $tid], [], '/capture');
+        return $this->_POST([], ['tid' => $tid], [], '/capture');
     }
 
     /**
@@ -111,7 +111,7 @@ class PaymentEndpoint extends Endpoint
      */
     public function captureByOrderId(string $orderId): Response
     {
-        return $this->_POST(['order_id' => $orderId], ['order_id' => $orderId], [], '/capture');
+        return $this->_POST([], ['order_id' => $orderId], [], '/capture');
     }
 
     /**
@@ -122,7 +122,7 @@ class PaymentEndpoint extends Endpoint
      */
     public function cancelById(string $id): Response
     {
-        return $this->_POST(['id' => $id], ['id' => $id], [], '/cancel');
+        return $this->_POST([], ['id' => $id], [], '/cancel');
     }
 
     /**
@@ -133,7 +133,7 @@ class PaymentEndpoint extends Endpoint
      */
     public function cancelByUuid(string $uuid): Response
     {
-        return $this->_POST(['uuid' => $uuid], ['uuid' => $uuid], [], '/cancel');
+        return $this->_POST([], ['uuid' => $uuid], [], '/cancel');
     }
 
     /**
@@ -144,7 +144,7 @@ class PaymentEndpoint extends Endpoint
      */
     public function cancelByTid(string $tid): Response
     {
-        return $this->_POST(['tid' => $tid], ['tid' => $tid], [], '/cancel');
+        return $this->_POST([], ['tid' => $tid], [], '/cancel');
     }
 
     /**
@@ -155,7 +155,7 @@ class PaymentEndpoint extends Endpoint
      */
     public function cancelByOrderId(string $orderId): Response
     {
-        return $this->_POST(['order_id' => $orderId], ['order_id' => $orderId], [], '/cancel');
+        return $this->_POST([], ['order_id' => $orderId], [], '/cancel');
     }
 
 }

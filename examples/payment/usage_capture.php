@@ -23,11 +23,11 @@ try {
     // dd($responsePayment->getData());
 
     // Capture By Tid
-    // $responsePayment = $ipagClient->payment()->captureByUuid($transactionTid);
+    // $responsePayment = $ipagClient->payment()->captureByTid($transactionTid);
     // dd($responsePayment->getData());
 
     // Capture By Order Id
-    // $responsePayment = $ipagClient->payment()->captureByUuid($orderId);
+    // $responsePayment = $ipagClient->payment()->captureByOrderId($orderId);
     // dd($responsePayment->getData());
 
 } catch (\Throwable $th) {

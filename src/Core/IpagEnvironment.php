@@ -21,9 +21,6 @@ class IpagEnvironment extends Environment
             throw new \UnexpectedValueException("The environment must be valid");
 
         parent::__construct($environment);
-        /*
-        $this->url = $this->joinPath("/v{$auth}");
-        */
     }
 
     private function isValidEnv(string $value)

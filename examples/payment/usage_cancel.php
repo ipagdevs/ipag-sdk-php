@@ -25,11 +25,11 @@ try {
     // dd($responsePayment->getData());
 
     // Cancel By Tid
-    // $responsePayment = $ipagClient->payment()->cancelByUuid($transactionTid);
+    // $responsePayment = $ipagClient->payment()->cancelByTid($transactionTid);
     // dd($responsePayment->getData());
 
     // Cancel By Order Id
-    // $responsePayment = $ipagClient->payment()->cancelByUuid($orderId);
+    // $responsePayment = $ipagClient->payment()->cancelByOrderId($orderId);
     // dd($responsePayment->getData());
 
 } catch (\Throwable $th) {
