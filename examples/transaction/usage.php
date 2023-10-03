@@ -6,7 +6,11 @@ use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpClientException;
 
-$client = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
+$client = new IpagClient(
+    'apiID',
+    'apiKey',
+    IpagEnvironment::SANDBOX
+);
 
 try {
 

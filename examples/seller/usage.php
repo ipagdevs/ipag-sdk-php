@@ -5,7 +5,11 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
 
-$ipagClient = new IpagClient('lucas', 'E089-31668545-5BB2521F-72F14DB1-283C', IpagEnvironment::LOCAL);
+$ipagClient = new IpagClient(
+    'apiID',
+    'apiKey',
+    IpagEnvironment::SANDBOX
+);
 
 $seller = new \Ipag\Sdk\Model\Seller([
     "login" => "mariajose",
