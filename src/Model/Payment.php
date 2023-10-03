@@ -38,9 +38,7 @@ final class Payment extends Model
      *
      *  + [`'boleto'`] array (opcional) dos dados do Boleto.
      *  + &emsp; [`'due_date'`] string (opcional) {Formato: `Y-m-d H:i:s`}.
-     *  + &emsp; [`'instructions'`] array (opcional) dos dados da instruções.
-     *  + &emsp;&emsp; [`'instruction'`] string (opcional).
-     *  + &emsp;&emsp; `...`
+     *  + &emsp; [`'instructions'`] string[] (opcional) dos dados da instruções.
      */
     public function __construct(?array $data = [])
     {

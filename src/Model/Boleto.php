@@ -19,9 +19,7 @@ final class Boleto extends Model
      *  array de dados do Card.
      *
      *  + [`'due_date'`] string (opcional) {Formato: `Y-m-d H:i:s`}.
-     *  + [`'instructions'`] array (opcional) dos dados da instruções.
-     *  + &emsp; [`'instruction'`] string (opcional).
-     *  + &emsp; `...`
+     *  + [`'instructions'`] string[] (opcional) dos dados da instruções.
      */
     public function __construct(?array $data = [])
     {
@@ -104,12 +102,10 @@ final class Boleto extends Model
     {
         $this->set(
             'instructions',
-            array_merge(
-                $this->get('instructions'),
-                [
-                    ['instruction' => $instruction]
-                ]
-            )
+            [
+                ...$this->get('instructions'),
+                $instruction
+            ]
         );
 
         return $this;

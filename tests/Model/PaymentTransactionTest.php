@@ -28,8 +28,8 @@ class PaymentTransactionTest extends TestCase
                 'boleto' => [
                     'due_date' => '2018-07-31',
                     'instructions' => [
-                        ['instruction' => 'Instruções 1'],
-                        ['instruction' => 'Instruções 2'],
+                        'Instruções 1',
+                        'Instruções 2',
                     ]
                 ],
             ],
@@ -104,8 +104,8 @@ class PaymentTransactionTest extends TestCase
         $this->assertIsArray($paymentTransaction->getPayment()->getBoleto()->getInstructions());
         $this->assertCount(2, $paymentTransaction->getPayment()->getBoleto()->getInstructions());
 
-        $this->assertEquals('Instruções 1', $paymentTransaction->getPayment()->getBoleto()->getInstructions()[0]['instruction']);
-        $this->assertEquals('Instruções 2', $paymentTransaction->getPayment()->getBoleto()->getInstructions()[1]['instruction']);
+        $this->assertEquals('Instruções 1', $paymentTransaction->getPayment()->getBoleto()->getInstructions()[0]);
+        $this->assertEquals('Instruções 2', $paymentTransaction->getPayment()->getBoleto()->getInstructions()[1]);
 
         $this->assertEquals('Lívia Julia Eduarda Barros', $paymentTransaction->getCustomer()->getName());
         $this->assertEquals('07459826383', $paymentTransaction->getCustomer()->getCpfCnpj());
@@ -174,7 +174,7 @@ class PaymentTransactionTest extends TestCase
                         (new \Ipag\Sdk\Model\Boleto)
                             ->setDueDate('2018-07-31')
                             ->setInstructions([
-                                ['instruction' => 'Instruções 1'],
+                                'Instruções 1',
                             ])
                             ->addInstruction('Instruções 2')
                     )
@@ -254,8 +254,8 @@ class PaymentTransactionTest extends TestCase
         $this->assertIsArray($paymentTransaction->getPayment()->getBoleto()->getInstructions());
         $this->assertCount(2, $paymentTransaction->getPayment()->getBoleto()->getInstructions());
 
-        $this->assertEquals('Instruções 1', $paymentTransaction->getPayment()->getBoleto()->getInstructions()[0]['instruction']);
-        $this->assertEquals('Instruções 2', $paymentTransaction->getPayment()->getBoleto()->getInstructions()[1]['instruction']);
+        $this->assertEquals('Instruções 1', $paymentTransaction->getPayment()->getBoleto()->getInstructions()[0]);
+        $this->assertEquals('Instruções 2', $paymentTransaction->getPayment()->getBoleto()->getInstructions()[1]);
 
         $this->assertEquals('Lívia Julia Eduarda Barros', $paymentTransaction->getCustomer()->getName());
         $this->assertEquals('07459826383', $paymentTransaction->getCustomer()->getCpfCnpj());
@@ -337,8 +337,8 @@ class PaymentTransactionTest extends TestCase
                 'boleto' => [
                     'due_date' => '2018-07-31',
                     'instructions' => [
-                        ['instruction' => 'Instruções 1'],
-                        ['instruction' => 'Instruções 2'],
+                        'Instruções 1',
+                        'Instruções 2',
                     ]
                 ],
             ],

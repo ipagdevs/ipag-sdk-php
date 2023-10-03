@@ -45,9 +45,7 @@ final class PaymentTransaction extends Model
      *  + &emsp;&emsp; [`'tokenize'`] bool.
      *  + &emsp; [`'boleto'`] array (opcional) dos dados do Boleto.
      *  + &emsp;&emsp; [`'due_date'`] string (opcional) {Formato: `Y-m-d H:i:s`}.
-     *  + &emsp;&emsp; [`'instructions'`] array (opcional) dos dados da instruções.
-     *  + &emsp;&emsp;&emsp; [`'instruction'`] string (opcional).
-     *  + &emsp;&emsp;&emsp; `...`
+     *  + &emsp;&emsp; [`'instructions'`] string[ ] (opcional) dos dados da instruções.
      *
      *  + [`'customer'`] array (opcional) dos dados do Customer.
      *  + &emsp; [`'name'`] string.
@@ -69,7 +67,7 @@ final class PaymentTransaction extends Model
      *  + &emsp; [`'installments'`] int.
      *  + &emsp; [`'cycles'`] int.
      *
-     *  + [`'split_rules'`] array (opcional) dos dados do Split Rules.
+     *  + [`'split_rules'`] SplitRules[] (opcional) dos dados do Split Rules.
      *  + &emsp; [`'seller_id'`] string.
      *  + &emsp; [`'percentage'`] float.
      *  + &emsp; [`'amount'`] float.
@@ -77,7 +75,7 @@ final class PaymentTransaction extends Model
      *  + &emsp; [`'charge_processing_fee'`] bool.
      *  + &emsp; [`'hold_receivables'`] bool.
      *
-     *  + [`'products'`] array (opcional) dos dados do Product.
+     *  + [`'products'`] Product[] (opcional) dos dados do Product.
      *  + &emsp; [
      *  + &emsp;&emsp; [`'name'`] string
      *  + &emsp;&emsp; [`'unit_price'`] string
@@ -305,12 +303,10 @@ final class PaymentTransaction extends Model
     {
         $this->set(
             'products',
-            array_merge(
-                $this->get('products'),
-                [
-                    $product
-                ]
-            )
+            [
+                ...$this->get('products'),
+                $product
+            ]
         );
 
         return $this;
@@ -370,12 +366,10 @@ final class PaymentTransaction extends Model
     {
         $this->set(
             'split_rules',
-            array_merge(
-                $this->get('split_rules'),
-                [
-                    $splitRules
-                ]
-            )
+            [
+                ...$this->get('split_rules'),
+                $splitRules
+            ]
         );
 
         return $this;

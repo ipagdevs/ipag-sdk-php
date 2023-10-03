@@ -46,7 +46,7 @@ final class Checkout extends Model
      *  + &emsp; [`'return_url'`] string.
      *  + &emsp; [`'return_type'`] string.
      *
-     *  + [`'products'`] array (opcional) dos dados do Product.
+     *  + [`'products'`] Product[] (opcional) dos dados do Product.
      *  + &emsp; [
      *  + &emsp;&emsp; [`'name'`] string
      *  + &emsp;&emsp; [`'unit_price'`] string
@@ -55,7 +55,7 @@ final class Checkout extends Model
      *  + &emsp;&emsp; [`'description'`] string
      *  + &emsp; ], [`...`]
      *
-     *  + [`'split_rules'`] array (opcional) dos dados do Split Rules.
+     *  + [`'split_rules'`] SplitRules[] (opcional) dos dados do Split Rules.
      *  + &emsp; [
      *  + &emsp;&emsp; [`'receiver_id'`] string.
      *  + &emsp;&emsp; [`'amount'`] float.
@@ -182,12 +182,10 @@ final class Checkout extends Model
     {
         $this->set(
             'products',
-            array_merge(
-                $this->get('products'),
-                [
-                    $product
-                ]
-            )
+            [
+                ...$this->get('products'),
+                $product
+            ]
         );
 
         return $this;
@@ -225,12 +223,10 @@ final class Checkout extends Model
     {
         $this->set(
             'split_rules',
-            array_merge(
-                $this->get('split_rules'),
-                [
-                    $splitRule
-                ]
-            )
+            [
+                ...$this->get('split_rules'),
+                $splitRule
+            ]
         );
 
         return $this;

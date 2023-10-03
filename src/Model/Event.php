@@ -199,12 +199,10 @@ final class Event extends Model
     {
         $this->set(
             'tickets',
-            array_merge(
-                $this->get('tickets'),
-                [
-                    $ticket
-                ]
-            )
+            [
+                ...$this->get('tickets'),
+                $ticket
+            ]
         );
 
         return $this;

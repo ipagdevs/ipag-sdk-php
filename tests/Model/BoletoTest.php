@@ -12,9 +12,9 @@ class BoletoTest extends TestCase
         $boleto = new \Ipag\Sdk\Model\Boleto([
             'due_date' => '2018-07-31',
             'instructions' => [
-                ['instruction' => 'Instruções 1'],
-                ['instruction' => 'Instruções 2'],
-                ['instruction' => 'Instruções 3'],
+                'Instruções 1',
+                'Instruções 2',
+                'Instruções 3',
             ]
         ]);
 
@@ -22,9 +22,9 @@ class BoletoTest extends TestCase
 
         $this->assertIsArray($boleto->getInstructions());
 
-        $this->assertEquals('Instruções 1', $boleto->getInstructions()[0]['instruction']);
-        $this->assertEquals('Instruções 2', $boleto->getInstructions()[1]['instruction']);
-        $this->assertEquals('Instruções 3', $boleto->getInstructions()[2]['instruction']);
+        $this->assertEquals('Instruções 1', $boleto->getInstructions()[0]);
+        $this->assertEquals('Instruções 2', $boleto->getInstructions()[1]);
+        $this->assertEquals('Instruções 3', $boleto->getInstructions()[2]);
 
     }
 
@@ -33,18 +33,18 @@ class BoletoTest extends TestCase
         $boleto = (new \Ipag\Sdk\Model\Boleto)
             ->setDueDate('2018-07-31')
             ->setInstructions([
-                ['instruction' => 'Instruções 1'],
-                ['instruction' => 'Instruções 2'],
-                ['instruction' => 'Instruções 3'],
+                'Instruções 1',
+                'Instruções 2',
+                'Instruções 3'
             ]);
 
         $this->assertEquals('2018-07-31', $boleto->getDueDate());
 
         $this->assertIsArray($boleto->getInstructions());
 
-        $this->assertEquals('Instruções 1', $boleto->getInstructions()[0]['instruction']);
-        $this->assertEquals('Instruções 2', $boleto->getInstructions()[1]['instruction']);
-        $this->assertEquals('Instruções 3', $boleto->getInstructions()[2]['instruction']);
+        $this->assertEquals('Instruções 1', $boleto->getInstructions()[0]);
+        $this->assertEquals('Instruções 2', $boleto->getInstructions()[1]);
+        $this->assertEquals('Instruções 3', $boleto->getInstructions()[2]);
 
     }
 
@@ -63,9 +63,9 @@ class BoletoTest extends TestCase
         $boleto = new \Ipag\Sdk\Model\Boleto([
             'due_date' => '2018-07-31',
             'instructions' => [
-                ['instruction' => 'Instruções 1'],
-                ['instruction' => 'Instruções 2'],
-                ['instruction' => 'Instruções 3'],
+                'Instruções 1',
+                'Instruções 2',
+                'Instruções 3',
             ]
         ]);
 
