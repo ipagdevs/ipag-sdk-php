@@ -6,6 +6,7 @@ use Ipag\Sdk\Exception\HttpClientException;
 use Ipag\Sdk\Http\Response;
 use Ipag\Sdk\IO\SerializerInterface;
 use Ipag\Sdk\Path\CompositePathInterface;
+use Ipag\Sdk\Util\ArrayUtil;
 use Ipag\Sdk\Util\PathUtil;
 
 abstract class Endpoint implements CompositePathInterface
@@ -70,26 +71,7 @@ abstract class Endpoint implements CompositePathInterface
             );
         } catch (HttpClientException $e) {
 
-            $responseMessage = $e->getResponse()->getParsedPath('message');
-
-            if (is_array($responseMessage))
-                $responseMessage = implode('; ', array_reduce($responseMessage, fn($carry, $item) =>
-                    array_merge($carry, [implode(', ', $item)]), []));
-
-            $responseData = $e->getResponse()->getParsedPath('data');
-
-            if (is_array($responseData))
-                $responseMessage .= ' => ' . implode('; ', array_reduce($responseData, fn($carry, $item) =>
-                    array_merge($carry, [implode(', ', $item)]), []));
-
-            $responseData = $e->getResponse()->getParsedPath('error');
-
-            if (is_array($responseData)) {
-                if ($responseData['message'])
-                    $responseMessage .= json_encode($responseData);
-                else
-                    $responseMessage .= ' => ' . implode('; ', $responseData);
-            }
+            $responseMessage = $this->sanitizeErrorMessage($e->getResponse());
 
             $this->exceptionThrown(
                 new HttpClientException(
@@ -137,6 +119,26 @@ abstract class Endpoint implements CompositePathInterface
     protected function exceptionThrown(\Throwable $e): void
     {
         throw $e;
+    }
+
+    private function sanitizeErrorMessage(Response $response): ?string
+    {
+        $responseMessage = $response->getParsedPath('message');
+
+        if (is_array($responseMessage))
+            $responseMessage = implode(' | ', ArrayUtil::extractStrings($responseMessage));
+
+        $responseData = $response->getParsedPath('data');
+
+        if (is_array($responseData))
+            $responseMessage .= implode(' | ', ArrayUtil::extractStrings($responseData));
+
+        $responseData = $response->getParsedPath('error');
+
+        if (is_array($responseData))
+            $responseMessage .= implode(' | ', ArrayUtil::extractStrings($responseData));
+
+        return $responseMessage;
     }
 
 }

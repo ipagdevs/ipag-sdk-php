@@ -38,4 +38,23 @@ abstract class ArrayUtil
             }
         }
     }
+
+    /**
+     * Retorna um nova array de strings dentro do array informado.
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function extractStrings(array $data): array
+    {
+        return array_reduce($data, function ($strings, $value) {
+            if (is_array($value)) {
+                return array_merge($strings, self::extractStrings($value));
+            } elseif (is_string($value) && !is_numeric($value)) {
+                $strings[] = $value;
+            }
+            return $strings;
+        }, []);
+    }
+
 }

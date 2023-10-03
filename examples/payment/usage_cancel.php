@@ -14,8 +14,6 @@ try {
     $transactionTid = 'b5a38ba638a5c471e040fe86b4ef4726';
     $orderId = 27;
 
-    //TODO: Testar dos os endpoints
-
     // Cancel By Id
     // $responsePayment = $ipagClient->payment()->cancelById($transactionId);
     // dd($responsePayment->getData());
