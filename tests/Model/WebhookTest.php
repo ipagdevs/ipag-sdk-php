@@ -10,7 +10,7 @@ class WebhookTest extends TestCase
     {
         $webhook = new \Ipag\Sdk\Model\Webhook([
             'http_method' => 'POST',
-            'url' => 'https://minhaloja.com.br/callback',
+            'url' => 'https://ipag-sdk.requestcatcher.com/webhook',
             'description' => 'Webhook para receber notificações de atualização das transações',
             'actions' => [
                 \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
@@ -19,7 +19,7 @@ class WebhookTest extends TestCase
         ]);
 
         $this->assertEquals('POST', $webhook->getHttpMethod());
-        $this->assertEquals('https://minhaloja.com.br/callback', $webhook->getUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/webhook', $webhook->getUrl());
         $this->assertEquals('Webhook para receber notificações de atualização das transações', $webhook->getDescription());
         $this->assertEquals([
             \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
@@ -31,7 +31,7 @@ class WebhookTest extends TestCase
     {
         $webhook = (new \Ipag\Sdk\Model\Webhook)
             ->setHttpMethod('POST')
-            ->setUrl('https://minhaloja.com.br/callback')
+            ->setUrl('https://ipag-sdk.requestcatcher.com/webhook')
             ->setDescription('Webhook para receber notificações de atualização das transações')
             ->setActions([
                 \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
@@ -39,7 +39,7 @@ class WebhookTest extends TestCase
             ]);
 
         $this->assertEquals('POST', $webhook->getHttpMethod());
-        $this->assertEquals('https://minhaloja.com.br/callback', $webhook->getUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/webhook', $webhook->getUrl());
         $this->assertEquals('Webhook para receber notificações de atualização das transações', $webhook->getDescription());
         $this->assertEquals([
             \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
@@ -63,7 +63,7 @@ class WebhookTest extends TestCase
     {
         $webhook = new \Ipag\Sdk\Model\Webhook([
             'http_method' => 'POST',
-            'url' => 'https://minhaloja.com.br/callback',
+            'url' => 'https://ipag-sdk.requestcatcher.com/webhook',
             'description' => 'Webhook para receber notificações de atualização das transações',
             'actions' => [
                 \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,

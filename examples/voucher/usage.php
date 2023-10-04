@@ -17,7 +17,7 @@ $voucher = new \Ipag\Sdk\Model\Voucher([
         'order_id' => '100018',
         'amount' => 699.99,
         'created_at' => '2020-08-04 21:45:10',
-        'callback_url' => 'https://www.yahoo.com.br/callback'
+        'callback_url' => 'https://ipag-sdk.requestcatcher.com/callbackk'
     ],
     'seller' => [
         'cpf_cnpj' => '854.508.440-42',

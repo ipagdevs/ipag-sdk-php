@@ -29,7 +29,7 @@ class SubscriptionEndpointTest extends IpagClient
             'customer_id' => 100003,
             'starting_date' => '2021-07-11',
             'closing_date' => '2021-08-11',
-            'callback_url' => 'https://minhaloja.com/callback',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'creditcard_token' => null
         ]);
 

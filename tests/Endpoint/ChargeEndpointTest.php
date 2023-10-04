@@ -30,7 +30,7 @@ class ChargeEndpointTest extends IpagClient
             'interval' => 'month',
             'type' => 'charge',
             'last_charge_date' => '2020-10-30',
-            'callback_url' => 'https://api.ipag.test/retorno_charge',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'auto_debit' => false,
             'installments' => 12,
             'is_active' => true,

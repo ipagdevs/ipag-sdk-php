@@ -16,7 +16,7 @@ class SubscriptionTest extends TestCase
             'customer_id' => 100001,
             'starting_date' => '2021-07-10',
             'closing_date' => '2021-08-10',
-            'callback_url' => 'https://minhaloja.com/callback',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'creditcard_token' => '123'
         ]);
 
@@ -26,7 +26,7 @@ class SubscriptionTest extends TestCase
         $this->assertEquals(100001, $subscription->getCustomerId());
         $this->assertEquals('2021-07-10', $subscription->getStartingDate());
         $this->assertEquals('2021-08-10', $subscription->getClosingDate());
-        $this->assertEquals('https://minhaloja.com/callback', $subscription->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $subscription->getCallbackUrl());
         $this->assertEquals('123', $subscription->getCreditcardToken());
 
     }
@@ -41,7 +41,7 @@ class SubscriptionTest extends TestCase
             ->setCustomerId(100001)
             ->setStartingDate('2021-07-10')
             ->setClosingDate('2021-08-10')
-            ->setCallbackUrl('https://minhaloja.com/callback')
+            ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
             ->setCreditcardToken('123');
 
         $this->assertEquals(true, $subscription->getIsActive());
@@ -50,7 +50,7 @@ class SubscriptionTest extends TestCase
         $this->assertEquals(100001, $subscription->getCustomerId());
         $this->assertEquals('2021-07-10', $subscription->getStartingDate());
         $this->assertEquals('2021-08-10', $subscription->getClosingDate());
-        $this->assertEquals('https://minhaloja.com/callback', $subscription->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $subscription->getCallbackUrl());
         $this->assertEquals('123', $subscription->getCreditcardToken());
 
     }
@@ -79,7 +79,7 @@ class SubscriptionTest extends TestCase
             'customer_id' => 100001,
             'starting_date' => '2021-07-10',
             'closing_date' => '2021-08-10',
-            'callback_url' => 'https://minhaloja.com/callback',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'creditcard_token' => '123'
         ]);
 

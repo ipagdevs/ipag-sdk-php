@@ -38,7 +38,7 @@ $checkout = new \Ipag\Sdk\Model\Checkout([
     'order' => [
         'order_id' => '100001',
         'amount' => '15.00',
-        'return_url' => 'https://www.loja.com.br/callback',
+        'return_url' => 'https://ipag-sdk.requestcatcher.com/callback',
         'return_type' => 'json'
     ],
     'products' => [

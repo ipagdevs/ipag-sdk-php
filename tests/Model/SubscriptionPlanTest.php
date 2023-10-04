@@ -19,7 +19,7 @@ class SubscriptionPlanTest extends TestCase
             "best_day" => true,
             "pro_rated_charge" => true,
             "grace_period" => 0,
-            "callback_url" => "https://sualoja.com.br/ipag/callback",
+            "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
             "trial" => [
                 "amount" => 0,
             ]
@@ -34,7 +34,7 @@ class SubscriptionPlanTest extends TestCase
         $this->assertEquals(true, $subscriptionPlan->getBestDay());
         $this->assertEquals(true, $subscriptionPlan->getProRatedCharge());
         $this->assertEquals(0, $subscriptionPlan->getGracePeriod());
-        $this->assertEquals("https://sualoja.com.br/ipag/callback", $subscriptionPlan->getCallbackUrl());
+        $this->assertEquals("https://ipag-sdk.requestcatcher.com/callback", $subscriptionPlan->getCallbackUrl());
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Trial::class, $subscriptionPlan->getTrial());
 
@@ -54,7 +54,7 @@ class SubscriptionPlanTest extends TestCase
             ->setBestDay(true)
             ->setProRatedCharge(true)
             ->setGracePeriod(0)
-            ->setCallbackUrl("https://sualoja.com.br/ipag/callback")
+            ->setCallbackUrl("https://ipag-sdk.requestcatcher.com/callback")
             ->setTrial(
                 (new \Ipag\Sdk\Model\Trial)
                     ->setAmount(0)
@@ -69,7 +69,7 @@ class SubscriptionPlanTest extends TestCase
         $this->assertEquals(true, $subscriptionPlan->getBestDay());
         $this->assertEquals(true, $subscriptionPlan->getProRatedCharge());
         $this->assertEquals(0, $subscriptionPlan->getGracePeriod());
-        $this->assertEquals("https://sualoja.com.br/ipag/callback", $subscriptionPlan->getCallbackUrl());
+        $this->assertEquals("https://ipag-sdk.requestcatcher.com/callback", $subscriptionPlan->getCallbackUrl());
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Trial::class, $subscriptionPlan->getTrial());
         $this->assertEquals(0, $subscriptionPlan->getTrial()->getAmount());
@@ -107,7 +107,7 @@ class SubscriptionPlanTest extends TestCase
             "best_day" => true,
             "pro_rated_charge" => true,
             "grace_period" => 0,
-            "callback_url" => "https://sualoja.com.br/ipag/callback",
+            "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
             "trial" => [
                 "amount" => 0,
                 "cycles" => 0

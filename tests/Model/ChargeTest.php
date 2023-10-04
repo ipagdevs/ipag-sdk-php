@@ -18,7 +18,7 @@ class ChargeTest extends TestCase
             'interval' => 'month',
             'type' => 'charge',
             'last_charge_date' => '2020-10-30',
-            'callback_url' => 'https://api.ipag.test/retorno_charge',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'auto_debit' => false,
             'installments' => 12,
             'is_active' => true,
@@ -38,7 +38,7 @@ class ChargeTest extends TestCase
         $this->assertEquals('month', $charge->getInterval());
         $this->assertEquals('charge', $charge->getType());
         $this->assertEquals('2020-10-30', $charge->getLastChargeDate());
-        $this->assertEquals('https://api.ipag.test/retorno_charge', $charge->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $charge->getCallbackUrl());
         $this->assertEquals(false, $charge->getAutoDebit());
         $this->assertEquals(12, $charge->getInstallments());
         $this->assertEquals(true, $charge->getIsActive());
@@ -64,7 +64,7 @@ class ChargeTest extends TestCase
             ->setInterval('month')
             ->setType('charge')
             ->setLastChargeDate('2020-10-30')
-            ->setCallbackUrl('https://api.ipag.test/retorno_charge')
+            ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
             ->setAutoDebit(false)
             ->setInstallments(12)
             ->setIsActive(true)
@@ -85,7 +85,7 @@ class ChargeTest extends TestCase
         $this->assertEquals('month', $charge->getInterval());
         $this->assertEquals('charge', $charge->getType());
         $this->assertEquals('2020-10-30', $charge->getLastChargeDate());
-        $this->assertEquals('https://api.ipag.test/retorno_charge', $charge->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $charge->getCallbackUrl());
         $this->assertEquals(false, $charge->getAutoDebit());
         $this->assertEquals(12, $charge->getInstallments());
         $this->assertEquals(true, $charge->getIsActive());
@@ -135,7 +135,7 @@ class ChargeTest extends TestCase
             'interval' => 'month',
             'type' => 'charge',
             'last_charge_date' => '2020-10-30',
-            'callback_url' => 'https://api.ipag.test/retorno_charge',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'auto_debit' => false,
             'installments' => 12,
             'is_active' => true,

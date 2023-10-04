@@ -163,7 +163,7 @@ $ipagClient = new \Ipag\Sdk\Core\IpagClient(
 $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
     [
         "amount" => 97.86,
-        "callback_url" => "https://99mystore.com.br/ipag/callback",
+        "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
         "order_id" => "1234567",
         "payment" => [
             "type" => "card",
@@ -189,7 +189,7 @@ ou
 $paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction)
     ->setAmount(100.0)
     ->setOrderId('123456')
-    ->setCallbackUrl('https://99mystore.com.br/ipag/callback')
+    ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
     ->setAntifraud(
         (new \Ipag\Sdk\Model\PaymentAntifraud)
             ->setFingerprint('123')
@@ -393,7 +393,7 @@ $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
     'best_day' => true,
     'pro_rated_charge' => true,
     'grace_period' => 0,
-    'callback_url' => 'https://sualoja.com.br/ipag/callback',
+    'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
     'trial' => [
         'amount' => 0,
         'cycles' => 0
@@ -414,7 +414,7 @@ $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan()
     ->setBestDay(true)
     ->setProRatedCharge(true)
     ->setGracePeriod(0)
-    ->setCallbackUrl("https://sualoja.com.br/ipag/callback")
+    ->setCallbackUrl("https://ipag-sdk.requestcatcher.com/callback")
     ->setTrial(
         new \Ipag\Sdk\Model\Trial()
             ->setAmount(0)
@@ -466,7 +466,7 @@ $subscription = new \Ipag\Sdk\Model\Subscription([
     'customer_id' => 100003,
     'starting_date' => '2021-07-11',
     'closing_date' => '2021-08-11',
-    'callback_url' => 'https://minhaloja.com/callback',
+    'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
     'creditcard_token' => null
 ]);
 
@@ -482,7 +482,7 @@ $subscription = new \Ipag\Sdk\Model\Subscription()
     ->setCustomerId(100001)
     ->setStartingDate('2021-07-10')
     ->setClosingDate('2021-08-10')
-    ->setCallbackUrl('https://minhaloja.com/callback')
+    ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
     ->setCreditcardToken('123');
 
 ```
@@ -630,7 +630,7 @@ $charge = new \Ipag\Sdk\Model\Charge([
     'interval' => 'month',
     'type' => 'charge',
     'last_charge_date' => '2020-10-30',
-    'callback_url' => 'https://api.ipag.test/retorno_charge',
+    'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
     'auto_debit' => false,
     'installments' => 12,
     'is_active' => true,
@@ -653,7 +653,7 @@ $charge = (new \Ipag\Sdk\Model\Charge)
     ->setInterval('month')
     ->setType('charge')
     ->setLastChargeDate('2020-10-30')
-    ->setCallbackUrl('https://api.ipag.test/retorno_charge')
+    ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
     ->setAutoDebit(false)
     ->setInstallments(12)
     ->setIsActive(true)
@@ -1054,7 +1054,7 @@ $responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($externalC
 ```php
 $webhook = new \Ipag\Sdk\Model\Webhook([
     'http_method' => 'POST',
-    'url' => 'https://minhaloja.com.br/callback',
+    'url' => 'https://ipag-sdk.requestcatcher.com/webhook',
     'description' => 'Webhook para receber notificações de atualização das transações',
     'actions' => [
         \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
@@ -1066,7 +1066,7 @@ ou
 ```php
 $webhook = (new \Ipag\Sdk\Model\Webhook)
     ->setHttpMethod('POST')
-    ->setUrl('https://minhaloja.com.br/callback')
+    ->setUrl('https://ipag-sdk.requestcatcher.com/webhook')
     ->setDescription('Webhook para receber notificações de atualização das transações')
     ->setActions([
         \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
@@ -1129,7 +1129,7 @@ $checkout = new \Ipag\Sdk\Model\Checkout([
     'order' => [
         "order_id" => "100001",
         "amount" => "15.00",
-        "return_url" => "https://www.loja.com.br/callback",
+        "return_url" => "https://ipag-sdk.requestcatcher.com/callback",
         "return_type" => "json"
     ],
     'products' => [
@@ -1214,7 +1214,7 @@ $voucher = new \Ipag\Sdk\Model\Voucher([
         'order_id' => '100015',
         'amount' => 699.99,
         'created_at' => '2020-08-04 21:45:10',
-        'callback_url' => 'https://www.yahoo.com.br/callback'
+        'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback'
     ],
     'seller' => [
         'cpf_cnpj' => '854.508.440-42',

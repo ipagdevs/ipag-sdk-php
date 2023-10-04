@@ -15,7 +15,7 @@ $ipagClient = new IpagClient(
 $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
     [
         "amount" => 99.0,
-        "callback_url" => "https://99mystore.com.br/ipag/callback",
+        "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
         "payment" => [
             "type" => "card",
             "method" => IpagEnvironment::cardMethods()::VISA,

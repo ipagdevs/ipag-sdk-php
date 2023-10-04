@@ -12,7 +12,7 @@ class PaymentTransactionTest extends TestCase
         $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction([
             'amount' => 100.0,
             'order_id' => '123456',
-            'callback_url' => 'http://localhost',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'antifraud' => [
                 'fingerprint' => '123',
                 'provider' => 'test',
@@ -87,7 +87,7 @@ class PaymentTransactionTest extends TestCase
 
         $this->assertEquals(100.0, $paymentTransaction->getAmount());
         $this->assertEquals('123456', $paymentTransaction->getOrderId());
-        $this->assertEquals('http://localhost', $paymentTransaction->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $paymentTransaction->getCallbackUrl());
 
         $this->assertEquals('123', $paymentTransaction->getAntifraud()->getFingerprint());
         $this->assertEquals('test', $paymentTransaction->getAntifraud()->getProvider());
@@ -154,7 +154,7 @@ class PaymentTransactionTest extends TestCase
         $paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction)
             ->setAmount(100.0)
             ->setOrderId('123456')
-            ->setCallbackUrl('http://localhost')
+            ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
             ->setAntifraud(
                 (new \Ipag\Sdk\Model\PaymentAntifraud)
                     ->setFingerprint('123')
@@ -237,7 +237,7 @@ class PaymentTransactionTest extends TestCase
 
         $this->assertEquals(100.0, $paymentTransaction->getAmount());
         $this->assertEquals('123456', $paymentTransaction->getOrderId());
-        $this->assertEquals('http://localhost', $paymentTransaction->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $paymentTransaction->getCallbackUrl());
 
         $this->assertEquals('123', $paymentTransaction->getAntifraud()->getFingerprint());
         $this->assertEquals('test', $paymentTransaction->getAntifraud()->getProvider());
@@ -321,7 +321,7 @@ class PaymentTransactionTest extends TestCase
         $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction([
             'amount' => 100.0,
             'order_id' => '123456',
-            'callback_url' => 'http://localhost',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'antifraud' => [
                 'fingerprint' => '123',
                 'provider' => 'test',

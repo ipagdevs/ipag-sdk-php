@@ -24,7 +24,7 @@ class WebhookEndpointTest extends IpagClient
 
         $webhook = new \Ipag\Sdk\Model\Webhook([
             'http_method' => 'POST',
-            'url' => 'https://minhaloja.com.br/callback',
+            'url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'description' => 'Webhook para receber notificações de atualização das transações',
             'actions' => [
                 \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,

@@ -15,7 +15,7 @@ $ipagClient = new IpagClient(
 $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
     [
         "amount" => 97.65,
-        "callback_url" => "https://9a32ecb90e4cb7ef0f44d6262ec7b5d9.m.pipedream.net",
+        "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
         "payment" => [
             "type" => "card",
             "method" => IpagEnvironment::cardMethods()::VISA,

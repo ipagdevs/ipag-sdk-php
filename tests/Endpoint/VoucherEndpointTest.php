@@ -29,7 +29,7 @@ class VoucherEndpointTest extends IpagClient
                 'order_id' => '100012',
                 'amount' => 699.99,
                 'created_at' => '2020-08-04 21:45:10',
-                'callback_url' => 'https://www.yahoo.com.br/callback'
+                'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback'
             ],
             'seller' => [
                 'cpf_cnpj' => '854.508.440-42'

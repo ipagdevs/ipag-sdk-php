@@ -25,7 +25,7 @@ class PaymentEndpointTest extends IpagClient
         $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
             [
                 "amount" => 97.86,
-                "callback_url" => "https://99mystore.com.br/ipag/callback",
+                "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
                 "order_id" => "1234567",
                 "payment" => [
                     "type" => "card",
@@ -79,7 +79,7 @@ class PaymentEndpointTest extends IpagClient
             $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
                 [
                     "amount" => 97.86,
-                    "callback_url" => "https://99mystore.com.br/ipag/callback",
+                    "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
                     "order_id" => "1234567",
                     "payment" => [
                         "type" => "card",
@@ -130,7 +130,7 @@ class PaymentEndpointTest extends IpagClient
             $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
                 [
                     "amount" => 97.86,
-                    "callback_url" => "https://99mystore.com.br/ipag/callback",
+                    "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
                     "order_id" => "1234567",
                     "payment" => [
                         "type" => "card",
@@ -181,7 +181,7 @@ class PaymentEndpointTest extends IpagClient
             $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
                 [
                     "amount" => 97.86,
-                    "callback_url" => "https://99mystore.com.br/ipag/callback",
+                    "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
                     "order_id" => "1234567",
                     "payment" => [
                         "type" => "card",

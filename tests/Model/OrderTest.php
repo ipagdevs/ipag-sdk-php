@@ -13,16 +13,16 @@ class OrderTest extends TestCase
             'order_id' => '1000077',
             'amount' => 499.99,
             'created_at' => '2020-08-03 21:45:10',
-            'callback_url' => 'https://meusite.com.br/retorno',
-            'return_url' => 'https://meusite.com.br/retorno2',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
+            'return_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'return_type' => 'json'
         ]);
 
         $this->assertEquals('1000077', $order->getOrderId());
         $this->assertEquals(499.99, $order->getAmount());
         $this->assertEquals('2020-08-03 21:45:10', $order->getCreatedAt());
-        $this->assertEquals('https://meusite.com.br/retorno', $order->getCallbackUrl());
-        $this->assertEquals('https://meusite.com.br/retorno2', $order->getReturnUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $order->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $order->getReturnUrl());
         $this->assertEquals('json', $order->getReturnType());
 
     }
@@ -33,15 +33,15 @@ class OrderTest extends TestCase
             ->setOrderId('1000077')
             ->setAmount(499.99)
             ->setCreatedAt('2020-08-03 21:45:10')
-            ->setCallbackUrl('https://meusite.com.br/retorno')
-            ->setReturnUrl('https://meusite.com.br/retorno2')
+            ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
+            ->setReturnUrl('https://ipag-sdk.requestcatcher.com/callback')
             ->setReturnType('json');
 
         $this->assertEquals('1000077', $order->getOrderId());
         $this->assertEquals(499.99, $order->getAmount());
         $this->assertEquals('2020-08-03 21:45:10', $order->getCreatedAt());
-        $this->assertEquals('https://meusite.com.br/retorno', $order->getCallbackUrl());
-        $this->assertEquals('https://meusite.com.br/retorno2', $order->getReturnUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $order->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $order->getReturnUrl());
         $this->assertEquals('json', $order->getReturnType());
 
     }
@@ -65,8 +65,8 @@ class OrderTest extends TestCase
             'order_id' => '1000077',
             'amount' => 499.99,
             'created_at' => '2020-08-03 21:45:10',
-            'callback_url' => 'https://meusite.com.br/retorno',
-            'return_url' => 'https://meusite.com.br/retorno2',
+            'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
+            'return_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'return_type' => 'json'
         ]);
 

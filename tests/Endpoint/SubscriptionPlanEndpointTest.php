@@ -31,7 +31,7 @@ class SubscriptionPlanEndpointTest extends IpagClient
             "best_day" => true,
             "pro_rated_charge" => true,
             "grace_period" => 0,
-            "callback_url" => "https://sualoja.com.br/ipag/callback",
+            "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
             "trial" => [
                 'amount' => 100.99,
                 'cycles' => 10
