@@ -71,14 +71,17 @@ abstract class Endpoint implements CompositePathInterface
             );
         } catch (HttpClientException $e) {
 
-            $responseMessage = $this->sanitizeErrorMessage($e->getResponse());
+            $errorsSanitized = $this->sanitizeErrorMessage($e->getResponse());
 
             $this->exceptionThrown(
                 new HttpClientException(
-                    'response message: ' . json_encode($responseMessage) . " (status code: {$e->getCode()})",
+                    'response message: ' . json_encode(implode(' | ', $errorsSanitized)) . " (status code: {$e->getCode()})",
                     $e->getCode(),
                     $e,
-                    $e->getResponse()
+                    $e->getResponse(),
+                    null,
+                    null,
+                    $errorsSanitized
                 )
             );
 
@@ -121,24 +124,25 @@ abstract class Endpoint implements CompositePathInterface
         throw $e;
     }
 
-    private function sanitizeErrorMessage(Response $response): ?string
+    private function sanitizeErrorMessage(Response $response): ?array
     {
-        $responseMessage = $response->getParsedPath('message');
+        $responseData = $response->getParsedPath('message');
 
-        if (is_array($responseMessage))
-            $responseMessage = implode(' | ', ArrayUtil::extractStrings($responseMessage));
-
-        $responseData = $response->getParsedPath('data');
+        if (is_string($responseData))
+            return [$responseData];
 
         if (is_array($responseData))
-            $responseMessage .= implode(' | ', ArrayUtil::extractStrings($responseData));
+            return ArrayUtil::extractStrings($responseData);
 
         $responseData = $response->getParsedPath('error');
 
         if (is_array($responseData))
-            $responseMessage .= implode(' | ', ArrayUtil::extractStrings($responseData));
+            return ArrayUtil::extractStrings($responseData);
 
-        return $responseMessage;
+        $responseData = $response->getParsedPath('data');
+
+        if (is_array($responseData))
+            return ArrayUtil::extractStrings($responseData);
     }
 
 }

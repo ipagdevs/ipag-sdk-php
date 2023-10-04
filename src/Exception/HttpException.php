@@ -10,6 +10,7 @@ abstract class HttpException extends BaseException
     protected ?Response $response;
     protected ?int $statusCode;
     protected ?string $statusMessage;
+    protected ?array $errors;
 
     public function __construct(
         string $message = '',
@@ -17,13 +18,15 @@ abstract class HttpException extends BaseException
         ?Throwable $previous = null,
         ?Response $response = null,
         ?int $statusCode = null,
-        ?string $statusMessage = null
+        ?string $statusMessage = null,
+        ?array $errors = []
     ) {
         parent::__construct($message, $code, $previous);
 
         $this->response = $response;
         $this->statusCode = $statusCode;
         $this->statusMessage = $statusMessage;
+        $this->errors = $errors;
     }
 
     public function getResponse(): ?Response
@@ -39,5 +42,10 @@ abstract class HttpException extends BaseException
     public function getStatusMessage(): ?string
     {
         return $this->statusMessage;
+    }
+
+    public function getErrors(): ?array
+    {
+        return $this->errors;
     }
 }
