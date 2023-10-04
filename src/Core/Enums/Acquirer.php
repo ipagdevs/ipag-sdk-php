@@ -1,8 +1,8 @@
 <?php
 
-namespace Ipag\Sdk\Core;
+namespace Ipag\Sdk\Core\Enums;
 
-final class IpagEnvironmentPaymentMethodsAcquirer
+abstract class Acquirer
 {
     public const CIELO = 'cielo';
     public const EREDE = 'erede';

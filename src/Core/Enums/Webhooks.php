@@ -1,11 +1,9 @@
 <?php
 
-namespace Ipag\Sdk\Core;
+namespace Ipag\Sdk\Core\Enums;
 
-final class IpagEnvironmentWebhook
+abstract class Webhooks
 {
-    // public const TRANSACTION_CREATED = "TransactionCreated";
-
     /**
      * Link de Pagamento recebeu um pagamento aprovado.
      */
@@ -85,5 +83,4 @@ final class IpagEnvironmentWebhook
      * A Transferência foi realizada com falha.
      */
     public const TRANSFER_PAYMENT_FAILED = 'TransferPaymentFailed';
-
 }

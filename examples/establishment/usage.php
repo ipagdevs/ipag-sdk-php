@@ -30,7 +30,7 @@ $establishment = new \Ipag\Sdk\Model\Establishment([
 ]);
 
 $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod([
-    'acquirer' => IpagEnvironment::paymentMethodsAcquirer()::STONE,
+    'acquirer' => Ipag\Sdk\Core\Enums\Acquirer::STONE,
     'priority' => 100,
     'environment' => 'test',
     'capture' => true,

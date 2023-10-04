@@ -18,8 +18,8 @@ $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
         "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
         "order_id" => "1234567",
         "payment" => [
-            "type" => IpagEnvironment::otherPaymentMethods()::PIX,
-            "method" => IpagEnvironment::otherPaymentMethods()::PIX,
+            "type" => Ipag\Sdk\Core\Enums\Others::PIX,
+            "method" => Ipag\Sdk\Core\Enums\Others::PIX,
             "pix_expires_in" => 60
         ],
         "customer" => [

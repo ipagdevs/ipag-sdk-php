@@ -13,8 +13,8 @@ class WebhookTest extends TestCase
             'url' => 'https://ipag-sdk.requestcatcher.com/webhook',
             'description' => 'Webhook para receber notificações de atualização das transações',
             'actions' => [
-                \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
-                \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+                \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+                \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_FAILED,
             ]
         ]);
 
@@ -22,8 +22,8 @@ class WebhookTest extends TestCase
         $this->assertEquals('https://ipag-sdk.requestcatcher.com/webhook', $webhook->getUrl());
         $this->assertEquals('Webhook para receber notificações de atualização das transações', $webhook->getDescription());
         $this->assertEquals([
-            \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
-            \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+            \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+            \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_FAILED,
         ], $webhook->getActions());
     }
 
@@ -34,16 +34,16 @@ class WebhookTest extends TestCase
             ->setUrl('https://ipag-sdk.requestcatcher.com/webhook')
             ->setDescription('Webhook para receber notificações de atualização das transações')
             ->setActions([
-                \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
-                \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+                \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+                \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_FAILED,
             ]);
 
         $this->assertEquals('POST', $webhook->getHttpMethod());
         $this->assertEquals('https://ipag-sdk.requestcatcher.com/webhook', $webhook->getUrl());
         $this->assertEquals('Webhook para receber notificações de atualização das transações', $webhook->getDescription());
         $this->assertEquals([
-            \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
-            \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+            \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+            \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_FAILED,
         ], $webhook->getActions());
 
     }
@@ -66,8 +66,8 @@ class WebhookTest extends TestCase
             'url' => 'https://ipag-sdk.requestcatcher.com/webhook',
             'description' => 'Webhook para receber notificações de atualização das transações',
             'actions' => [
-                \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
-                \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+                \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+                \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_FAILED,
             ]
         ]);
 

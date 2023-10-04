@@ -1,8 +1,8 @@
 <?php
 
-namespace Ipag\Sdk\Core;
+namespace Ipag\Sdk\Core\Enums;
 
-final class IpagEnvironmentCardMethods
+abstract class Cards
 {
     const VISA = 'visa';
     const MASTERCARD = 'mastercard';
@@ -16,5 +16,4 @@ final class IpagEnvironmentCardMethods
     const AURA = 'aura';
     const VISA_ELECTRON = 'visaelectron';
     const MAESTRO = 'maestro';
-
 }

@@ -4,5 +4,5 @@ composer.phar
 .devcontainer
 .vscode
 Dockerfile
-annotations
+annotations.md
 .phpunit.cache

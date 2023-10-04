@@ -167,7 +167,7 @@ $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
         "order_id" => "1234567",
         "payment" => [
             "type" => "card",
-            "method" => IpagEnvironment::cardMethods()::VISA,
+            "method" => Ipag\Sdk\Core\Enums\Cards::VISA,
             "installments" => 1,
             "card" => [
                 "holder" => "FULANO DA SILVA",
@@ -198,7 +198,7 @@ $paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction())
     ->setPayment(
         (new \Ipag\Sdk\Model\Payment())
             ->setType('card')
-            ->setMethod(IpagEnvironment::cardMethods()::VISA)
+            ->setMethod(Ipag\Sdk\Core\Enums\Cards::VISA)
             ->setCard(
                 (new \Ipag\Sdk\Model\PaymentCard())
                     ->setHolder('teste')
@@ -1057,8 +1057,8 @@ $webhook = new \Ipag\Sdk\Model\Webhook([
     'url' => 'https://ipag-sdk.requestcatcher.com/webhook',
     'description' => 'Webhook para receber notificações de atualização das transações',
     'actions' => [
-        \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
-        \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+        \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+        \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_FAILED,
     ]
 ]);
 ```
@@ -1069,8 +1069,8 @@ $webhook = (new \Ipag\Sdk\Model\Webhook())
     ->setUrl('https://ipag-sdk.requestcatcher.com/webhook')
     ->setDescription('Webhook para receber notificações de atualização das transações')
     ->setActions([
-        \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
-        \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+        \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+        \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_FAILED,
     ]);
 ```
 

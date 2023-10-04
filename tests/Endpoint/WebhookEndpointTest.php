@@ -27,8 +27,8 @@ class WebhookEndpointTest extends IpagClient
             'url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'description' => 'Webhook para receber notificações de atualização das transações',
             'actions' => [
-                \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
-                \Ipag\Sdk\Core\IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
+                \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+                \Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_FAILED,
             ]
         ]);
 

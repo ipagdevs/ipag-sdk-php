@@ -1,8 +1,8 @@
 <?php
 
-namespace Ipag\Sdk\Core;
+namespace Ipag\Sdk\Core\Enums;
 
-final class IpagEnvironmentBankSlipMethods
+abstract class BankSlips
 {
     const ZOOP = "boletozoop";
     const PAGSEGURO = "boletopagseguro";

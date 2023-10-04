@@ -17,14 +17,16 @@ $webhook = new \Ipag\Sdk\Model\Webhook([
     'url' => 'https://ipag-sdk.requestcatcher.com/webhook',
     'description' => 'Webhook para receber notificações de atualização das transações',
     'actions' => [
-        IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_SUCCEEDED,
-        IpagEnvironment::webhook()::PAYMENT_LINK_PAYMENT_FAILED,
-        IpagEnvironment::webhook()::CHARGE_PAYMENT_SUCCEEDED,
-        IpagEnvironment::webhook()::CHARGE_PAYMENT_FAILED,
-        IpagEnvironment::webhook()::SUBSCRIPTION_PAYMENT_FAILED,
-        IpagEnvironment::webhook()::SUBSCRIPTION_PAYMENT_SUCCEEDED,
+        Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_SUCCEEDED,
+        Ipag\Sdk\Core\Enums\Webhooks::PAYMENT_LINK_PAYMENT_FAILED,
+        Ipag\Sdk\Core\Enums\Webhooks::CHARGE_PAYMENT_SUCCEEDED,
+        Ipag\Sdk\Core\Enums\Webhooks::CHARGE_PAYMENT_FAILED,
+        Ipag\Sdk\Core\Enums\Webhooks::SUBSCRIPTION_PAYMENT_FAILED,
+        Ipag\Sdk\Core\Enums\Webhooks::SUBSCRIPTION_PAYMENT_SUCCEEDED,
     ]
 ]);
+
+
 
 try {
 
