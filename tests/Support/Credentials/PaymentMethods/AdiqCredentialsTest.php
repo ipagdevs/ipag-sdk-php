@@ -20,7 +20,7 @@ class AdiqCredentialsTest extends TestCase
 
     public function testShouldCreateAdiqCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $adiqCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\AdiqCredentials)
+        $adiqCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\AdiqCredentials())
             ->setClientId('test')
             ->setClientSecret('test123');
 
@@ -31,7 +31,7 @@ class AdiqCredentialsTest extends TestCase
 
     public function testShouldCreateEmptyAdiqCredentialsObjectSuccessfully()
     {
-        $adiqCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\AdiqCredentials;
+        $adiqCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\AdiqCredentials();
 
         $this->assertEmpty($adiqCredentials->getClientId());
         $this->assertEmpty($adiqCredentials->getClientSecret());

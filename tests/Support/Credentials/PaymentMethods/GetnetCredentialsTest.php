@@ -24,7 +24,7 @@ class GetnetCredentialsTest extends TestCase
 
     public function testShouldCreateGetnetCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $getnetCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\GetnetCredentials)
+        $getnetCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\GetnetCredentials())
             ->setEstablishmentNumber('123')
             ->setKey('test123')
             ->setUser('test')
@@ -39,7 +39,7 @@ class GetnetCredentialsTest extends TestCase
 
     public function testShouldCreateEmptyGetnetCredentialsObjectSuccessfully()
     {
-        $getnetCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\GetnetCredentials;
+        $getnetCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\GetnetCredentials();
 
         $this->assertEmpty($getnetCredentials->getEstablishmentNumber());
         $this->assertEmpty($getnetCredentials->getKey());

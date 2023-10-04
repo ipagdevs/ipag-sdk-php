@@ -20,7 +20,7 @@ class CieloCredentialsTest extends TestCase
 
     public function testShouldCreateCieloCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $cieloCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\CieloCredentials)
+        $cieloCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\CieloCredentials())
             ->setMerchantId('test')
             ->setMerchantKey('test123');
 
@@ -31,7 +31,7 @@ class CieloCredentialsTest extends TestCase
 
     public function testShouldCreateEmptyCieloCredentialsObjectSuccessfully()
     {
-        $cieloCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\CieloCredentials;
+        $cieloCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\CieloCredentials();
 
         $this->assertEmpty($cieloCredentials->getMerchantId());
         $this->assertEmpty($cieloCredentials->getMerchantKey());

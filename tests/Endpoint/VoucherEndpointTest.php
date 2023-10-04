@@ -72,7 +72,7 @@ class VoucherEndpointTest extends IpagClient
 
         try {
 
-            $voucher = new \Ipag\Sdk\Model\Voucher;
+            $voucher = new \Ipag\Sdk\Model\Voucher();
 
             $this->client->voucher()->create($voucher);
 
@@ -101,7 +101,7 @@ class VoucherEndpointTest extends IpagClient
 
         try {
 
-            $voucher = new \Ipag\Sdk\Model\Voucher;
+            $voucher = new \Ipag\Sdk\Model\Voucher();
 
             $this->client->voucher()->create($voucher);
 
@@ -130,7 +130,7 @@ class VoucherEndpointTest extends IpagClient
 
         try {
 
-            $voucher = new \Ipag\Sdk\Model\Voucher;
+            $voucher = new \Ipag\Sdk\Model\Voucher();
 
             $this->client->voucher()->create($voucher);
 

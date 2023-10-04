@@ -22,7 +22,7 @@ class GlobalPaymentsCredentialsTest extends TestCase
 
     public function testShouldCreateGlobalPaymentsCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $globalPaymentsCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\GlobalPaymentsCredentials)
+        $globalPaymentsCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\GlobalPaymentsCredentials())
             ->setTerminal('test')
             ->setMerchantId('123')
             ->setMerchantKey('test123');
@@ -35,7 +35,7 @@ class GlobalPaymentsCredentialsTest extends TestCase
 
     public function testShouldCreateEmptyGlobalPaymentsCredentialsObjectSuccessfully()
     {
-        $globalPaymentsCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\GlobalPaymentsCredentials;
+        $globalPaymentsCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\GlobalPaymentsCredentials();
 
         $this->assertEmpty($globalPaymentsCredentials->getTerminal());
         $this->assertEmpty($globalPaymentsCredentials->getMerchantId());

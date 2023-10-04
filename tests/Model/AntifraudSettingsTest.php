@@ -29,7 +29,7 @@ class AntifraudSettingsTest extends TestCase
 
     public function testShouldCreateAntifraudSettingsObjectAndSetTheValuesSuccessfully()
     {
-        $antifraudSettings = (new \Ipag\Sdk\Model\AntifraudSettings)
+        $antifraudSettings = (new \Ipag\Sdk\Model\AntifraudSettings())
             ->setEnabled(true)
             ->setEnvironment('test')
             ->setConsultMode('auto')
@@ -47,7 +47,7 @@ class AntifraudSettingsTest extends TestCase
 
     public function testShouldCreateEmptyAntifraudSettingsObjectSuccessfully()
     {
-        $antifraudSettings = new \Ipag\Sdk\Model\AntifraudSettings;
+        $antifraudSettings = new \Ipag\Sdk\Model\AntifraudSettings();
 
         $this->assertEmpty($antifraudSettings->getEnabled());
         $this->assertEmpty($antifraudSettings->getEnvironment());
@@ -88,7 +88,7 @@ class AntifraudSettingsTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheAntifraudSettingsReviewScoreThresholdProperty()
     {
-        $AntifraudSettings = new \Ipag\Sdk\Model\AntifraudSettings;
+        $AntifraudSettings = new \Ipag\Sdk\Model\AntifraudSettings();
 
         $this->expectException(\TypeError::class);
 
@@ -97,7 +97,7 @@ class AntifraudSettingsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheAntifraudSettingsReviewScoreThresholdProperty()
     {
-        $AntifraudSettings = new \Ipag\Sdk\Model\AntifraudSettings;
+        $AntifraudSettings = new \Ipag\Sdk\Model\AntifraudSettings();
 
         $this->expectException(MutatorAttributeException::class);
 

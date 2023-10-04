@@ -25,7 +25,7 @@ class ButtonsTest extends TestCase
 
     public function testShouldCreateButtonsObjectAndSetTheValuesSuccessfully()
     {
-        $buttons = (new \Ipag\Sdk\Model\Buttons)
+        $buttons = (new \Ipag\Sdk\Model\Buttons())
             ->setEnable(false)
             ->setOne(0)
             ->setTwo(0)
@@ -40,7 +40,7 @@ class ButtonsTest extends TestCase
 
     public function testShouldCreateEmptyButtonsObjectSuccessfully()
     {
-        $buttons = new \Ipag\Sdk\Model\Buttons;
+        $buttons = new \Ipag\Sdk\Model\Buttons();
 
         $this->assertEmpty($buttons->getEnable());
         $this->assertEmpty($buttons->getOne());
@@ -73,7 +73,7 @@ class ButtonsTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheButtonsOneProperty()
     {
-        $buttons = new \Ipag\Sdk\Model\Buttons;
+        $buttons = new \Ipag\Sdk\Model\Buttons();
 
         $this->expectException(\TypeError::class);
 
@@ -82,7 +82,7 @@ class ButtonsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheButtonsOneProperty()
     {
-        $buttons = new \Ipag\Sdk\Model\Buttons;
+        $buttons = new \Ipag\Sdk\Model\Buttons();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -91,7 +91,7 @@ class ButtonsTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheButtonsTwoProperty()
     {
-        $buttons = new \Ipag\Sdk\Model\Buttons;
+        $buttons = new \Ipag\Sdk\Model\Buttons();
 
         $this->expectException(\TypeError::class);
 
@@ -100,7 +100,7 @@ class ButtonsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheButtonsTwoProperty()
     {
-        $buttons = new \Ipag\Sdk\Model\Buttons;
+        $buttons = new \Ipag\Sdk\Model\Buttons();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -109,7 +109,7 @@ class ButtonsTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheButtonsThreeProperty()
     {
-        $buttons = new \Ipag\Sdk\Model\Buttons;
+        $buttons = new \Ipag\Sdk\Model\Buttons();
 
         $this->expectException(\TypeError::class);
 
@@ -118,7 +118,7 @@ class ButtonsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheButtonsThreeProperty()
     {
-        $buttons = new \Ipag\Sdk\Model\Buttons;
+        $buttons = new \Ipag\Sdk\Model\Buttons();
 
         $this->expectException(MutatorAttributeException::class);
 

@@ -20,7 +20,7 @@ class BinCredentialsTest extends TestCase
 
     public function testShouldCreateBinCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $binCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\BinCredentials)
+        $binCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\BinCredentials())
             ->setStoreIdSubscription('123')
             ->setStoreId('abc123');
 
@@ -31,7 +31,7 @@ class BinCredentialsTest extends TestCase
 
     public function testShouldCreateEmptyBinCredentialsObjectSuccessfully()
     {
-        $binCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\BinCredentials;
+        $binCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\BinCredentials();
 
         $this->assertEmpty($binCredentials->getStoreIdSubscription());
         $this->assertEmpty($binCredentials->getStoreId());

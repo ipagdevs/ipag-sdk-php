@@ -22,7 +22,7 @@ class ZoopCredentialsTest extends TestCase
 
     public function testShouldCreateZoopCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $zoopCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\ZoopCredentials)
+        $zoopCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\ZoopCredentials())
             ->setMarketplaceId('123')
             ->setPublishableKey('123abc')
             ->setSellerId('321');
@@ -35,7 +35,7 @@ class ZoopCredentialsTest extends TestCase
 
     public function testShouldCreateEmptyZoopCredentialsObjectSuccessfully()
     {
-        $zoopCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\ZoopCredentials;
+        $zoopCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\ZoopCredentials();
 
         $this->assertEmpty($zoopCredentials->getMarketplaceId());
         $this->assertEmpty($zoopCredentials->getPublishableKey());

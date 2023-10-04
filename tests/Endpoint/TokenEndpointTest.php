@@ -76,7 +76,7 @@ class TokenEndpointTest extends IpagClient
 
         try {
 
-            $token = new \Ipag\Sdk\Model\Token;
+            $token = new \Ipag\Sdk\Model\Token();
 
             $this->client->token()->create($token);
 
@@ -105,7 +105,7 @@ class TokenEndpointTest extends IpagClient
 
         try {
 
-            $token = new \Ipag\Sdk\Model\Token;
+            $token = new \Ipag\Sdk\Model\Token();
 
             $this->client->token()->create($token);
 
@@ -134,7 +134,7 @@ class TokenEndpointTest extends IpagClient
 
         try {
 
-            $token = new \Ipag\Sdk\Model\Token;
+            $token = new \Ipag\Sdk\Model\Token();
 
             $this->client->token()->create($token);
 

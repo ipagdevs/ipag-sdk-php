@@ -36,7 +36,7 @@ class PaymentMethodTest extends TestCase
 
     public function testShouldCreatePaymentMethodObjectAndSetTheValuesSuccessfully()
     {
-        $paymentMethod = (new \Ipag\Sdk\Model\PaymentMethod)
+        $paymentMethod = (new \Ipag\Sdk\Model\PaymentMethod())
             ->setAcquirer('stone')
             ->setPriority(100)
             ->setEnvironment('test')
@@ -62,7 +62,7 @@ class PaymentMethodTest extends TestCase
 
     public function testShouldCreateEmptyPaymentMethodObjectSuccessfully()
     {
-        $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod;
+        $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod();
 
         $this->assertEmpty($paymentMethod->getAcquirer());
         $this->assertEmpty($paymentMethod->getPriority());
@@ -106,7 +106,7 @@ class PaymentMethodTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnThePaymentMethodPriorityProperty()
     {
-        $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod;
+        $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod();
 
         $this->expectException(\TypeError::class);
 
@@ -115,7 +115,7 @@ class PaymentMethodTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentMethodPriorityProperty()
     {
-        $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod;
+        $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod();
 
         $this->expectException(MutatorAttributeException::class);
 

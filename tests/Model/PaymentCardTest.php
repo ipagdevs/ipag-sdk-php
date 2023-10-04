@@ -31,7 +31,7 @@ class PaymentCardTest extends TestCase
 
     public function testShouldCreatePaymentCardObjectAndSetTheValuesSuccessfully()
     {
-        $paymentCard = (new \Ipag\Sdk\Model\PaymentCard)
+        $paymentCard = (new \Ipag\Sdk\Model\PaymentCard())
             ->setHolder('Frederic Sales')
             ->setNumber('4024007112512933')
             ->setExpiryMonth('12')
@@ -52,7 +52,7 @@ class PaymentCardTest extends TestCase
 
     public function testShouldCreateEmptyPaymentCardObjectSuccessfully()
     {
-        $paymentCard = new \Ipag\Sdk\Model\PaymentCard;
+        $paymentCard = new \Ipag\Sdk\Model\PaymentCard();
 
         $this->assertEmpty($paymentCard->getHolder());
         $this->assertEmpty($paymentCard->getNumber());
@@ -97,7 +97,7 @@ class PaymentCardTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentCardExpiryMonthProperty()
     {
-        $paymentCard = new \Ipag\Sdk\Model\PaymentCard;
+        $paymentCard = new \Ipag\Sdk\Model\PaymentCard();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -106,7 +106,7 @@ class PaymentCardTest extends TestCase
 
     public function testShouldThrowAInvalidRangeExceptionOnThePaymentCardExpiryMonthProperty()
     {
-        $paymentCard = new \Ipag\Sdk\Model\PaymentCard;
+        $paymentCard = new \Ipag\Sdk\Model\PaymentCard();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -115,7 +115,7 @@ class PaymentCardTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentCardExpiryYearProperty()
     {
-        $paymentCard = new \Ipag\Sdk\Model\PaymentCard;
+        $paymentCard = new \Ipag\Sdk\Model\PaymentCard();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -123,7 +123,7 @@ class PaymentCardTest extends TestCase
     }
     public function testShouldThrowAInvalidRangeExceptionOnThePaymentCardExpiryYearProperty()
     {
-        $paymentCard = new \Ipag\Sdk\Model\PaymentCard;
+        $paymentCard = new \Ipag\Sdk\Model\PaymentCard();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -132,7 +132,7 @@ class PaymentCardTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentCardCvvProperty()
     {
-        $paymentCard = new \Ipag\Sdk\Model\PaymentCard;
+        $paymentCard = new \Ipag\Sdk\Model\PaymentCard();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -140,7 +140,7 @@ class PaymentCardTest extends TestCase
     }
     public function testShouldThrowAInvalidRangeExceptionOnThePaymentCardCvvProperty()
     {
-        $paymentCard = new \Ipag\Sdk\Model\PaymentCard;
+        $paymentCard = new \Ipag\Sdk\Model\PaymentCard();
 
         $this->expectException(MutatorAttributeException::class);
 

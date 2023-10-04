@@ -20,7 +20,7 @@ class PaymentAntifraudTest extends TestCase
 
     public function testShouldCreatePaymentAntifraudObjectAndSetTheValuesSuccessfully()
     {
-        $paymentAntifraud = (new \Ipag\Sdk\Model\PaymentAntifraud)
+        $paymentAntifraud = (new \Ipag\Sdk\Model\PaymentAntifraud())
             ->setFingerprint('abc123')
             ->setProvider('abc');
 
@@ -31,7 +31,7 @@ class PaymentAntifraudTest extends TestCase
 
     public function testShouldCreateEmptyPaymentAntifraudObjectSuccessfully()
     {
-        $paymentAntifraud = new \Ipag\Sdk\Model\PaymentAntifraud;
+        $paymentAntifraud = new \Ipag\Sdk\Model\PaymentAntifraud();
 
         $this->assertEmpty($paymentAntifraud->getFingerprint());
         $this->assertEmpty($paymentAntifraud->getProvider());

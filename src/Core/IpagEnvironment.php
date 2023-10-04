@@ -33,7 +33,7 @@ final class IpagEnvironment extends Environment
     public static function webhook(): IpagEnvironmentWebhook
     {
         if (!self::$envWebhook)
-            self::$envWebhook = new IpagEnvironmentWebhook;
+            self::$envWebhook = new IpagEnvironmentWebhook();
 
         return self::$envWebhook;
     }
@@ -41,7 +41,7 @@ final class IpagEnvironment extends Environment
     public static function paymentMethodsAcquirer(): IpagEnvironmentPaymentMethodsAcquirer
     {
         if (!self::$envMethod)
-            self::$envMethod = new IpagEnvironmentPaymentMethodsAcquirer;
+            self::$envMethod = new IpagEnvironmentPaymentMethodsAcquirer();
 
         return self::$envMethod;
     }
@@ -49,7 +49,7 @@ final class IpagEnvironment extends Environment
     public static function cardMethods(): IpagEnvironmentCardMethods
     {
         if (!self::$envCardMethods)
-            self::$envCardMethods = new IpagEnvironmentCardMethods;
+            self::$envCardMethods = new IpagEnvironmentCardMethods();
 
         return self::$envCardMethods;
     }
@@ -57,7 +57,7 @@ final class IpagEnvironment extends Environment
     public static function bankSlipMethods(): IpagEnvironmentBankSlipMethods
     {
         if (!self::$envBankSlipMethods)
-            self::$envBankSlipMethods = new IpagEnvironmentBankSlipMethods;
+            self::$envBankSlipMethods = new IpagEnvironmentBankSlipMethods();
 
         return self::$envBankSlipMethods;
     }
@@ -65,7 +65,7 @@ final class IpagEnvironment extends Environment
     public static function otherPaymentMethods(): IpagEnvironmentOtherMethods
     {
         if (!self::$envOtherMethods)
-            self::$envOtherMethods = new IpagEnvironmentOtherMethods;
+            self::$envOtherMethods = new IpagEnvironmentOtherMethods();
 
         return self::$envOtherMethods;
     }

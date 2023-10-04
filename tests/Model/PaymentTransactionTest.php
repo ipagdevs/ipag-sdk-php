@@ -151,27 +151,27 @@ class PaymentTransactionTest extends TestCase
 
     public function testShouldCreatePaymentTransactionObjectAndSetTheValuesSuccessfully()
     {
-        $paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction)
+        $paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction())
             ->setAmount(100.0)
             ->setOrderId('123456')
             ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
             ->setAntifraud(
-                (new \Ipag\Sdk\Model\PaymentAntifraud)
+                (new \Ipag\Sdk\Model\PaymentAntifraud())
                     ->setFingerprint('123')
                     ->setProvider('test')
             )
             ->setPayment(
-                (new \Ipag\Sdk\Model\Payment)
+                (new \Ipag\Sdk\Model\Payment())
                     ->setType('card')
                     ->setMethod('visa')
                     ->setCard(
-                        (new \Ipag\Sdk\Model\PaymentCard)
+                        (new \Ipag\Sdk\Model\PaymentCard())
                             ->setHolder('teste')
                             ->setNumber('123')
                             ->setCvv('123')
                     )
                     ->setBoleto(
-                        (new \Ipag\Sdk\Model\Boleto)
+                        (new \Ipag\Sdk\Model\Boleto())
                             ->setDueDate('2018-07-31')
                             ->setInstructions([
                                 'Instruções 1',
@@ -180,57 +180,57 @@ class PaymentTransactionTest extends TestCase
                     )
             )
             ->setCustomer(
-                (new \Ipag\Sdk\Model\Customer)
+                (new \Ipag\Sdk\Model\Customer())
                     ->setName('Lívia Julia Eduarda Barros')
                     ->setCpfCnpj('074.598.263-83')
                     ->setBillingAddress(
-                        (new \Ipag\Sdk\Model\Address)
+                        (new \Ipag\Sdk\Model\Address())
                             ->setStreet('Rua A')
                     )
                     ->setShippingAddress(
-                        (new \Ipag\Sdk\Model\Address)
+                        (new \Ipag\Sdk\Model\Address())
                             ->setStreet('Rua A')
                     )
             )
             ->setProducts([
-                (new \Ipag\Sdk\Model\Product)
+                (new \Ipag\Sdk\Model\Product())
                     ->setName('Produto 1'),
             ])
             ->addProduct(
-                (new \Ipag\Sdk\Model\Product)
+                (new \Ipag\Sdk\Model\Product())
                     ->setName('Produto 2')
             )
             ->setSubscription(
-                (new \Ipag\Sdk\Model\PaymentSubscription)
+                (new \Ipag\Sdk\Model\PaymentSubscription())
                     ->setFrequency(1)
                     ->setTrial(
-                        (new \Ipag\Sdk\Model\Trial)
+                        (new \Ipag\Sdk\Model\Trial())
                             ->setAmount(100.9)
                     )
             )
             ->setSplitRules([
-                (new \Ipag\Sdk\Model\PaymentSplitRules)
+                (new \Ipag\Sdk\Model\PaymentSplitRules())
                     ->setSellerId('vendedor1@mail.me')
                     ->setAmount(15.87),
             ])
             ->addSplitRules(
-                (new \Ipag\Sdk\Model\PaymentSplitRules)
+                (new \Ipag\Sdk\Model\PaymentSplitRules())
                     ->setSellerId('vendedor2@mail.me')
                     ->setPercentage(20.0)
             )
             ->setEvent(
-                (new \Ipag\Sdk\Model\Event)
+                (new \Ipag\Sdk\Model\Event())
                     ->setName('Reveillon - 2022')
                     ->setVenue(
-                        (new \Ipag\Sdk\Model\Venue)
+                        (new \Ipag\Sdk\Model\Venue())
                             ->setName('Campo - Clube das Laranjeiras')
                     )
                     ->setTickets([
-                        (new \Ipag\Sdk\Model\Ticket)
+                        (new \Ipag\Sdk\Model\Ticket())
                             ->setId('EVENT001'),
                     ])
                     ->addTicket(
-                        (new \Ipag\Sdk\Model\Ticket)
+                        (new \Ipag\Sdk\Model\Ticket())
                             ->setId('EVENT002'),
                     )
             );
@@ -301,7 +301,7 @@ class PaymentTransactionTest extends TestCase
 
     public function testShouldCreateEmptyPaymentTransactionObjectSuccessfully()
     {
-        $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction;
+        $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction();
 
         $this->assertEmpty($paymentTransaction->getAmount());
         $this->assertEmpty($paymentTransaction->getOrderId());
@@ -421,7 +421,7 @@ class PaymentTransactionTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnThePaymentTransactionAmountProperty()
     {
-        $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction;
+        $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction();
 
         $this->expectException(\TypeError::class);
 
@@ -430,7 +430,7 @@ class PaymentTransactionTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentTransactionAmountProperty()
     {
-        $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction;
+        $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction();
 
         $this->expectException(MutatorAttributeException::class);
 

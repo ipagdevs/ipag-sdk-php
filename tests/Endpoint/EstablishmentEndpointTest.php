@@ -73,7 +73,7 @@ class EstablishmentEndpointTest extends IpagClient
 
         try {
 
-            $establishment = new \Ipag\Sdk\Model\Establishment;
+            $establishment = new \Ipag\Sdk\Model\Establishment();
 
             $this->client->establishment()->create($establishment);
 
@@ -102,7 +102,7 @@ class EstablishmentEndpointTest extends IpagClient
 
         try {
 
-            $establishment = new \Ipag\Sdk\Model\Establishment;
+            $establishment = new \Ipag\Sdk\Model\Establishment();
 
             $this->client->establishment()->create($establishment);
 
@@ -131,7 +131,7 @@ class EstablishmentEndpointTest extends IpagClient
 
         try {
 
-            $establishment = new \Ipag\Sdk\Model\Establishment;
+            $establishment = new \Ipag\Sdk\Model\Establishment();
 
             $this->client->establishment()->create($establishment);
 

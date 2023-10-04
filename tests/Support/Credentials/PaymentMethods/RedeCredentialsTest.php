@@ -20,7 +20,7 @@ class RedeCredentialsTest extends TestCase
 
     public function testShouldCreateRedeCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $redeCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\RedeCredentials)
+        $redeCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\RedeCredentials())
             ->setEredeKey('test')
             ->setPv('test123');
 
@@ -31,7 +31,7 @@ class RedeCredentialsTest extends TestCase
 
     public function testShouldCreateEmptyRedeCredentialsObjectSuccessfully()
     {
-        $redeCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\RedeCredentials;
+        $redeCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\RedeCredentials();
 
         $this->assertEmpty($redeCredentials->getEredeKey());
         $this->assertEmpty($redeCredentials->getPv());

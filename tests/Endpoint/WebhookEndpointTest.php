@@ -62,7 +62,7 @@ class WebhookEndpointTest extends IpagClient
 
         try {
 
-            $webhook = new \Ipag\Sdk\Model\Webhook;
+            $webhook = new \Ipag\Sdk\Model\Webhook();
 
             $this->client->webhook()->create($webhook);
 
@@ -91,7 +91,7 @@ class WebhookEndpointTest extends IpagClient
 
         try {
 
-            $webhook = new \Ipag\Sdk\Model\Webhook;
+            $webhook = new \Ipag\Sdk\Model\Webhook();
 
             $this->client->webhook()->create($webhook);
 
@@ -119,7 +119,7 @@ class WebhookEndpointTest extends IpagClient
 
         try {
 
-            $webhook = new \Ipag\Sdk\Model\Webhook;
+            $webhook = new \Ipag\Sdk\Model\Webhook();
 
             $this->client->webhook()->create($webhook);
 

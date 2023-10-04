@@ -72,15 +72,15 @@ class CheckoutTest extends TestCase
     {
         $checkout = (new \Ipag\Sdk\Model\Checkout())
             ->setCustomer(
-                (new \Ipag\Sdk\Model\Customer)
+                (new \Ipag\Sdk\Model\Customer())
                     ->setName('Lívia Julia Eduarda Barros')
             )
             ->setInstallmentSetting(
-                (new \Ipag\Sdk\Model\InstallmentSetting)
+                (new \Ipag\Sdk\Model\InstallmentSetting())
                     ->setMaxInstallments(12)
             )
             ->setOrder(
-                (new \Ipag\Sdk\Model\Order)
+                (new \Ipag\Sdk\Model\Order())
                     ->setOrderId('1000077')
             )
             ->addProduct(
@@ -92,11 +92,11 @@ class CheckoutTest extends TestCase
                     ->setName('Smart TV 50" UHD 4K')
             )
             ->addSplitRule(
-                (new \Ipag\Sdk\Model\SplitRules)
+                (new \Ipag\Sdk\Model\SplitRules())
                     ->setReceiverId('1000000')
             )
             ->addSplitRule(
-                (new \Ipag\Sdk\Model\SplitRules)
+                (new \Ipag\Sdk\Model\SplitRules())
                     ->setReceiverId('1000001')
             )
             ->setSellerId('100014')
@@ -134,7 +134,7 @@ class CheckoutTest extends TestCase
 
     public function testShouldCreateEmptyCheckoutObjectSuccessfully()
     {
-        $checkout = new \Ipag\Sdk\Model\Checkout;
+        $checkout = new \Ipag\Sdk\Model\Checkout();
 
         $this->assertEmpty($checkout->getCustomer());
         $this->assertEmpty($checkout->getInstallmentSetting());

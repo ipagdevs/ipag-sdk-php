@@ -21,7 +21,7 @@ class AttendeeTest extends TestCase
 
     public function testShouldCreateAttendeeObjectAndSetTheValuesSuccessfully()
     {
-        $attendee = (new \Ipag\Sdk\Model\Attendee)
+        $attendee = (new \Ipag\Sdk\Model\Attendee())
             ->setDocument('444.631.330-41')
             ->setDob('1992-03-28');
 
@@ -32,7 +32,7 @@ class AttendeeTest extends TestCase
 
     public function testShouldCreateEmptyAttendeeObjectSuccessfully()
     {
-        $attendee = new \Ipag\Sdk\Model\Attendee;
+        $attendee = new \Ipag\Sdk\Model\Attendee();
 
         $this->assertEmpty($attendee->getDocument());
         $this->assertEmpty($attendee->getDob());

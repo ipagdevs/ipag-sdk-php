@@ -29,7 +29,7 @@ class WebhookTest extends TestCase
 
     public function testShouldCreateWebhookObjectAndSetTheValuesSuccessfully()
     {
-        $webhook = (new \Ipag\Sdk\Model\Webhook)
+        $webhook = (new \Ipag\Sdk\Model\Webhook())
             ->setHttpMethod('POST')
             ->setUrl('https://ipag-sdk.requestcatcher.com/webhook')
             ->setDescription('Webhook para receber notificações de atualização das transações')
@@ -50,7 +50,7 @@ class WebhookTest extends TestCase
 
     public function testShouldCreateEmptyWebhookObjectSuccessfully()
     {
-        $webhook = new \Ipag\Sdk\Model\Webhook;
+        $webhook = new \Ipag\Sdk\Model\Webhook();
 
         $this->assertEmpty($webhook->getHttpMethod());
         $this->assertEmpty($webhook->getUrl());
@@ -86,7 +86,7 @@ class WebhookTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheWebhookActionsProperty()
     {
-        $webhook = new \Ipag\Sdk\Model\Webhook;
+        $webhook = new \Ipag\Sdk\Model\Webhook();
 
         $this->expectException(\TypeError::class);
 

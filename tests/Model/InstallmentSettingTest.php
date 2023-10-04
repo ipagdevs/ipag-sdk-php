@@ -29,7 +29,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldCreateInstallmentSettingsObjectAndSetTheValuesSuccessfully()
     {
-        $installmentSettings = (new \Ipag\Sdk\Model\InstallmentSetting)
+        $installmentSettings = (new \Ipag\Sdk\Model\InstallmentSetting())
             ->setMaxInstallments(12)
             ->setMinInstallmentValue(5)
             ->setInterest(0)
@@ -48,7 +48,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldCreateEmptyInstallmentSettingsObjectSuccessfully()
     {
-        $installmentSettings = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSettings = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->assertEmpty($installmentSettings->getMaxInstallments());
         $this->assertEmpty($installmentSettings->getMinInstallmentValue());
@@ -89,7 +89,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheInstallmentSettingMaxInstallmentsProperty()
     {
-        $installmentSettings = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSettings = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(\TypeError::class);
 
@@ -98,7 +98,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheInstallmentSettingMaxInstallmentsProperty()
     {
-        $installmentSettings = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSettings = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -107,7 +107,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheInstallmentSettingMinInstallmentValueProperty()
     {
-        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(\TypeError::class);
 
@@ -116,7 +116,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheInstallmentSettingMinInstallmentValueProperty()
     {
-        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -125,7 +125,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheInstallmentSettingInterestProperty()
     {
-        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(\TypeError::class);
 
@@ -134,7 +134,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheInstallmentSettingInterestProperty()
     {
-        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -143,7 +143,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheInstallmentSettingInterestFreeInstallmentsProperty()
     {
-        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(\TypeError::class);
 
@@ -152,7 +152,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheInstallmentSettingInterestFreeInstallmentsProperty()
     {
-        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -161,7 +161,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheInstallmentSettingFixedInstallmentProperty()
     {
-        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(\TypeError::class);
 
@@ -170,7 +170,7 @@ class InstallmentSettingTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheInstallmentSettingFixedInstallmentProperty()
     {
-        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting;
+        $installmentSetting = new \Ipag\Sdk\Model\InstallmentSetting();
 
         $this->expectException(MutatorAttributeException::class);
 

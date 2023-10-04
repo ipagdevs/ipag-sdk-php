@@ -56,7 +56,7 @@ class SubscriptionPlanTest extends TestCase
             ->setGracePeriod(0)
             ->setCallbackUrl("https://ipag-sdk.requestcatcher.com/callback")
             ->setTrial(
-                (new \Ipag\Sdk\Model\Trial)
+                (new \Ipag\Sdk\Model\Trial())
                     ->setAmount(0)
             );
 

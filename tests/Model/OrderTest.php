@@ -29,7 +29,7 @@ class OrderTest extends TestCase
 
     public function testShouldCreateOrderObjectAndSetTheValuesSuccessfully()
     {
-        $order = (new \Ipag\Sdk\Model\Order)
+        $order = (new \Ipag\Sdk\Model\Order())
             ->setOrderId('1000077')
             ->setAmount(499.99)
             ->setCreatedAt('2020-08-03 21:45:10')
@@ -48,7 +48,7 @@ class OrderTest extends TestCase
 
     public function testShouldCreateEmptyOrderObjectSuccessfully()
     {
-        $order = new \Ipag\Sdk\Model\Order;
+        $order = new \Ipag\Sdk\Model\Order();
 
         $this->assertEmpty($order->getOrderId());
         $this->assertEmpty($order->getAmount());
@@ -89,7 +89,7 @@ class OrderTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheOrderAmountProperty()
     {
-        $order = new \Ipag\Sdk\Model\Order;
+        $order = new \Ipag\Sdk\Model\Order();
 
         $this->expectException(\TypeError::class);
 
@@ -98,7 +98,7 @@ class OrderTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheOrderAmountProperty()
     {
-        $order = new \Ipag\Sdk\Model\Order;
+        $order = new \Ipag\Sdk\Model\Order();
 
         $this->expectException(MutatorAttributeException::class);
 

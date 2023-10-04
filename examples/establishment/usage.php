@@ -4,7 +4,6 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 
 use Ipag\Sdk\Core\IpagClient;
 use Ipag\Sdk\Core\IpagEnvironment;
-use Ipag\Sdk\Exception\HttpClientException;
 use Ipag\Sdk\Exception\HttpException;
 use Ipag\Sdk\Support\Credentials\PaymentMethods\StoneCredentials;
 
@@ -71,8 +70,8 @@ try {
     $transactionTid = '33e75ff09dd601bbe69f351039152189';
 
     // Create
-    // $responseEstablishment = $ipagClient->establishment()->create(new \Ipag\Sdk\Model\Establishment);
-    // dd($responseEstablishment->getData());
+    $responseEstablishment = $ipagClient->establishment()->create($establishment);
+    dd($responseEstablishment->getData());
 
     // Update
     // $responseEstablishment = $ipagClient->establishment()->update($establishment, $establishmentTid);

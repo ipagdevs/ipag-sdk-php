@@ -31,13 +31,13 @@ class TicketTest extends TestCase
 
     public function testShouldCreateTicketObjectAndSetTheValuesSuccessfully()
     {
-        $ticket = (new \Ipag\Sdk\Model\Ticket)
+        $ticket = (new \Ipag\Sdk\Model\Ticket())
             ->setId('EVENT001')
             ->setCategory('regular')
             ->setPremium(false)
             ->setSection('Pista')
             ->setAttendee(
-                (new \Ipag\Sdk\Model\Attendee)
+                (new \Ipag\Sdk\Model\Attendee())
                     ->setDocument('972.089.620-57')
             );
 
@@ -53,7 +53,7 @@ class TicketTest extends TestCase
 
     public function testShouldCreateEmptyTicketObjectSuccessfully()
     {
-        $ticket = new \Ipag\Sdk\Model\Ticket;
+        $ticket = new \Ipag\Sdk\Model\Ticket();
 
         $this->assertEmpty($ticket->getId());
         $this->assertEmpty($ticket->getCategory());

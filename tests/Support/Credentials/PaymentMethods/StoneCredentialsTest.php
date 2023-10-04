@@ -20,7 +20,7 @@ class StoneCredentialsTest extends TestCase
 
     public function testShouldCreateStoneCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $stoneCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\StoneCredentials)
+        $stoneCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\StoneCredentials())
             ->setStoneCode('test')
             ->setStoneSak('test123');
 
@@ -31,7 +31,7 @@ class StoneCredentialsTest extends TestCase
 
     public function testShouldCreateEmptyStoneCredentialsObjectSuccessfully()
     {
-        $stoneCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\StoneCredentials;
+        $stoneCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\StoneCredentials();
 
         $this->assertEmpty($stoneCredentials->getStoneCode());
         $this->assertEmpty($stoneCredentials->getStoneSak());

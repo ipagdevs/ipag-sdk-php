@@ -20,7 +20,7 @@ class SipagCredentialsTest extends TestCase
 
     public function testShouldCreateSipagCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $sipagCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\SipagCredentials)
+        $sipagCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\SipagCredentials())
             ->setStoreIdSubscription('test')
             ->setStoreId('test123');
 
@@ -31,7 +31,7 @@ class SipagCredentialsTest extends TestCase
 
     public function testShouldCreateEmptySipagCredentialsObjectSuccessfully()
     {
-        $sipagCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\SipagCredentials;
+        $sipagCredentials = new \Ipag\Sdk\Support\Credentials\PaymentMethods\SipagCredentials();
 
         $this->assertEmpty($sipagCredentials->getStoreIdSubscription());
         $this->assertEmpty($sipagCredentials->getStoreId());

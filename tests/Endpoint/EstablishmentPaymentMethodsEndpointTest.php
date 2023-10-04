@@ -73,7 +73,7 @@ class EstablishmentPaymentMethodsEndpointTest extends IpagClient
 
             $establishment_tid = 'bb36c34eb6644ab9694315af7d68e629';
 
-            $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod;
+            $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod();
 
             $this->client
                 ->establishment()
@@ -107,7 +107,7 @@ class EstablishmentPaymentMethodsEndpointTest extends IpagClient
 
             $establishment_tid = 'bb36c34eb6644ab9694315af7d68e629';
 
-            $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod;
+            $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod();
 
             $this->client
                 ->establishment()
@@ -141,7 +141,7 @@ class EstablishmentPaymentMethodsEndpointTest extends IpagClient
 
             $establishment_tid = 'bb36c34eb6644ab9694315af7d68e629';
 
-            $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod;
+            $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod();
 
             $this->client
                 ->establishment()

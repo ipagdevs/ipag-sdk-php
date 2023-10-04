@@ -28,7 +28,7 @@ class AntifraudProviderTest extends TestCase
 
     public function testShouldCreateAntifraudProviderObjectAndSetTheValuesSuccessfully()
     {
-        $antifraudProvider = (new \Ipag\Sdk\Model\AntifraudProvider)
+        $antifraudProvider = (new \Ipag\Sdk\Model\AntifraudProvider())
             ->setName('redshield')
             ->setCredentials([
                 'token' => 'xxxxxxxx',
@@ -47,7 +47,7 @@ class AntifraudProviderTest extends TestCase
 
     public function testShouldCreateEmptyAntifraudProviderObjectSuccessfully()
     {
-        $antifraudProvider = new \Ipag\Sdk\Model\AntifraudProvider;
+        $antifraudProvider = new \Ipag\Sdk\Model\AntifraudProvider();
 
         $this->assertEmpty($antifraudProvider->getName());
         $this->assertEmpty($antifraudProvider->getCredentials());

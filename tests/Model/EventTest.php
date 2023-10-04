@@ -47,13 +47,13 @@ class EventTest extends TestCase
 
     public function testShouldCreateEventObjectAndSetTheValuesSuccessfully()
     {
-        $event = (new \Ipag\Sdk\Model\Event)
+        $event = (new \Ipag\Sdk\Model\Event())
             ->setName('Reveillon - 2022')
             ->setDate('2022-01-01 00:00:00')
             ->setType('party')
             ->setSubtype('Reveillon')
             ->setVenue(
-                (new \Ipag\Sdk\Model\Venue)
+                (new \Ipag\Sdk\Model\Venue())
                     ->setName('Campo - Clube das Laranjeiras')
             )
             ->setTickets([
@@ -84,7 +84,7 @@ class EventTest extends TestCase
 
     public function testShouldCreateEmptyEventObjectSuccessfully()
     {
-        $event = new \Ipag\Sdk\Model\Event;
+        $event = new \Ipag\Sdk\Model\Event();
 
         $this->assertEmpty($event->getName());
         $this->assertEmpty($event->getDate());

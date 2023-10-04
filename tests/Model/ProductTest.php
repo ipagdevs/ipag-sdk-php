@@ -27,7 +27,7 @@ class ProductTest extends TestCase
 
     public function testShouldCreateProductObjectAndSetTheValuesSuccessfully()
     {
-        $product = (new \Ipag\Sdk\Model\Product)
+        $product = (new \Ipag\Sdk\Model\Product())
             ->setName('Smart TV LG 55 4K UHD')
             ->setUnitPrice(3.999)
             ->setQuantity(1)
@@ -44,7 +44,7 @@ class ProductTest extends TestCase
 
     public function testShouldCreateEmptyProductObjectSuccessfully()
     {
-        $product = new \Ipag\Sdk\Model\Product;
+        $product = new \Ipag\Sdk\Model\Product();
 
         $this->assertEmpty($product->getName());
         $this->assertEmpty($product->getUnitPrice());
@@ -81,7 +81,7 @@ class ProductTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheProductUnitPriceProperty()
     {
-        $product = new \Ipag\Sdk\Model\Product;
+        $product = new \Ipag\Sdk\Model\Product();
 
         $this->expectException(\TypeError::class);
 
@@ -90,7 +90,7 @@ class ProductTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheProductUnitPriceProperty()
     {
-        $product = new \Ipag\Sdk\Model\Product;
+        $product = new \Ipag\Sdk\Model\Product();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -99,7 +99,7 @@ class ProductTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheProductQuantityProperty()
     {
-        $product = new \Ipag\Sdk\Model\Product;
+        $product = new \Ipag\Sdk\Model\Product();
 
         $this->expectException(\TypeError::class);
 
@@ -108,7 +108,7 @@ class ProductTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheProductQuantityProperty()
     {
-        $product = new \Ipag\Sdk\Model\Product;
+        $product = new \Ipag\Sdk\Model\Product();
 
         $this->expectException(MutatorAttributeException::class);
 

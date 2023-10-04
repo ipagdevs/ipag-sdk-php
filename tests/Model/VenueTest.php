@@ -27,7 +27,7 @@ class VenueTest extends TestCase
 
     public function testShouldCreateVenueObjectAndSetTheValuesSuccessfully()
     {
-        $venue = (new \Ipag\Sdk\Model\Venue)
+        $venue = (new \Ipag\Sdk\Model\Venue())
             ->setName('Campo - Clube das Laranjeiras')
             ->setCapacity(2000)
             ->setAddress('Av. Santos Dumont')
@@ -44,7 +44,7 @@ class VenueTest extends TestCase
 
     public function testShouldCreateEmptyVenueObjectSuccessfully()
     {
-        $venue = new \Ipag\Sdk\Model\Venue;
+        $venue = new \Ipag\Sdk\Model\Venue();
 
         $this->assertEmpty($venue->getName());
         $this->assertEmpty($venue->getCapacity());
@@ -81,7 +81,7 @@ class VenueTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheVenueCapacityProperty()
     {
-        $venues = new \Ipag\Sdk\Model\Venue;
+        $venues = new \Ipag\Sdk\Model\Venue();
 
         $this->expectException(\TypeError::class);
 
@@ -90,7 +90,7 @@ class VenueTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheVenueCapacityProperty()
     {
-        $venues = new \Ipag\Sdk\Model\Venue;
+        $venues = new \Ipag\Sdk\Model\Venue();
 
         $this->expectException(MutatorAttributeException::class);
 

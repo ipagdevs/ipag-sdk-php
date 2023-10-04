@@ -49,7 +49,7 @@ class SellerTest extends TestCase
 
     public function testShouldCreateSellerObjectAndSetTheValuesSuccessfully()
     {
-        $seller = (new \Ipag\Sdk\Model\Seller)
+        $seller = (new \Ipag\Sdk\Model\Seller())
             ->setLogin("josefrancisco")
             ->setPassword("123123")
             ->setName("José Francisco Silva")
@@ -58,15 +58,15 @@ class SellerTest extends TestCase
             ->setPhone("11987121234")
             ->setDescription("XXXXXXXXXXXXXX")
             ->setAddress(
-                (new \Ipag\Sdk\Model\Address)
+                (new \Ipag\Sdk\Model\Address())
                     ->setStreet("Rua Jálio Gonzalez")
             )
             ->setOwner(
-                (new \Ipag\Sdk\Model\Owner)
+                (new \Ipag\Sdk\Model\Owner())
                     ->setName("Giosepe")
             )
             ->setBank(
-                (new \Ipag\Sdk\Model\Bank)
+                (new \Ipag\Sdk\Model\Bank())
                     ->setCode("290")
             );
 
@@ -91,7 +91,7 @@ class SellerTest extends TestCase
 
     public function testShouldCreateEmptySellerObjectSuccessfully()
     {
-        $seller = new \Ipag\Sdk\Model\Seller;
+        $seller = new \Ipag\Sdk\Model\Seller();
 
         $this->assertEmpty($seller->getLogin());
         $this->assertEmpty($seller->getPassword());

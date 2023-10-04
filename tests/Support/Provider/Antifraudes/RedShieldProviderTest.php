@@ -26,9 +26,9 @@ class RedShieldProviderTest extends TestCase
 
     public function testShouldCreateRedShieldProviderObjectAndSetTheValuesSuccessfully()
     {
-        $redShieldProvider = (new \Ipag\Sdk\Support\Provider\Antifraudes\RedShieldProvider)
+        $redShieldProvider = (new \Ipag\Sdk\Support\Provider\Antifraudes\RedShieldProvider())
             ->setCredentials(
-                (new \Ipag\Sdk\Support\Credentials\Antifraudes\RedShieldCredentials)
+                (new \Ipag\Sdk\Support\Credentials\Antifraudes\RedShieldCredentials())
                     ->setToken('123')
                     ->setEntityId('abc')
                     ->setChannelId('123abc')
@@ -46,7 +46,7 @@ class RedShieldProviderTest extends TestCase
 
     public function testShouldCreateEmptyRedShieldProviderObjectSuccessfully()
     {
-        $redShieldProvider = new \Ipag\Sdk\Support\Provider\Antifraudes\RedShieldProvider;
+        $redShieldProvider = new \Ipag\Sdk\Support\Provider\Antifraudes\RedShieldProvider();
 
         $this->assertEquals('redshield', $redShieldProvider->getName());
 

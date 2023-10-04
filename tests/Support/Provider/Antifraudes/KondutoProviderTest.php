@@ -22,9 +22,9 @@ class KondutoProviderTest extends TestCase
 
     public function testShouldCreateKondutoProviderObjectAndSetTheValuesSuccessfully()
     {
-        $kondutoProvider = (new \Ipag\Sdk\Support\Provider\Antifraudes\KondutoProvider)
+        $kondutoProvider = (new \Ipag\Sdk\Support\Provider\Antifraudes\KondutoProvider())
             ->setCredentials(
-                (new \Ipag\Sdk\Support\Credentials\Antifraudes\KondutoCredentials)
+                (new \Ipag\Sdk\Support\Credentials\Antifraudes\KondutoCredentials())
                     ->setApiKey('123')
                     ->setPublicKey('abc123')
             );
@@ -38,7 +38,7 @@ class KondutoProviderTest extends TestCase
 
     public function testShouldCreateEmptyKondutoProviderObjectSuccessfully()
     {
-        $kondutoProvider = new \Ipag\Sdk\Support\Provider\Antifraudes\KondutoProvider;
+        $kondutoProvider = new \Ipag\Sdk\Support\Provider\Antifraudes\KondutoProvider();
 
         $this->assertEquals('konduto', $kondutoProvider->getName());
 

@@ -29,7 +29,7 @@ class PaymentSplitRulesTest extends TestCase
 
     public function testShouldCreatePaymentSplitRulesObjectAndSetTheValuesSuccessfully()
     {
-        $paymentSplitRules = (new \Ipag\Sdk\Model\PaymentSplitRules)
+        $paymentSplitRules = (new \Ipag\Sdk\Model\PaymentSplitRules())
             ->setSellerId('10000')
             ->setAmount(99.9)
             ->setPercentage(3.0)
@@ -48,7 +48,7 @@ class PaymentSplitRulesTest extends TestCase
 
     public function testShouldCreateEmptyPaymentSplitRulesObjectSuccessfully()
     {
-        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules;
+        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules();
 
         $this->assertEmpty($paymentSplitRules->getSellerId());
         $this->assertEmpty($paymentSplitRules->getAmount());
@@ -89,7 +89,7 @@ class PaymentSplitRulesTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnThePaymentSplitRulesAmountProperty()
     {
-        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules;
+        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules();
 
         $this->expectException(\TypeError::class);
 
@@ -98,7 +98,7 @@ class PaymentSplitRulesTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentSplitRulesAmountProperty()
     {
-        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules;
+        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -107,7 +107,7 @@ class PaymentSplitRulesTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnThePaymentSplitRulesPercentageProperty()
     {
-        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules;
+        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules();
 
         $this->expectException(\TypeError::class);
 
@@ -116,7 +116,7 @@ class PaymentSplitRulesTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentSplitRulesPercentageProperty()
     {
-        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules;
+        $paymentSplitRules = new \Ipag\Sdk\Model\PaymentSplitRules();
 
         $this->expectException(MutatorAttributeException::class);
 

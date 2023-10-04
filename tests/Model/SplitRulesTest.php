@@ -25,7 +25,7 @@ class SplitRulesTest extends TestCase
 
     public function testShouldCreateSplitRulesObjectAndSetTheValuesSuccessfully()
     {
-        $splitRules = (new \Ipag\Sdk\Model\SplitRules)
+        $splitRules = (new \Ipag\Sdk\Model\SplitRules())
             ->setReceiverId("1000000")
             ->setPercentage(10.00)
             ->setAmount(9.99)
@@ -40,7 +40,7 @@ class SplitRulesTest extends TestCase
 
     public function testShouldCreateEmptySplitRulesObjectSuccessfully()
     {
-        $splitRules = new \Ipag\Sdk\Model\SplitRules;
+        $splitRules = new \Ipag\Sdk\Model\SplitRules();
 
         $this->assertEmpty($splitRules->getReceiverId());
         $this->assertEmpty($splitRules->getPercentage());
@@ -73,7 +73,7 @@ class SplitRulesTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheSplitRulesAmountProperty()
     {
-        $splitRules = new \Ipag\Sdk\Model\SplitRules;
+        $splitRules = new \Ipag\Sdk\Model\SplitRules();
 
         $this->expectException(\TypeError::class);
 
@@ -82,7 +82,7 @@ class SplitRulesTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheSplitRulesAmountProperty()
     {
-        $splitRules = new \Ipag\Sdk\Model\SplitRules;
+        $splitRules = new \Ipag\Sdk\Model\SplitRules();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -91,7 +91,7 @@ class SplitRulesTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheSplitRulesPercentageProperty()
     {
-        $splitRules = new \Ipag\Sdk\Model\SplitRules;
+        $splitRules = new \Ipag\Sdk\Model\SplitRules();
 
         $this->expectException(\TypeError::class);
 
@@ -100,7 +100,7 @@ class SplitRulesTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheSplitRulesPercentageProperty()
     {
-        $splitRules = new \Ipag\Sdk\Model\SplitRules;
+        $splitRules = new \Ipag\Sdk\Model\SplitRules();
 
         $this->expectException(MutatorAttributeException::class);
 

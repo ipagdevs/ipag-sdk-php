@@ -33,26 +33,26 @@ class VoucherTest extends TestCase
 
     public function testShouldCreateVoucherObjectAndSetTheValuesSuccessfully()
     {
-        $voucher = (new \Ipag\Sdk\Model\Voucher)
+        $voucher = (new \Ipag\Sdk\Model\Voucher())
             ->setOrder(
-                (new \Ipag\Sdk\Model\Order)
+                (new \Ipag\Sdk\Model\Order())
                     ->setOrderId(
                         '1000077'
                     )
             )
             ->setSeller(
-                (new \Ipag\Sdk\Model\Seller)
+                (new \Ipag\Sdk\Model\Seller())
                     ->setCpfCnpj(
                         '074.598.263-83'
                     )
             )
             ->setCustomer(
-                (new \Ipag\Sdk\Model\Customer)
+                (new \Ipag\Sdk\Model\Customer())
                     ->setName(
                         'FULANO DA SILVA'
                     )
                     ->setAddress(
-                        (new \Ipag\Sdk\Model\Address)
+                        (new \Ipag\Sdk\Model\Address())
                             ->setStreet('Av. Brasil')
                     )
             );
@@ -73,7 +73,7 @@ class VoucherTest extends TestCase
 
     public function testShouldCreateEmptyVoucherObjectSuccessfully()
     {
-        $voucher = new \Ipag\Sdk\Model\Voucher;
+        $voucher = new \Ipag\Sdk\Model\Voucher();
 
         $this->assertEmpty($voucher->getOrder());
         $this->assertEmpty($voucher->getSeller());

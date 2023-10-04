@@ -73,7 +73,7 @@ class ChargeEndpointTest extends IpagClient
 
         try {
 
-            $charge = new \Ipag\Sdk\Model\Charge;
+            $charge = new \Ipag\Sdk\Model\Charge();
 
             $this->client->charge()->create($charge);
 
@@ -102,7 +102,7 @@ class ChargeEndpointTest extends IpagClient
 
         try {
 
-            $charge = new \Ipag\Sdk\Model\Charge;
+            $charge = new \Ipag\Sdk\Model\Charge();
 
             $this->client->charge()->create($charge);
 
@@ -131,7 +131,7 @@ class ChargeEndpointTest extends IpagClient
 
         try {
 
-            $charge = new \Ipag\Sdk\Model\Charge;
+            $charge = new \Ipag\Sdk\Model\Charge();
 
             $this->client->charge()->create($charge);
 

@@ -30,7 +30,7 @@ class BoletoTest extends TestCase
 
     public function testShouldCreateBoletoObjectAndSetTheValuesSuccessfully()
     {
-        $boleto = (new \Ipag\Sdk\Model\Boleto)
+        $boleto = (new \Ipag\Sdk\Model\Boleto())
             ->setDueDate('2018-07-31')
             ->setInstructions([
                 'Instruções 1',
@@ -50,7 +50,7 @@ class BoletoTest extends TestCase
 
     public function testShouldCreateEmptyBoletoObjectSuccessfully()
     {
-        $boleto = new \Ipag\Sdk\Model\Boleto;
+        $boleto = new \Ipag\Sdk\Model\Boleto();
 
         $this->assertEmpty($boleto->getDueDate());
 

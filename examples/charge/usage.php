@@ -38,7 +38,7 @@ try {
     $chargeId = 1;
 
     // Create
-    $responseCharge = $ipagClient->charge()->create(new \Ipag\Sdk\Model\Charge);
+    $responseCharge = $ipagClient->charge()->create(new \Ipag\Sdk\Model\Charge());
     dd($responseCharge->getData());
 
     // Update

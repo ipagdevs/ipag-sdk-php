@@ -80,7 +80,7 @@ class PaymentTest extends TestCase
             ->setSoftDescriptor('Maria José')
             ->setPixExpiresIn(1000)
             ->setCard(
-                (new \Ipag\Sdk\Model\PaymentCard)
+                (new \Ipag\Sdk\Model\PaymentCard())
                     ->setHolder('Maria José')
                     ->setNumber('123456789')
                     ->setExpiryMonth('01')
@@ -90,7 +90,7 @@ class PaymentTest extends TestCase
                     ->setTokenize(true)
             )
             ->setBoleto(
-                (new \Ipag\Sdk\Model\Boleto)
+                (new \Ipag\Sdk\Model\Boleto())
                     ->setDueDate('2020-01-01')
                     ->setInstructions(
                         [
@@ -137,7 +137,7 @@ class PaymentTest extends TestCase
 
     public function testShouldCreateEmptyPaymentObjectSuccessfully()
     {
-        $payment = new \Ipag\Sdk\Model\Payment;
+        $payment = new \Ipag\Sdk\Model\Payment();
 
         $this->assertEmpty($payment->getType());
         $this->assertEmpty($payment->getMethod());

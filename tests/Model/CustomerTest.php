@@ -57,9 +57,9 @@ class CustomerTest extends TestCase
             ->setPhone('(98) 3792-4834')
             ->setIsActive(true)
             ->setBusinessName('Lívia Ltda.')
-            ->setAddress(new \Ipag\Sdk\Model\Address)
-            ->setBillingAddress(new \Ipag\Sdk\Model\Address)
-            ->setShippingAddress(new \Ipag\Sdk\Model\Address);
+            ->setAddress(new \Ipag\Sdk\Model\Address())
+            ->setBillingAddress(new \Ipag\Sdk\Model\Address())
+            ->setShippingAddress(new \Ipag\Sdk\Model\Address());
 
         $this->assertEquals($customer->getName(), 'Lívia Julia Eduarda Barros');
         $this->assertEquals($customer->getEmail(), 'livia.julia.barros@eximiart.com.br');
@@ -76,7 +76,7 @@ class CustomerTest extends TestCase
 
     public function testShouldCreateEmptyCustomerObjectSuccessfully()
     {
-        $customer = new \Ipag\Sdk\Model\Customer;
+        $customer = new \Ipag\Sdk\Model\Customer();
 
         $this->assertEmpty($customer->getName());
         $this->assertEmpty($customer->getEmail());

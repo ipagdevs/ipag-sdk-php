@@ -25,7 +25,7 @@ class OwnerTest extends TestCase
 
     public function testShouldCreateOwnerObjectAndSetTheValuesSuccessfully()
     {
-        $owner = (new \Ipag\Sdk\Model\Owner)
+        $owner = (new \Ipag\Sdk\Model\Owner())
             ->setName('Lívia Julia Eduarda Barros')
             ->setEmail('livia.julia.barros@eximiart.com.br')
             ->setCpf('074.598.263-83')
@@ -40,7 +40,7 @@ class OwnerTest extends TestCase
 
     public function testShouldCreateEmptyOwnerObjectSuccessfully()
     {
-        $owner = new \Ipag\Sdk\Model\Owner;
+        $owner = new \Ipag\Sdk\Model\Owner();
 
         $this->assertEmpty($owner->getName());
         $this->assertEmpty($owner->getEmail());
@@ -73,7 +73,7 @@ class OwnerTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheOwnerEmailProperty()
     {
-        $owner = new \Ipag\Sdk\Model\Owner;
+        $owner = new \Ipag\Sdk\Model\Owner();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -82,7 +82,7 @@ class OwnerTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheOwnerCpfProperty()
     {
-        $owner = new \Ipag\Sdk\Model\Owner;
+        $owner = new \Ipag\Sdk\Model\Owner();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -91,7 +91,7 @@ class OwnerTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheOwnerPhoneProperty()
     {
-        $owner = new \Ipag\Sdk\Model\Owner;
+        $owner = new \Ipag\Sdk\Model\Owner();
 
         $this->expectException(MutatorAttributeException::class);
 

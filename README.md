@@ -186,62 +186,62 @@ $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
 ```
 ou
 ```php
-$paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction)
+$paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction())
     ->setAmount(100.0)
     ->setOrderId('123456')
     ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
     ->setAntifraud(
-        (new \Ipag\Sdk\Model\PaymentAntifraud)
+        (new \Ipag\Sdk\Model\PaymentAntifraud())
             ->setFingerprint('123')
             ->setProvider('anti')
     )
     ->setPayment(
-        (new \Ipag\Sdk\Model\Payment)
+        (new \Ipag\Sdk\Model\Payment())
             ->setType('card')
             ->setMethod(IpagEnvironment::cardMethods()::VISA)
             ->setCard(
-                (new \Ipag\Sdk\Model\PaymentCard)
+                (new \Ipag\Sdk\Model\PaymentCard())
                     ->setHolder('teste')
                     ->setNumber('123')
                     ->setCvv('123')
             )
     )
     ->setCustomer(
-        (new \Ipag\Sdk\Model\Customer)
+        (new \Ipag\Sdk\Model\Customer())
             ->setName('Fulano da Silva')
             ->setCpfCnpj('799.993.388-01')
             ->setBillingAddress(
-                (new \Ipag\Sdk\Model\Address)
+                (new \Ipag\Sdk\Model\Address())
                     ->setStreet('Rua A')
             )
             ->setShippingAddress(
-                (new \Ipag\Sdk\Model\Address)
+                (new \Ipag\Sdk\Model\Address())
                     ->setStreet('Rua A')
             )
     )
     ->setProducts([
-        (new \Ipag\Sdk\Model\Product)
+        (new \Ipag\Sdk\Model\Product())
             ->setName('Produto 1'),
     ])
     ->addProduct(
-        (new \Ipag\Sdk\Model\Product)
+        (new \Ipag\Sdk\Model\Product())
             ->setName('Produto 2')
     )
     ->setSubscription(
-        (new \Ipag\Sdk\Model\PaymentSubscription)
+        (new \Ipag\Sdk\Model\PaymentSubscription())
             ->setFrequency(1)
             ->setTrial(
-                (new \Ipag\Sdk\Model\Trial)
+                (new \Ipag\Sdk\Model\Trial())
                     ->setAmount(100.9)
             )
     )
     ->setSplitRules([
-        (new \Ipag\Sdk\Model\PaymentSplitRules)
+        (new \Ipag\Sdk\Model\PaymentSplitRules())
             ->setSellerId('vendedor1@mail.me')
             ->setAmount(15.87),
     ])
     ->addSplitRules(
-        (new \Ipag\Sdk\Model\PaymentSplitRules)
+        (new \Ipag\Sdk\Model\PaymentSplitRules())
             ->setSellerId('vendedor2@mail.me')
             ->setPercentage(20.0)
     );
@@ -602,7 +602,7 @@ $token = (new \Ipag\Sdk\Model\Token())
             ->setCpfCnpj('79999338801')
             ->setMobilePhone('1899767866')
             ->setBirthdate('1989-03-28')
-            ->setAddress(new \Ipag\Sdk\Model\Address)
+            ->setAddress(new \Ipag\Sdk\Model\Address())
     );
 ```
 
@@ -645,7 +645,7 @@ $charge = new \Ipag\Sdk\Model\Charge([
 ```
 ou
 ```php
-$charge = (new \Ipag\Sdk\Model\Charge)
+$charge = (new \Ipag\Sdk\Model\Charge())
     ->setAmount(150.50)
     ->setDescription('Cobrança referente a negociação de débito pendente na Empresa X')
     ->setDueDate('2020-10-30')
@@ -659,11 +659,11 @@ $charge = (new \Ipag\Sdk\Model\Charge)
     ->setIsActive(true)
     ->setProducts([1, 2, 3])
     ->setCustomer(
-        (new \Ipag\Sdk\Model\Customer)
+        (new \Ipag\Sdk\Model\Customer())
             ->setName('Maria Francisca')
     )
     ->setCheckoutSettings(
-        (new \Ipag\Sdk\Model\CheckoutSettings)
+        (new \Ipag\Sdk\Model\CheckoutSettings())
             ->setMaxInstallments(12)
     );
 ```
@@ -720,16 +720,16 @@ $establishment = new \Ipag\Sdk\Model\Establishment([
 ```
 ou
 ```php
-$establishment = (new \Ipag\Sdk\Model\Establishment)
+$establishment = (new \Ipag\Sdk\Model\Establishment())
     ->setName('Lívia Julia Eduarda Barros')
     ->setEmail('livia.julia.barros@eximiart.com.br')
     ->setLogin('livia')
     ->setPassword('livia123')
     ->setPhone('(98) 3792-4834')
     ->setDocument('074.598.263-83')
-    ->setAddress(new \Ipag\Sdk\Model\Address)
-    ->setOwner(new \Ipag\Sdk\Model\Owner)
-    ->setBank(new \Ipag\Sdk\Model\Bank);
+    ->setAddress(new \Ipag\Sdk\Model\Address())
+    ->setOwner(new \Ipag\Sdk\Model\Owner())
+    ->setBank(new \Ipag\Sdk\Model\Bank());
 ```
 
 ### Novo Estabelecimento
@@ -847,7 +847,7 @@ $splitRules = new \Ipag\Sdk\Model\SplitRules([
 ```
 ou
 ```php
-$splitRules = (new \Ipag\Sdk\Model\SplitRules)
+$splitRules = (new \Ipag\Sdk\Model\SplitRules())
     ->setReceiverId("1000000")
     ->setPercentage(10.00);
 ```
@@ -902,7 +902,7 @@ $seller = new \Ipag\Sdk\Model\Seller([
 ```
 ou
 ```php
-$seller = (new \Ipag\Sdk\Model\Seller)
+$seller = (new \Ipag\Sdk\Model\Seller())
     ->setLogin("josefrancisco")
     ->setPassword("123123")
     ->setName("José Francisco Silva")
@@ -911,15 +911,15 @@ $seller = (new \Ipag\Sdk\Model\Seller)
     ->setPhone("11987121234")
     ->setDescription("XXXXXXXXXXXXXX")
     ->setAddress(
-        (new \Ipag\Sdk\Model\Address)
+        (new \Ipag\Sdk\Model\Address())
             ->setStreet("Rua Jálio Gonzalez")
     )
     ->setOwner(
-        (new \Ipag\Sdk\Model\Owner)
+        (new \Ipag\Sdk\Model\Owner())
             ->setName("Giosepe")
     )
     ->setBank(
-        (new \Ipag\Sdk\Model\Bank)
+        (new \Ipag\Sdk\Model\Bank())
             ->setCode("290")
     );
 ```
@@ -1014,17 +1014,17 @@ $paymentLink = new \Ipag\Sdk\Model\PaymentLink([
 ```
 ou
 ```php
-$paymentLink = (new \Ipag\Sdk\Model\PaymentLink)
+$paymentLink = (new \Ipag\Sdk\Model\PaymentLink())
     ->setExternalCode('131')
     ->setAmount(0)
     ->setDescription('LINK DE PAGAMENTO SUPER BACANA')
     ->setExpireAt('2020-12-30 23:00:00')
     ->setButtons(
-        (new \Ipag\Sdk\Model\Buttons)
+        (new \Ipag\Sdk\Model\Buttons())
             ->setEnable(false)
     )
     ->setCheckoutSettings(
-        (new \Ipag\Sdk\Model\CheckoutSettings)
+        (new \Ipag\Sdk\Model\CheckoutSettings())
             ->setMaxInstallments(12)
     );
 ```
@@ -1064,7 +1064,7 @@ $webhook = new \Ipag\Sdk\Model\Webhook([
 ```
 ou
 ```php
-$webhook = (new \Ipag\Sdk\Model\Webhook)
+$webhook = (new \Ipag\Sdk\Model\Webhook())
     ->setHttpMethod('POST')
     ->setUrl('https://ipag-sdk.requestcatcher.com/webhook')
     ->setDescription('Webhook para receber notificações de atualização das transações')
@@ -1167,15 +1167,15 @@ ou
 ```php
 $checkout = (new \Ipag\Sdk\Model\Checkout())
     ->setCustomer(
-        (new \Ipag\Sdk\Model\Customer)
+        (new \Ipag\Sdk\Model\Customer())
             ->setName('Lívia Julia Eduarda Barros')
     )
     ->setInstallmentSetting(
-        (new \Ipag\Sdk\Model\InstallmentSetting)
+        (new \Ipag\Sdk\Model\InstallmentSetting())
             ->setMaxInstallments(12)
     )
     ->setOrder(
-        (new \Ipag\Sdk\Model\Order)
+        (new \Ipag\Sdk\Model\Order())
             ->setOrderId('1000077')
     )
     ->addProduct(
@@ -1187,11 +1187,11 @@ $checkout = (new \Ipag\Sdk\Model\Checkout())
             ->setName('Smart TV 50" UHD 4K')
     )
     ->addSplitRule(
-        (new \Ipag\Sdk\Model\SplitRules)
+        (new \Ipag\Sdk\Model\SplitRules())
             ->setReceiverId('1000000')
     )
     ->addSplitRule(
-        (new \Ipag\Sdk\Model\SplitRules)
+        (new \Ipag\Sdk\Model\SplitRules())
             ->setReceiverId('1000001')
     )
     ->setSellerId('100014')
@@ -1238,26 +1238,26 @@ $voucher = new \Ipag\Sdk\Model\Voucher([
 ```
 ou
 ```php
-$voucher = (new \Ipag\Sdk\Model\Voucher)
+$voucher = (new \Ipag\Sdk\Model\Voucher())
     ->setOrder(
-        (new \Ipag\Sdk\Model\Order)
+        (new \Ipag\Sdk\Model\Order())
             ->setOrderId(
                 '1000077'
             )
     )
     ->setSeller(
-        (new \Ipag\Sdk\Model\Seller)
+        (new \Ipag\Sdk\Model\Seller())
             ->setCpfCnpj(
                 '074.598.263-83'
             )
     )
     ->setCustomer(
-        (new \Ipag\Sdk\Model\Customer)
+        (new \Ipag\Sdk\Model\Customer())
             ->setName(
                 'FULANO DA SILVA'
             )
             ->setAddress(
-                (new \Ipag\Sdk\Model\Address)
+                (new \Ipag\Sdk\Model\Address())
                     ->setStreet('Av. Brasil')
             )
     );

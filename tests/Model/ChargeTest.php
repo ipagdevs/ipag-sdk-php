@@ -56,7 +56,7 @@ class ChargeTest extends TestCase
 
     public function testShouldCreateChargeObjectAndSetTheValuesSuccessfully()
     {
-        $charge = (new \Ipag\Sdk\Model\Charge)
+        $charge = (new \Ipag\Sdk\Model\Charge())
             ->setAmount(150.50)
             ->setDescription('Cobrança referente a negociação de débito pendente na Empresa X')
             ->setDueDate('2020-10-30')
@@ -70,11 +70,11 @@ class ChargeTest extends TestCase
             ->setIsActive(true)
             ->setProducts([1, 2, 3])
             ->setCustomer(
-                (new \Ipag\Sdk\Model\Customer)
+                (new \Ipag\Sdk\Model\Customer())
                     ->setName('Maria Francisca')
             )
             ->setCheckoutSettings(
-                (new \Ipag\Sdk\Model\CheckoutSettings)
+                (new \Ipag\Sdk\Model\CheckoutSettings())
                     ->setMaxInstallments(12)
             );
 
@@ -103,7 +103,7 @@ class ChargeTest extends TestCase
 
     public function testShouldCreateEmptyChargeObjectSuccessfully()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->assertEmpty($charge->getAmount());
         $this->assertEmpty($charge->getDescription());
@@ -186,7 +186,7 @@ class ChargeTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheChargeAmountProperty()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->expectException(\TypeError::class);
 
@@ -195,7 +195,7 @@ class ChargeTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheChargeAmountProperty()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -204,7 +204,7 @@ class ChargeTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheChargeFrequencyProperty()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->expectException(\TypeError::class);
 
@@ -213,7 +213,7 @@ class ChargeTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheChargeFrequencyProperty()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -222,7 +222,7 @@ class ChargeTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheChargeIntervalProperty()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->expectException(SchemaAttributeParseException::class);
 
@@ -231,7 +231,7 @@ class ChargeTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheChargeTypeProperty()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->expectException(SchemaAttributeParseException::class);
 
@@ -240,7 +240,7 @@ class ChargeTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheChargeInstallmentsProperty()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->expectException(\TypeError::class);
 
@@ -249,7 +249,7 @@ class ChargeTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheChargeInstallmentsProperty()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -258,7 +258,7 @@ class ChargeTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheChargeProductsProperty()
     {
-        $charge = new \Ipag\Sdk\Model\Charge;
+        $charge = new \Ipag\Sdk\Model\Charge();
 
         $this->expectException(\TypeError::class);
 

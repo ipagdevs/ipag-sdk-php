@@ -37,17 +37,17 @@ class PaymentLinkTest extends TestCase
 
     public function testShouldCreatePaymentLinkObjectAndSetTheValuesSuccessfully()
     {
-        $paymentLink = (new \Ipag\Sdk\Model\PaymentLink)
+        $paymentLink = (new \Ipag\Sdk\Model\PaymentLink())
             ->setExternalCode('131')
             ->setAmount(0)
             ->setDescription('LINK DE PAGAMENTO SUPER BACANA')
             ->setExpireAt('2020-12-30 23:00:00')
             ->setButtons(
-                (new \Ipag\Sdk\Model\Buttons)
+                (new \Ipag\Sdk\Model\Buttons())
                     ->setEnable(false)
             )
             ->setCheckoutSettings(
-                (new \Ipag\Sdk\Model\CheckoutSettings)
+                (new \Ipag\Sdk\Model\CheckoutSettings())
                     ->setMaxInstallments(12)
             );
 
@@ -66,7 +66,7 @@ class PaymentLinkTest extends TestCase
 
     public function testShouldCreateEmptyPaymentLinkObjectSuccessfully()
     {
-        $paymentLink = new \Ipag\Sdk\Model\PaymentLink;
+        $paymentLink = new \Ipag\Sdk\Model\PaymentLink();
 
         $this->assertEmpty($paymentLink->getExternalCode());
         $this->assertEmpty($paymentLink->getAmount());
@@ -115,7 +115,7 @@ class PaymentLinkTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnThePaymentLinkAmountProperty()
     {
-        $paymentLink = new \Ipag\Sdk\Model\PaymentLink;
+        $paymentLink = new \Ipag\Sdk\Model\PaymentLink();
 
         $this->expectException(\TypeError::class);
 
@@ -124,7 +124,7 @@ class PaymentLinkTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentLinkAmountProperty()
     {
-        $paymentLink = new \Ipag\Sdk\Model\PaymentLink;
+        $paymentLink = new \Ipag\Sdk\Model\PaymentLink();
 
         $this->expectException(MutatorAttributeException::class);
 

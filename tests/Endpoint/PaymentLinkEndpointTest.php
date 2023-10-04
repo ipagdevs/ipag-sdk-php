@@ -65,7 +65,7 @@ class PaymentLinkEndpointTest extends IpagClient
 
         try {
 
-            $paymentLink = new \Ipag\Sdk\Model\PaymentLink;
+            $paymentLink = new \Ipag\Sdk\Model\PaymentLink();
 
             $this->client->paymentLinks()->create($paymentLink);
 
@@ -94,7 +94,7 @@ class PaymentLinkEndpointTest extends IpagClient
 
         try {
 
-            $paymentLink = new \Ipag\Sdk\Model\PaymentLink;
+            $paymentLink = new \Ipag\Sdk\Model\PaymentLink();
 
             $this->client->paymentLinks()->create($paymentLink);
 
@@ -122,7 +122,7 @@ class PaymentLinkEndpointTest extends IpagClient
 
         try {
 
-            $paymentLink = new \Ipag\Sdk\Model\PaymentLink;
+            $paymentLink = new \Ipag\Sdk\Model\PaymentLink();
 
             $this->client->paymentLinks()->create($paymentLink);
 

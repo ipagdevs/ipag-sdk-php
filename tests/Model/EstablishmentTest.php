@@ -43,16 +43,16 @@ class EstablishmentTest extends TestCase
 
     public function testShouldCreateEstablishmentObjectAndSetTheValuesSuccessfully()
     {
-        $establishment = (new \Ipag\Sdk\Model\Establishment)
+        $establishment = (new \Ipag\Sdk\Model\Establishment())
             ->setName('Lívia Julia Eduarda Barros')
             ->setEmail('livia.julia.barros@eximiart.com.br')
             ->setLogin('livia')
             ->setPassword('livia123')
             ->setPhone('(98) 3792-4834')
             ->setDocument('074.598.263-83')
-            ->setAddress(new \Ipag\Sdk\Model\Address)
-            ->setOwner(new \Ipag\Sdk\Model\Owner)
-            ->setBank(new \Ipag\Sdk\Model\Bank);
+            ->setAddress(new \Ipag\Sdk\Model\Address())
+            ->setOwner(new \Ipag\Sdk\Model\Owner())
+            ->setBank(new \Ipag\Sdk\Model\Bank());
 
         $this->assertEquals('Lívia Julia Eduarda Barros', $establishment->getName());
         $this->assertEquals('livia.julia.barros@eximiart.com.br', $establishment->getEmail());
@@ -69,7 +69,7 @@ class EstablishmentTest extends TestCase
 
     public function testShouldCreateEmptyEstablishmentObjectSuccessfully()
     {
-        $establishment = new \Ipag\Sdk\Model\Establishment;
+        $establishment = new \Ipag\Sdk\Model\Establishment();
 
         $this->assertEmpty($establishment->getName());
         $this->assertEmpty($establishment->getEmail());
@@ -131,7 +131,7 @@ class EstablishmentTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheEstablishmentEmailProperty()
     {
-        $establishment = new \Ipag\Sdk\Model\Establishment;
+        $establishment = new \Ipag\Sdk\Model\Establishment();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -140,7 +140,7 @@ class EstablishmentTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheEstablishmentDocumentProperty()
     {
-        $establishment = new \Ipag\Sdk\Model\Establishment;
+        $establishment = new \Ipag\Sdk\Model\Establishment();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -149,7 +149,7 @@ class EstablishmentTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheEstablishmentPhoneProperty()
     {
-        $establishment = new \Ipag\Sdk\Model\Establishment;
+        $establishment = new \Ipag\Sdk\Model\Establishment();
 
         $this->expectException(MutatorAttributeException::class);
 

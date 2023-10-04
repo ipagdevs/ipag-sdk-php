@@ -29,7 +29,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldCreatePaymentSubscriptionObjectAndSetTheValuesSuccessfully()
     {
-        $paymentSubscription = (new \Ipag\Sdk\Model\PaymentSubscription)
+        $paymentSubscription = (new \Ipag\Sdk\Model\PaymentSubscription())
             ->setFrequency(1)
             ->setInterval('month')
             ->setStartDate('2019-01-01')
@@ -48,7 +48,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldCreateEmptyPaymentSubscriptionObjectSuccessfully()
     {
-        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription;
+        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription();
 
         $this->assertEmpty($paymentSubscription->getFrequency());
         $this->assertEmpty($paymentSubscription->getInterval());
@@ -89,7 +89,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnThePaymentSubscriptionFrequencyProperty()
     {
-        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription;
+        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription();
 
         $this->expectException(\TypeError::class);
 
@@ -98,7 +98,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentSubscriptionFrequencyProperty()
     {
-        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription;
+        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -107,7 +107,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnThePaymentSubscriptionAmountProperty()
     {
-        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription;
+        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription();
 
         $this->expectException(\TypeError::class);
 
@@ -116,7 +116,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentSubscriptionAmountProperty()
     {
-        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription;
+        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -125,7 +125,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnThePaymentSubscriptionInstallmentsProperty()
     {
-        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription;
+        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription();
 
         $this->expectException(\TypeError::class);
 
@@ -134,7 +134,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentSubscriptionInstallmentsProperty()
     {
-        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription;
+        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -143,7 +143,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnThePaymentSubscriptionCyclesProperty()
     {
-        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription;
+        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription();
 
         $this->expectException(\TypeError::class);
 
@@ -152,7 +152,7 @@ class PaymentSubscriptionTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnThePaymentSubscriptionCyclesProperty()
     {
-        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription;
+        $paymentSubscription = new \Ipag\Sdk\Model\PaymentSubscription();
 
         $this->expectException(MutatorAttributeException::class);
 

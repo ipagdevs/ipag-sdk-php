@@ -30,7 +30,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldCreateCheckoutSettingsObjectAndSetTheValuesSuccessfully()
     {
-        $checkoutSettings = (new \Ipag\Sdk\Model\CheckoutSettings)
+        $checkoutSettings = (new \Ipag\Sdk\Model\CheckoutSettings())
             ->setMaxInstallments(12)
             ->setInterestFreeInstallments(12)
             ->setMinInstallmentValue(0.00)
@@ -49,7 +49,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldCreateEmptyCheckoutSettingsObjectSuccessfully()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->assertEmpty($checkoutSettings->getMaxInstallments());
         $this->assertEmpty($checkoutSettings->getInterestFreeInstallments());
@@ -90,7 +90,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheCheckoutSettingsMaxInstallmentsProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(\TypeError::class);
 
@@ -99,7 +99,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheCheckoutSettingsMaxInstallmentsProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -108,7 +108,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheCheckoutSettingsInterestFreeInstallmentsProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(\TypeError::class);
 
@@ -117,7 +117,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheCheckoutSettingsInterestFreeInstallmentsProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -126,7 +126,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheCheckoutSettingsMinInstallmentValueProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(\TypeError::class);
 
@@ -135,7 +135,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheCheckoutSettingsMinInstallmentValueProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -144,7 +144,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheCheckoutSettingsInterestProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(\TypeError::class);
 
@@ -153,7 +153,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheCheckoutSettingsInterestProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -162,7 +162,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheCheckoutSettingsFixedInstallmentProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(\TypeError::class);
 
@@ -171,7 +171,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheCheckoutSettingsFixedInstallmentProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -180,7 +180,7 @@ class CheckoutSettingsTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheCheckoutSettingsPaymentMethodProperty()
     {
-        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings;
+        $checkoutSettings = new \Ipag\Sdk\Model\CheckoutSettings();
 
         $this->expectException(SchemaAttributeParseException::class);
 

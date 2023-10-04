@@ -103,7 +103,7 @@ class TrialTest extends TestCase
 
     public function testShouldThrowATypeExceptionOnTheTrialFrequencyProperty()
     {
-        $trial = new \Ipag\Sdk\Model\Trial;
+        $trial = new \Ipag\Sdk\Model\Trial();
 
         $this->expectException(\TypeError::class);
 
@@ -112,7 +112,7 @@ class TrialTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheTrialFrequencyProperty()
     {
-        $trial = new \Ipag\Sdk\Model\Trial;
+        $trial = new \Ipag\Sdk\Model\Trial();
 
         $this->expectException(MutatorAttributeException::class);
 

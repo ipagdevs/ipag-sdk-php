@@ -42,7 +42,7 @@ class ClearSaleProviderTest extends TestCase
 
     public function testShouldCreateEmptyClearSaleProviderObjectSuccessfully()
     {
-        $clearSaleProvider = new \Ipag\Sdk\Support\Provider\Antifraudes\ClearSaleProvider;
+        $clearSaleProvider = new \Ipag\Sdk\Support\Provider\Antifraudes\ClearSaleProvider();
 
         $this->assertEquals('clearsale', $clearSaleProvider->getName());
 

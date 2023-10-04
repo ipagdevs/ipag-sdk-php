@@ -57,7 +57,7 @@ class SubscriptionTest extends TestCase
 
     public function testShouldCreateEmptySubscriptionObjectSuccessfully()
     {
-        $subscription = new \Ipag\Sdk\Model\Subscription;
+        $subscription = new \Ipag\Sdk\Model\Subscription();
 
         $this->assertEmpty($subscription->getIsActive());
         $this->assertEmpty($subscription->getProfileId());

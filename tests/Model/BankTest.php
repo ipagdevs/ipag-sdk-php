@@ -27,7 +27,7 @@ class BankTest extends TestCase
 
     public function testShouldCreateBankObjectAndSetTheValuesSuccessfully()
     {
-        $bank = (new \Ipag\Sdk\Model\Bank)
+        $bank = (new \Ipag\Sdk\Model\Bank())
             ->setCode('001')
             ->setAgency('1234')
             ->setAccount('123456')
@@ -44,7 +44,7 @@ class BankTest extends TestCase
 
     public function testShouldCreateEmptyBankObjectSuccessfully()
     {
-        $bank = new \Ipag\Sdk\Model\Bank;
+        $bank = new \Ipag\Sdk\Model\Bank();
 
         $this->assertEmpty($bank->getCode());
         $this->assertEmpty($bank->getAgency());
@@ -81,7 +81,7 @@ class BankTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheBankTypeProperty()
     {
-        $bank = new \Ipag\Sdk\Model\Bank;
+        $bank = new \Ipag\Sdk\Model\Bank();
 
         $this->expectException(SchemaAttributeParseException::class);
 

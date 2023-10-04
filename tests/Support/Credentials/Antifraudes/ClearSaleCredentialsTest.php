@@ -20,7 +20,7 @@ class ClearSaleCredentialsTest extends TestCase
 
     public function testShouldCreateClearSaleCredentialsObjectAndSetTheValuesSuccessfully()
     {
-        $clearSaleCredentials = (new \Ipag\Sdk\Support\Credentials\Antifraudes\ClearSaleCredentials)
+        $clearSaleCredentials = (new \Ipag\Sdk\Support\Credentials\Antifraudes\ClearSaleCredentials())
             ->setName('test')
             ->setPassword('test123');
 
@@ -31,7 +31,7 @@ class ClearSaleCredentialsTest extends TestCase
 
     public function testShouldCreateEmptyClearSaleCredentialsObjectSuccessfully()
     {
-        $clearSaleCredentials = new \Ipag\Sdk\Support\Credentials\Antifraudes\ClearSaleCredentials;
+        $clearSaleCredentials = new \Ipag\Sdk\Support\Credentials\Antifraudes\ClearSaleCredentials();
 
         $this->assertEmpty($clearSaleCredentials->getName());
         $this->assertEmpty($clearSaleCredentials->getPassword());

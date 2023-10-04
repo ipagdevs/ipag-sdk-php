@@ -38,9 +38,9 @@ class AntifraudTest extends TestCase
 
     public function testShouldCreateAntifraudObjectAndSetTheValuesSuccessfully()
     {
-        $antifraud = (new \Ipag\Sdk\Model\Antifraud)
+        $antifraud = (new \Ipag\Sdk\Model\Antifraud())
             ->setProvider(
-                (new \Ipag\Sdk\Model\AntifraudProvider)
+                (new \Ipag\Sdk\Model\AntifraudProvider())
                     ->setName("redshield")
                     ->setCredentials(
                         [
@@ -49,7 +49,7 @@ class AntifraudTest extends TestCase
                     )
             )
             ->setSettings(
-                (new \Ipag\Sdk\Model\AntifraudSettings)
+                (new \Ipag\Sdk\Model\AntifraudSettings())
                     ->setEnabled(true)
             );
 
@@ -69,7 +69,7 @@ class AntifraudTest extends TestCase
 
     public function testShouldCreateEmptyAntifraudObjectSuccessfully()
     {
-        $antifraud = new \Ipag\Sdk\Model\Antifraud;
+        $antifraud = new \Ipag\Sdk\Model\Antifraud();
 
         $this->assertEmpty($antifraud->getProvider());
 

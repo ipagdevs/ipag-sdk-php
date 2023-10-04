@@ -23,13 +23,13 @@ class TokenTest extends TestCase
                 'mobilePhone' => '1899767866',
                 'birthdate' => '1989-03-28',
                 'address' => [
-                        'street' => 'Rua dos Testes',
-                        'number' => '100',
-                        'district' => 'Tamboré',
-                        'zipcode' => '06460080',
-                        'city' => 'Barueri',
-                        'state' => 'SP'
-                    ]
+                    'street' => 'Rua dos Testes',
+                    'number' => '100',
+                    'district' => 'Tamboré',
+                    'zipcode' => '06460080',
+                    'city' => 'Barueri',
+                    'state' => 'SP'
+                ]
             ]
         ]);
 
@@ -58,7 +58,7 @@ class TokenTest extends TestCase
                     ->setCpfCnpj('79999338801')
                     ->setMobilePhone('1899767866')
                     ->setBirthdate('1989-03-28')
-                    ->setAddress(new \Ipag\Sdk\Model\Address)
+                    ->setAddress(new \Ipag\Sdk\Model\Address())
             );
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Card::class, $token->getCard());
@@ -71,7 +71,7 @@ class TokenTest extends TestCase
 
     public function testShouldCreateEmptyTokenObjectSuccessfully()
     {
-        $token = new \Ipag\Sdk\Model\Token;
+        $token = new \Ipag\Sdk\Model\Token();
 
         $this->assertEmpty($token->getCard());
 
@@ -95,13 +95,13 @@ class TokenTest extends TestCase
                 'mobilePhone' => '1899767866',
                 'birthdate' => '1989-03-28',
                 'address' => [
-                        'street' => 'Rua dos Testes',
-                        'number' => '100',
-                        'district' => 'Tamboré',
-                        'zipcode' => '06460080',
-                        'city' => 'Barueri',
-                        'state' => 'SP'
-                    ]
+                    'street' => 'Rua dos Testes',
+                    'number' => '100',
+                    'district' => 'Tamboré',
+                    'zipcode' => '06460080',
+                    'city' => 'Barueri',
+                    'state' => 'SP'
+                ]
             ]
         ]);
 
@@ -117,7 +117,7 @@ class TokenTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheTokenValidatedAtProperty()
     {
-        $token = new \Ipag\Sdk\Model\Token;
+        $token = new \Ipag\Sdk\Model\Token();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -127,7 +127,7 @@ class TokenTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheTokenExpiresAtProperty()
     {
-        $token = new \Ipag\Sdk\Model\Token;
+        $token = new \Ipag\Sdk\Model\Token();
 
         $this->expectException(MutatorAttributeException::class);
 

@@ -31,7 +31,7 @@ class CardTest extends TestCase
 
     public function testShouldCreateCardObjectAndSetTheValuesSuccessfully()
     {
-        $card = (new \Ipag\Sdk\Model\Card)
+        $card = (new \Ipag\Sdk\Model\Card())
             ->setHolderName('Frederic Sales')
             ->setNumber('4024 0071 1251 2933')
             ->setExpiryMonth('02')
@@ -52,7 +52,7 @@ class CardTest extends TestCase
 
     public function testShouldCreateEmptyCardObjectSuccessfully()
     {
-        $card = new \Ipag\Sdk\Model\Card;
+        $card = new \Ipag\Sdk\Model\Card();
 
         $this->assertEmpty($card->getHolderName());
         $this->assertEmpty($card->getNumber());
@@ -95,7 +95,7 @@ class CardTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheCardExpiryMonthProperty()
     {
-        $card = new \Ipag\Sdk\Model\Card;
+        $card = new \Ipag\Sdk\Model\Card();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -104,7 +104,7 @@ class CardTest extends TestCase
 
     public function testShouldThrowAInvalidRangeExceptionOnTheCardExpiryMonthProperty()
     {
-        $card = new \Ipag\Sdk\Model\Card;
+        $card = new \Ipag\Sdk\Model\Card();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -113,7 +113,7 @@ class CardTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheCardExpiryYearProperty()
     {
-        $card = new \Ipag\Sdk\Model\Card;
+        $card = new \Ipag\Sdk\Model\Card();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -121,7 +121,7 @@ class CardTest extends TestCase
     }
     public function testShouldThrowAInvalidRangeExceptionOnTheCardExpiryYearProperty()
     {
-        $card = new \Ipag\Sdk\Model\Card;
+        $card = new \Ipag\Sdk\Model\Card();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -130,7 +130,7 @@ class CardTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheCardCvvProperty()
     {
-        $card = new \Ipag\Sdk\Model\Card;
+        $card = new \Ipag\Sdk\Model\Card();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -138,7 +138,7 @@ class CardTest extends TestCase
     }
     public function testShouldThrowAInvalidRangeExceptionOnTheCardCvvProperty()
     {
-        $card = new \Ipag\Sdk\Model\Card;
+        $card = new \Ipag\Sdk\Model\Card();
 
         $this->expectException(MutatorAttributeException::class);
 

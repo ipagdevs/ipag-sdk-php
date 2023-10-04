@@ -32,12 +32,12 @@ class HolderTest extends TestCase
 
     public function testShouldCreateHolderObjectAndSetTheValuesSuccessfully()
     {
-        $holder = (new \Ipag\Sdk\Model\Holder)
+        $holder = (new \Ipag\Sdk\Model\Holder())
             ->setName('Frederic Sales')
             ->setCpfCnpj('79999338801')
             ->setMobilePhone('1899767866')
             ->setBirthdate('1989-03-28')
-            ->setAddress(new \Ipag\Sdk\Model\Address);
+            ->setAddress(new \Ipag\Sdk\Model\Address());
 
         $this->assertEquals($holder->getName(), 'Frederic Sales');
         $this->assertEquals($holder->getCpfCnpj(), '79999338801');
@@ -50,7 +50,7 @@ class HolderTest extends TestCase
 
     public function testShouldCreateEmptyHolderObjectSuccessfully()
     {
-        $holder = new \Ipag\Sdk\Model\Holder;
+        $holder = new \Ipag\Sdk\Model\Holder();
 
         $this->assertEmpty($holder->getName());
         $this->assertEmpty($holder->getCpfCnpj());
@@ -89,7 +89,7 @@ class HolderTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheHolderCpfCnpjProperty()
     {
-        $holder = new \Ipag\Sdk\Model\Holder;
+        $holder = new \Ipag\Sdk\Model\Holder();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -98,7 +98,7 @@ class HolderTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheHolderPhoneProperty()
     {
-        $holder = new \Ipag\Sdk\Model\Holder;
+        $holder = new \Ipag\Sdk\Model\Holder();
 
         $this->expectException(MutatorAttributeException::class);
 
@@ -107,7 +107,7 @@ class HolderTest extends TestCase
 
     public function testShouldThrowAValidationExceptionOnTheHolderBirthdateProperty()
     {
-        $holder = new \Ipag\Sdk\Model\Holder;
+        $holder = new \Ipag\Sdk\Model\Holder();
 
         $this->expectException(MutatorAttributeException::class);
 
