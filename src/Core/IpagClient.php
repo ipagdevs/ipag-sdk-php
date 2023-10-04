@@ -40,17 +40,16 @@ class IpagClient extends Client
      * @param string Ambiente de execução (IpagEnvironment::SANDBOX | IpagEnvironment::PRODUCTION).
      * @param string $version Versão da API (valor padrão = '2').
      */
-    public function __construct(string $apiID, string $apiKey, string $environment, ?LoggerInterface $logger = null, string $version = '2')
+    public function __construct(string $apiID, string $apiKey, string $environment, ?LoggerInterface $logger = null, string $version = IpagEnvironment::VERSION)
     {
         parent::__construct(
             new IpagEnvironment($environment),
             new GuzzleHttpClient(
                 [
                     'headers' => [
-                        'Authorization' => 'Basic ' . base64_encode("{$apiID}:{$apiKey}"),
-                        'Content-Type' => 'application/json',
                         'x-api-version' => $version,
                     ],
+                    'auth' => [$apiID, $apiKey]
                 ]
             ),
             new JsonSerializer(),

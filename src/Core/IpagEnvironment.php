@@ -4,12 +4,11 @@ namespace Ipag\Sdk\Core;
 
 final class IpagEnvironment extends Environment
 {
+    public const VERSION = '2';
     public const LOCAL = 'api.ipag.test';
     public const PRODUCTION = 'https://api.ipag.com.br';
     public const SANDBOX = 'https://sandbox.ipag.com.br';
-
     private static ?IpagEnvironmentWebhook $envWebhook = null;
-
     private static ?IpagEnvironmentPaymentMethodsAcquirer $envMethod = null;
     private static ?IpagEnvironmentCardMethods $envCardMethods = null;
     private static ?IpagEnvironmentBankSlipMethods $envBankSlipMethods = null;
