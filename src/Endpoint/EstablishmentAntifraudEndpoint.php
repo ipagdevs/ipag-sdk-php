@@ -21,16 +21,16 @@ class EstablishmentAntifraudEndpoint extends Endpoint
      * Endpoint para configuração de antifraude
      *
      * @param Antifraud $antifraud
-     * @param string $establishment_id
+     * @param string $establishmentUuid
      * @return Response
      */
-    public function config(Antifraud $antifraud, string $establishment_id): Response
+    public function config(Antifraud $antifraud, string $establishmentUuid): Response
     {
         return $this->_POST(
             $antifraud->jsonSerialize(),
             [],
             [],
-            "/{$establishment_id}/antifraud_settings"
+            "/{$establishmentUuid}/antifraud_settings"
         );
     }
 

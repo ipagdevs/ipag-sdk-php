@@ -32,23 +32,23 @@ class EstablishmentEndpoint extends Endpoint
      * Endpoint para atualizar um recurso `Establishment`
      *
      * @param Establishment $establishment
-     * @param string $id
+     * @param string $uuid
      * @return Response
      */
-    public function update(Establishment $establishment, string $id): Response
+    public function update(Establishment $establishment, string $uuid): Response
     {
-        return $this->_PUT($establishment, ['id' => $id]);
+        return $this->_PUT($establishment, ['id' => $uuid]);
     }
 
     /**
      * Endpoint para obter um recurso `Establishment`
      *
-     * @param string $id
+     * @param string $uuid
      * @return Response
      */
-    public function get(string $id): Response
+    public function get(string $uuid): Response
     {
-        return $this->_GET(['id' => $id]);
+        return $this->_GET(['id' => $uuid]);
     }
 
     /**

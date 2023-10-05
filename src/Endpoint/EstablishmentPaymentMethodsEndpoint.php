@@ -21,16 +21,16 @@ class EstablishmentPaymentMethodsEndpoint extends Endpoint
      * Endpoint para configuração de métodos de pagamento
      *
      * @param PaymentMethod $paymentMethod
-     * @param string $establishment_id
+     * @param string $establishmentUuid
      * @return Response
      */
-    public function config(PaymentMethod $paymentMethod, string $establishment_id): Response
+    public function config(PaymentMethod $paymentMethod, string $establishmentUuid): Response
     {
         return $this->_POST(
             $paymentMethod->jsonSerialize(),
             [],
             [],
-            "/{$establishment_id}/payment_methods"
+            "/{$establishmentUuid}/payment_methods"
         );
     }
 

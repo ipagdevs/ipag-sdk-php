@@ -30,25 +30,25 @@ class EstablishmentTransactionEndpoint extends Endpoint
     /**
      * Endpoint para listar todos os recursos `Transaction` de um recurso `Establishment`
      *
-     * @param string $tid
+     * @param string $uuid
      * @param array|null $filters
      * @return Response
      */
-    public function listByEstablishment(string $tid, ?array $filters = []): Response
+    public function listByEstablishment(string $uuid, ?array $filters = []): Response
     {
-        return $this->_GET($filters, [], "/$tid/transactions");
+        return $this->_GET($filters, [], "/$uuid/transactions");
     }
 
     /**
      * Endpoint para obter um recurso `Transaction` de um recurso `Establishment`
      *
-     * @param string $tid
-     * @param string $transactionTid
+     * @param string $uuid
+     * @param string $transactionUuid
      * @return Response
      */
-    public function getByEstablishment(string $tid, string $transactionTid): Response
+    public function getByEstablishment(string $uuid, string $transactionUuid): Response
     {
-        return $this->_GET([], [], "/{$tid}/transactions/{$transactionTid}");
+        return $this->_GET([], [], "/{$uuid}/transactions/{$transactionUuid}");
     }
 
 }
