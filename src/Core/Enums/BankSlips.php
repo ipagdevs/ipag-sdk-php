@@ -13,4 +13,5 @@ abstract class BankSlips
     const ITAU = "boletoitaushopline";
     const BRADESCO = "boletoshopfacil";
     const BRADESCO_NET = "boletobradesconet";
+    const SIMULADO = "boletosimulado";
 }
