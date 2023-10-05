@@ -14,19 +14,19 @@ $ipagClient = new IpagClient(
 
 $checkout = new \Ipag\Sdk\Model\Checkout([
     'customer' => [
-        'name' => 'Fulano da Silva',
+        'name' => 'Arthur Morgan',
         'tax_receipt' => '212.348.796-11',
-        'email' => 'teste@email.com',
+        'email' => 'arthurmorgan@email.com',
         'phone' => '(11) 2222-3333',
         'birthdate' => '1987-11-21',
         'address' => [
-            'zipcode' => '01156060',
-            'street' => 'Rua Júlio Gonzalez',
-            'number' => '1023',
-            'district' => 'Barra Funda',
+            'street' => 'Avenida Paulista',
+            'number' => '01',
             'complement' => 'Sala 02',
+            'district' => 'São Paulo',
             'city' => 'São Paulo',
-            'state' => 'SP'
+            'state' => 'SP',
+            'zipcode' => '01310-930',
         ]
     ],
     'installment_setting' => [
@@ -37,21 +37,21 @@ $checkout = new \Ipag\Sdk\Model\Checkout([
     ],
     'order' => [
         'order_id' => '100001',
-        'amount' => '15.00',
+        'amount' => 10000,
         'return_url' => 'https://ipag-sdk.requestcatcher.com/callback',
         'return_type' => 'json'
     ],
     'products' => [
         [
             'name' => 'Smart TV LG 55 4K UHD',
-            'unit_price' => '3.999',
+            'unit_price' => 5000,
             'quantity' => 1,
             'sku' => 'LG123',
             'description' => 'Experiência cristalina em 4K.'
         ],
         [
             'name' => 'LED Android TV 4K UHD LED',
-            'unit_price' => '2.310',
+            'unit_price' => 5000,
             'quantity' => 1,
             'sku' => 'SAM123',
             'description' => 'Android TV de 126 cm (50).'
@@ -59,12 +59,12 @@ $checkout = new \Ipag\Sdk\Model\Checkout([
     ],
     'split_rules' => [
         [
-            'receiver' => 'qwertyuiopasdfghjklzxcvbnm123456',
+            'receiver' => 'vendedor1@email.com',
             'percentage' => '50',
             'charge_processing_fee' => true,
         ],
         [
-            'receiver' => '654321mnbvcxzlkjhgfdsapoiuytrewq',
+            'receiver' => 'vendedor2@email.com',
             'percentage' => '20'
         ]
     ],
@@ -74,14 +74,26 @@ $checkout = new \Ipag\Sdk\Model\Checkout([
 
 try {
 
-    // Create
-    // $responseCheckout = $ipagClient->checkout()->create($checkout);
-    // dd($responseCheckout->getData());
+    $responseCheckout = $ipagClient->checkout()->create($checkout);
+    $data = $responseCheckout->getData();
+
+    echo "<pre>" . PHP_EOL;
+    print_r($data);
+    echo "</pre>" . PHP_EOL;
 
 } catch (HttpException $e) {
-    dd($e->getResponse()->getData());
-    // dd($e->getResponse()->getHeaders());
-    // dd($e->getResponse()->getStatusCode());
+    $code = $e->getResponse()->getStatusCode();
+    $errors = $e->getErrors();
+
+    echo "<pre>" . PHP_EOL;
+    var_dump($code, $errors);
+    echo "</pre>" . PHP_EOL;
+
 } catch (Exception $e) {
-    echo $e->getMessage() . PHP_EOL;
+    $error = $e->getMessage();
+
+    echo "<pre>" . PHP_EOL;
+    var_dump($code, $errors);
+    echo "</pre>" . PHP_EOL;
+
 }

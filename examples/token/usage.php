@@ -8,42 +8,43 @@ use Ipag\Sdk\Exception\HttpClientException;
 use Ipag\Sdk\Exception\HttpException;
 
 $client = new IpagClient(
-    'apiID',
-    'apiKey',
-    IpagEnvironment::SANDBOX
+    'wayne1',
+    'D3F8-E3D981DF-C2766F07-9AC79BD7-A729',
+    IpagEnvironment::LOCAL,
 );
 
 $token = new \Ipag\Sdk\Model\Token([
     'card' => [
-        'holderName' => 'Frederic Sales',
+        'holderName' => 'Bruce Wayne',
         'number' => '4111 1111 1111 1111',
         'expiryMonth' => '01',
         'expiryYear' => '2025',
-        'cvv' => '123'
+        'cvv' => '123',
     ],
     'holder' => [
-        'name' => 'Frederic Sales',
-        'cpfCnpj' => '79999338801',
-        'mobilePhone' => '1899767866',
-        'birthdate' => '1989-03-28',
+        'name' => 'Bruce Wayne',
+        'cpfCnpj' => '490.558.550-30',
+        'mobilePhone' => '(22) 2222-33333',
+        'birthdate' => '1987-02-19',
         'address' => [
-            'street' => 'Rua dos Testes',
-            'number' => '100',
-            'district' => 'Tamboré',
-            'zipcode' => '06460080',
-            'city' => 'Barueri',
-            'state' => 'SP'
+            'street' => 'Avenida Principal',
+            'number' => '12345',
+            "complement" => "Sala 02",
+            'district' => 'São Paulo',
+            'city' => 'São Paulo',
+            'state' => 'SP',
+            'zipcode' => '01310-000'
         ]
     ]
 ]);
 
 try {
 
-    $tokenValue = '32e771a2-64d1-4924-b8da-1c552b3269cd';
+    $tokenValue = '552af952-e189-45d5-b974-e5bb87385e01';
 
     // Create
-    // $responseToken = $client->token()->create($token);
-    // dd($responseToken->getData());
+    $responseToken = $client->token()->create($token);
+    dd($responseToken->getData());
 
     // Get
     // $responseToken = $client->token()->get($tokenValue);
