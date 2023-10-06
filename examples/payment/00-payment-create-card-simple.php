@@ -7,8 +7,8 @@ use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpException;
 
 $ipagClient = new IpagClient(
-    'wayne1',
-    'D3F8-E3D981DF-C2766F07-9AC79BD7-A729',
+    'jimgordon',
+    'DD7C-7EA89C51-7A9A2304-C3798E41-E6D5',
     IpagEnvironment::LOCAL,
 );
 
@@ -45,14 +45,6 @@ try {
     $statusGateway = $responsePayment->getParsedPath('attributes.gateway.code');
     $statusAcquirer = $responsePayment->getParsedPath('attributes.acquirer.code');
 
-    echo "Status do Pagamento retornado: {$statusPayment}" . PHP_EOL;
-    echo "Status da Gateway: {$statusGateway}" . PHP_EOL;
-    echo "Status da Adquirente: {$statusAcquirer}" . PHP_EOL;
-
-    echo "<pre>" . PHP_EOL;
-    print_r($data);
-    echo "</pre>" . PHP_EOL;
-
     // Verifica o status retornado do pagamento
     switch ($statusPayment) {
         case Ipag\Sdk\Core\Enums\PaymentStatus::CAPTURED:
@@ -80,6 +72,14 @@ try {
         default:
         // Faça algo aqui...
     }
+
+    echo "Status do Pagamento retornado: {$statusPayment}" . PHP_EOL;
+    echo "Status da Gateway: {$statusGateway}" . PHP_EOL;
+    echo "Status da Adquirente: {$statusAcquirer}" . PHP_EOL;
+
+    echo "<pre>" . PHP_EOL;
+    print_r($data);
+    echo "</pre>" . PHP_EOL;
 
 } catch (HttpException $e) {
     $code = $e->getResponse()->getStatusCode();

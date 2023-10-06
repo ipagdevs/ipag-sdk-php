@@ -59,7 +59,7 @@ try {
     $error = $e->getMessage();
 
     echo "<pre>" . PHP_EOL;
-    var_dump($code, $errors);
+    var_dump($error);
     echo "</pre>" . PHP_EOL;
 
 }

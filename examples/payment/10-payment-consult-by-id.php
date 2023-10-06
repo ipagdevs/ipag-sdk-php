@@ -14,13 +14,23 @@ $ipagClient = new IpagClient(
 
 try {
 
-    $transactionId = 133;
+    $transactionId = 123;
 
     $responsePayment = $ipagClient->payment()->getById($transactionId);
     $data = $responsePayment->getData();
 
     $statusPayment = $responsePayment->getParsedPath('attributes.status.code');
     $amount = $responsePayment->getParsedPath('attributes.amount');
+
+    // Verifica o status retornado do pagamento
+    switch ($statusPayment) {
+        case Ipag\Sdk\Core\Enums\PaymentStatus::CAPTURED:
+        case Ipag\Sdk\Core\Enums\PaymentStatus::PRE_AUTHORIZED:
+            // Faça algo aqui...
+            break;
+        default:
+        // Faça algo aqui...
+    }
 
     echo "Status do Pagamento: {$statusPayment}" . PHP_EOL;
     echo "Valor do Pagamento: {$amount}" . PHP_EOL;

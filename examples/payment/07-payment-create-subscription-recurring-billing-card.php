@@ -66,16 +66,6 @@ try {
     $statusSubscription = $responsePayment->getParsedPath('attributes.subscription.attributes.status');
     $token = $responsePayment->getParsedPath('attributes.card.token');
 
-    echo "Status do Pagamento retornado: {$statusPayment}" . PHP_EOL;
-    echo "Status da Gateway: {$statusGateway}" . PHP_EOL;
-    echo "Status da Adquirente: {$statusAcquirer}" . PHP_EOL;
-    echo "Status da Assinatura: {$statusSubscription}" . PHP_EOL;
-    echo "Token Card: {$token}" . PHP_EOL;
-
-    echo "<pre>" . PHP_EOL;
-    print_r($data);
-    echo "</pre>" . PHP_EOL;
-
     // Verifica o status retornado do pagamento
     switch ($statusPayment) {
         case Ipag\Sdk\Core\Enums\PaymentStatus::CAPTURED:
@@ -103,6 +93,16 @@ try {
         default:
         // Faça algo aqui...
     }
+
+    echo "Status do Pagamento retornado: {$statusPayment}" . PHP_EOL;
+    echo "Status da Gateway: {$statusGateway}" . PHP_EOL;
+    echo "Status da Adquirente: {$statusAcquirer}" . PHP_EOL;
+    echo "Status da Assinatura: {$statusSubscription}" . PHP_EOL;
+    echo "Token Card: {$token}" . PHP_EOL;
+
+    echo "<pre>" . PHP_EOL;
+    print_r($data);
+    echo "</pre>" . PHP_EOL;
 
 } catch (HttpException $e) {
     $code = $e->getResponse()->getStatusCode();

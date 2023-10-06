@@ -44,14 +44,6 @@ try {
     $statusGateway = $responsePayment->getParsedPath('attributes.gateway.code');
     $statusAcquirer = $responsePayment->getParsedPath('attributes.acquirer.code');
 
-    echo "Status do Pagamento retornado: {$statusPayment}" . PHP_EOL;
-    echo "Status da Gateway: {$statusGateway}" . PHP_EOL;
-    echo "Status da Adquirente: {$statusAcquirer}" . PHP_EOL;
-
-    echo "<pre>" . PHP_EOL;
-    print_r($data);
-    echo "</pre>" . PHP_EOL;
-
     // Verifica o status retornado do pagamento
     switch ($statusPayment) {
         case Ipag\Sdk\Core\Enums\PaymentStatus::CAPTURED:
@@ -79,6 +71,14 @@ try {
         default:
         // Faça algo aqui...
     }
+
+    echo "Status do Pagamento retornado: {$statusPayment}" . PHP_EOL;
+    echo "Status da Gateway: {$statusGateway}" . PHP_EOL;
+    echo "Status da Adquirente: {$statusAcquirer}" . PHP_EOL;
+
+    echo "<pre>" . PHP_EOL;
+    print_r($data);
+    echo "</pre>" . PHP_EOL;
 
 } catch (HttpException $e) {
     $code = $e->getResponse()->getStatusCode();

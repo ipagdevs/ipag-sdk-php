@@ -19,6 +19,14 @@ try {
     $responseCustomer = $ipagClient->customer()->delete($customerId);
     $data = $responseCustomer->getData();
 
+    $statusCode = $responseCustomer->getStatusCode();
+
+    if ($statusCode === 200) {
+        // Faça algo aqui...
+    }
+
+    echo "Status Code: {$statusCode}" . PHP_EOL;
+
     echo "<pre>" . PHP_EOL;
     print_r($data);
     echo "</pre>" . PHP_EOL;
@@ -35,7 +43,7 @@ try {
     $error = $e->getMessage();
 
     echo "<pre>" . PHP_EOL;
-    var_dump($code, $errors);
+    var_dump($error);
     echo "</pre>" . PHP_EOL;
 
 }
