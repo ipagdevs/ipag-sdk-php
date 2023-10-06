@@ -376,7 +376,7 @@ $responseCustomer = $ipagClient->customer()->list([
 $responseCustomer = $ipagClient->customer()->delete($customerId);
 ```
 
-> Todos os exemplos: [examples/customer/*](./examples/customer/createCustomer.php)
+> Todos os exemplos: [examples/customer/](./examples/customer/)
 
 # Plano de Assinatura (Subscription Plan)
 
@@ -692,7 +692,7 @@ $responseCharge = $ipagClient->charge()->list([
 ]);
 ```
 
-> Todos os exemplos: [examples/charge/*](./examples/charge/createCharge.php)
+> Todos os exemplos: [examples/charge/](./examples/charge/)
 
 # Estabelecimento (Establishment)
 
@@ -1202,7 +1202,7 @@ $checkout = (new \Ipag\Sdk\Model\Checkout())
 $responseCheckout = $ipagClient->checkout()->create($checkout);
 ```
 
-> Todos os exemplos: [examples/checkout/*](./examples/checkout/createCheckout.php)
+> Todos os exemplos: [examples/checkout/](./examples/checkout/)
 
 # Voucher
 

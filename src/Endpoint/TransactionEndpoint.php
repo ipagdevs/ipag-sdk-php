@@ -39,13 +39,13 @@ class TransactionEndpoint extends Endpoint
     /**
      * Endpoint para liberar recebíveis de recurso Transaction
      *
-     * @param integer $seller_id
-     * @param integer $transaction_id
+     * @param integer $sellerId
+     * @param integer $transactionId
      * @return Response
      */
-    public function releaseReceivables(int $seller_id, int $transaction_id): Response
+    public function releaseReceivables(int $sellerId, int $transactionId): Response
     {
-        return $this->_POST(['seller_id' => $seller_id, 'transaction_id' => $transaction_id]);
+        return $this->_POST(['seller_id' => $sellerId, 'transaction_id' => $transactionId]);
     }
 
 }
