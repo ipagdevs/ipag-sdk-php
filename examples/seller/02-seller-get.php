@@ -7,9 +7,9 @@ use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpException;
 
 $ipagClient = new IpagClient(
-    'lucas',
-    'E089-31668545-5BB2521F-72F14DB1-283C',
-    IpagEnvironment::LOCAL,
+    'apiID',
+    'apiKey',
+    IpagEnvironment::SANDBOX,
 );
 
 $sellerId = 100022;

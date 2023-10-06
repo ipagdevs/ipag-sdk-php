@@ -7,9 +7,9 @@ use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpException;
 
 $ipagClient = new IpagClient(
-    'master',
-    'FC92-2F86859F-225B4C88-3FFEA3CA-6CE5',
-    IpagEnvironment::LOCAL,
+    'apiID',
+    'apiKey',
+    IpagEnvironment::SANDBOX,
 );
 
 try {

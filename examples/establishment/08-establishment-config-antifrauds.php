@@ -7,19 +7,19 @@ use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpException;
 
 $ipagClient = new IpagClient(
-    'master',
-    'FC92-2F86859F-225B4C88-3FFEA3CA-6CE5',
-    IpagEnvironment::LOCAL,
+    'apiID',
+    'apiKey',
+    IpagEnvironment::SANDBOX,
 );
 
 $antifraud = new \Ipag\Sdk\Model\Antifraud(
     [
         "provider" => (
             new Ipag\Sdk\Support\Provider\Antifraudes\RedShieldProvider([
-            "token" => "xxxxxxxx",
-            "entityId" => "xxxxxxxx",
-            "channelId" => "xxxxxxxx",
-            "serviceId" => "xxxxxxxx"
+                "token" => "xxxxxxxx",
+                "entityId" => "xxxxxxxx",
+                "channelId" => "xxxxxxxx",
+                "serviceId" => "xxxxxxxx"
             ])
         )->jsonSerialize(),
         "settings" => [

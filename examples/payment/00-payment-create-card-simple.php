@@ -9,7 +9,7 @@ use Ipag\Sdk\Exception\HttpException;
 $ipagClient = new IpagClient(
     'jimgordon',
     'DD7C-7EA89C51-7A9A2304-C3798E41-E6D5',
-    IpagEnvironment::LOCAL,
+    IpagEnvironment::SANDBOX,
 );
 
 $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(

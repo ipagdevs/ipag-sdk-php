@@ -7,9 +7,9 @@ use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpException;
 
 $ipagClient = new IpagClient(
-    'wayne1',
-    'D3F8-E3D981DF-C2766F07-9AC79BD7-A729',
-    IpagEnvironment::LOCAL,
+    'apiID',
+    'apiKey',
+    IpagEnvironment::SANDBOX,
 );
 
 $subscriptionPlanId = 20;
