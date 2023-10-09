@@ -50,7 +50,7 @@ $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
         'split_rules' => [
             [
                 'seller_id' => 'vendedor1@mail.me',
-                'amount' => 15.87,
+                'amount' => 15,
                 'liable' => true
             ],
             [
