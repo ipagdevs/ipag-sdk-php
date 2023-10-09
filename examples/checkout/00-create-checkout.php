@@ -5,7 +5,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
 $ipagClient = new Ipag\Sdk\Core\IpagClient(
     'apiID',
     'apiKey',
-    Ipag\Sdk\Core\Ipag\Sdk\Core\IpagEnvironment::SANDBOX
+    Ipag\Sdk\Core\IpagEnvironment::SANDBOX
 );
 
 $checkout = new \Ipag\Sdk\Model\Checkout([

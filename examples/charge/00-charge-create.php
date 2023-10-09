@@ -5,7 +5,7 @@ require_once __DIR__ . '/..' . '/..' . '/vendor/autoload.php';
 $ipagClient = new Ipag\Sdk\Core\IpagClient(
     'apiID',
     'apiKey',
-    Ipag\Sdk\Core\Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
+    Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
 );
 
 $charge = new \Ipag\Sdk\Model\Charge([

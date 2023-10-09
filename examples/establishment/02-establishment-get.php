@@ -5,7 +5,7 @@ require_once __DIR__ . '/..' . '/..' . '/vendor/autoload.php';
 $ipagClient = new Ipag\Sdk\Core\IpagClient(
     'apiID',
     'apiKey',
-    Ipag\Sdk\Core\Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
+    Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
 );
 
 $establishmentUuid = '8a8eac8eaeca4d75f0cafc20319c06af';
