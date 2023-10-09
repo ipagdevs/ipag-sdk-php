@@ -139,47 +139,47 @@ $ipagClient = new \Ipag\Sdk\Core\IpagClient(
 
 # Pagamento (Payment)
 
-> Exemplo de Pagamento via Cartão de Crédito (Simples): [examples/payment/usage_simple_card.php](./examples/payment/usage_simple_card.php)
+> Exemplo de Pagamento via Cartão de Crédito (Simples): [examples/payment/00-payment-create-card-simple.php](./examples/payment/00-payment-create-card-simple.php)
 
-> Exemplo de Pagamento via Cartão de Crédito (Completo): [examples/payment/usage_complete_card.php](./examples/payment/usage_complete_card.php)
+> Exemplo de Pagamento via Cartão de Crédito (Completo): [examples/payment/01-payment-create-card-complete.php](./examples/payment/01-payment-create-card-complete.php)
 
-> Exemplo de Pagamento via Cartão de Crédito para Clientes Estrangeiros (Simples): [examples/payment/usage_card_foreign_customers_simple.php](./examples/payment/usage_card_foreign_customers_simple.php)
+> Exemplo de Pagamento via Cartão de Crédito para Clientes Estrangeiros (Simples): [examples/payment/02-payment-create-card-foreign-customer.php](./examples/payment/02-payment-create-card-foreign-customer.php)
 
-> Exemplo de Pagamento via Cartão de Crédito para um Evento: [examples/payment/usage_card_for_event.php](./examples/payment/usage_card_for_event.php)
+> Exemplo de Pagamento via Cartão de Crédito para um Evento: [examples/payment/03-payment-create-card-for-event.php](./examples/payment/03-payment-create-card-for-event.php)
 
-> Exemplo de Pagamento via Boleto (Completo): [examples/payment/usage_boleto_full.php](./examples/payment/usage_boleto_full.php)
+> Exemplo de Pagamento via Boleto (Completo): [examples/payment/04-payment-create-bankslip.php](./examples/payment/04-payment-create-bankslip.php)
 
-> Exemplo de Pagamento com Tokenização do Cartão de Crédito: [examples/payment/usage_card_tokenization.php](./examples/payment/usage_card_tokenization.php)
+> Exemplo de Pagamento com Tokenização do Cartão de Crédito: [examples/payment/05-payment-create-card-tokenization.php](./examples/payment/05-payment-create-card-tokenization.php)
 
-> Exemplo de Pagamento utilizando apenas o Token de Cartão: [examples/payment/usage_token_card.php](./examples/payment/usage_token_card.php)
+> Exemplo de Pagamento utilizando apenas o Token de Cartão: [examples/payment/06-payment-create-card-token.php](./examples/payment/06-payment-create-card-token.php)
 
-> Exemplo de Pagamento via Cartão de Crédito com Criação de Assinatura|Cobrança Recorrente: [examples/payment/usage_recurring_billing_card.php](./examples/payment/usage_recurring_billing_card.php)
+> Exemplo de Pagamento via Cartão de Crédito com Criação de Assinatura|Cobrança Recorrente: [examples/payment/07-payment-create-subscription-recurring-billing-card.php](./examples/payment/07-payment-create-subscription-recurring-billing-card.php)
 
-> Exemplo de Pagamento via Cartão de Crédito com Split de Pagamento: [examples/payment/usage_card_with_split.php](./examples/payment/usage_card_with_split.php)
+> Exemplo de Pagamento via Cartão de Crédito com Split de Pagamento: [examples/payment/08-payment-create-card-with-split.php](./examples/payment/08-payment-create-card-with-split.php)
 
-> Exemplo de Pagamento via Pix (Completo): [examples/payment/usage_pix.php](./examples/payment/usage_pix.php)
+> Exemplo de Pagamento via Pix (Completo): [examples/payment/09-payment-create-pix.php](./examples/payment/09-payment-create-pix.php)
 
 ```php
 $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
     [
-        "amount" => 97.86,
-        "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
-        "order_id" => "1234567",
-        "payment" => [
-            "type" => "card",
-            "method" => Ipag\Sdk\Core\Enums\Cards::VISA,
-            "installments" => 1,
-            "card" => [
-                "holder" => "FULANO DA SILVA",
-                "number" => "4111 1111 1111 1111",
-                "expiry_month" => "03",
-                "expiry_year" => "2021",
-                "cvv" => "123"
+        'amount' => 100,
+        'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
+        'order_id' => '12345679',
+        'payment' => [
+            'type' => Ipag\Sdk\Core\Enums\PaymentTypes::CARD,
+            'method' => Ipag\Sdk\Core\Enums\Cards::VISA,
+            'installments' => 4,
+            'card' => [
+                'holder' => 'Bruce Wayne',
+                'number' => '4111 1111 1111 1111',
+                'expiry_month' => '01',
+                'expiry_year' => '2025',
+                'cvv' => '123'
             ]
         ],
-        "customer" => [
-            "name" => "Jack Jins",
-            "cpf_cnpj" => "799.993.388-01"
+        'customer' => [
+            'name' => 'Bruce Wayne',
+            'cpf_cnpj' => '490.558.550-30'
         ]
     ]
 );
@@ -187,7 +187,7 @@ $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
 ou
 ```php
 $paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction())
-    ->setAmount(100.0)
+    ->setAmount(100)
     ->setOrderId('123456')
     ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
     ->setAntifraud(
@@ -197,48 +197,48 @@ $paymentTransaction = (new \Ipag\Sdk\Model\PaymentTransaction())
     )
     ->setPayment(
         (new \Ipag\Sdk\Model\Payment())
-            ->setType('card')
+            ->setType(Ipag\Sdk\Core\Enums\PaymentTypes::CARD)
             ->setMethod(Ipag\Sdk\Core\Enums\Cards::VISA)
             ->setCard(
                 (new \Ipag\Sdk\Model\PaymentCard())
-                    ->setHolder('teste')
-                    ->setNumber('123')
+                    ->setHolder('Bruce Wayne')
+                    ->setNumber('4111 1111 1111 1111')
                     ->setCvv('123')
             )
     )
     ->setCustomer(
         (new \Ipag\Sdk\Model\Customer())
-            ->setName('Fulano da Silva')
-            ->setCpfCnpj('799.993.388-01')
+            ->setName('Bruce Wayne')
+            ->setCpfCnpj('490.558.550-30')
             ->setBillingAddress(
                 (new \Ipag\Sdk\Model\Address())
-                    ->setStreet('Rua A')
+                    ->setStreet('Avenida Principal')
             )
             ->setShippingAddress(
                 (new \Ipag\Sdk\Model\Address())
-                    ->setStreet('Rua A')
+                    ->setStreet('Avenida Principal')
             )
     )
     ->setProducts([
         (new \Ipag\Sdk\Model\Product())
-            ->setName('Produto 1'),
+            ->setName('Smart TV LG 55 4K UHD'),
     ])
     ->addProduct(
         (new \Ipag\Sdk\Model\Product())
-            ->setName('Produto 2')
+            ->setName('LED Android TV 4K UHD LED')
     )
     ->setSubscription(
         (new \Ipag\Sdk\Model\PaymentSubscription())
             ->setFrequency(1)
             ->setTrial(
                 (new \Ipag\Sdk\Model\Trial())
-                    ->setAmount(100.9)
+                    ->setAmount(100)
             )
     )
     ->setSplitRules([
         (new \Ipag\Sdk\Model\PaymentSplitRules())
             ->setSellerId('vendedor1@mail.me')
-            ->setAmount(15.87),
+            ->setAmount(15),
     ])
     ->addSplitRules(
         (new \Ipag\Sdk\Model\PaymentSplitRules())
@@ -273,15 +273,15 @@ $responsePayment = $ipagClient->payment()->getByUuid($orderId);
 ```php
 $responsePayment = $ipagClient->payment()->captureById($transactionId);
 ```
-
+ou
 ```php
 $responsePayment = $ipagClient->payment()->captureByUuid($transactionUuid);
 ```
-
+ou
 ```php
 $responsePayment = $ipagClient->payment()->captureByUuid($transactionTid);
 ```
-
+ou
 ```php
 $responsePayment = $ipagClient->payment()->captureByUuid($orderId);
 ```
@@ -291,15 +291,15 @@ $responsePayment = $ipagClient->payment()->captureByUuid($orderId);
 ```php
 $responsePayment = $ipagClient->payment()->cancelById($transactionId);
 ```
-
+ou
 ```php
 $responsePayment = $ipagClient->payment()->cancelByUuid($transactionUuid);
 ```
-
+ou
 ```php
 $responsePayment = $ipagClient->payment()->cancelByUuid($transactionTid);
 ```
-
+ou
 ```php
 $responsePayment = $ipagClient->payment()->cancelByUuid($orderId);
 ```
@@ -308,18 +308,19 @@ $responsePayment = $ipagClient->payment()->cancelByUuid($orderId);
 
 ```php
 $customer = new \Ipag\Sdk\Model\Customer([
-    'name' => 'Maria da Silva',
-    'email' => 'mariadasilva@email.com',
-    'cpf_cnpj' => '799.993.388-01',
-    'phone' => '(11) 98888-3333',
-    'business_name' => 'Maria Ltda.',
+    'name' => 'Bruce Wayne',
+    'email' => 'brucewayne@email.com',
+    'cpf_cnpj' => '490.558.550-30',
+    'phone' => '(22) 2222-33333',
+    'business_name' => 'Wayne Enterprises',
+    'birthdate' => '1987-02-19',
     'address' => [
-        'street' => 'Avenida Paulista',
-        'number' => '01',
+        'street' => 'Avenida Principal',
+        'number' => '12345',
         'district' => 'São Paulo',
         'city' => 'São Paulo',
         'state' => 'SP',
-        'zipcode' => '01310-930'
+        'zipcode' => '01310-000'
     ]
 ]);
 ```
@@ -328,19 +329,19 @@ ou
 
 ```php
 $customer = new \Ipag\Sdk\Model\Customer()
-    ->setName('Maria da Silva')
-    ->setEmail('mariadasilva@email.com')
-    ->setCpfCnpj('799.993.388-01')
-    ->setPhone('(11) 98888-3333')
-    ->setBusinessName('Maria Ltda.')
+    ->setName('Bruce Wayne')
+    ->setEmail('brucewayne@email.com')
+    ->setCpfCnpj('490.558.550-30')
+    ->setPhone('(22) 2222-33333')
+    ->setBusinessName('Wayne Enterprises')
     ->setAddress(
         new \Ipag\Sdk\Model\Address()
             ->setStreet('Avenida Paulista')
-            ->setNumber('01')
+            ->setNumber('12345')
             ->setDistrict('São Paulo')
             ->setCity('São Paulo')
             ->setState('SP')
-            ->setZipcode('01310-930')
+            ->setZipcode('01310-000')
 );
 ```
 
@@ -366,7 +367,7 @@ $responseCustomer = $ipagClient->customer()->get($customerId);
 
 ```php
 $responseCustomer = $ipagClient->customer()->list([
-    'name' => 'maria'
+    'name' => 'wayne'
 ]);
 ```
 
@@ -380,14 +381,12 @@ $responseCustomer = $ipagClient->customer()->delete($customerId);
 
 # Plano de Assinatura (Subscription Plan)
 
-> Exemplo completo: [examples/subscription_plan/usage.php](./examples/subscription_plan/usage.php)
-
 ```php
 $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan([
     'name' => 'PLANO GOLD',
     'description' => 'Plano Gold com até 4 treinos por semana',
-    'amount' => 0,
-    'frequency' => 'monthly',
+    'amount' => 100,
+    'frequency' => Ipag\Sdk\Core\Enums\Interval::MONTHLY,
     'interval' => 1,
     'cycles' => 0,
     'best_day' => true,
@@ -407,8 +406,8 @@ ou
 $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan()
     ->setName("PLANO GOLD")
     ->setDescription("Plano Gold com até 4 treinos por semana")
-    ->setAmount(99.00)
-    ->setFrequency("monthly")
+    ->setAmount(100)
+    ->setFrequency(Ipag\Sdk\Core\Enums\Interval::MONTHLY)
     ->setInterval(1)
     ->setCycles(0)
     ->setBestDay(true)
@@ -444,7 +443,7 @@ $responseSubscriptionPlan = $ipagClient->subscriptionPlan()->get($subscriptionPl
 
 ```php
 $responseSubscriptionPlan = $ipagClient->subscriptionPlan()->list([
-    'name' => 'PLANO SILVER',
+    'name' => 'GOLD',
 ]);
 ```
 
@@ -454,20 +453,20 @@ $responseSubscriptionPlan = $ipagClient->subscriptionPlan()->list([
 $ipagClient->subscriptionPlan()->delete($subscriptionPlanId);
 ```
 
-# Assinatura (Subscription)
+> Todos os exemplos: [examples/subscription_plan/](./examples/subscription_plan/)
 
-> Exemplo completo: [examples/subscription/usage.php](./examples/subscription/usage.php)
+# Assinatura (Subscription)
 
 ```php
 $subscription = new \Ipag\Sdk\Model\Subscription([
     'is_active' => true,
-    'profile_id' => 'SUB_018',
-    'plan_id' => 2,
-    'customer_id' => 100003,
+    'profile_id' => 'SUB_01',
+    'plan_id' => 1,
+    'customer_id' => 100001,
     'starting_date' => '2021-07-11',
     'closing_date' => '2021-08-11',
     'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
-    'creditcard_token' => null
+    'creditcard_token' => '123'
 ]);
 
 ```
@@ -480,8 +479,8 @@ $subscription = new \Ipag\Sdk\Model\Subscription()
     ->setProfileId('SUB_001')
     ->setPlanId(1)
     ->setCustomerId(100001)
-    ->setStartingDate('2021-07-10')
-    ->setClosingDate('2021-08-10')
+    ->setStartingDate('2021-07-11')
+    ->setClosingDate('2021-08-11')
     ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
     ->setCreditcardToken('123');
 
@@ -516,7 +515,7 @@ $responseSubscription = $ipagClient->subscription()->list([
 ### Desvincular Token da Assinatura
 
 ```php
-$ok = $ipagClient->subscription()->unlinkToken($subscriptionId);
+$responseSubscription = $ipagClient->subscription()->unlinkToken($subscriptionId);
 ```
 
 ### Quitar Parcela da Assinatura
@@ -528,12 +527,12 @@ $responseSubscription = $ipagClient->subscription()->payOffInstallment($subscrip
 ### Agendar Parcelamento da Assinatura
 
 ```php
-$ok = $ipagClient->subscription()->scheduleInstallmentPayment($subscriptionId, $invoiceNumber);
+$responseSubscription = $ipagClient->subscription()->scheduleInstallmentPayment($subscriptionId, $invoiceNumber);
 ```
 
-# Transação (Transaction)
+> Todos os exemplos: [examples/subscription/](./examples/subscription/)
 
-> Exemplo completo: [examples/transaction/usage.php](./examples/transaction/usage.php)
+# Transação (Transaction)
 
 ### Obter Transação
 
@@ -556,31 +555,32 @@ $responseTransaction = $ipagClient->transaction()->list([
 $responseTransaction = $client->transaction()->releaseReceivables($sellerId, $transactionId);
 ```
 
-# Token (Card Token)
+> Todos os exemplos: [examples/transaction/](./examples/transaction/)
 
-> Exemplo completo: [examples/token/usage.php](./examples/token/usage.php)
+# Token (Card Token)
 
 ```php
 $token = new \Ipag\Sdk\Model\Token([
     'card' => [
-        'holderName' => 'Frederic Sales',
-        'number' => '4024 0071 1251 2933',
-        'expiryMonth' => '02',
-        'expiryYear' => '2023',
-        'cvv' => '431'
+        'holderName' => 'Bruce Wayne',
+        'number' => '4111 1111 1111 1111',
+        'expiryMonth' => '01',
+        'expiryYear' => '2025',
+        'cvv' => '123'
     ],
     'holder' => [
-        'name' => 'Frederic Sales',
-        'cpfCnpj' => '79999338801',
-        'mobilePhone' => '1899767866',
-        'birthdate' => '1989-03-28',
+        'name' => 'Bruce Wayne',
+        'cpfCnpj' => '490.558.550-30',
+        'mobilePhone' => '(22) 2222-33333',
+        'birthdate' => '1987-02-19',
         'address' => [
-                'street' => 'Rua dos Testes',
-                'number' => '100',
-                'district' => 'Tamboré',
-                'zipcode' => '06460080',
-                'city' => 'Barueri',
-                'state' => 'SP'
+                'street' => 'Avenida Principal',
+                'number' => '12345',
+                'complement' => 'Sala 02',
+                'district' => 'São Paulo',
+                'city' => 'São Paulo',
+                'state' => 'SP',
+                'zipcode' => '01310-000'
             ]
     ]
 ]);
@@ -590,19 +590,22 @@ ou
 $token = (new \Ipag\Sdk\Model\Token())
     ->setCard(
         (new \Ipag\Sdk\Model\Card())
-            ->setHolderName('Frederic Sales')
-            ->setNumber('4024 0071 1251 2933')
-            ->setExpiryMonth('02')
-            ->setExpiryYear('2023')
-            ->setCvv('431')
+            ->setHolderName('Bruce Wayne')
+            ->setNumber('4111 1111 1111 1111')
+            ->setExpiryMonth('01')
+            ->setExpiryYear('2025')
+            ->setCvv('123')
     )
     ->setHolder(
         (new \Ipag\Sdk\Model\Holder())
-            ->setName('Frederic Sales')
-            ->setCpfCnpj('79999338801')
-            ->setMobilePhone('1899767866')
-            ->setBirthdate('1989-03-28')
-            ->setAddress(new \Ipag\Sdk\Model\Address())
+            ->setName('Bruce Wayne')
+            ->setCpfCnpj('490.558.550-30')
+            ->setMobilePhone('(22) 2222-33333')
+            ->setBirthdate('1987-02-19')
+            ->setAddress(
+                new \Ipag\Sdk\Model\Address()
+                    ->setStreet('Avenida Principal')
+            )
     );
 ```
 
@@ -617,15 +620,17 @@ $responseToken = $ipagClient->token()->create($token);
 $responseToken = $ipagClient->token()->get($tokenValue);
 ```
 
+> Todos os exemplos: [examples/token/](./examples/token/)
+
 # Cobrança (Charge)
 
 ```php
 $charge = new \Ipag\Sdk\Model\Charge([
-    'amount' => 150.50,
+    'amount' => 100,
     'description' => 'Cobrança referente a negociação de débito pendente na Empresa X',
     'due_date' => '2020-10-30',
     'frequency' => 1,
-    'interval' => 'month',
+    'interval' => Ipag\Sdk\Core\Enums\Interval::MONTH,
     'type' => 'charge',
     'last_charge_date' => '2020-10-30',
     'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
@@ -634,7 +639,7 @@ $charge = new \Ipag\Sdk\Model\Charge([
     'is_active' => true,
     'products' => [1, 2, 3],
     'customer' => [
-        'name' => 'Maria Francisca',
+        'name' => 'Bruce Wayne',
     ],
     'checkout_settings' => [
         'max_installments' => 12,
@@ -644,11 +649,11 @@ $charge = new \Ipag\Sdk\Model\Charge([
 ou
 ```php
 $charge = (new \Ipag\Sdk\Model\Charge())
-    ->setAmount(150.50)
+    ->setAmount(100)
     ->setDescription('Cobrança referente a negociação de débito pendente na Empresa X')
     ->setDueDate('2020-10-30')
     ->setFrequency(1)
-    ->setInterval('month')
+    ->setInterval(Ipag\Sdk\Core\Enums\Interval::MONTH)
     ->setType('charge')
     ->setLastChargeDate('2020-10-30')
     ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
@@ -658,7 +663,7 @@ $charge = (new \Ipag\Sdk\Model\Charge())
     ->setProducts([1, 2, 3])
     ->setCustomer(
         (new \Ipag\Sdk\Model\Customer())
-            ->setName('Maria Francisca')
+            ->setName('Bruce Wayne')
     )
     ->setCheckoutSettings(
         (new \Ipag\Sdk\Model\CheckoutSettings())
@@ -696,37 +701,35 @@ $responseCharge = $ipagClient->charge()->list([
 
 # Estabelecimento (Establishment)
 
-> Exemplo completo: [examples/establishment/usage.php](./examples/establishment/usage.php)
-
 ```php
 $establishment = new \Ipag\Sdk\Model\Establishment([
-    'name' => 'Lívia Julia Eduarda Barros',
-    'email' => 'livia.julia.barros@eximiart.com.br',
-    'login' => 'livia',
-    'password' => 'livia123',
-    'document' => '074.598.263-83',
-    'phone' => '(98) 3792-4834',
+    'name' => 'Bruce Wayne',
+    'email' => 'brucewayne@email.com',
+    'login' => 'wayne1',
+    'password' => 'bat123',
+    'document' => '490.558.550-30',
+    'phone' => '(22) 2222-33333',
     'address' =>
         [
-            'street' => 'Rua A',
+            'street' => 'Avenida Principal',
         ],
     'owner' => [
-        'name' => 'Lívia Julia Eduarda Barros',
+        'name' => 'Bruce Wayne',
     ],
     'bank' => [
-        'code' => '001'
+        'code' => '999'
     ]
 ]);
 ```
 ou
 ```php
 $establishment = (new \Ipag\Sdk\Model\Establishment())
-    ->setName('Lívia Julia Eduarda Barros')
-    ->setEmail('livia.julia.barros@eximiart.com.br')
-    ->setLogin('livia')
-    ->setPassword('livia123')
-    ->setPhone('(98) 3792-4834')
-    ->setDocument('074.598.263-83')
+    ->setName('Bruce Wayne')
+    ->setEmail('brucewayne@email.com')
+    ->setLogin('wayne1')
+    ->setPassword('bat123')
+    ->setPhone('(22) 2222-33333')
+    ->setDocument('490.558.550-30')
     ->setAddress(new \Ipag\Sdk\Model\Address())
     ->setOwner(new \Ipag\Sdk\Model\Owner())
     ->setBank(new \Ipag\Sdk\Model\Bank());
@@ -785,10 +788,12 @@ $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod([
     'environment' => 'test',
     'capture' => true,
     'retry' => true,
-    'credentials' => [
-        'stone_code' => 'xxxxx',
-        'stone_sak' => 'xxxxxx'
-    ],
+    'credentials' =>
+        (
+            (new Ipag\Sdk\Support\Credentials\PaymentMethods\StoneCredentials())
+                ->setStoneCode('xxxxx')
+                ->setStoneSak('xxxxxx')
+        )->jsonSerialize(),
 ]);
 ```
 
@@ -806,21 +811,21 @@ $responseConfig = $ipagClient
 ```php
 $antifraud = new \Ipag\Sdk\Model\Antifraud(
     [
-        "provider" => (
+        'provider' => (
             new Ipag\Sdk\Support\Provider\Antifraudes\RedShieldProvider([
-            "token" => "xxxxxxxx",
-            "entityId" => "xxxxxxxx",
-            "channelId" => "xxxxxxxx",
-            "serviceId" => "xxxxxxxx"
+                'token' => 'xxxxxxxx',
+                'entityId' => 'xxxxxxxx',
+                'channelId' => 'xxxxxxxx',
+                'serviceId' => 'xxxxxxxx'
             ])
         )->jsonSerialize(),
-        "settings" => [
-            "enable" => true,
-            "environment" => "test",
-            "consult_mode" => "auto",
-            "capture_on_approval" => false,
-            "cancel_on_refused" => true,
-            "review_score_threshold" => 0.8
+        'settings' => [
+            'enable' => true,
+            'environment' => 'test',
+            'consult_mode' => 'auto',
+            'capture_on_approval' => false,
+            'cancel_on_refused' => true,
+            'review_score_threshold' => 0.8
         ]
     ]
 );
@@ -835,21 +840,21 @@ $responseConfig = $ipagClient
     ->config($antifraud, $establishmentTid);
 ```
 
-# Regra de Split (Split Rules)
+> Todos os exemplos: [examples/establishment/](./examples/establishment/)
 
-> Exemplo completo: [examples/split_rules/usage.php](./examples/split_rules/usage.php)
+# Regra de Split (Split Rules)
 
 ```php
 $splitRules = new \Ipag\Sdk\Model\SplitRules([
-    "receiver_id" => "1000000",
-    "percentage" => 10.00
+    'receiver_id' => '1000000',
+    'percentage' => 10.00
 ]);
 ```
 ou
 ```php
 $splitRules = (new \Ipag\Sdk\Model\SplitRules())
-    ->setReceiverId("1000000")
-    ->setPercentage(10.00);
+    ->setReceiverId('1000000')
+    ->setPercentage(10);
 ```
 
 ### Nova Regra de Split
@@ -876,51 +881,64 @@ $responseSplitRules = $ipagClient->splitRules()->list($transactionId);
 $responseSplitRules = $ipagClient->splitRules()->delete($splitRuleId, $transactionId);
 ```
 
-# Vendedor (Seller)
+> Todos os exemplos: [examples/split_rules/](./examples/split_rules/)
 
-> Exemplo completo: [examples/seller/usage.php](./examples/seller/usage.php)
+# Vendedor (Seller)
 
 ```php
 $seller = new \Ipag\Sdk\Model\Seller([
-    "login" => "josefrancisco",
-    "password" => "123123",
-    "name" => "José Francisco Silva",
-    "cpf_cnpj" => "854.508.440-42",
-    "email" => "jose@mail.me",
-    "phone" => "(11) 98712-1234",
-    "description" => "XXXXXXXXXXXXXX",
-    "address" => [
-        "street" => "Rua Júlio Gonzalez",
+    'login' => 'jimgordon',
+    'password' => 'jim123',
+    'name' => 'Jim Gordon',
+    'cpf_cnpj' => '168.853.290-02',
+    'email' => 'jimgordon@email.com',
+    'phone' => '(11) 3333-44444',
+    'description' => '',
+    'address' => [
+        'street' => 'Avenida Principal',
+        'number' => '12345',
+        'district' => 'São Paulo',
+        'city' => 'São Paulo',
+        'state' => 'SP',
+        'zipcode' => '01310-000'
     ],
-    "owner" => [
-        "name" => "Giosepe",
+    'owner' => [
+        'name' => 'Bruce Wayne',
+        'email' => 'brucewayne@email.com',
+        'cpf' => '490.558.550-30',
+        'phone' => '(22) 2222-33333',
+        'birthdate' => '1987-02-19',
     ],
-    "bank" => [
-        "code" => "290",
+    'bank' => [
+        'code' => '999',
+        'agency' => '1234',
+        'account' => '54321',
+        'type' => 'checkings',
+        'external_id' => '1',
     ]
 ]);
 ```
 ou
 ```php
 $seller = (new \Ipag\Sdk\Model\Seller())
-    ->setLogin("josefrancisco")
-    ->setPassword("123123")
-    ->setName("José Francisco Silva")
-    ->setCpfCnpj("854.508.440-42")
-    ->setEmail("jose@mail.me")
-    ->setPhone("11987121234")
-    ->setDescription("XXXXXXXXXXXXXX")
+    ->setLogin('jimgordon')
+    ->setPassword('jim123')
+    ->setName('Jim Gordon')
+    ->setCpfCnpj('168.853.290-02')
+    ->setEmail('jimgordon@email.com')
+    ->setPhone('(11) 3333-44444')
+    ->setDescription('')
     ->setAddress(
         (new \Ipag\Sdk\Model\Address())
-            ->setStreet("Rua Jálio Gonzalez")
+            ->setStreet('Avenida Principal')
     )
     ->setOwner(
         (new \Ipag\Sdk\Model\Owner())
-            ->setName("Giosepe")
+            ->setName('Bruce Wayne')
     )
     ->setBank(
         (new \Ipag\Sdk\Model\Bank())
-            ->setCode("290")
+            ->setCode('999')
     );
 ```
 
@@ -944,9 +962,9 @@ $responseSeller = $ipagClient->seller()->get($sellerId);
 $responseSellers = $ipagClient->seller()->list();
 ```
 
-# Transferência (Transfer)
+> Todos os exemplos: [examples/seller/](./examples/seller/)
 
-> Exemplo completo: [examples/transfer/usage.php](./examples/transfer/usage.php)
+# Transferência (Transfer)
 
 ### Listar Transferências
 
@@ -994,9 +1012,9 @@ $responseTransfers = $ipagClient->transfer()->future()->listBySellerId($sellerId
 $responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($sellerCpf);
 ```
 
-## Link de Pagamento (Payment Links)
+> Todos os exemplos: [examples/transfer/](./examples/transfer/)
 
-> Exemplo completo: [examples/payment_links/usage.php](./examples/payment_links/usage.php)
+# Link de Pagamento (Payment Links)
 
 ```php
 $paymentLink = new \Ipag\Sdk\Model\PaymentLink([
@@ -1047,9 +1065,9 @@ $responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLinkId);
 $responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($externalCode);
 ```
 
-# Webhook
+> Todos os exemplos: [examples/payment_links/](./examples/payment_links/)
 
-> Exemplo completo: [examples/webhook/usage.php](./examples/webhook/usage.php)
+# Webhook
 
 ```php
 $webhook = new \Ipag\Sdk\Model\Webhook([
@@ -1098,63 +1116,64 @@ $responseWebhook = $ipagClient->webhook()->list();
 $ok = $ipagClient->webhook()->delete($webhookId);
 ```
 
+> Todos os exemplos: [examples/webhook/](./examples/webhook/)
+
 # Checkout
 
 ```php
 $checkout = new \Ipag\Sdk\Model\Checkout([
     'customer' => [
-        "name" => "Fulano da Silva",
-        "tax_receipt" => "212.348.796-11",
-        "email" => "teste@email.com",
-        "phone" => "(11) 2222-3333",
-        "birthdate" => "1987-11-21",
-        "address" => [
-            "zipcode" => "01156060",
-            "street" => "Rua Júlio Gonzalez",
-            "number" => "1023",
-            "district" => "Barra Funda",
-            "complement" => "Sala 02",
-            "city" => "São Paulo",
-            "state" => "SP"
+        'name' => 'Bruce Wayne',
+        'tax_receipt' => '490.558.550-30',
+        'email' => 'brucewayne@email.com',
+        'phone' => '(22) 2222-33333',
+        'birthdate' => '1987-02-19',
+        'address' => [
+            'street' => 'Avenida Principal',
+            'number' => '12345',
+            'district' => 'São Paulo',
+            'city' => 'São Paulo',
+            'state' => 'SP',
+            'zipcode' => '01310-000'
         ]
     ],
     'installment_setting' => [
-        "max_installments" => 12,
-        "min_installment_value" => 5,
-        "interest" => 0,
-        "interest_free_installments" => 12
+        'max_installments' => 12,
+        'min_installment_value' => 5,
+        'interest' => 0,
+        'interest_free_installments' => 12
     ],
     'order' => [
-        "order_id" => "100001",
-        "amount" => "15.00",
-        "return_url" => "https://ipag-sdk.requestcatcher.com/callback",
-        "return_type" => "json"
+        'order_id' => '100001',
+        'amount' => '15.00',
+        'return_url' => 'https://ipag-sdk.requestcatcher.com/callback',
+        'return_type' => 'json'
     ],
     'products' => [
         [
             'name' => 'Smart TV LG 55 4K UHD',
-            "unit_price" => "3.999",
-            "quantity" => 1,
-            "sku" => "LG123",
-            "description" => "Experiência cristalina em 4K."
+            'unit_price' => 5000,
+            'quantity' => 1,
+            'sku' => 'LG123',
+            'description' => 'Experiência cristalina em 4K.'
         ],
         [
             'name' => 'LED Android TV 4K UHD LED',
-            "unit_price" => "2.310",
-            "quantity" => 1,
-            "sku" => "SAM123",
-            "description" => "Android TV de 126 cm (50)."
+            'unit_price' => 5000,
+            'quantity' => 1,
+            'sku' => 'SAM123',
+            'description' => 'Android TV de 126 cm (50).'
         ],
     ],
     'split_rules' => [
         [
-            "receiver" => "qwertyuiopasdfghjklzxcvbnm123456",
-            "percentage" => "50",
-            "charge_processing_fee" => true,
+            'receiver' => 'qwertyuiopasdfghjklzxcvbnm123456',
+            'percentage' => '50',
+            'charge_processing_fee' => true,
         ],
         [
-            "receiver" => "654321mnbvcxzlkjhgfdsapoiuytrewq",
-            "percentage" => "20"
+            'receiver' => '654321mnbvcxzlkjhgfdsapoiuytrewq',
+            'percentage' => '20'
         ]
     ],
     'sellerId' => '100014',
@@ -1166,7 +1185,7 @@ ou
 $checkout = (new \Ipag\Sdk\Model\Checkout())
     ->setCustomer(
         (new \Ipag\Sdk\Model\Customer())
-            ->setName('Lívia Julia Eduarda Barros')
+            ->setName('Bruce Wayne')
     )
     ->setInstallmentSetting(
         (new \Ipag\Sdk\Model\InstallmentSetting())
@@ -1174,7 +1193,7 @@ $checkout = (new \Ipag\Sdk\Model\Checkout())
     )
     ->setOrder(
         (new \Ipag\Sdk\Model\Order())
-            ->setOrderId('1000077')
+            ->setOrderId('1000001')
     )
     ->addProduct(
         (new \Ipag\Sdk\Model\Product())
@@ -1206,32 +1225,30 @@ $responseCheckout = $ipagClient->checkout()->create($checkout);
 
 # Voucher
 
-> Exemplo completo: [examples/voucher/usage.php](./examples/voucher/usage.php)
-
 ```php
 $voucher = new \Ipag\Sdk\Model\Voucher([
     'order' => [
         'order_id' => '100015',
-        'amount' => 699.99,
+        'amount' => 100,
         'created_at' => '2020-08-04 21:45:10',
         'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback'
     ],
     'seller' => [
-        'cpf_cnpj' => '854.508.440-42',
+        'cpf_cnpj' => '168.853.290-02',
     ],
     'customer' => [
-        'name' => 'FULANO DA SILVA',
-        'cpf_cnpj' => '949.373.210-05',
-        'email' => 'fulano@mail.me',
-        'phone' => '(11) 99780-1000',
+        'name' => 'Jim Gordon',
+        'cpf_cnpj' => '168.853.290-02',
+        'email' => 'jimgordon@email.com',
+        'phone' => '(11) 3333-44444',
         'birthdate' => '1990-10-10',
         'address' => [
-            'street' => 'Av. Brasil',
-            'number' => '1000',
-            'district' => 'Centro',
-            'complement' => 'Ap 451',
+            'street' => 'Avenida Principal',
+            'number' => '12345',
+            'district' => 'São Paulo',
             'city' => 'São Paulo',
-            'state' => 'SP'
+            'state' => 'SP',
+            'zipcode' => '01310-000'
         ]
     ]
 ]);
@@ -1242,23 +1259,23 @@ $voucher = (new \Ipag\Sdk\Model\Voucher())
     ->setOrder(
         (new \Ipag\Sdk\Model\Order())
             ->setOrderId(
-                '1000077'
+                '1000001'
             )
     )
     ->setSeller(
         (new \Ipag\Sdk\Model\Seller())
             ->setCpfCnpj(
-                '074.598.263-83'
+                '168.853.290-02'
             )
     )
     ->setCustomer(
         (new \Ipag\Sdk\Model\Customer())
             ->setName(
-                'FULANO DA SILVA'
+                'Jim Gordon'
             )
             ->setAddress(
                 (new \Ipag\Sdk\Model\Address())
-                    ->setStreet('Av. Brasil')
+                    ->setStreet('Avenida Principal')
             )
     );
 ```
@@ -1268,6 +1285,8 @@ $voucher = (new \Ipag\Sdk\Model\Voucher())
 ```php
 $responseVoucher = $ipagClient->voucher()->create($voucher);
 ```
+
+> Todos os exemplos: [examples/voucher/](./examples/voucher/)
 
 ## Testes
 
