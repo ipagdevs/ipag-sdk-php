@@ -98,7 +98,7 @@
 - [Documentação](#documentação)
 - [Dúvidas \& Sugestões](#dúvidas--sugestões)
 
-## Dependências
+# Dependências
 
 **require**
 
@@ -115,7 +115,7 @@
 - [symfony/var-dumper]
 - [fakerphp/faker]
 
-## Instalação
+# Instalação
 
 Execute em seu shell:
 
@@ -1288,18 +1288,126 @@ $responseVoucher = $ipagClient->voucher()->create($voucher);
 
 > Todos os exemplos: [examples/voucher/](./examples/voucher/)
 
-## Testes
+# Helpers
+
+## Credenciais dos Provedores de Antifraudes
+
+### Clear Sale
+
+```php
+$clearSaleCredentials = (new \Ipag\Sdk\Support\Credentials\Antifraudes\ClearSaleCredentials())
+    ->setName('XXXXX')
+    ->setPassword('XXXXXXXX');
+```
+
+### Konduto
+
+```php
+$kondutoCredentials = (new \Ipag\Sdk\Support\Credentials\Antifraudes\KondutoCredentials())
+    ->setApiKey('XXXXX')
+    ->setPublicKey('XXXXXXXX');
+```
+
+### Red Shield
+
+```php
+$redShieldCredentials = (new \Ipag\Sdk\Support\Credentials\Antifraudes\RedShieldCredentials())
+    ->setToken('XXXXX')
+    ->setEntityId('XXX')
+    ->setChannelId('XXXXX')
+    ->setServiceId('XX');
+```
+
+## Credenciais dos Provedores de Meios de Pagamentos
+
+### Adiq
+
+```php
+$adiqCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\AdiqCredentials())
+    ->setClientId('XXXXX')
+    ->setClientSecret('XXXXXXXX');
+```
+
+### Bin
+
+```php
+$binCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\BinCredentials())
+    ->setStoreIdSubscription('XXXXX')
+    ->setStoreId('XXXXXXXX');
+```
+
+### Cielo
+
+```php
+$cieloCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\CieloCredentials())
+    ->setMerchantId('XXXXX')
+    ->setMerchantKey('XXXXXXXX');
+```
+
+### Getnet
+
+```php
+$getnetCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\GetnetCredentials())
+    ->setEstablishmentNumber('XXX')
+    ->setKey('XXXXXXXX')
+    ->setUser('XXX')
+    ->setPassword('XXXXX');
+```
+
+### Global Payments
+
+```php
+$globalPaymentsCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\GlobalPaymentsCredentials())
+    ->setTerminal('XXXXX')
+    ->setMerchantId('XXX')
+    ->setMerchantKey('XXXXXXXX');
+```
+
+### Rede
+
+```php
+$redeCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\RedeCredentials())
+    ->setEredeKey('XXXXXXXX')
+    ->setPv('XXXXX');
+```
+
+### Sipag
+
+```php
+$sipagCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\SipagCredentials())
+    ->setStoreIdSubscription('XXXXXXXX')
+    ->setStoreId('XXXXX');
+```
+
+### Stone
+
+```php
+$stoneCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\StoneCredentials())
+    ->setStoneCode('XXXXX')
+    ->setStoneSak('XXXXXXXX');
+```
+
+### Zoop
+
+```php
+$zoopCredentials = (new \Ipag\Sdk\Support\Credentials\PaymentMethods\ZoopCredentials())
+    ->setMarketplaceId('XXX')
+    ->setPublishableKey('XXXXXXXX')
+    ->setSellerId('XXXXX');
+```
+
+# Testes
 
 É necessário a instalação do PHPUnit para a realização dos testes.
 
-## Licença
+# Licença
 
 [The MIT License](https://github.com/ipagdevs/ipag-sdk-php/blob/master/LICENSE)
 
-## Documentação
+# Documentação
 
 [Documentação Oficial](https://developers.ipag.com.br)
 
-## Dúvidas & Sugestões
+# Dúvidas & Sugestões
 
 Em caso de dúvida ou sugestão para o SDK abra uma nova [Issue](https://github.com/ipagdevs/ipag-sdk-php/issues).
