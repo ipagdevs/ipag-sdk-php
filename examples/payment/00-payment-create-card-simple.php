@@ -2,14 +2,10 @@
 
 require_once __DIR__ . '/..' . '/..' . '/vendor/autoload.php';
 
-use Ipag\Sdk\Core\IpagClient;
-use Ipag\Sdk\Core\IpagEnvironment;
-use Ipag\Sdk\Exception\HttpException;
-
-$ipagClient = new IpagClient(
+$ipagClient = new Ipag\Sdk\Core\IpagClient(
     'jimgordon',
     'DD7C-7EA89C51-7A9A2304-C3798E41-E6D5',
-    IpagEnvironment::SANDBOX,
+    Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
 );
 
 $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
@@ -81,7 +77,7 @@ try {
     print_r($data);
     echo "</pre>" . PHP_EOL;
 
-} catch (HttpException $e) {
+} catch (Ipag\Sdk\Exception\HttpException $e) {
     $code = $e->getResponse()->getStatusCode();
     $errors = $e->getErrors();
 

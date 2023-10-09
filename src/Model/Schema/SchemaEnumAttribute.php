@@ -22,12 +22,7 @@ class SchemaEnumAttribute extends SchemaAttribute
 
     private function matchesLoose($value)
     {
-        return array_reduce($this->values, fn ($x, $y) => $x ?? ($y == $value ? $y : null), null);
-    }
-
-    private function matchesStrict($value)
-    {
-        return array_reduce($this->values, fn ($x, $y) => $x ?? ($y === $value ? $y : null), null);
+        return array_reduce($this->values, fn($x, $y) => $x ?? ($y == $value ? $y : null), null);
     }
 
     public function parseContextual($value)

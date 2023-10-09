@@ -2,14 +2,10 @@
 
 require_once __DIR__ . '/..' . '/..' . '/vendor/autoload.php';
 
-use Ipag\Sdk\Core\IpagClient;
-use Ipag\Sdk\Core\IpagEnvironment;
-use Ipag\Sdk\Exception\HttpException;
-
-$ipagClient = new IpagClient(
+$ipagClient = new Ipag\Sdk\Core\IpagClient(
     'apiID',
     'apiKey',
-    IpagEnvironment::SANDBOX,
+    Ipag\Sdk\Core\Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
 );
 
 $customer = new Ipag\Sdk\Model\Customer([
@@ -41,7 +37,7 @@ try {
     print_r($data);
     echo "</pre>" . PHP_EOL;
 
-} catch (HttpException $e) {
+} catch (Ipag\Sdk\Exception\HttpException $e) {
     $code = $e->getResponse()->getStatusCode();
     $errors = $e->getErrors();
 

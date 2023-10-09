@@ -2,6 +2,12 @@
 
 > A ferramenta certa para uma rápida e segura integração com o iPag e a sua aplicação PHP.
 
+## Status
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
 **Índice**
 
 - [iPag PHP client SDK](#ipag-php-client-sdk)
@@ -93,7 +99,7 @@
      - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Checkout](#novo-checkout)
 - [Voucher](#voucher)
      - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Voucher](#novo-voucher)
-- [helpers](#helpers)
+- [Helpers](#helpers)
 - [Testes](#testes)
 - [Licença](#licença)
 - [Documentação](#documentação)
