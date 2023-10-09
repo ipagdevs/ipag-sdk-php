@@ -93,6 +93,7 @@
      - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Checkout](#novo-checkout)
 - [Voucher](#voucher)
      - <img style="max-width: 100%;vertical-align: middle;" width="30" src="https://img.shields.io/badge/POST-248fb2.svg?style=for-the-badge" /> [Novo Voucher](#novo-voucher)
+- [helpers](#helpers)
 - [Testes](#testes)
 - [Licença](#licença)
 - [Documentação](#documentação)
