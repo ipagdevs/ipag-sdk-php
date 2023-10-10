@@ -13,6 +13,7 @@
         }
     },
     "require": {
+        "php": ">=7.4",
         "guzzlehttp/guzzle": ">=6.0",
         "kubinyete/assertation": "^1.0",
         "psr/log": "^1.1",

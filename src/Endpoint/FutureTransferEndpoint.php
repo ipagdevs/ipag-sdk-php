@@ -41,10 +41,10 @@ class FutureTransferEndpoint extends Endpoint
     /**
      * Endpoint para listar recursos `Future Transfer` vinculado a um `Seller` (Pesquisar por `CpfCnpj`)
      *
-     * @param integer $sellerCpfCnpj
+     * @param string $sellerCpfCnpj
      * @return Response
      */
-    public function listBySellerCpfCnpj(int $sellerCpfCnpj): Response
+    public function listBySellerCpfCnpj(string $sellerCpfCnpj): Response
     {
         return $this->_GET(['cpf_cnpj' => $sellerCpfCnpj]);
     }

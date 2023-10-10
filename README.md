@@ -4,9 +4,12 @@
 
 ## Status
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/?branch=master)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-blue.svg?style=flat-square)](https://php.net/)
 [![Build Status](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/build-status/master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ipagdevs/ipag-sdk-php/?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/424190b2a83337683daf/maintainability)](https://codeclimate.com/github/ipagdevs/ipag-sdk-php/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/424190b2a83337683daf/test_coverage)](https://codeclimate.com/github/ipagdevs/ipag-sdk-php/test_coverage)
 
 **Índice**
 
