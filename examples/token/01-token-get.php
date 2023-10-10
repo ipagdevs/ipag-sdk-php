@@ -1,12 +1,6 @@
 <?php
 
-require_once __DIR__ . '/..' . '/..' . '/vendor/autoload.php';
-
-$ipagClient = new Ipag\Sdk\Core\IpagClient(
-    'apiID',
-    'apiKey',
-    Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
-);
+require_once __DIR__ . '/..' . '/config.php';
 
 $tokenValue = '552af952-e189-45d5-b974-e5bb87385e01';
 

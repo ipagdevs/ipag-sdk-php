@@ -1,12 +1,6 @@
 <?php
 
-require_once __DIR__ . '/..' . '/..' . '/vendor/autoload.php';
-
-$ipagClient = new Ipag\Sdk\Core\IpagClient(
-    'apiID',
-    'apiKey',
-    Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
-);
+require_once __DIR__ . '/..' . '/config.php';
 
 $establishmentUuid = '8a8eac8eaeca4d75f0cafc20319c06af';
 $transactionUuid = 'a97da629b098b75c294dffdc3e463904';

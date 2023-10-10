@@ -1,12 +1,6 @@
 <?php
 
-require_once __DIR__ . '/..' . '/..' . '/vendor/autoload.php';
-
-$ipagClient = new Ipag\Sdk\Core\IpagClient(
-    'apiID',
-    'apiKey',
-    Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
-);
+require_once __DIR__ . '/..' . '/config.php';
 
 $paymentMethod = new \Ipag\Sdk\Model\PaymentMethod([
     'acquirer' => Ipag\Sdk\Core\Enums\Acquirer::STONE,
