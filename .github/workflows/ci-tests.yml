@@ -10,14 +10,14 @@ permissions:
   contents: read
 
 jobs:
-  
+
   phpunit:
 
     runs-on: ubuntu-latest
 
     env:
       CC_TEST_REPORTER_ID: secrets.CODE_CLIMATE_ID
-    
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@master
