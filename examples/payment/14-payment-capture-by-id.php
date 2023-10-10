@@ -1,12 +1,6 @@
 <?php
 
-require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-
-$ipagClient = new Ipag\Sdk\Core\IpagClient(
-    'apiID',
-    'apiKey',
-    Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
-);
+require_once __DIR__ . '/..' . '/config.php';
 
 try {
 

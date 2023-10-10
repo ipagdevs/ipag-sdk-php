@@ -1,12 +1,6 @@
 <?php
 
-require_once __DIR__ . '/..' . '/..' . '/vendor/autoload.php';
-
-$ipagClient = new Ipag\Sdk\Core\IpagClient(
-    'jimgordon',
-    'DD7C-7EA89C51-7A9A2304-C3798E41-E6D5',
-    Ipag\Sdk\Core\IpagEnvironment::SANDBOX,
-);
+require_once __DIR__ . '/..' . '/config.php';
 
 $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
     [
