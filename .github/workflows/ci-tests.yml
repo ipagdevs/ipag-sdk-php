@@ -1,0 +1,43 @@
+name: CI Tests
+
+on:
+  push:
+    branches: [ "master", "develop" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  
+  phpunit:
+
+    runs-on: ubuntu-latest
+
+    env:
+      CC_TEST_REPORTER_ID: secrets.CODE_CLIMATE_ID
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@master
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: xdebug
+
+      - name: Install Composer Dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Code Climate Setup
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter && chmod +x ./cc-test-reporter
+          ./cc-test-reporter before-build
+      - name: Run Tests
+        run: |
+          php vendor/bin/phpunit --coverage-clover clover.xml tests
+      - name: Send Report
+        run: |
+          ./cc-test-reporter after-build -t clover --exit-code $?
