@@ -142,7 +142,7 @@ abstract class Client implements CompositePathInterface
                 $this->serialize($body, $inputSerializer),
                 $query,
                 $header
-            );
+            ) ?? '';
 
             $response = Response::from($response, $this->httpClient->lastResponseHeaders(), $this->httpClient->lastResponseStatusCode());
             $response->setSerializer($outputSerializer);
