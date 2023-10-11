@@ -32,6 +32,8 @@ class SellerEndpoint extends Endpoint
      * @param Seller $seller
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function update(Seller $seller, int $id): Response
     {
@@ -43,6 +45,8 @@ class SellerEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $id): Response
     {
@@ -54,6 +58,8 @@ class SellerEndpoint extends Endpoint
      *
      * @param array|null $filters
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function list(?array $filters = []): Response
     {

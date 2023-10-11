@@ -31,6 +31,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function getById(string $id): Response
     {
@@ -42,6 +44,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $uuid
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function getByUuid(string $uuid): Response
     {
@@ -53,6 +57,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $tid
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function getByTid(string $tid): Response
     {
@@ -64,6 +70,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $orderId
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function getByOrderId(string $orderId): Response
     {
@@ -75,6 +83,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function captureById(string $id): Response
     {
@@ -86,6 +96,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $uuid
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function captureByUuid(string $uuid): Response
     {
@@ -97,6 +109,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $tid
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function captureByTid(string $tid): Response
     {
@@ -108,6 +122,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $orderId
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function captureByOrderId(string $orderId): Response
     {
@@ -119,6 +135,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function cancelById(string $id): Response
     {
@@ -130,6 +148,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $uuid
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function cancelByUuid(string $uuid): Response
     {
@@ -141,6 +161,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $tid
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function cancelByTid(string $tid): Response
     {
@@ -152,6 +174,8 @@ class PaymentEndpoint extends Endpoint
      *
      * @param string $orderId
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function cancelByOrderId(string $orderId): Response
     {

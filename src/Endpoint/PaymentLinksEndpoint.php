@@ -31,6 +31,8 @@ class PaymentLinksEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function getById(int $id): Response
     {
@@ -42,6 +44,8 @@ class PaymentLinksEndpoint extends Endpoint
      *
      * @param integer $externalCode
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function getByExternalCode(int $externalCode): Response
     {

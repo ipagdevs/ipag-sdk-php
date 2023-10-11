@@ -5,7 +5,7 @@ require_once __DIR__ . '/..' . '/config.php';
 $antifraud = new \Ipag\Sdk\Model\Antifraud(
     [
         "provider" => (
-            new Ipag\Sdk\Support\Provider\Antifraudes\RedShieldProvider([
+            new \Ipag\Sdk\Support\Provider\Antifraudes\RedShieldProvider([
                 "token" => "xxxxxxxx",
                 "entityId" => "xxxxxxxx",
                 "channelId" => "xxxxxxxx",
@@ -37,7 +37,7 @@ try {
     print_r($data);
     echo "</pre>" . PHP_EOL;
 
-} catch (Ipag\Sdk\Exception\HttpException $e) {
+} catch (\Ipag\Sdk\Exception\HttpException $e) {
     $code = $e->getResponse()->getStatusCode();
     $errors = $e->getErrors();
 

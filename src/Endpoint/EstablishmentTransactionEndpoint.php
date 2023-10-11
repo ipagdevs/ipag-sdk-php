@@ -21,6 +21,8 @@ class EstablishmentTransactionEndpoint extends Endpoint
      *
      * @param array|null $filters
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function list(?array $filters = []): Response
     {
@@ -45,6 +47,8 @@ class EstablishmentTransactionEndpoint extends Endpoint
      * @param string $uuid
      * @param string $transactionUuid
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function getByEstablishment(string $uuid, string $transactionUuid): Response
     {

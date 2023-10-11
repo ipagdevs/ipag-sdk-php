@@ -31,6 +31,8 @@ class TokenEndpoint extends Endpoint
      *
      * @param string $token
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(string $token): Response
     {

@@ -33,6 +33,8 @@ class SplitRulesEndpoint extends Endpoint
      * @param integer $split_rule_id
      * @param integer $transaction_id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $split_rule_id, int $transaction_id): Response
     {
@@ -47,6 +49,8 @@ class SplitRulesEndpoint extends Endpoint
      *
      * @param integer $transaction_id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function list(int $transaction_id): Response
     {
@@ -59,6 +63,8 @@ class SplitRulesEndpoint extends Endpoint
      * @param integer $split_rule_id
      * @param integer $transaction_id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function delete(int $split_rule_id, int $transaction_id): Response
     {

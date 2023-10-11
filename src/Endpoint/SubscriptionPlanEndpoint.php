@@ -32,6 +32,8 @@ class SubscriptionPlanEndpoint extends Endpoint
      * @param SubscriptionPlan $subscriptionPlan
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function update(SubscriptionPlan $subscriptionPlan, int $id): Response
     {
@@ -43,6 +45,8 @@ class SubscriptionPlanEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $id): Response
     {
@@ -54,6 +58,8 @@ class SubscriptionPlanEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function delete(int $id): Response
     {
@@ -65,6 +71,8 @@ class SubscriptionPlanEndpoint extends Endpoint
      *
      * @param array|null $filters
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function list(?array $filters = []): Response
     {

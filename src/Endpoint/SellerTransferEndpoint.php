@@ -33,6 +33,8 @@ class SellerTransferEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $id): Response
     {

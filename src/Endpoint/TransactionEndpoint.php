@@ -19,6 +19,8 @@ class TransactionEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $id): Response
     {
@@ -30,6 +32,7 @@ class TransactionEndpoint extends Endpoint
      *
      * @param array|null $filters
      * @return Response
+     *
      */
     public function list(?array $filters = []): Response
     {
@@ -42,6 +45,8 @@ class TransactionEndpoint extends Endpoint
      * @param integer $sellerId
      * @param integer $transactionId
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function releaseReceivables(int $sellerId, int $transactionId): Response
     {

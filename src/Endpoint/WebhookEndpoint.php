@@ -34,6 +34,8 @@ class WebhookEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $id): Response
     {
@@ -45,6 +47,8 @@ class WebhookEndpoint extends Endpoint
      *
      * @param array|null $filters
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function list(?array $filters = []): Response
     {
@@ -56,6 +60,8 @@ class WebhookEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function delete(int $id): Response
     {

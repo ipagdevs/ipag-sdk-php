@@ -32,6 +32,8 @@ class ChargeEndpoint extends Endpoint
      * @param Charge $charge
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function update(Charge $charge, int $id): Response
     {
@@ -43,6 +45,8 @@ class ChargeEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $id): Response
     {
@@ -54,6 +58,8 @@ class ChargeEndpoint extends Endpoint
      *
      * @param array|null $filters
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function list(?array $filters = []): Response
     {

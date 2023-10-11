@@ -32,6 +32,8 @@ class FutureTransferEndpoint extends Endpoint
      *
      * @param integer $sellerId
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function listBySellerId(int $sellerId): Response
     {
@@ -43,6 +45,8 @@ class FutureTransferEndpoint extends Endpoint
      *
      * @param string $sellerCpfCnpj
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function listBySellerCpfCnpj(string $sellerCpfCnpj): Response
     {

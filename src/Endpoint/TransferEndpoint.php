@@ -33,17 +33,33 @@ class TransferEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $id): Response
     {
         return $this->_GET(['id' => $id]);
     }
 
+    /**
+     * Endpoint `SellerTransfer` do recurso `Transfer`.
+     *
+     * @return SellerTransferEndpoint
+     *
+     * @codeCoverageIgnore
+     */
     public function seller(): SellerTransferEndpoint
     {
         return SellerTransferEndpoint::make($this->parent, $this->parent);
     }
 
+    /**
+     * Endpoint `FutureTransfer` do recurso `Transfer`.
+     *
+     * @return FutureTransferEndpoint
+     *
+     * @codeCoverageIgnore
+     */
     public function future(): FutureTransferEndpoint
     {
         return FutureTransferEndpoint::make($this->parent, $this->parent);

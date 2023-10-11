@@ -18,6 +18,12 @@ class VoucherEndpoint extends Endpoint
 {
     protected string $location = '/service/resources/vouchers';
 
+    /**
+     * Endpoint para criar um novo recurso `Voucher`
+     *
+     * @param Voucher $voucher
+     * @return Response
+     */
     public function create(Voucher $voucher): Response
     {
         return $this->_POST($voucher->jsonSerialize());

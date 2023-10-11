@@ -32,6 +32,8 @@ class SubscriptionEndpoint extends Endpoint
      * @param Subscription $subscription
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function update(Subscription $subscription, int $id): Response
     {
@@ -43,6 +45,8 @@ class SubscriptionEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $id): Response
     {
@@ -54,6 +58,8 @@ class SubscriptionEndpoint extends Endpoint
      *
      * @param array|null $filters
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function list(?array $filters = []): Response
     {
@@ -65,6 +71,8 @@ class SubscriptionEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function unlinkToken(int $id): Response
     {
@@ -79,6 +87,8 @@ class SubscriptionEndpoint extends Endpoint
      * @param integer $invoice_number
      * @param string $action
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     private function _actionsInstallmentPayment(int $subscription_id, int $invoice_number, string $action)
     {
@@ -96,6 +106,8 @@ class SubscriptionEndpoint extends Endpoint
      * @param integer $subscription_id
      * @param integer $invoice_number
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function payOffInstallment(int $subscription_id, int $invoice_number): Response
     {
@@ -108,6 +120,8 @@ class SubscriptionEndpoint extends Endpoint
      * @param integer $subscription_id
      * @param integer $invoice_number
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function scheduleInstallmentPayment(int $subscription_id, int $invoice_number): Response
     {

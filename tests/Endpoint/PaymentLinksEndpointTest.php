@@ -6,7 +6,7 @@ use GuzzleHttp\Psr7\Response;
 use Ipag\Sdk\Exception\HttpException;
 use Ipag\Sdk\Tests\IpagClient;
 
-class PaymentLinkEndpointTest extends IpagClient
+class PaymentLinksEndpointTest extends IpagClient
 {
     public function testShouldResponseSuccess()
     {

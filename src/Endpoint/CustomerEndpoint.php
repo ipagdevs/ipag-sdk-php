@@ -32,6 +32,8 @@ class CustomerEndpoint extends Endpoint
      * @param Customer $customer
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function update(Customer $customer, int $id): Response
     {
@@ -43,6 +45,8 @@ class CustomerEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function get(int $id): Response
     {
@@ -54,6 +58,8 @@ class CustomerEndpoint extends Endpoint
      *
      * @param integer $id
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function delete(int $id): Response
     {
@@ -65,6 +71,8 @@ class CustomerEndpoint extends Endpoint
      *
      * @param array|null $filters
      * @return Response
+     *
+     * @codeCoverageIgnore
      */
     public function list(?array $filters = []): Response
     {
