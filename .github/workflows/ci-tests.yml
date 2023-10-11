@@ -37,7 +37,7 @@ jobs:
           ./cc-test-reporter before-build
       - name: Run Tests
         run: |
-          php vendor/bin/phpunit --coverage-clover clover.xml tests
+          php vendor/bin/phpunit --color --testdox --coverage-clover clover.xml tests
       - name: Send Report
         run: |
           ./cc-test-reporter after-build -t clover --exit-code $?

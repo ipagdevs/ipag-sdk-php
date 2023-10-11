@@ -6,3 +6,4 @@ composer.phar
 Dockerfile
 annotations.md
 .phpunit.cache
+clover.xml
