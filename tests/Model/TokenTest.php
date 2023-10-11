@@ -50,7 +50,11 @@ class TokenTest extends TestCase
 
     public function testShouldCreateTokenObjectAndSetTheValuesSuccessfully()
     {
+
         $token = (new \Ipag\Sdk\Model\Token())
+            ->setValue('123')
+            ->setValidatedAt('2020-12-25')
+            ->setExpiresAt('2020-12-26')
             ->setCard(
                 (new \Ipag\Sdk\Model\Card())
                     ->setHolderName('Frederic Sales')
@@ -68,6 +72,10 @@ class TokenTest extends TestCase
                     ->setAddress(new \Ipag\Sdk\Model\Address())
             );
 
+        $this->assertEquals('123', $token->getValue());
+        $this->assertEquals('2020-12-25', $token->getValidatedAt());
+        $this->assertEquals('2020-12-26', $token->getExpiresAt());
+
         $this->assertInstanceOf(\Ipag\Sdk\Model\Card::class, $token->getCard());
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Holder::class, $token->getHolder());
@@ -80,6 +88,10 @@ class TokenTest extends TestCase
     {
         $token = new \Ipag\Sdk\Model\Token();
 
+        $this->assertEmpty($token->getValue());
+        $this->assertEmpty($token->getValidatedAt());
+        $this->assertEmpty($token->getExpiresAt());
+
         $this->assertEmpty($token->getCard());
 
         $this->assertEmpty($token->getHolder());
@@ -89,6 +101,9 @@ class TokenTest extends TestCase
     public function testCreateAndSetEmptyPropertiesTokenObjectSuccessfully()
     {
         $token = new \Ipag\Sdk\Model\Token([
+            'value' => '123',
+            'validated_at' => '2020-12-25',
+            'expires_at' => '2020-12-26',
             'card' => [
                 'holderName' => 'Frederic Sales',
                 'number' => '4024 0071 1251 2933',
@@ -113,8 +128,15 @@ class TokenTest extends TestCase
         ]);
 
         $token
+            ->setValue(null)
+            ->setValidatedAt(null)
+            ->setExpiresAt(null)
             ->setCard(null)
             ->setHolder(null);
+
+        $this->assertEmpty($token->getValue());
+        $this->assertEmpty($token->getValidatedAt());
+        $this->assertEmpty($token->getExpiresAt());
 
         $this->assertEmpty($token->getCard());
 

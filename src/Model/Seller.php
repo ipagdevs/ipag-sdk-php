@@ -64,7 +64,7 @@ final class Seller extends Model
         $schema->string('cpf_cnpj')->nullable();
         $schema->string('email')->nullable();
         $schema->string('phone')->nullable();
-        $schema->date('birthdate')->nullable();
+        $schema->string('birthdate')->nullable();
         $schema->string('description')->nullable();
 
         $schema->has('address', Address::class)->nullable();

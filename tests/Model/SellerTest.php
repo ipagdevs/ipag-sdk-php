@@ -10,6 +10,7 @@ class SellerTest extends TestCase
     public function testShouldCreateSellerObjectWithConstructorSuccessfully()
     {
         $seller = new \Ipag\Sdk\Model\Seller([
+            'birthdate' => '1980-01-01',
             "login" => "josefrancisco",
             "password" => "123123",
             "name" => "José Francisco Silva",
@@ -35,6 +36,7 @@ class SellerTest extends TestCase
         $this->assertEquals("jose@mail.me", $seller->getEmail());
         $this->assertEquals("11987121234", $seller->getPhone());
         $this->assertEquals("XXXXXXXXXXXXXX", $seller->getDescription());
+        $this->assertEquals('1980-01-01', $seller->getBirthdate());
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Address::class, $seller->getAddress());
         $this->assertEquals("Rua Júlio Gonzalez", $seller->getAddress()->getStreet());
@@ -57,6 +59,7 @@ class SellerTest extends TestCase
             ->setEmail("jose@mail.me")
             ->setPhone("11987121234")
             ->setDescription("XXXXXXXXXXXXXX")
+            ->setBirthdate('1980-01-01')
             ->setAddress(
                 (new \Ipag\Sdk\Model\Address())
                     ->setStreet("Rua Jálio Gonzalez")
@@ -77,6 +80,7 @@ class SellerTest extends TestCase
         $this->assertEquals("jose@mail.me", $seller->getEmail());
         $this->assertEquals("11987121234", $seller->getPhone());
         $this->assertEquals("XXXXXXXXXXXXXX", $seller->getDescription());
+        $this->assertEquals('1980-01-01', $seller->getBirthdate());
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Address::class, $seller->getAddress());
         $this->assertEquals("Rua Jálio Gonzalez", $seller->getAddress()->getStreet());
@@ -100,6 +104,7 @@ class SellerTest extends TestCase
         $this->assertEmpty($seller->getEmail());
         $this->assertEmpty($seller->getPhone());
         $this->assertEmpty($seller->getDescription());
+        $this->assertEmpty($seller->getBirthdate());
 
         $this->assertEmpty($seller->getAddress());
         $this->assertEmpty($seller->getOwner());
@@ -111,6 +116,7 @@ class SellerTest extends TestCase
     public function testCreateAndSetEmptyPropertiesSellerObjectSuccessfully()
     {
         $seller = new \Ipag\Sdk\Model\Seller([
+            'birthdate' => '1980-01-01',
             "login" => "josefrancisco",
             "password" => "123123",
             "name" => "José Francisco Silva",
@@ -139,7 +145,8 @@ class SellerTest extends TestCase
             ->setDescription(null)
             ->setAddress(null)
             ->setOwner(null)
-            ->setBank(null);
+            ->setBank(null)
+            ->setBirthdate(null);
 
         $this->assertEmpty($seller->getLogin());
         $this->assertEmpty($seller->getPassword());
@@ -148,6 +155,7 @@ class SellerTest extends TestCase
         $this->assertEmpty($seller->getEmail());
         $this->assertEmpty($seller->getPhone());
         $this->assertEmpty($seller->getDescription());
+        $this->assertEmpty($seller->getBirthdate());
 
         $this->assertEmpty($seller->getAddress());
         $this->assertEmpty($seller->getOwner());

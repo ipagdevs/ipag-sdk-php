@@ -14,10 +14,12 @@ class AddressTest extends TestCase
             'number' => 768,
             'district' => 'São Francisco',
             'city' => 'São Luís',
+            'complement' => 'Sala 001',
             'state' => 'MA',
             'zipcode' => '65076-020'
         ]);
 
+        $this->assertEquals($address->getComplement(), 'Sala 001');
         $this->assertEquals($address->getStreet(), 'Rua Agenor Vieira');
         $this->assertEquals($address->getNumber(), '768');
         $this->assertEquals($address->getDistrict(), 'São Francisco');
@@ -33,10 +35,12 @@ class AddressTest extends TestCase
             ->setStreet('Rua Agenor Vieira')
             ->setNumber('768')
             ->setDistrict('São Francisco')
+            ->setComplement('Sala 001')
             ->setCity('São Luís')
             ->setState('MA')
             ->setZipcode('65076020');
 
+        $this->assertEquals($address->getComplement(), 'Sala 001');
         $this->assertEquals($address->getStreet(), 'Rua Agenor Vieira');
         $this->assertEquals($address->getNumber(), '768');
         $this->assertEquals($address->getDistrict(), 'São Francisco');
@@ -50,6 +54,7 @@ class AddressTest extends TestCase
     {
         $address = new \Ipag\Sdk\Model\Address();
 
+        $this->assertEmpty($address->getComplement());
         $this->assertEmpty($address->getStreet());
         $this->assertEmpty($address->getNumber());
         $this->assertEmpty($address->getDistrict());
@@ -65,6 +70,7 @@ class AddressTest extends TestCase
             'number' => 768,
             'district' => 'São Francisco',
             'city' => 'São Luís',
+            'complement' => 'Sala 001',
             'state' => 'MA',
             'zipcode' => '65076-020'
         ]);
@@ -75,8 +81,10 @@ class AddressTest extends TestCase
             ->setDistrict(null)
             ->setCity(null)
             ->setState(null)
-            ->setZipcode(null);
+            ->setZipcode(null)
+            ->setComplement(null);
 
+        $this->assertEmpty($address->getComplement());
         $this->assertEmpty($address->getStreet());
         $this->assertEmpty($address->getNumber());
         $this->assertEmpty($address->getDistrict());
