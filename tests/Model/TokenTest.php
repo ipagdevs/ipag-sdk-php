@@ -11,8 +11,8 @@ class TokenTest extends TestCase
     {
         $token = new \Ipag\Sdk\Model\Token([
             'value' => '123',
-            'validated_at' => '2020-12-25 23:59:59',
-            'expires_at' => '2020-12-26 23:59:59',
+            'validated_at' => '2020-12-25',
+            'expires_at' => '2020-12-26',
             'card' => [
                 'holderName' => 'Frederic Sales',
                 'number' => '4024 0071 1251 2933',
@@ -37,8 +37,8 @@ class TokenTest extends TestCase
         ]);
 
         $this->assertEquals('123', $token->getValue());
-        $this->assertEquals('2020-12-25 23:59:59', $token->getValidatedAt());
-        $this->assertEquals('2020-12-26 23:59:59', $token->getExpiresAt());
+        $this->assertEquals('2020-12-25', $token->getValidatedAt());
+        $this->assertEquals('2020-12-26', $token->getExpiresAt());
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Card::class, $token->getCard());
 
