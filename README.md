@@ -155,25 +155,25 @@ $ipagClient = new \Ipag\Sdk\Core\IpagClient(
 
 # Pagamento (Payment)
 
-> Exemplo de Pagamento via Cartão de Crédito (Simples): [examples/payment/00-payment-create-card-simple.php](./examples/payment/00-payment-create-card-simple.php)
+> Exemplo de Pagamento via Cartão de Crédito (Simples): [examples/payment/00-payment-create-card-simple.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/00-payment-create-card-simple.php)
 
-> Exemplo de Pagamento via Cartão de Crédito (Completo): [examples/payment/01-payment-create-card-complete.php](./examples/payment/01-payment-create-card-complete.php)
+> Exemplo de Pagamento via Cartão de Crédito (Completo): [examples/payment/01-payment-create-card-complete.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/01-payment-create-card-complete.php)
 
-> Exemplo de Pagamento via Cartão de Crédito para Clientes Estrangeiros (Simples): [examples/payment/02-payment-create-card-foreign-customer.php](./examples/payment/02-payment-create-card-foreign-customer.php)
+> Exemplo de Pagamento via Cartão de Crédito para Clientes Estrangeiros (Simples): [examples/payment/02-payment-create-card-foreign-customer.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/02-payment-create-card-foreign-customer.php)
 
-> Exemplo de Pagamento via Cartão de Crédito para um Evento: [examples/payment/03-payment-create-card-for-event.php](./examples/payment/03-payment-create-card-for-event.php)
+> Exemplo de Pagamento via Cartão de Crédito para um Evento: [examples/payment/03-payment-create-card-for-event.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/03-payment-create-card-for-event.php)
 
-> Exemplo de Pagamento via Boleto (Completo): [examples/payment/04-payment-create-bankslip.php](./examples/payment/04-payment-create-bankslip.php)
+> Exemplo de Pagamento via Boleto (Completo): [examples/payment/04-payment-create-bankslip.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/04-payment-create-bankslip.php)
 
-> Exemplo de Pagamento com Tokenização do Cartão de Crédito: [examples/payment/05-payment-create-card-tokenization.php](./examples/payment/05-payment-create-card-tokenization.php)
+> Exemplo de Pagamento com Tokenização do Cartão de Crédito: [examples/payment/05-payment-create-card-tokenization.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/05-payment-create-card-tokenization.php)
 
-> Exemplo de Pagamento utilizando apenas o Token de Cartão: [examples/payment/06-payment-create-card-token.php](./examples/payment/06-payment-create-card-token.php)
+> Exemplo de Pagamento utilizando apenas o Token de Cartão: [examples/payment/06-payment-create-card-token.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/06-payment-create-card-token.php)
 
-> Exemplo de Pagamento via Cartão de Crédito com Criação de Assinatura|Cobrança Recorrente: [examples/payment/07-payment-create-subscription-recurring-billing-card.php](./examples/payment/07-payment-create-subscription-recurring-billing-card.php)
+> Exemplo de Pagamento via Cartão de Crédito com Criação de Assinatura|Cobrança Recorrente: [examples/payment/07-payment-create-subscription-recurring-billing-card.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/07-payment-create-subscription-recurring-billing-card.php)
 
-> Exemplo de Pagamento via Cartão de Crédito com Split de Pagamento: [examples/payment/08-payment-create-card-with-split.php](./examples/payment/08-payment-create-card-with-split.php)
+> Exemplo de Pagamento via Cartão de Crédito com Split de Pagamento: [examples/payment/08-payment-create-card-with-split.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/08-payment-create-card-with-split.php)
 
-> Exemplo de Pagamento via Pix (Completo): [examples/payment/09-payment-create-pix.php](./examples/payment/09-payment-create-pix.php)
+> Exemplo de Pagamento via Pix (Completo): [examples/payment/09-payment-create-pix.php](https://github.com/ipagdevs/ipag-sdk-php/blob/master/examples/payment/09-payment-create-pix.php)
 
 ```php
 $paymentTransaction = new \Ipag\Sdk\Model\PaymentTransaction(
@@ -320,6 +320,8 @@ ou
 $responsePayment = $ipagClient->payment()->cancelByUuid($orderId);
 ```
 
+> Todos os exemplos: [examples/payment/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/payment/)
+
 # Cliente (Customer)
 
 ```php
@@ -393,7 +395,7 @@ $responseCustomer = $ipagClient->customer()->list([
 $responseCustomer = $ipagClient->customer()->delete($customerId);
 ```
 
-> Todos os exemplos: [examples/customer/](./examples/customer/)
+> Todos os exemplos: [examples/customer/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/customer/)
 
 # Plano de Assinatura (Subscription Plan)
 
@@ -469,7 +471,7 @@ $responseSubscriptionPlan = $ipagClient->subscriptionPlan()->list([
 $ipagClient->subscriptionPlan()->delete($subscriptionPlanId);
 ```
 
-> Todos os exemplos: [examples/subscription_plan/](./examples/subscription_plan/)
+> Todos os exemplos: [examples/subscription_plan/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/subscription_plan/)
 
 # Assinatura (Subscription)
 
@@ -546,7 +548,7 @@ $responseSubscription = $ipagClient->subscription()->payOffInstallment($subscrip
 $responseSubscription = $ipagClient->subscription()->scheduleInstallmentPayment($subscriptionId, $invoiceNumber);
 ```
 
-> Todos os exemplos: [examples/subscription/](./examples/subscription/)
+> Todos os exemplos: [examples/subscription/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/subscription/)
 
 # Transação (Transaction)
 
@@ -571,7 +573,7 @@ $responseTransaction = $ipagClient->transaction()->list([
 $responseTransaction = $client->transaction()->releaseReceivables($sellerId, $transactionId);
 ```
 
-> Todos os exemplos: [examples/transaction/](./examples/transaction/)
+> Todos os exemplos: [examples/transaction/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/transaction/)
 
 # Token (Card Token)
 
@@ -636,7 +638,7 @@ $responseToken = $ipagClient->token()->create($token);
 $responseToken = $ipagClient->token()->get($tokenValue);
 ```
 
-> Todos os exemplos: [examples/token/](./examples/token/)
+> Todos os exemplos: [examples/token/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/token/)
 
 # Cobrança (Charge)
 
@@ -713,7 +715,7 @@ $responseCharge = $ipagClient->charge()->list([
 ]);
 ```
 
-> Todos os exemplos: [examples/charge/](./examples/charge/)
+> Todos os exemplos: [examples/charge/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/charge/)
 
 # Estabelecimento (Establishment)
 
@@ -856,7 +858,7 @@ $responseConfig = $ipagClient
     ->config($antifraud, $establishmentTid);
 ```
 
-> Todos os exemplos: [examples/establishment/](./examples/establishment/)
+> Todos os exemplos: [examples/establishment/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/establishment/)
 
 # Regra de Split (Split Rules)
 
@@ -897,7 +899,7 @@ $responseSplitRules = $ipagClient->splitRules()->list($transactionId);
 $responseSplitRules = $ipagClient->splitRules()->delete($splitRuleId, $transactionId);
 ```
 
-> Todos os exemplos: [examples/split_rules/](./examples/split_rules/)
+> Todos os exemplos: [examples/split_rules/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/split_rules/)
 
 # Vendedor (Seller)
 
@@ -978,7 +980,7 @@ $responseSeller = $ipagClient->seller()->get($sellerId);
 $responseSellers = $ipagClient->seller()->list();
 ```
 
-> Todos os exemplos: [examples/seller/](./examples/seller/)
+> Todos os exemplos: [examples/seller/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/seller/)
 
 # Transferência (Transfer)
 
@@ -1028,7 +1030,7 @@ $responseTransfers = $ipagClient->transfer()->future()->listBySellerId($sellerId
 $responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($sellerCpf);
 ```
 
-> Todos os exemplos: [examples/transfer/](./examples/transfer/)
+> Todos os exemplos: [examples/transfer/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/transfer/)
 
 # Link de Pagamento (Payment Links)
 
@@ -1081,7 +1083,7 @@ $responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLinkId);
 $responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($externalCode);
 ```
 
-> Todos os exemplos: [examples/payment_links/](./examples/payment_links/)
+> Todos os exemplos: [examples/payment_links/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/payment_links/)
 
 # Webhook
 
@@ -1132,7 +1134,7 @@ $responseWebhook = $ipagClient->webhook()->list();
 $ok = $ipagClient->webhook()->delete($webhookId);
 ```
 
-> Todos os exemplos: [examples/webhook/](./examples/webhook/)
+> Todos os exemplos: [examples/webhook/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/webhook/)
 
 # Checkout
 
@@ -1237,7 +1239,7 @@ $checkout = (new \Ipag\Sdk\Model\Checkout())
 $responseCheckout = $ipagClient->checkout()->create($checkout);
 ```
 
-> Todos os exemplos: [examples/checkout/](./examples/checkout/)
+> Todos os exemplos: [examples/checkout/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/checkout/)
 
 # Voucher
 
@@ -1302,7 +1304,7 @@ $voucher = (new \Ipag\Sdk\Model\Voucher())
 $responseVoucher = $ipagClient->voucher()->create($voucher);
 ```
 
-> Todos os exemplos: [examples/voucher/](./examples/voucher/)
+> Todos os exemplos: [examples/voucher/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/voucher/)
 
 # Helpers
 
