@@ -10,6 +10,11 @@ class CustomerTest extends TestCase
     public function testShouldCreateCustomerObjectWithConstructorSuccessfully()
     {
         $customer = new \Ipag\Sdk\Model\Customer([
+            'id' => '123',
+            'uuid' => 'abc123',
+            'tax_receipt' => '074.598.263-83',
+            'birthdate' => '1980-01-01',
+            'ip' => '10.0.0.1',
             'name' => 'Lívia Julia Eduarda Barros',
             'email' => 'livia.julia.barros@eximiart.com.br',
             'cpf_cnpj' => '074.598.263-83',
@@ -29,6 +34,13 @@ class CustomerTest extends TestCase
                     'street' => 'Rua A',
                 ],
         ]);
+
+
+        $this->assertEquals($customer->getId(), '123');
+        $this->assertEquals($customer->getUuid(), 'abc123');
+        $this->assertEquals($customer->getTaxReceipt(), '07459826383');
+        $this->assertEquals($customer->getBirthdate(), '1980-01-01');
+        $this->assertEquals($customer->getIp(), '10.0.0.1');
 
         $this->assertEquals($customer->getName(), 'Lívia Julia Eduarda Barros');
         $this->assertEquals($customer->getEmail(), 'livia.julia.barros@eximiart.com.br');
@@ -51,6 +63,11 @@ class CustomerTest extends TestCase
     public function testShouldCreateCustomerObjectAndSetTheValuesSuccessfully()
     {
         $customer = (new \Ipag\Sdk\Model\Customer())
+            ->setId('123')
+            ->setUuid('abc123')
+            ->setTaxReceipt('074.598.263-83')
+            ->setBirthdate('1980-01-01')
+            ->setIp('10.0.0.1')
             ->setName('Lívia Julia Eduarda Barros')
             ->setEmail('livia.julia.barros@eximiart.com.br')
             ->setCpfCnpj('074.598.263-83')
@@ -60,6 +77,12 @@ class CustomerTest extends TestCase
             ->setAddress(new \Ipag\Sdk\Model\Address())
             ->setBillingAddress(new \Ipag\Sdk\Model\Address())
             ->setShippingAddress(new \Ipag\Sdk\Model\Address());
+
+        $this->assertEquals($customer->getId(), '123');
+        $this->assertEquals($customer->getUuid(), 'abc123');
+        $this->assertEquals($customer->getTaxReceipt(), '07459826383');
+        $this->assertEquals($customer->getBirthdate(), '1980-01-01');
+        $this->assertEquals($customer->getIp(), '10.0.0.1');
 
         $this->assertEquals($customer->getName(), 'Lívia Julia Eduarda Barros');
         $this->assertEquals($customer->getEmail(), 'livia.julia.barros@eximiart.com.br');
@@ -78,6 +101,12 @@ class CustomerTest extends TestCase
     {
         $customer = new \Ipag\Sdk\Model\Customer();
 
+        $this->assertEmpty($customer->getId());
+        $this->assertEmpty($customer->getUuid());
+        $this->assertEmpty($customer->getTaxReceipt());
+        $this->assertEmpty($customer->getBirthdate());
+        $this->assertEmpty($customer->getIp());
+
         $this->assertEmpty($customer->getName());
         $this->assertEmpty($customer->getEmail());
         $this->assertEmpty($customer->getCpfCnpj());
@@ -93,6 +122,11 @@ class CustomerTest extends TestCase
     public function testCreateAndSetEmptyPropertiesCustomerObjectSuccessfully()
     {
         $customer = new \Ipag\Sdk\Model\Customer([
+            'id' => '123',
+            'uuid' => 'abc123',
+            'tax_receipt' => '074.598.263-83',
+            'birthdate' => '1980-01-01',
+            'ip' => '10.0.0.1',
             'name' => 'Lívia Julia Eduarda Barros',
             'email' => 'livia.julia.barros@eximiart.com.br',
             'cpf_cnpj' => '074.598.263-83',
@@ -114,6 +148,11 @@ class CustomerTest extends TestCase
         ]);
 
         $customer
+            ->setId(null)
+            ->setUuid(null)
+            ->setTaxReceipt(null)
+            ->setBirthdate(null)
+            ->setIp(null)
             ->setName(null)
             ->setEmail(null)
             ->setCpfCnpj(null)
@@ -123,6 +162,12 @@ class CustomerTest extends TestCase
             ->setAddress(null)
             ->setBillingAddress(null)
             ->setShippingAddress(null);
+
+        $this->assertEmpty($customer->getId());
+        $this->assertEmpty($customer->getUuid());
+        $this->assertEmpty($customer->getTaxReceipt());
+        $this->assertEmpty($customer->getBirthdate());
+        $this->assertEmpty($customer->getIp());
 
         $this->assertEmpty($customer->getEmail());
         $this->assertEmpty($customer->getCpfCnpj());
@@ -161,6 +206,15 @@ class CustomerTest extends TestCase
         $this->expectException(MutatorAttributeException::class);
 
         $customer->setCpfCnpj('074.598.263-80');
+    }
+
+    public function testShouldThrowAValidationExceptionOnTheCustomerTaxReceiptProperty()
+    {
+        $customer = new \Ipag\Sdk\Model\Customer();
+
+        $this->expectException(MutatorAttributeException::class);
+
+        $customer->setTaxReceipt('074.598.263-80');
     }
 
     public function testShouldThrowAValidationExceptionOnTheCustomerBirthdateProperty()

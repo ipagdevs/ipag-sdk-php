@@ -14,12 +14,14 @@ class OwnerTest extends TestCase
             'email' => 'livia.julia.barros@eximiart.com.br',
             'cpf' => '074.598.263-83',
             'phone' => '(98) 3792-4834',
+            'birthdate' => '1980-01-01',
         ]);
 
         $this->assertEquals('Lívia Julia Eduarda Barros', $owner->getName());
         $this->assertEquals('livia.julia.barros@eximiart.com.br', $owner->getEmail());
         $this->assertEquals('07459826383', $owner->getCpf());
         $this->assertEquals('9837924834', $owner->getPhone());
+        $this->assertEquals('1980-01-01', $owner->getBirthdate());
 
     }
 
@@ -29,12 +31,14 @@ class OwnerTest extends TestCase
             ->setName('Lívia Julia Eduarda Barros')
             ->setEmail('livia.julia.barros@eximiart.com.br')
             ->setCpf('074.598.263-83')
-            ->setPhone('(98) 3792-4834');
+            ->setPhone('(98) 3792-4834')
+            ->setBirthdate('1980-01-01');
 
         $this->assertEquals('Lívia Julia Eduarda Barros', $owner->getName());
         $this->assertEquals('livia.julia.barros@eximiart.com.br', $owner->getEmail());
         $this->assertEquals('07459826383', $owner->getCpf());
         $this->assertEquals('9837924834', $owner->getPhone());
+        $this->assertEquals('1980-01-01', $owner->getBirthdate());
 
     }
 
@@ -46,6 +50,7 @@ class OwnerTest extends TestCase
         $this->assertEmpty($owner->getEmail());
         $this->assertEmpty($owner->getCpf());
         $this->assertEmpty($owner->getPhone());
+        $this->assertEmpty($owner->getBirthdate());
 
     }
 
@@ -56,18 +61,21 @@ class OwnerTest extends TestCase
             'email' => 'livia.julia.barros@eximiart.com.br',
             'cpf' => '074.598.263-83',
             'phone' => '(98) 3792-4834',
+            'birthdate' => '1980-01-01',
         ]);
 
         $owner
             ->setName(null)
             ->setEmail(null)
             ->setCpf(null)
-            ->setPhone(null);
+            ->setPhone(null)
+            ->setBirthdate(null);
 
         $this->assertEmpty($owner->getName());
         $this->assertEmpty($owner->getEmail());
         $this->assertEmpty($owner->getCpf());
         $this->assertEmpty($owner->getPhone());
+        $this->assertEmpty($owner->getBirthdate());
 
     }
 
@@ -96,6 +104,16 @@ class OwnerTest extends TestCase
         $this->expectException(MutatorAttributeException::class);
 
         $owner->setPhone('111');
+    }
+
+    public function testShouldThrowAValidationExceptionOnTheOwnerBirthdateProperty()
+    {
+        $owner = new \Ipag\Sdk\Model\Owner();
+
+        $this->expectException(MutatorAttributeException::class);
+
+        $owner->setBirthdate('10/07/2021');
+
     }
 
 }

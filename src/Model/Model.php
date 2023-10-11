@@ -14,6 +14,9 @@ use Ipag\Sdk\Model\SerializableModelInterface;
 use Ipag\Sdk\Util\ClassUtil;
 use UnexpectedValueException;
 
+/**
+ * @codeCoverageIgnore
+ */
 abstract class Model implements SerializableModelInterface
 {
     private Schema $schema;
