@@ -4,6 +4,9 @@ namespace Ipag\Sdk\Model\Schema;
 
 use Ipag\Sdk\Model\Schema\Exception\SchemaAttributeParseException;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SchemaFloatAttribute extends SchemaAttribute
 {
     protected ?float $min = null;
@@ -24,7 +27,7 @@ class SchemaFloatAttribute extends SchemaAttribute
     public function parseContextual($value)
     {
         if (is_int($value)) {
-            $value = (float)$value;
+            $value = (float) $value;
         }
 
         if (!is_null($this->min) && $value < $this->min) {

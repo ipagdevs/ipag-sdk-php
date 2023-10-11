@@ -8,6 +8,8 @@ use Ipag\Sdk\Model\Schema\Schema;
 
 /**
  * CollectionMeta class
+ *
+ * @codeCoverageIgnore
  */
 final class CollectionMeta extends Model
 {

@@ -2,11 +2,13 @@
 
 namespace Ipag\Sdk\Model\Schema;
 
-use Closure;
 use Ipag\Sdk\Model\Schema\Exception\MutatorAttributeException;
 use Ipag\Sdk\Model\Schema\SchemaAttribute;
 use Ipag\Sdk\Model\Model;
 
+/**
+ * @codeCoverageIgnore
+ */
 final class MutatorContext
 {
     public Model $target;

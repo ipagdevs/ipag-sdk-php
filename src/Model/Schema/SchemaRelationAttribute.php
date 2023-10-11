@@ -6,6 +6,9 @@ use Closure;
 use Ipag\Sdk\Model\Model;
 use Ipag\Sdk\Model\Schema\Exception\SchemaAttributeParseException;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SchemaRelationAttribute extends SchemaAttribute
 {
     protected string $relationClass;

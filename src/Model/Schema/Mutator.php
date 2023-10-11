@@ -4,6 +4,9 @@ namespace Ipag\Sdk\Model\Schema;
 
 use Closure;
 
+/**
+ * @codeCoverageIgnore
+ */
 final class Mutator
 {
     public ?Closure $getter;

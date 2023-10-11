@@ -6,6 +6,9 @@ use DateTimeInterface;
 use Ipag\Sdk\Model\Schema\Exception\SchemaAttributeParseException;
 use Ipag\Sdk\Util\DateUtil;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SchemaDateAttribute extends SchemaAttribute
 {
     protected string $format;

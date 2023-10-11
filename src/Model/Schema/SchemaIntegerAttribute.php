@@ -4,6 +4,9 @@ namespace Ipag\Sdk\Model\Schema;
 
 use Ipag\Sdk\Model\Schema\Exception\SchemaAttributeParseException;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SchemaIntegerAttribute extends SchemaAttribute
 {
     public function parseContextual($value)

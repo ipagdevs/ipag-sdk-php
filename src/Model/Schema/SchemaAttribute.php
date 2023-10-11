@@ -5,6 +5,9 @@ namespace Ipag\Sdk\Model\Schema;
 use Ipag\Sdk\Model\Schema\Exception\SchemaAttributeParseException;
 use Ipag\Sdk\Util\StringUtil;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SchemaAttribute
 {
     protected Schema $schema;

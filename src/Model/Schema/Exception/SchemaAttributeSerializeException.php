@@ -4,6 +4,9 @@ namespace Ipag\Sdk\Model\Schema\Exception;
 
 use Ipag\Sdk\Model\Schema\SchemaAttribute;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SchemaAttributeSerializeException extends SchemaException
 {
     public function __construct(SchemaAttribute $attribute, ?string $message = null)

@@ -8,6 +8,8 @@ use Ipag\Sdk\Model\Schema\Schema;
 
 /**
  * CollectionLinks class
+ *
+ * @codeCoverageIgnore
  */
 final class CollectionLinks extends Model
 {

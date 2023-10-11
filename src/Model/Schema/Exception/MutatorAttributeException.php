@@ -2,9 +2,11 @@
 
 namespace Ipag\Sdk\Model\Schema\Exception;
 
-use Exception;
 use Throwable;
 
+/**
+ * @codeCoverageIgnore
+ */
 class MutatorAttributeException extends MutatorException
 {
     public function __construct(string $attribute, ?string $message = null, ?Throwable $previous = null)

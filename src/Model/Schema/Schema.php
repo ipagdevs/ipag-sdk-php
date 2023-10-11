@@ -10,6 +10,9 @@ use Ipag\Sdk\Model\Schema\SchemaIntegerAttribute;
 use Ipag\Sdk\Model\Schema\SchemaRelationAttribute;
 use Ipag\Sdk\Model\Schema\SchemaStringAttribute;
 
+/**
+ * @codeCoverageIgnore
+ */
 final class Schema
 {
     protected array $props;

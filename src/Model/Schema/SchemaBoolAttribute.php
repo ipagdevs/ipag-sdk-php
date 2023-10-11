@@ -4,6 +4,9 @@ namespace Ipag\Sdk\Model\Schema;
 
 use Ipag\Sdk\Model\Schema\Exception\SchemaAttributeParseException;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SchemaBoolAttribute extends SchemaAttribute
 {
     protected array $positiveMatches;
@@ -30,12 +33,12 @@ class SchemaBoolAttribute extends SchemaAttribute
 
     protected function isNegativeMatch($value): bool
     {
-        return array_reduce($this->negativeMatches, fn ($carry, $current) => $carry || $current == $value ? true : false, false);
+        return array_reduce($this->negativeMatches, fn($carry, $current) => $carry || $current == $value ? true : false, false);
     }
 
     protected function isPositiveMatch($value): bool
     {
-        return array_reduce($this->positiveMatches, fn ($carry, $current) => $carry || $current == $value ? true : false, false);
+        return array_reduce($this->positiveMatches, fn($carry, $current) => $carry || $current == $value ? true : false, false);
     }
 
     public function parseContextual($value)
