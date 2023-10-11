@@ -12,6 +12,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/424190b2a83337683daf/maintainability)](https://codeclimate.com/github/ipagdevs/ipag-sdk-php/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/424190b2a83337683daf/test_coverage)](https://codeclimate.com/github/ipagdevs/ipag-sdk-php/test_coverage)
 [![Licença](https://img.shields.io/badge/License-MIT-blue)](https://github.com/ipagdevs/ipag-sdk-php/releases)
+[![Licença](https://img.shields.io/badge/🌎-API%20Docs-blue)](https://developers.ipag.com.br/)
 
 <!--
 <a href="https://packagist.org/packages/ipagdevs/ipag-sdk-php"><img src="https://img.shields.io/packagist/l/ipagdevs/ipag-sdk-php" alt="License"></a>
