@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  ipag-sdk:
+    container_name: ipag-sdk-lcslucas
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    # mem_limit: 512m
+    working_dir: /var/www/html
+    ports:
+      - "8051:80"
+    volumes:
+      - ./:/var/www/html
