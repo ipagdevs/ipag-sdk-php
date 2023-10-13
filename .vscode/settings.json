@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "cSpell.language": "lorem,en,pt,pt-BR",
+    "cSpell.words": [
+        "ipag",
+        "Ipag",
+    ],
+    "php.version": "7.4"
+}

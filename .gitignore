@@ -1,9 +1,6 @@
 composer.phar
 /vendor/
 *.Identifier
-.devcontainer
-.vscode
-Dockerfile
 annotations.md
 .phpunit.cache
 clover.xml
