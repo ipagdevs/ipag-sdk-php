@@ -6,7 +6,7 @@ try {
 
     $transactionId = 115;
 
-    $responsePayment = $ipagClient->payment()->cancelById($transactionId);
+    $responsePayment = $ipagClient->payment()->cancelById($transactionId, 50.00);
     $data = $responsePayment->getData();
 
     $statusPayment = $responsePayment->getParsedPath('attributes.status.code');

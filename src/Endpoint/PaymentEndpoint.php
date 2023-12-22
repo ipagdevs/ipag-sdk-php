@@ -82,104 +82,112 @@ class PaymentEndpoint extends Endpoint
      * Endpoint para capturar um recurso `Payment`
      *
      * @param string $id
+     * @param ?float $amount
      * @return Response
      *
      * @codeCoverageIgnore
      */
-    public function captureById(string $id): Response
+    public function captureById(string $id, ?float $amount = null): Response
     {
-        return $this->_POST([], ['id' => $id], [], '/capture');
+        return $this->_POST([], compact('id', 'amount'), [], '/capture');
     }
 
     /**
      * Endpoint para capturar um recurso `Payment`
      *
      * @param string $uuid
+     * @param ?float $amount
      * @return Response
      *
      * @codeCoverageIgnore
      */
-    public function captureByUuid(string $uuid): Response
+    public function captureByUuid(string $uuid, ?float $amount = null): Response
     {
-        return $this->_POST([], ['uuid' => $uuid], [], '/capture');
+        return $this->_POST([], compact('uuid', 'amount'), [], '/capture');
     }
 
     /**
      * Endpoint para capturar um recurso `Payment`
      *
      * @param string $tid
+     * @param ?float $amount
      * @return Response
      *
      * @codeCoverageIgnore
      */
-    public function captureByTid(string $tid): Response
+    public function captureByTid(string $tid, ?float $amount = null): Response
     {
-        return $this->_POST([], ['tid' => $tid], [], '/capture');
+        return $this->_POST([], compact('tid', 'amount'), [], '/capture');
     }
 
     /**
      * Endpoint para capturar um recurso `Payment`
      *
-     * @param string $orderId
+     * @param string $order_id
+     * @param ?float $amount
      * @return Response
      *
      * @codeCoverageIgnore
      */
-    public function captureByOrderId(string $orderId): Response
+    public function captureByOrderId(string $order_id, ?float $amount = null): Response
     {
-        return $this->_POST([], ['order_id' => $orderId], [], '/capture');
+        return $this->_POST([], compact('order_id', 'amount'), [], '/capture');
     }
 
     /**
      * Endpoint para cancelar um recurso `Payment`
      *
      * @param string $id
+     * @param ?float $amount
      * @return Response
      *
      * @codeCoverageIgnore
      */
-    public function cancelById(string $id): Response
+    public function cancelById(string $id, ?float $amount = null): Response
     {
-        return $this->_POST([], ['id' => $id], [], '/cancel');
+        return $this->_POST([], compact('id', 'amount'), [], '/cancel');
     }
 
     /**
      * Endpoint para cancelar um recurso `Payment`
      *
      * @param string $uuid
+     * @param ?float $amount
      * @return Response
      *
      * @codeCoverageIgnore
      */
-    public function cancelByUuid(string $uuid): Response
+    public function cancelByUuid(string $uuid, ?float $amount = null): Response
     {
-        return $this->_POST([], ['uuid' => $uuid], [], '/cancel');
+        return $this->_POST([], compact('uuid', 'amount'), [], '/cancel');
     }
 
     /**
      * Endpoint para cancelar um recurso `Payment`
      *
      * @param string $tid
+     * @param ?float $amount
      * @return Response
      *
      * @codeCoverageIgnore
      */
-    public function cancelByTid(string $tid): Response
+    public function cancelByTid(string $tid, ?float $amount = null): Response
     {
-        return $this->_POST([], ['tid' => $tid], [], '/cancel');
+        return $this->_POST([], compact('tid', 'amount'), [], '/cancel');
     }
 
     /**
      * Endpoint para cancelar um recurso `Payment`
      *
-     * @param string $orderId
+     * @param string $order_id
+     * @param ?float $amount
      * @return Response
      *
      * @codeCoverageIgnore
      */
-    public function cancelByOrderId(string $orderId): Response
+    public function cancelByOrderId(string $order_id, ?float $amount = null): Response
     {
-        return $this->_POST([], ['order_id' => $orderId], [], '/cancel');
+        return $this->_POST([], compact('order_id', 'amount'), [], '/cancel');
     }
 
 }

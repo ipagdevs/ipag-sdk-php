@@ -6,7 +6,7 @@ try {
 
     $transactionUuid = '4c56ff4ce4aaf9573aa5dff913df997a';
 
-    $responsePayment = $ipagClient->payment()->captureByUuid($transactionUuid);
+    $responsePayment = $ipagClient->payment()->captureByUuid($transactionUuid, 50.00);
     $data = $responsePayment->getData();
 
     $statusPayment = $responsePayment->getParsedPath('attributes.status.code');

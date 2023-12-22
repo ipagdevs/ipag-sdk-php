@@ -6,7 +6,7 @@ try {
 
     $transactionId = 123;
 
-    $responsePayment = $ipagClient->payment()->captureById($transactionId);
+    $responsePayment = $ipagClient->payment()->captureById($transactionId, 50.00);
     $data = $responsePayment->getData();
 
     $statusPayment = $responsePayment->getParsedPath('attributes.status.code');
@@ -42,3 +42,4 @@ try {
     echo "</pre>" . PHP_EOL;
 
 }
+

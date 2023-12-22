@@ -6,7 +6,7 @@ try {
 
     $orderId = '114';
 
-    $responsePayment = $ipagClient->payment()->captureByOrderId($orderId);
+    $responsePayment = $ipagClient->payment()->captureByOrderId($orderId, 50.00);
     $data = $responsePayment->getData();
 
     $statusPayment = $responsePayment->getParsedPath('attributes.status.code');
