@@ -2,6 +2,7 @@
     "name": "ipagdevs/ipag-sdk-php",
     "description": "",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Ipag\\Sdk\\": "src/"
