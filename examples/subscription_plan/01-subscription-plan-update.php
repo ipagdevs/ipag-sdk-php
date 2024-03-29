@@ -14,6 +14,7 @@ $subscriptionPlan = new \Ipag\Sdk\Model\SubscriptionPlan(
         'pro_rated_charge' => true,
         'grace_period' => 0,
         'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
+        'installments' => 1,
         'trial' => [
             'amount' => 0,
             'cycles' => 0
@@ -31,7 +32,6 @@ try {
     echo "<pre>" . PHP_EOL;
     print_r($data);
     echo "</pre>" . PHP_EOL;
-
 } catch (Ipag\Sdk\Exception\HttpException $e) {
     $code = $e->getResponse()->getStatusCode();
     $errors = $e->getErrors();
@@ -39,12 +39,10 @@ try {
     echo "<pre>" . PHP_EOL;
     var_dump($code, $errors);
     echo "</pre>" . PHP_EOL;
-
 } catch (Exception $e) {
     $error = $e->getMessage();
 
     echo "<pre>" . PHP_EOL;
     var_dump($error);
     echo "</pre>" . PHP_EOL;
-
 }

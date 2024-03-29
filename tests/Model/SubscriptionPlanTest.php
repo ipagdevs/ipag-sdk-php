@@ -2,8 +2,8 @@
 
 namespace Ipag\Sdk\Tests\Model;
 
-use Ipag\Sdk\Model\Schema\Exception\MutatorAttributeException;
 use PHPUnit\Framework\TestCase;
+use Ipag\Sdk\Model\Schema\Exception\MutatorAttributeException;
 
 class SubscriptionPlanTest extends TestCase
 {
@@ -20,6 +20,7 @@ class SubscriptionPlanTest extends TestCase
             "pro_rated_charge" => true,
             "grace_period" => 0,
             "callback_url" => "https://ipag-sdk.requestcatcher.com/callback",
+            "installments" => 3,
             "trial" => [
                 "amount" => 0,
             ]
@@ -35,11 +36,11 @@ class SubscriptionPlanTest extends TestCase
         $this->assertEquals(true, $subscriptionPlan->getProRatedCharge());
         $this->assertEquals(0, $subscriptionPlan->getGracePeriod());
         $this->assertEquals("https://ipag-sdk.requestcatcher.com/callback", $subscriptionPlan->getCallbackUrl());
+        $this->assertEquals(3, $subscriptionPlan->getInstallments());
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Trial::class, $subscriptionPlan->getTrial());
 
         $this->assertEquals(0, $subscriptionPlan->getTrial()->getAmount());
-
     }
 
     public function testShouldCreateSubscriptionPlanObjectAndSetTheValuesSuccessfully()
@@ -55,6 +56,7 @@ class SubscriptionPlanTest extends TestCase
             ->setProRatedCharge(true)
             ->setGracePeriod(0)
             ->setCallbackUrl("https://ipag-sdk.requestcatcher.com/callback")
+            ->setInstallments(6)
             ->setTrial(
                 (new \Ipag\Sdk\Model\Trial())
                     ->setAmount(0)
@@ -70,10 +72,10 @@ class SubscriptionPlanTest extends TestCase
         $this->assertEquals(true, $subscriptionPlan->getProRatedCharge());
         $this->assertEquals(0, $subscriptionPlan->getGracePeriod());
         $this->assertEquals("https://ipag-sdk.requestcatcher.com/callback", $subscriptionPlan->getCallbackUrl());
+        $this->assertEquals(6, $subscriptionPlan->getInstallments());
 
         $this->assertInstanceOf(\Ipag\Sdk\Model\Trial::class, $subscriptionPlan->getTrial());
         $this->assertEquals(0, $subscriptionPlan->getTrial()->getAmount());
-
     }
 
     public function testShouldCreateEmptySubscriptionPlanObjectSuccessfully()
@@ -92,7 +94,6 @@ class SubscriptionPlanTest extends TestCase
         $this->assertEmpty($subscriptionPlan->getCallbackUrl());
 
         $this->assertEmpty($subscriptionPlan->getTrial());
-
     }
 
     public function testCreateAndSetEmptyPropertiesSubscriptionPlanObjectSuccessfully()
@@ -140,7 +141,6 @@ class SubscriptionPlanTest extends TestCase
         $this->assertEmpty($subscriptionPlan->getCallbackUrl());
 
         $this->assertEmpty($subscriptionPlan->getTrial());
-
     }
 
     public function testShouldThrowATypeExceptionOnTheSubscriptionPlanAmountProperty()
@@ -195,5 +195,4 @@ class SubscriptionPlanTest extends TestCase
 
         $subscriptionPlan->setCycles(-1);
     }
-
 }

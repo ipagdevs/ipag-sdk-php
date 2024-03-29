@@ -2,8 +2,8 @@
 
 namespace Ipag\Sdk\Model;
 
-use Ipag\Sdk\Model\Schema\Mutator;
 use Ipag\Sdk\Model\Schema\Schema;
+use Ipag\Sdk\Model\Schema\Mutator;
 use Ipag\Sdk\Model\Schema\SchemaBuilder;
 
 /**
@@ -24,6 +24,10 @@ class SubscriptionPlan extends Model
      *  + [`'interval'`] int (opcional).
      *  + [`'cycles'`] float (opcional).
      *  + [`'callback_url'`] string (opcional).
+     *  + [`'best_day'`] boolean (opcional).
+     *  + [`'pro_rated_charge'`] boolean (opcional).
+     *  + [`'grace_period'`] int (opcional).
+     *  + [`'installments'`] int (opcional).
      *  +
      *  + [`'trial'`] array (opcional) dos dados do Trial.
      *      + [`'trial'`][`'amount'`] float (opcional).
@@ -43,6 +47,7 @@ class SubscriptionPlan extends Model
         $schema->int('interval')->nullable();
         $schema->float('cycles')->nullable();
         $schema->string('callback_url')->nullable();
+        $schema->int('installments')->default(1);
         $schema->has('trial', Trial::class)->nullable();
 
         $schema->bool('best_day')->nullable();
@@ -100,13 +105,13 @@ class SubscriptionPlan extends Model
     {
         return new Mutator(
             null,
-            fn($value, $ctx) =>
+            fn ($value, $ctx) =>
             is_null($value) ? $value
-            : (
-                (settype($value, 'float')) &&
-                $value >= 0 ? $value :
-                $ctx->raise('inválido')
-            )
+                : (
+                    (settype($value, 'float')) &&
+                    $value >= 0 ? $value :
+                    $ctx->raise('inválido')
+                )
         );
     }
 
@@ -136,12 +141,12 @@ class SubscriptionPlan extends Model
     {
         return new Mutator(
             null,
-            fn($value, $ctx) =>
+            fn ($value, $ctx) =>
             is_null($value) ||
-            $value === 'monthly' ||
-            $value === 'weekly' ||
-            $value === 'daily' ?
-            $value : $ctx->raise('inválido')
+                $value === 'monthly' ||
+                $value === 'weekly' ||
+                $value === 'daily' ?
+                $value : $ctx->raise('inválido')
         );
     }
 
@@ -171,9 +176,8 @@ class SubscriptionPlan extends Model
     {
         return new Mutator(
             null,
-            fn($value, $ctx) =>
-            is_null($value) ? $value :
-            (
+            fn ($value, $ctx) =>
+            is_null($value) ? $value : (
                 (settype($value, 'int')) &&
                 $value >= 1 && $value <= 12 ? $value :
                 $ctx->raise('inválido')
@@ -207,9 +211,8 @@ class SubscriptionPlan extends Model
     {
         return new Mutator(
             null,
-            fn($value, $ctx) =>
-            is_null($value) ? $value :
-            (
+            fn ($value, $ctx) =>
+            is_null($value) ? $value : (
                 floatval($value) >= 0 ? $value :
                 $ctx->raise('inválido')
             )
@@ -348,4 +351,25 @@ class SubscriptionPlan extends Model
         return $this;
     }
 
+    /**
+     * Retorna o valor da propriedade installments
+     *
+     * @return integer|null
+     */
+    public function getInstallments(): ?int
+    {
+        return $this->get('installments');
+    }
+
+    /**
+     * Seta o valor da propriedade installments
+     *
+     * @param integer|null $installments
+     * @return self
+     */
+    public function setInstallments(?int $installments = null): self
+    {
+        $this->set('installments', $installments);
+        return $this;
+    }
 }
