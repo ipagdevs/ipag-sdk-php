@@ -2,6 +2,10 @@
 
 > A ferramenta certa para uma rápida e segura integração com o iPag e a sua aplicação PHP.
 
+### Observação
+
+Esta SDK, necessariamente, não reflete 100% dos recursos e funcionalidades disponíveis na API do iPag. Veja a documentação completa da API em [https://developers.ipag.com.br/](https://developers.ipag.com.br/).
+
 ## Status
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-blue.svg?style=flat-square)](https://www.php.net/releases/7_4_0.php)
@@ -21,6 +25,7 @@
 **Índice**
 
 - [iPag PHP client SDK](#ipag-php-client-sdk)
+    - [Observação](#observação)
   - [Status](#status)
 - [Dependências](#dependências)
 - [Instalação](#instalação)
