@@ -2,8 +2,8 @@
 
 namespace Ipag\Sdk\Tests\Model;
 
-use Ipag\Sdk\Model\Schema\Exception\MutatorAttributeException;
 use PHPUnit\Framework\TestCase;
+use Ipag\Sdk\Model\Schema\Exception\MutatorAttributeException;
 
 class AddressTest extends TestCase
 {
@@ -26,7 +26,6 @@ class AddressTest extends TestCase
         $this->assertEquals($address->getCity(), 'São Luís');
         $this->assertEquals($address->getState(), 'MA');
         $this->assertEquals($address->getZipcode(), '65076020');
-
     }
 
     public function testShouldCreateAddressObjectAndSetTheValuesSuccessfully()
@@ -47,7 +46,6 @@ class AddressTest extends TestCase
         $this->assertEquals($address->getCity(), 'São Luís');
         $this->assertEquals($address->getState(), 'MA');
         $this->assertEquals($address->getZipcode(), '65076020');
-
     }
 
     public function testShouldCreateEmptyAddressObjectSuccessfully()
@@ -91,17 +89,14 @@ class AddressTest extends TestCase
         $this->assertEmpty($address->getCity());
         $this->assertEmpty($address->getState());
         $this->assertEmpty($address->getZipcode());
-
     }
 
-    public function testShouldThrowAValidationExceptionOnTheAddressNumberProperty()
+    public function testShouldAcceptAddressNumberPropertyWithLetters()
     {
         $address = new \Ipag\Sdk\Model\Address();
 
-        $this->expectException(MutatorAttributeException::class);
+        $address->setNumber('BR 163');
 
-        $address->setNumber('abc');
-
+        $this->assertEquals('BR 163', $address->getNumber());
     }
-
 }

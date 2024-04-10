@@ -2,10 +2,10 @@
 
 namespace Ipag\Sdk\Model;
 
-use Ipag\Sdk\Model\Schema\Mutator;
-use Ipag\Sdk\Model\Schema\Schema;
-use Ipag\Sdk\Model\Schema\SchemaBuilder;
 use Ipag\Sdk\Util\StateUtil;
+use Ipag\Sdk\Model\Schema\Schema;
+use Ipag\Sdk\Model\Schema\Mutator;
+use Ipag\Sdk\Model\Schema\SchemaBuilder;
 
 /**
  * Address Class
@@ -48,7 +48,7 @@ final class Address extends Model
     {
         return new Mutator(
             null,
-            fn($value) => strval($value)
+            fn ($value) => strval($value)
         );
     }
 
@@ -73,17 +73,12 @@ final class Address extends Model
         $this->set('street', $street);
         return $this;
     }
+
     public function number(): Mutator
     {
         return new Mutator(
             null,
-            fn($value, $ctx) =>
-            is_null($value) ?
-            $value :
-            (
-                is_numeric($value) ? strval($value) :
-                $ctx->raise('inválido')
-            )
+            fn ($value) => strval($value)
         );
     }
 
@@ -108,9 +103,10 @@ final class Address extends Model
         $this->set('number', $number);
         return $this;
     }
+
     public function district(): Mutator
     {
-        return new Mutator(null, fn($value) => strval($value));
+        return new Mutator(null, fn ($value) => strval($value));
     }
 
     /**
@@ -136,7 +132,7 @@ final class Address extends Model
     }
     public function complement(): Mutator
     {
-        return new Mutator(null, fn($value) => strval($value));
+        return new Mutator(null, fn ($value) => strval($value));
     }
 
     /**
@@ -162,7 +158,7 @@ final class Address extends Model
     }
     public function city(): Mutator
     {
-        return new Mutator(null, fn($value) => strval($value));
+        return new Mutator(null, fn ($value) => strval($value));
     }
 
     /**
@@ -188,7 +184,7 @@ final class Address extends Model
     }
     public function state(): Mutator
     {
-        return new Mutator(null, fn($value) => !$value ? null : StateUtil::transformState($value));
+        return new Mutator(null, fn ($value) => !$value ? null : StateUtil::transformState($value));
     }
 
     /**
@@ -214,7 +210,7 @@ final class Address extends Model
     }
     public function zipcode(): Mutator
     {
-        return new Mutator(null, fn($value) => strval(preg_replace('/\D/', '', $value)));
+        return new Mutator(null, fn ($value) => strval(preg_replace('/\D/', '', $value)));
     }
 
     /**
