@@ -103,4 +103,13 @@ class EstablishmentEndpoint extends Endpoint
     {
         return EstablishmentAntifraudEndpoint::make($this->parent, $this->parent);
     }
+
+    /**
+     * Endpoint `Dispute` do recurso `Establishment`
+     * @return EstablishmentDisputeEndpoint
+     */
+    public function disputes(): EstablishmentDisputeEndpoint
+    {
+        return EstablishmentDisputeEndpoint::make($this->parent, $this->parent);
+    }
 }

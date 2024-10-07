@@ -6,6 +6,7 @@ use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Endpoint\AccountEndpoint;
 use Ipag\Sdk\Endpoint\ChargeEndpoint;
 use Ipag\Sdk\Endpoint\CheckoutEndpoint;
+use Ipag\Sdk\Endpoint\CheckoutEndpointV2;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Endpoint\EstablishmentEndpoint;
 use Ipag\Sdk\Endpoint\PaymentEndpoint;
@@ -138,6 +139,11 @@ class IpagClient extends Client
     public function checkout(): CheckoutEndpoint
     {
         return CheckoutEndpoint::make($this, $this);
+    }
+
+    public function checkoutV2(): CheckoutEndpointV2
+    {
+        return CheckoutEndpointV2::make($this, $this);
     }
 
     public function payment(): PaymentEndpoint
