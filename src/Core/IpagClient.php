@@ -9,6 +9,7 @@ use Ipag\Sdk\Endpoint\CustomerEndpoint;
 use Ipag\Sdk\Endpoint\EstablishmentEndpoint;
 use Ipag\Sdk\Endpoint\PaymentEndpoint;
 use Ipag\Sdk\Endpoint\PaymentLinksEndpoint;
+use Ipag\Sdk\Endpoint\PaymentLinksEndpointV2;
 use Ipag\Sdk\Endpoint\SellerEndpoint;
 use Ipag\Sdk\Endpoint\SplitRulesEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionEndpoint;
@@ -100,6 +101,11 @@ class IpagClient extends Client
     public function paymentLinks(): PaymentLinksEndpoint
     {
         return PaymentLinksEndpoint::make($this, $this);
+    }
+
+    public function paymentLinksV2(): PaymentLinksEndpointV2
+    {
+        return PaymentLinksEndpointV2::make($this, $this);
     }
 
     public function webhook(): WebhookEndpoint

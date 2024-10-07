@@ -105,6 +105,7 @@ Este SDK, não necessariamente, reflete todos dos recursos e funcionalidades dis
     - [Novo Link de Pagamento](#novo-link-de-pagamento)
     - [Obter Link de Pagamento (Por Id)](#obter-link-de-pagamento-por-id)
     - [Obter Link de Pagamento (Por External Code)](#obter-link-de-pagamento-por-external-code)
+    - [Listar Links de pagamento](#listar-links-de-pagamento)
 - [Webhook](#webhook)
     - [Novo Webhook](#novo-webhook)
     - [Obter Webhook](#obter-webhook)
@@ -1103,6 +1104,12 @@ $responsePaymentLink = $ipagClient->paymentLinks()->getById($paymentLinkId);
 
 ```php
 $responsePaymentLink = $ipagClient->paymentLinks()->getByExternalCode($externalCode);
+```
+
+### Listar Links de Pagamento
+
+```php
+$responsePaymentLink = $ipagClient->paymentLinksV2()->list();
 ```
 
 > Todos os exemplos: [examples/payment_links/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/payment_links/)
