@@ -22,6 +22,7 @@ final class PaymentTransaction extends Model
      *  + [`'amount'`] float.
      *  + [`'order_id'`] string.
      *  + [`'callback_url'`] string.
+     *  + [`'redirect_url'`] string.
      *
      *  + [`'antifraud'`] array (opcional) dos dados do Antifraud.
      *  + &emsp; [`'fingerprint'`] string.
@@ -114,6 +115,7 @@ final class PaymentTransaction extends Model
         $schema->float('amount')->nullable();
         $schema->string('order_id')->nullable();
         $schema->string('callback_url')->nullable();
+        $schema->string('redirect_url')->nullable();
 
         $schema->has('antifraud', PaymentAntifraud::class)->nullable();
         $schema->has('payment', Payment::class)->nullable();
@@ -202,6 +204,22 @@ final class PaymentTransaction extends Model
     public function setCallbackUrl(?string $callbackUrl = null): self
     {
         $this->set('callback_url', $callbackUrl);
+        return $this;
+    }
+
+    /**
+     * Retorna o valor da propriedade `redirect_url`.
+     *
+     * @return string|null
+     */
+    public function getRedirectUrl(): ?string
+    {
+        return $this->get('redirect_url');
+    }
+
+    public function setRedirectUrl(?string $redirectUrl = null): self
+    {
+        $this->set('redirect_url', $redirectUrl);
         return $this;
     }
 
