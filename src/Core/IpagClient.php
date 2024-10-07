@@ -3,6 +3,7 @@
 namespace Ipag\Sdk\Core;
 
 use Ipag\Sdk\Core\IpagEnvironment;
+use Ipag\Sdk\Endpoint\AccountEndpoint;
 use Ipag\Sdk\Endpoint\ChargeEndpoint;
 use Ipag\Sdk\Endpoint\CheckoutEndpoint;
 use Ipag\Sdk\Endpoint\CustomerEndpoint;
@@ -13,6 +14,7 @@ use Ipag\Sdk\Endpoint\PaymentLinksEndpointV2;
 use Ipag\Sdk\Endpoint\SellerEndpoint;
 use Ipag\Sdk\Endpoint\SplitRulesEndpoint;
 use Ipag\Sdk\Endpoint\SubscriptionEndpoint;
+use Ipag\Sdk\Endpoint\SubscriptionEndpointV2;
 use Ipag\Sdk\Endpoint\SubscriptionPlanEndpoint;
 use Ipag\Sdk\Endpoint\TokenEndpoint;
 use Ipag\Sdk\Endpoint\TransactionEndpoint;
@@ -71,6 +73,11 @@ class IpagClient extends Client
     public function subscription(): SubscriptionEndpoint
     {
         return SubscriptionEndpoint::make($this, $this);
+    }
+
+    public function subscriptionV2(): SubscriptionEndpointV2
+    {
+        return SubscriptionEndpointV2::make($this, $this);
     }
 
     public function transaction(): TransactionEndpoint
@@ -136,6 +143,11 @@ class IpagClient extends Client
     public function payment(): PaymentEndpoint
     {
         return PaymentEndpoint::make($this, $this);
+    }
+
+    public function account(): AccountEndpoint
+    {
+        return AccountEndpoint::make($this, $this);
     }
 
 }
