@@ -13,6 +13,7 @@ class PaymentTransactionTest extends TestCase
             'amount' => 100.0,
             'order_id' => '123456',
             'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
+            'redirect_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'antifraud' => [
                 'fingerprint' => '123',
                 'provider' => 'test',
@@ -88,6 +89,7 @@ class PaymentTransactionTest extends TestCase
         $this->assertEquals(100.0, $paymentTransaction->getAmount());
         $this->assertEquals('123456', $paymentTransaction->getOrderId());
         $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $paymentTransaction->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $paymentTransaction->getRedirectUrl());
 
         $this->assertEquals('123', $paymentTransaction->getAntifraud()->getFingerprint());
         $this->assertEquals('test', $paymentTransaction->getAntifraud()->getProvider());
@@ -155,6 +157,7 @@ class PaymentTransactionTest extends TestCase
             ->setAmount(100.0)
             ->setOrderId('123456')
             ->setCallbackUrl('https://ipag-sdk.requestcatcher.com/callback')
+            ->setRedirectUrl('https://ipag-sdk.requestcatcher.com/callback')
             ->setAntifraud(
                 (new \Ipag\Sdk\Model\PaymentAntifraud())
                     ->setFingerprint('123')
@@ -238,6 +241,7 @@ class PaymentTransactionTest extends TestCase
         $this->assertEquals(100.0, $paymentTransaction->getAmount());
         $this->assertEquals('123456', $paymentTransaction->getOrderId());
         $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $paymentTransaction->getCallbackUrl());
+        $this->assertEquals('https://ipag-sdk.requestcatcher.com/callback', $paymentTransaction->getRedirectUrl());
 
         $this->assertEquals('123', $paymentTransaction->getAntifraud()->getFingerprint());
         $this->assertEquals('test', $paymentTransaction->getAntifraud()->getProvider());
@@ -306,6 +310,7 @@ class PaymentTransactionTest extends TestCase
         $this->assertEmpty($paymentTransaction->getAmount());
         $this->assertEmpty($paymentTransaction->getOrderId());
         $this->assertEmpty($paymentTransaction->getCallbackUrl());
+        $this->assertEmpty($paymentTransaction->getRedirectUrl());
         $this->assertEmpty($paymentTransaction->getAntifraud());
         $this->assertEmpty($paymentTransaction->getPayment());
         $this->assertEmpty($paymentTransaction->getCustomer());
@@ -322,6 +327,7 @@ class PaymentTransactionTest extends TestCase
             'amount' => 100.0,
             'order_id' => '123456',
             'callback_url' => 'https://ipag-sdk.requestcatcher.com/callback',
+            'redirect_url' => 'https://ipag-sdk.requestcatcher.com/callback',
             'antifraud' => [
                 'fingerprint' => '123',
                 'provider' => 'test',
@@ -398,6 +404,7 @@ class PaymentTransactionTest extends TestCase
             ->setAmount(null)
             ->setOrderId(null)
             ->setCallbackUrl(null)
+            ->setRedirectUrl(null)
             ->setAntifraud(null)
             ->setPayment(null)
             ->setCustomer(null)
@@ -409,6 +416,7 @@ class PaymentTransactionTest extends TestCase
         $this->assertEmpty($paymentTransaction->getAmount());
         $this->assertEmpty($paymentTransaction->getOrderId());
         $this->assertEmpty($paymentTransaction->getCallbackUrl());
+        $this->assertEmpty($paymentTransaction->getRedirectUrl());
         $this->assertEmpty($paymentTransaction->getAntifraud());
         $this->assertEmpty($paymentTransaction->getPayment());
         $this->assertEmpty($paymentTransaction->getCustomer());

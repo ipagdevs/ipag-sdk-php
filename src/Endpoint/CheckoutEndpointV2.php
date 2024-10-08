@@ -23,6 +23,6 @@ class CheckoutEndpointV2 extends Endpoint
      */
     public function getInstallments(?CheckoutInstallments $checkoutInstallments = null): Response
     {
-        return $this->_GET($checkoutInstallments->jsonSerialize(), [], '/installments');
+        return $this->_GET(empty($checkoutInstallments) ? [] : $checkoutInstallments->jsonSerialize(), [], '/installments');
     }
 }
