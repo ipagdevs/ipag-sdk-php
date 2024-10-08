@@ -12,7 +12,7 @@ use Ipag\Sdk\Http\Response;
  */
 class SubscriptionEndpointV2 extends Endpoint
 {
-    protected string $location = 'service/v2/subscription';
+    protected string $location = '/service/v2/subscription';
 
     /**
      * Endpoint para envio de email de cobrança ao cliente.

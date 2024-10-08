@@ -39,4 +39,8 @@ class TokenEndpoint extends Endpoint
         return $this->_GET(['token' => $token]);
     }
 
+    public function list(?array $filters = []): Response
+    {
+        return $this->_GET($filters ?? []);
+    }
 }
