@@ -3,9 +3,9 @@
 require_once __DIR__ . '/..' . '/config.php';
 
 $charge = new \Ipag\Sdk\Model\Charge([
-    'amount' => 100,
-    'description' => 'Cobrança referente a negociação de débito pendente na Empresa X',
-    'due_date' => '2020-10-30',
+    'amount' => 99,
+    'description' => 'Cobrança referente a negociação de débito pendente na Empresa XX',
+    'due_date' => '2020-10-29',
     'frequency' => 1,
     'interval' => 'month',
     'type' => 'charge',
