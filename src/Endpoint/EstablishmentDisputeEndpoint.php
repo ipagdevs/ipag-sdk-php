@@ -23,7 +23,7 @@ class EstablishmentDisputeEndpoint extends Endpoint
      */
     public function list(string $establishment_id, ?array $filters = []): Response
     {
-        return $this->_GET([], [], "/$establishment_id/transactions/disputes");
+        return $this->_GET($filters, [], "/$establishment_id/transactions/disputes");
     }
 
     /**
