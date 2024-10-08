@@ -56,6 +56,7 @@ Este SDK, não necessariamente, reflete todos dos recursos e funcionalidades dis
     - [Desvincular Token da Assinatura](#desvincular-token-da-assinatura)
     - [Quitar Parcela da Assinatura](#quitar-parcela-da-assinatura)
     - [Agendar Parcelamento da Assinatura](#agendar-parcelamento-da-assinatura)
+    - [Enviar Notificação de Assinatura](#enviar-notificação-de-assinatura)
 - [Transação (Transaction)](#transação-transaction)
     - [Obter Transação](#obter-transação)
     - [Listar Transações](#listar-transações)
@@ -63,11 +64,15 @@ Este SDK, não necessariamente, reflete todos dos recursos e funcionalidades dis
 - [Token (Card Token)](#token-card-token)
     - [Novo Token](#novo-token)
     - [Obter Token](#obter-token)
+    - [Listar Tokens](#listar-tokens)
 - [Cobrança (Charge)](#cobrança-charge)
     - [Nova Cobrança](#nova-cobrança)
     - [Alterar Cobrança](#alterar-cobrança)
     - [Obter Cobrança](#obter-cobrança)
     - [Listar Cobranças](#listar-cobranças)
+    - [Enviar Notificação de Cobrança](#enviar-notificação-de-cobrança)
+- [Conta (Account)](#conta-account)
+    - [Listar Taxas](#listar-taxas)
 - [Estabelecimento (Establishment)](#estabelecimento-establishment)
     - [Novo Estabelecimento](#novo-estabelecimento)
     - [Alterar Estabelecimento](#alterar-estabelecimento)
@@ -77,6 +82,9 @@ Este SDK, não necessariamente, reflete todos dos recursos e funcionalidades dis
     - [Listar todas Transações dos Estabelecimentos](#listar-todas-transações-dos-estabelecimentos)
     - [Listar Transações dos Estabelecimentos](#listar-transações-dos-estabelecimentos)
     - [Obter Transação de um Estabelecimento](#obter-transação-de-um-estabelecimento)
+    - [Aplicar Disputas de Transações](#aplicar-disputas-de-transações)
+    - [Aplicar Chargebacks de Transações](#aplicar-chargebacks-de-transações)
+    - [Listar Disputas de um Estabelecimento](#listar-disputas-de-um-estabelecimento)
   - [Métodos de Pagamento (Payment Methods)](#métodos-de-pagamento-payment-methods)
     - [Configurar Métodos de Pagamento](#configurar-métodos-de-pagamento)
   - [Antifraudes (Antifraud)](#antifraudes-antifraud)
@@ -101,6 +109,7 @@ Este SDK, não necessariamente, reflete todos dos recursos e funcionalidades dis
     - [Listar Lançamentos Futuros](#listar-lançamentos-futuros)
     - [Listar Lançamentos Futuros de Vendedor (Por Id)](#listar-lançamentos-futuros-de-vendedor-por-id)
     - [Listar Lançamentos Futuros de Vendedor (Por CPF/CNPJ)](#listar-lançamentos-futuros-de-vendedor-por-cpfcnpj)
+  - [Listar Recebíveis](#listar-recebíveis)
 - [Link de Pagamento (Payment Links)](#link-de-pagamento-payment-links)
     - [Novo Link de Pagamento](#novo-link-de-pagamento)
     - [Obter Link de Pagamento (Por Id)](#obter-link-de-pagamento-por-id)
@@ -113,6 +122,7 @@ Este SDK, não necessariamente, reflete todos dos recursos e funcionalidades dis
     - [Deletar Webhook](#deletar-webhook)
 - [Checkout](#checkout)
     - [Novo Checkout](#novo-checkout)
+    - [Obter Parcelamento](#obter-parcelamento)
 - [Voucher](#voucher)
     - [Novo Voucher](#novo-voucher)
 - [Helpers](#helpers)
@@ -571,6 +581,12 @@ $responseSubscription = $ipagClient->subscription()->payOffInstallment($subscrip
 $responseSubscription = $ipagClient->subscription()->scheduleInstallmentPayment($subscriptionId, $invoiceNumber);
 ```
 
+### Enviar Notificação de Assinatura
+
+```php
+$responseSubscriptionNotify = $ipagClient->subscriptionV2()->notify($subscriptionId);
+```
+
 > Todos os exemplos: [examples/subscription/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/subscription/)
 
 # Transação (Transaction)
@@ -661,6 +677,14 @@ $responseToken = $ipagClient->token()->create($token);
 $responseToken = $ipagClient->token()->get($tokenValue);
 ```
 
+### Listar Tokens
+
+```php
+$tokensResponse = $ipagClient->token()->list([
+    'limit' => 10
+]);
+```
+
 > Todos os exemplos: [examples/token/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/token/)
 
 # Cobrança (Charge)
@@ -738,7 +762,21 @@ $responseCharge = $ipagClient->charge()->list([
 ]);
 ```
 
+### Enviar Notificação de Cobrança
+
+```php
+$chargeNotifyResponse = $ipagClient->chargeV2()->notify($chargeId);
+```
+
 > Todos os exemplos: [examples/charge/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/charge/)
+
+# Conta (Account)
+
+### Listar taxas
+
+```php
+$responseMyFees = $ipagClient->account()->myFees();
+```
 
 # Estabelecimento (Establishment)
 
@@ -818,6 +856,26 @@ $responseTransactions = $ipagClient->establishment()->transaction()->listByEstab
 
 ```php
 $responseTransactions = $ipagClient->establishment()->transaction()->getByEstablishment($establishmentTid, $transactionTid);
+```
+
+### Aplicar Disputas de Transações
+
+```php
+$transactions = [00001, 00002, 00003];
+$responseDisputes = $ipagClient->establishment()->disputes()->applyDisputes($establishmentId, $transactions);
+```
+
+### Aplicar Chargebacks de Transações
+
+```php
+$transactions = [00001, 00002, 00003];
+$responseChargeBacks = $ipagClient->establishment()->disputes()->applyChargeBacks($establishmentId, $transactions);
+```
+
+### Listar Disputas de um Estabelecimento
+
+```php
+$responseDisputes = $ipagClient->establishment()->disputes()->list($establishmentId);
 ```
 
 ## Métodos de Pagamento (Payment Methods)
@@ -1053,6 +1111,14 @@ $responseTransfers = $ipagClient->transfer()->future()->listBySellerId($sellerId
 $responseTransfers = $ipagClient->transfer()->future()->listBySellerCpfCnpj($sellerCpf);
 ```
 
+## Listar Recebíveis
+
+```php
+$receivablesResponse = $ipagClient->receivable()->list([
+    'from' => '2024-08-27'
+]);
+```
+
 > Todos os exemplos: [examples/transfer/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/transfer/)
 
 # Link de Pagamento (Payment Links)
@@ -1266,6 +1332,16 @@ $checkout = (new \Ipag\Sdk\Model\Checkout())
 
 ```php
 $responseCheckout = $ipagClient->checkout()->create($checkout);
+```
+
+### Obter Parcelamento
+
+```php
+    $responseInstallmentsCheckout = $ipagClient->checkoutV2()->getInstallments(
+        new CheckoutInstallments([
+            'amount' => 100.00
+        ])
+    );
 ```
 
 > Todos os exemplos: [examples/checkout/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/checkout/)
