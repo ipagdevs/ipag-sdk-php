@@ -15,23 +15,39 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        php-version: [ '7.4', '8.3', '8.4' ]
+
     env:
       CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_ID }}
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: ${{ matrix.php-version }}
           coverage: xdebug
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer Dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Code Climate Setup
+        if: ${{ env.CC_TEST_REPORTER_ID != '' }}
         run: |
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter && chmod +x ./cc-test-reporter
           ./cc-test-reporter before-build
@@ -39,5 +55,6 @@ jobs:
         run: |
           php vendor/bin/phpunit --color --testdox --coverage-clover clover.xml tests
       - name: Send Report
+        if: ${{ env.CC_TEST_REPORTER_ID != '' && matrix.php-version == '7.4' }}
         run: |
           ./cc-test-reporter after-build -t clover --exit-code $?
