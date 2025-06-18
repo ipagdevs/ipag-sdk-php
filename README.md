@@ -298,10 +298,10 @@ $responsePayment = $ipagClient->payment()->getById($transactionId);
 $responsePayment = $ipagClient->payment()->getByUuid($transactionUuid);
 ```
 ```php
-$responsePayment = $ipagClient->payment()->getByUuid($transactionTid);
+$responsePayment = $ipagClient->payment()->getByTid($transactionTid);
 ```
 ```php
-$responsePayment = $ipagClient->payment()->getByUuid($orderId);
+$responsePayment = $ipagClient->payment()->getByOrderId($orderId);
 ```
 
 ### Capturar Pagamento
@@ -315,11 +315,11 @@ $responsePayment = $ipagClient->payment()->captureByUuid($transactionUuid, $amou
 ```
 ou
 ```php
-$responsePayment = $ipagClient->payment()->captureByUuid($transactionTid, $amount);
+$responsePayment = $ipagClient->payment()->captureByTid($transactionTid, $amount);
 ```
 ou
 ```php
-$responsePayment = $ipagClient->payment()->captureByUuid($orderId, $amount);
+$responsePayment = $ipagClient->payment()->captureByOrderId($orderId, $amount);
 ```
 
 ### Cancelar Pagamento
@@ -333,11 +333,11 @@ $responsePayment = $ipagClient->payment()->cancelByUuid($transactionUuid, $amoun
 ```
 ou
 ```php
-$responsePayment = $ipagClient->payment()->cancelByUuid($transactionTid, $amount);
+$responsePayment = $ipagClient->payment()->cancelByTid($transactionTid, $amount);
 ```
 ou
 ```php
-$responsePayment = $ipagClient->payment()->cancelByUuid($orderId, $amount);
+$responsePayment = $ipagClient->payment()->cancelByOrderId($orderId, $amount);
 ```
 
 > Todos os exemplos: [examples/payment/](https://github.com/ipagdevs/ipag-sdk-php/tree/master/examples/payment/)

@@ -210,7 +210,7 @@ final class Address extends Model
     }
     public function zipcode(): Mutator
     {
-        return new Mutator(null, fn ($value) => strval(preg_replace('/\D/', '', $value)));
+        return new Mutator(null, fn ($value) => strval(preg_replace('/\D/', '', $value ?? '')));
     }
 
     /**
