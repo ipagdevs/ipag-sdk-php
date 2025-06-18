@@ -164,11 +164,13 @@ class Subscription extends Model
         return new Mutator(
             null,
             function ($value, $ctx) {
+                if (is_null($value)) {
+                    return null;
+                }
+
                 $d = \DateTime::createFromFormat('Y-m-d', $value);
 
-                return is_null($value) ||
-                    ($d && $d->format('Y-m-d') === $value) ?
-                    $value : $ctx->raise('inválido');
+                return ($d && $d->format('Y-m-d') === $value) ? $value : $ctx->raise('inválido');
             }
         );
     }
@@ -200,11 +202,13 @@ class Subscription extends Model
         return new Mutator(
             null,
             function ($value, $ctx) {
+                if (is_null($value)) {
+                    return null;
+                }
+
                 $d = \DateTime::createFromFormat('Y-m-d', $value);
 
-                return is_null($value) ||
-                    ($d && $d->format('Y-m-d') === $value) ?
-                    $value : $ctx->raise('inválido');
+                return ($d && $d->format('Y-m-d') === $value) ? $value : $ctx->raise('inválido');
             }
         );
     }
