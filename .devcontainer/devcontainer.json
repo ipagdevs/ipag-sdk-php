@@ -1,0 +1,57 @@
+{
+    "name": "IPAG SDK PHP Development",
+    "dockerComposeFile": [
+        "../docker-compose.yml",
+        "docker-compose.yml"
+    ],
+    "service": "lcslucas-ipag-sdk",
+    "workspaceFolder": "/var/www/html",
+    "shutdownAction": "stopCompose",
+    
+    // Forward ports for debugging
+    "forwardPorts": [9000, 9003],
+    "portsAttributes": {
+        "9003": {
+            "label": "Xdebug",
+            "onAutoForward": "silent"
+        },
+        "9000": {
+            "label": "PHP-FPM", 
+            "onAutoForward": "silent"
+        }
+    },
+    
+    "postCreateCommand": "composer install",
+    
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "xdebug.php-debug",
+                "bmewburn.vscode-intelephense-client",
+                "DEVSENSE.phptools-vscode",
+                "neilbrayfield.php-docblocker",
+                "streetsidesoftware.code-spell-checker",
+                "streetsidesoftware.code-spell-checker-portuguese-brazilian",
+                "formulahendry.code-runner",
+                "shardulm94.trailing-spaces",
+                "MehediDracula.php-namespace-resolver",
+                "yzhang.markdown-all-in-one",
+                "junstyle.php-cs-fixer",
+                "GitHub.copilot-chat",
+                "GitHub.copilot",
+                "ms-azuretools.vscode-docker"
+            ],
+            "settings": {
+                "php.validate.executablePath": "/usr/local/bin/php",
+                "php.debug.executablePath": "/usr/local/bin/php",
+                "intelephense.files.maxSize": 5000000,
+                "files.watcherExclude": {
+                    "**/vendor/**": true,
+                    "**/node_modules/**": true
+                }
+            }
+        }
+    },
+    
+    "remoteUser": "root"
+}

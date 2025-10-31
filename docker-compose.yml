@@ -1,0 +1,16 @@
+services:
+  lcslucas-ipag-sdk:
+    container_name: lcslucas-ipag-sdk
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "9000:9000"  # PHP-FPM
+      - "9003:9003"  # Xdebug
+    environment:
+      - PHP_IDE_CONFIG=serverName=docker
+      - XDEBUG_CONFIG=remote_host=host.docker.internal

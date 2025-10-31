@@ -1,0 +1,13 @@
+version: '3'
+services:
+  lcslucas-ipag-sdk:
+    volumes:
+      - ..:/var/www/html:cached
+
+    # Configurações para Xdebug no Dev Container
+    environment:
+      - PHP_IDE_CONFIG=serverName=devcontainer
+      - XDEBUG_CONFIG=client_host=localhost
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"
