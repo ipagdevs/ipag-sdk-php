@@ -172,6 +172,19 @@ class SellerTest extends TestCase
         $seller->setCpfCnpj('074.598.263-80');
     }
 
+    public function testShouldKeepAnElevenDigitCpfOnTheSellerCpfCnpjProperty()
+    {
+        // completado com zeros até 14 dígitos, um CPF iniciado em 00 também é um CNPJ válido
+        $seller = new \Ipag\Sdk\Model\Seller(['cpf_cnpj' => '003.344.769-17']);
+
+        $this->assertEquals('00334476917', $seller->getCpfCnpj());
+        $this->assertEquals('00334476917', $seller->jsonSerialize()['cpf_cnpj']);
+
+        $seller->setCpfCnpj('01.234.567/0001-95');
+
+        $this->assertEquals('01234567000195', $seller->getCpfCnpj());
+    }
+
     public function testShouldThrowAValidationExceptionOnTheSellerEmailProperty()
     {
         $seller = new \Ipag\Sdk\Model\Seller();

@@ -2,13 +2,35 @@
 
 namespace Ipag\Sdk\Tests\Endpoint;
 
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
+use Ipag\Sdk\Core\IpagEnvironment;
 use Ipag\Sdk\Exception\HttpException;
+use Ipag\Sdk\Mock\IpagClientMock;
 use Ipag\Sdk\Model\Customer;
 use Ipag\Sdk\Tests\IpagClient;
 
 class CustomerEndpointTest extends IpagClient
 {
+    public function testShouldSendAnElevenDigitCpfAsCpfOnUpdate()
+    {
+        $history = [];
+        $stack = HandlerStack::create(new MockHandler([new Response(200, [], '{}')]));
+        $stack->push(Middleware::history($history));
+        $client = new IpagClientMock('test', 'AAA', IpagEnvironment::SANDBOX, '2', ['handler' => $stack]);
+
+        // completado com zeros até 14 dígitos, um CPF iniciado em 00 também é um CNPJ válido
+        $client->customer()->update(new Customer(['cpf_cnpj' => '003.344.769-17']), 10);
+
+        $request = $history[0]['request'];
+        $this->assertSame('PUT', $request->getMethod());
+        $this->assertSame('/service/resources/customers', $request->getUri()->getPath());
+        $this->assertSame('id=10', $request->getUri()->getQuery());
+        $this->assertSame('00334476917', json_decode((string) $request->getBody(), true)['cpf_cnpj']);
+    }
+
     public function testShouldResponseSuccess()
     {
         $this->instanceClient([

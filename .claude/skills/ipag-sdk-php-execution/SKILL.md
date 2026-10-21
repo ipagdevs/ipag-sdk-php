@@ -98,7 +98,15 @@ docker run --rm -u "$(id -u):$(id -g)" -e COMPOSER_HOME=/tmp/composer \
 ```
 
 Se o `vendor/` estiver atrás do lock, ou com dono `root`, reinstale antes de
-confiar em qualquer resultado de teste.
+confiar em qualquer resultado de teste. Máquinas que já usaram o compose local
+costumam ter `vendor/` e `.phpunit.cache/` com dono `root`. O cache gera um
+warning de permissão no PHPUnit em 8.x. Devolva os dois ao seu usuário antes do
+`install`:
+
+```bash
+docker run --rm -v "$PWD":/app composer:2 \
+  chown -R "$(id -u):$(id -g)" /app/vendor /app/.phpunit.cache
+```
 
 ---
 
@@ -232,8 +240,12 @@ O que os testes precisam cobrir:
 **Validação contra a API** (quando a task espera comportamento da API, ex.
 "a API retorna o documento com a máscara X"):
 
-1. Rode um exemplo de `examples/` contra a **sandbox**, com credenciais
-   editadas localmente em `examples/config.php`.
+1. Rode um exemplo de `examples/` contra a **sandbox**, ou contra o ambiente
+   local se o usuário indicar, com credenciais editadas localmente em
+   `examples/config.php`. O `LOCAL` só resolve com o container na rede da API
+   ([setup.md § Exemplos](../../../docs/setup.md#exemplos)). Para comparar
+   vários casos, use um script avulso no scratchpad que faça `require` do
+   `examples/config.php`, sem editar os exemplos versionados.
 2. Desfaça a edição antes de qualquer `git add` (`git diff --quiet examples/config.php`).
 3. Sem credenciais de sandbox, diga isso explicitamente e deixe a validação
    pendente. Não a dê como feita com base só no teste unitário.
