@@ -6,6 +6,7 @@ use Ipag\Sdk\Model\Schema\Mutator;
 use Ipag\Sdk\Model\Schema\Schema;
 use Ipag\Sdk\Model\Schema\SchemaBuilder;
 use Kubinyete\Assertation\Assert;
+use Ipag\Sdk\Util\DocumentUtil;
 
 /**
  * Holder Class
@@ -78,7 +79,7 @@ class Holder extends Model
             fn($value, $ctx) =>
             is_null($value) ?
             $value :
-            Assert::value($value)->asCpf(false)->or()->asCnpj(false)->get() ?? $ctx->raise('inválido')
+            DocumentUtil::cpfCnpj($value) ?? $ctx->raise('inválido')
         );
     }
 

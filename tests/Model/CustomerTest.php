@@ -225,6 +225,38 @@ class CustomerTest extends TestCase
         $customer->setTaxReceipt('074.598.263-80');
     }
 
+    public function testShouldKeepAnElevenDigitCpfOnTheCustomerCpfCnpjAndTaxReceiptProperties()
+    {
+        // completado com zeros até 14 dígitos, um CPF iniciado em 00 também é um CNPJ válido
+        $customer = new \Ipag\Sdk\Model\Customer([
+            'cpf_cnpj' => '003.344.769-17',
+            'tax_receipt' => '00334476917',
+        ]);
+
+        $this->assertEquals('00334476917', $customer->getCpfCnpj());
+        $this->assertEquals('00334476917', $customer->getTaxReceipt());
+        $this->assertEquals('00334476917', $customer->jsonSerialize()['cpf_cnpj']);
+        $this->assertEquals('00334476917', $customer->jsonSerialize()['tax_receipt']);
+
+        $customer
+            ->setCpfCnpj('74032971307')
+            ->setTaxReceipt('04654733930');
+
+        $this->assertEquals('74032971307', $customer->getCpfCnpj());
+        $this->assertEquals('04654733930', $customer->getTaxReceipt());
+    }
+
+    public function testShouldKeepAFourteenDigitCnpjOnTheCustomerCpfCnpjAndTaxReceiptProperties()
+    {
+        $customer = new \Ipag\Sdk\Model\Customer([
+            'cpf_cnpj' => '01.234.567/0001-95',
+            'tax_receipt' => '01234567000195',
+        ]);
+
+        $this->assertEquals('01234567000195', $customer->getCpfCnpj());
+        $this->assertEquals('01234567000195', $customer->getTaxReceipt());
+    }
+
     public function testShouldThrowAValidationExceptionOnTheCustomerBirthdateProperty()
     {
         $customer = new \Ipag\Sdk\Model\Customer();

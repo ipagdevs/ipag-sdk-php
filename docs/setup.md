@@ -76,6 +76,19 @@ Para rodar um exemplo:
 Alguns exemplos usam IDs fixos (ex. `examples/subscription_v2/02-*.php`) que
 só existem na conta de quem os escreveu. Troque pelos da sua conta.
 
+**Ambiente local.** `IpagEnvironment::LOCAL` (`api.ipag.test`, sem esquema) é o
+nome de serviço da API dentro da rede do docker compose do ambiente local, e
+não resolve no host. Para usar esse ambiente, rode o container do PHP na mesma
+rede da API:
+
+```bash
+docker run --rm --network <rede-da-api> -u "$(id -u):$(id -g)" -v "$PWD":/app -w /app \
+  php:7.4-cli php examples/customer/00-customer-create.php
+```
+
+Para descobrir a rede, rode `docker inspect <container-da-api>`. Para conferir,
+`getent hosts api.ipag.test` dentro do container precisa devolver o IP da API.
+
 ## CI
 
 `.github/workflows/ci-tests.yml` é o único workflow.

@@ -104,6 +104,12 @@ protected function schema(SchemaBuilder $schema): Schema
   `$ctx->assert($cond, 'msg')`, que lançam `MutatorAttributeException`. Para
   validar, o código costuma usar `Kubinyete\Assertation\Assert`.
   `Model::loadMutator` descobre o mutator com `is_callable([$this, $nome])`.
+- **Documento que aceita CPF ou CNPJ** (`Customer::cpf_cnpj` e `tax_receipt`,
+  `Seller::cpf_cnpj`, `Holder::cpfCnpj`) passa por
+  `Util\DocumentUtil::cpfCnpj()`, e com 11 dígitos é sempre CPF. Não volte para
+  `asCpf(false)->or()->asCnpj(false)`. O `asCnpj` completa o valor com zeros
+  até 14 dígitos, e o `get()` prefere o último ramo válido, então todo CPF
+  iniciado em `00` (e uma parte dos outros) vira CNPJ.
 - **Serialização:** `jsonSerialize()` emite **todo** atributo não-`hidden`,
   **inclusive `null`**, e serializa as relações recursivamente.
   - Os models v2 (`PaymentLinkV2`, `SubscriptionV2`, `Plan`, `PlanTrial`)

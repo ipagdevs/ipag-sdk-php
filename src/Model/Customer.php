@@ -4,6 +4,7 @@ namespace Ipag\Sdk\Model;
 
 use Ipag\Sdk\Model\Schema\Schema;
 use Kubinyete\Assertation\Assert;
+use Ipag\Sdk\Util\DocumentUtil;
 use Ipag\Sdk\Model\Schema\Mutator;
 use Ipag\Sdk\Model\Schema\SchemaBuilder;
 
@@ -255,7 +256,7 @@ final class Customer extends Model
             fn($value, $ctx) =>
             is_null($value) ?
                 $value :
-                Assert::value($value)->asCpf(false)->or()->asCnpj(false)->get() ?? $ctx->raise('inválido')
+                DocumentUtil::cpfCnpj($value) ?? $ctx->raise('inválido')
         );
     }
 
@@ -266,7 +267,7 @@ final class Customer extends Model
             fn($value, $ctx) =>
             is_null($value) ?
                 $value :
-                Assert::value($value)->asCpf(false)->or()->asCnpj(false)->get() ?? $ctx->raise('inválido')
+                DocumentUtil::cpfCnpj($value) ?? $ctx->raise('inválido')
         );
     }
 

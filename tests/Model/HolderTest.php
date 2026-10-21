@@ -96,6 +96,19 @@ class HolderTest extends TestCase
         $holder->setCpfCnpj('074.598.263-80');
     }
 
+    public function testShouldKeepAnElevenDigitCpfOnTheHolderCpfCnpjProperty()
+    {
+        // completado com zeros até 14 dígitos, um CPF iniciado em 00 também é um CNPJ válido
+        $holder = new \Ipag\Sdk\Model\Holder(['cpfCnpj' => '003.344.769-17']);
+
+        $this->assertEquals('00334476917', $holder->getCpfCnpj());
+        $this->assertEquals('00334476917', $holder->jsonSerialize()['cpfCnpj']);
+
+        $holder->setCpfCnpj('01.234.567/0001-95');
+
+        $this->assertEquals('01234567000195', $holder->getCpfCnpj());
+    }
+
     public function testShouldThrowAValidationExceptionOnTheHolderPhoneProperty()
     {
         $holder = new \Ipag\Sdk\Model\Holder();
