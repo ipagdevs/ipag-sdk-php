@@ -1,0 +1,5 @@
+# Arquivos de desenvolvimento e de agente: ficam no repo, fora do pacote publicado
+/.claude        export-ignore
+/CLAUDE.md      export-ignore
+/docs           export-ignore
+/.gitattributes export-ignore
