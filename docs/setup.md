@@ -1,4 +1,4 @@
-← [CLAUDE.md](../CLAUDE.md) · **setup** · [sdk](sdk.md) · [gotchas](gotchas.md)
+← [CLAUDE.md](../CLAUDE.md) · **setup** · [sdk](sdk.md)
 
 # Setup e operação
 
@@ -9,7 +9,7 @@ rodar o PHPUnit e, quando precisar, rodar um exemplo contra a sandbox.
 
 Só precisa de Docker. Os comandos usam as imagens oficiais `composer:2` e
 `php:<versão>-cli` e rodam com o seu usuário (`-u`), para que `vendor/` não
-fique com dono `root` ([gotchas](gotchas.md#vendor-e-phpunitcache-com-dono-root)).
+fique com dono `root`.
 
 ```bash
 git clone git@github.com:ipagdevs/ipag-sdk-php.git && cd ipag-sdk-php
@@ -49,7 +49,7 @@ relatório do CI.
 **Não troque o `composer install` por `composer update`.** O `update`
 re-resolve tudo e, se o pin de plataforma for removido ou contornado, traz
 pacotes que exigem PHP 8. Mudança de dependência é decisão de task, não efeito
-colateral (ver [gotchas](gotchas.md#composerlock-muda-sem-ninguém-pedir)).
+colateral.
 
 ### Por que `docker run` e não o compose local
 

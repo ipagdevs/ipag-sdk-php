@@ -68,7 +68,6 @@ produção não entram aqui.
 |---|---|
 | [docs/setup.md](docs/setup.md) | for instalar dependências, rodar testes ou exemplos, entender o CI, versionar ou publicar |
 | [docs/sdk.md](docs/sdk.md) | for ler ou alterar o SDK: client, endpoints, DSL de models, mutators, exceções, testes, como adicionar endpoint ou campo |
-| [docs/gotchas.md](docs/gotchas.md) | antes de mexer em ambiente ou release, e quando algo não fizer sentido |
 
 O fluxo de execução de tasks (do pickup ao release) está na skill
 [`ipag-sdk-php-execution`](.claude/skills/ipag-sdk-php-execution/SKILL.md).

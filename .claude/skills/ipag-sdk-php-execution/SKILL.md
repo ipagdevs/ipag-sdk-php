@@ -20,9 +20,8 @@ description: >
 Equivalente, para **este** projeto, do skill genérico de execução iPag. É
 autossuficiente e não depende de outro skill estar carregado.
 
-Contexto técnico não se repete aqui: está em `CLAUDE.md`, `docs/setup.md`,
-`docs/sdk.md` e `docs/gotchas.md` (caminhos relativos à raiz do repo). Leia o
-`docs/gotchas.md` antes de mexer em dependências ou release.
+Contexto técnico não se repete aqui: está em `CLAUDE.md`, `docs/setup.md` e
+`docs/sdk.md` (caminhos relativos à raiz do repo).
 
 ---
 
@@ -31,7 +30,7 @@ Contexto técnico não se repete aqui: está em `CLAUDE.md`, `docs/setup.md`,
 | | |
 |---|---|
 | Host | **GitHub** `ipagdevs/ipag-sdk-php`, **público** |
-| Branch principal | `master` (**nunca** `develop`: ver gotchas) |
+| Branch principal | `master` (**nunca** `develop`) |
 | PR | GitHub. O `gh` **não está instalado** neste host e não há MCP do GitHub, então devolva o link. |
 | Distribuição | Packagist, a partir das **tags**. O `composer.json` não tem `version`. |
 | Consumidores | integrações de lojistas via Composer e o módulo Magento 2 (`ipagdevs/magento2`), que fixa a versão exata |
@@ -99,7 +98,7 @@ docker run --rm -u "$(id -u):$(id -g)" -e COMPOSER_HOME=/tmp/composer \
 ```
 
 Se o `vendor/` estiver atrás do lock, ou com dono `root`, reinstale antes de
-confiar em qualquer resultado de teste ([gotchas](../../../docs/gotchas.md#vendor-e-phpunitcache-com-dono-root)).
+confiar em qualquer resultado de teste.
 
 ---
 
@@ -163,15 +162,14 @@ detalhes do caso real.
 
 Se a task pede "revisar se outros lugares têm a mesma lógica", faça o
 levantamento **no plano**, com a lista de arquivos, e não descubra no meio da
-implementação. Ex.: a validação de documento com `Assert ... or() ...` aparece
-em `Customer`, `Holder` e `Seller` ([gotchas](../../../docs/gotchas.md#or-do-assert-prioriza-o-lado-direito)).
+implementação.
 
 ---
 
 ## Passo 5 — Implementar
 
-- **Sintaxe de PHP 7.4.** A lista do que não pode está em
-  [gotchas](../../../docs/gotchas.md#o-piso-é-o-php-74-os-polyfills-são-só-de-função).
+- **Sintaxe de PHP 7.4.** A lista do que não pode está na regra 1 do
+  `CLAUDE.md`.
 - **Não rode `composer update` nem `composer require`** sem que a task peça uma
   mudança de dependência. Se o lock mudar só no `plugin-api-version`, reverta.
 - **A semântica do campo vem de [developers.ipag.com.br](https://developers.ipag.com.br)**
@@ -229,8 +227,7 @@ O que os testes precisam cobrir:
   ([sdk.md § Testes](../../../docs/sdk.md#testes)). Os testes existentes não
   fazem isso, e uma rota errada passaria no CI.
 - **Dados:** CPF/CNPJ sintéticos válidos, gerados pelo dígito verificador.
-  Nunca o documento do caso real
-  ([gotchas](../../../docs/gotchas.md#dado-de-produção-não-entra-no-repo)).
+  Nunca o documento do caso real.
 
 **Validação contra a API** (quando a task espera comportamento da API, ex.
 "a API retorna o documento com a máscara X"):
@@ -243,35 +240,6 @@ O que os testes precisam cobrir:
 
 Registre o resultado como comentário na task Jira **quando houver consenso**
 de que a implementação está finalizada, não no meio de uma iteração.
-
-### Índice por sintoma
-
-O `docs/gotchas.md` é organizado por causa. Abaixo está o mesmo conteúdo
-indexado pelo **sintoma**:
-
-- **A suíte inteira falha no PHP 8.4 com `Errors: 461` e deprecation em
-  `sebastian/*`:** o `vendor/` está mais velho que o lock. Reinstale.
-- **`Permission denied` no `composer install`:** o `vendor/` tem dono `root`,
-  de um container antigo.
-- **O teste passa, mas o endpoint chama a rota errada:** os testes não
-  verificam a request.
-- **Passa no 7.4 e falha no 8.x:** é deprecation virando erro (`null` em
-  função interna, parâmetro implicitamente anulável).
-- **Falha no 7.4 e passa no 8.x:** sintaxe de PHP 8 no código.
-- **`getStatusCode()` vem `null` na `HttpClientException`:** use `getCode()`.
-- **`TypeError` num setter ou `"1"` rejeitado:** a tipagem do schema é
-  estrita.
-- **`null` no JSON enviado:** o model é v1, que não filtra nulos.
-- **O documento sai diferente do que entrou (zeros a mais, CPF virando
-  CNPJ):** é o `str_pad` e a precedência do `or()` em `kubinyete/assertation`.
-- **`Expected value from mutator ...` ou `ArgumentCountError` ao setar um
-  atributo:** o nome do atributo colide com um método do model.
-- **`The environment must be valid`:** o ambiente está fora da whitelist exata
-  (ex. `http://api.ipag.test`).
-- **`The "-r" option does not exist` ao apagar o `vendor/`:** na imagem
-  `composer:2`, `rm` é alias de `composer remove`. Use `php:7.4-cli rm -rf ...`.
-
-Lista completa em `docs/gotchas.md`.
 
 ---
 
@@ -394,10 +362,9 @@ de lá for pedido, traga por cherry-pick para uma branch nova a partir da
 
 ## Manter este skill vivo
 
-Gotcha novo descoberto durante a execução (comando, permissão, padrão de
-dados, armadilha de infra) entra **na mesma PR da task**. Vai aqui se for sobre
-*como executar tasks*, e em `docs/gotchas.md` se for sobre *como o SDK se
-comporta*. Escreva em termos públicos: o repo é aberto.
+Aprendizado novo da execução (comando, permissão, padrão de dados) entra **na
+mesma PR da task**. Vai aqui se for sobre *como executar tasks*, e no doc
+correspondente em `docs/` se for sobre *como o SDK funciona*. Escreva em termos públicos: o repo é aberto.
 
 ---
 
@@ -424,4 +391,4 @@ comporta*. Escreva em termos públicos: o repo é aberto.
 - [ ] Depois do merge, com o ok do usuário, a tag anotada foi criada no merge commit, com GitHub Release e Packagist conferidos?
 - [ ] Quem depende foi avisado (caso de suporte; módulo Magento, se for o caso)?
 - [ ] Os links de PR, issue e release foram devolvidos ao usuário?
-- [ ] O gotcha novo descoberto na execução foi registrado (aqui ou em `docs/gotchas.md`)?
+- [ ] O aprendizado novo da execução foi registrado (aqui ou no doc correspondente em `docs/`)?

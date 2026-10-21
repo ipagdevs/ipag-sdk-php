@@ -1,4 +1,4 @@
-← [CLAUDE.md](../CLAUDE.md) · [setup](setup.md) · **sdk** · [gotchas](gotchas.md)
+← [CLAUDE.md](../CLAUDE.md) · [setup](setup.md) · **sdk**
 
 # Como o SDK funciona
 
@@ -102,8 +102,7 @@ protected function schema(SchemaBuilder $schema): Schema
   retorna `new Mutator($getter, $setter)`. O setter recebe
   `($value, MutatorContext $ctx)` e falha com `$ctx->raise('msg')` ou
   `$ctx->assert($cond, 'msg')`, que lançam `MutatorAttributeException`. Para
-  validar, o código costuma usar `Kubinyete\Assertation\Assert` (ver
-  [gotchas](gotchas.md#or-do-assert-prioriza-o-lado-direito)).
+  validar, o código costuma usar `Kubinyete\Assertation\Assert`.
   `Model::loadMutator` descobre o mutator com `is_callable([$this, $nome])`.
 - **Serialização:** `jsonSerialize()` emite **todo** atributo não-`hidden`,
   **inclusive `null`**, e serializa as relações recursivamente.
@@ -150,8 +149,7 @@ O mapeamento Guzzle → SDK fica em `GuzzleHttpClient::request()`. Depois,
 - os erros saem de `message`, `error` ou `data` do body e vão para
   `getErrors()`;
 - `statusCode` e `statusMessage` ficam `null`, e o status passa a estar em
-  `getCode()` e em `getResponse()->getStatusCode()`
-  ([gotchas](gotchas.md#getstatuscode-é-null-na-httpclientexception)).
+  `getCode()` e em `getResponse()->getStatusCode()`.
 
 5xx e erro de rede sobem como vieram. As exceções de schema **não** estendem
 `BaseException`, então um `catch (BaseException)` não as pega.
@@ -198,8 +196,7 @@ Use `SANDBOX` aqui, não `LOCAL`. Sem esquema, o Guzzle trata
 `MockHandler` nunca chega à rede em nenhum dos dois casos.
 
 **Dados de teste são sintéticos.** Gere CPF e CNPJ válidos pelo dígito
-verificador. Nunca use documento, nome ou ID vindos de um caso real (ver
-[gotchas](gotchas.md#dado-de-produção-não-entra-no-repo)).
+verificador. Nunca use documento, nome ou ID vindos de um caso real.
 
 ## Adicionar um endpoint
 
