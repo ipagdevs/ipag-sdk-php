@@ -98,7 +98,7 @@ class Bank extends Model
      * @param string|null $account
      * @return self
      */
-    public function setAccount(string $account = null): self
+    public function setAccount(?string $account = null): self
     {
         $this->set('account', $account);
         return $this;
