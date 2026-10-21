@@ -37,6 +37,7 @@ Este SDK, não necessariamente, reflete todos dos recursos e funcionalidades dis
     - [Capturar Pagamento](#capturar-pagamento)
     - [Cancelar Pagamento](#cancelar-pagamento)
 - [Cliente (Customer)](#cliente-customer)
+    - [CPF e CNPJ](#cpf-e-cnpj)
     - [Novo Cliente](#novo-cliente)
     - [Alterar Cliente](#alterar-cliente)
     - [Obter Cliente](#obter-cliente)
@@ -382,6 +383,15 @@ $customer = new \Ipag\Sdk\Model\Customer()
             ->setZipcode('01310-000')
 );
 ```
+
+### CPF e CNPJ
+
+O `cpf_cnpj` e o `tax_receipt` do `Customer`, o `cpf_cnpj` do `Seller` e o `cpfCnpj` do `Holder` aceitam CPF ou CNPJ, com ou sem máscara, e são enviados sem máscara:
+
+- com 11 dígitos, o documento é CPF: `003.344.769-17` é enviado como `00334476917`;
+- com 14 caracteres, é CNPJ, numérico ou alfanumérico: `12.abc.345/01de-35` é enviado como `12ABC34501DE35`.
+
+Envie o documento como string e com os zeros à esquerda. Um documento inválido lança `MutatorAttributeException`.
 
 ### Novo Cliente
 

@@ -6,6 +6,19 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 As versões até `v1.4.1` não têm entrada aqui: consulte as [tags](https://github.com/ipagdevs/ipag-sdk-php/tags) e o histórico de commits.
 
+## v1.5.0 - 2026-10-21
+
+### Adicionado
+
+- Suporte a CNPJ alfanumérico em `Customer` (`cpf_cnpj` e `tax_receipt`), `Seller` (`cpf_cnpj`) e `Holder` (`cpfCnpj`). A Receita Federal atribui esse formato às novas inscrições desde julho de 2026.
+  - O CNPJ é aceito com ou sem máscara, em maiúsculas ou minúsculas.
+  - Ele é enviado sem máscara e em maiúsculas: `12.abc.345/01de-35` vira `12ABC34501DE35`.
+  - Antes, um CNPJ alfanumérico era recusado com `MutatorAttributeException`.
+
+### Alterado
+
+- As letras de um documento deixam de ser descartadas, e um valor com letras só é aceito se for um CNPJ alfanumérico válido. Antes, `CPF 074.598.263-83` era aceito como `07459826383`. Agora ele é recusado.
+
 ## v1.4.2 - 2026-10-21
 
 ### Corrigido

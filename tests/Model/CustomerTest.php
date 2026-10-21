@@ -257,6 +257,28 @@ class CustomerTest extends TestCase
         $this->assertEquals('01234567000195', $customer->getTaxReceipt());
     }
 
+    public function testShouldAcceptAnAlphanumericCnpjOnTheCustomerCpfCnpjAndTaxReceiptProperties()
+    {
+        $customer = new \Ipag\Sdk\Model\Customer([
+            'cpf_cnpj' => '12.ABC.345/01DE-35',
+            'tax_receipt' => '12.abc.345/01de-35',
+        ]);
+
+        $this->assertEquals('12ABC34501DE35', $customer->getCpfCnpj());
+        $this->assertEquals('12ABC34501DE35', $customer->getTaxReceipt());
+        $this->assertEquals('12ABC34501DE35', $customer->jsonSerialize()['cpf_cnpj']);
+        $this->assertEquals('12ABC34501DE35', $customer->jsonSerialize()['tax_receipt']);
+    }
+
+    public function testShouldThrowAValidationExceptionOnAnAlphanumericCnpjWithInvalidCheckDigits()
+    {
+        $customer = new \Ipag\Sdk\Model\Customer();
+
+        $this->expectException(MutatorAttributeException::class);
+
+        $customer->setCpfCnpj('12.ABC.345/01DE-36');
+    }
+
     public function testShouldThrowAValidationExceptionOnTheCustomerBirthdateProperty()
     {
         $customer = new \Ipag\Sdk\Model\Customer();

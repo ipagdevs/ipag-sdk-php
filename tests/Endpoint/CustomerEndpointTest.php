@@ -31,6 +31,21 @@ class CustomerEndpointTest extends IpagClient
         $this->assertSame('00334476917', json_decode((string) $request->getBody(), true)['cpf_cnpj']);
     }
 
+    public function testShouldSendAnAlphanumericCnpjOnCreate()
+    {
+        $history = [];
+        $stack = HandlerStack::create(new MockHandler([new Response(200, [], '{}')]));
+        $stack->push(Middleware::history($history));
+        $client = new IpagClientMock('test', 'AAA', IpagEnvironment::SANDBOX, '2', ['handler' => $stack]);
+
+        $client->customer()->create(new Customer(['cpf_cnpj' => '12.abc.345/01de-35']));
+
+        $request = $history[0]['request'];
+        $this->assertSame('POST', $request->getMethod());
+        $this->assertSame('/service/resources/customers', $request->getUri()->getPath());
+        $this->assertSame('12ABC34501DE35', json_decode((string) $request->getBody(), true)['cpf_cnpj']);
+    }
+
     public function testShouldResponseSuccess()
     {
         $this->instanceClient([
