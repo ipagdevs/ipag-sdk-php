@@ -37,10 +37,13 @@ class PaymentLinkV2 extends Model
         return new Mutator(
             null,
             function ($value, $ctx) {
+                if (is_null($value)) {
+                    return null;
+                }
+
                 $d = \DateTime::createFromFormat('d/m/Y H:i:s', $value);
 
-                return is_null($value) ||
-                    ($d && $d->format('d/m/Y H:i:s') === $value) ?
+                return ($d && $d->format('d/m/Y H:i:s') === $value) ?
                     $value : $ctx->raise('inválido (formato esperado: dd/mm/aaaa hh:mm:ss)');
             }
         );
