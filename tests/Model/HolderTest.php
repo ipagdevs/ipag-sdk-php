@@ -109,6 +109,14 @@ class HolderTest extends TestCase
         $this->assertEquals('01234567000195', $holder->getCpfCnpj());
     }
 
+    public function testShouldAcceptAnAlphanumericCnpjOnTheHolderCpfCnpjProperty()
+    {
+        $holder = new \Ipag\Sdk\Model\Holder(['cpfCnpj' => '12.ABC.345/01DE-35']);
+
+        $this->assertEquals('12ABC34501DE35', $holder->getCpfCnpj());
+        $this->assertEquals('12ABC34501DE35', $holder->jsonSerialize()['cpfCnpj']);
+    }
+
     public function testShouldThrowAValidationExceptionOnTheHolderPhoneProperty()
     {
         $holder = new \Ipag\Sdk\Model\Holder();

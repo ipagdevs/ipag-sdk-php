@@ -185,6 +185,14 @@ class SellerTest extends TestCase
         $this->assertEquals('01234567000195', $seller->getCpfCnpj());
     }
 
+    public function testShouldAcceptAnAlphanumericCnpjOnTheSellerCpfCnpjProperty()
+    {
+        $seller = new \Ipag\Sdk\Model\Seller(['cpf_cnpj' => '12.ABC.345/01DE-35']);
+
+        $this->assertEquals('12ABC34501DE35', $seller->getCpfCnpj());
+        $this->assertEquals('12ABC34501DE35', $seller->jsonSerialize()['cpf_cnpj']);
+    }
+
     public function testShouldThrowAValidationExceptionOnTheSellerEmailProperty()
     {
         $seller = new \Ipag\Sdk\Model\Seller();
